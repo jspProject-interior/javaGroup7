@@ -36,7 +36,7 @@
 	/* swiper-slide에 이미지 배경을 채우도록 설정 */
 	.swiper-slide img {
 	    width: 100%;
-	    height: 500px; 
+	    height: 700px;
 	}
 
 </style>
@@ -49,13 +49,13 @@
 						<div class="swiper-wrapper">
 								<!-- Slides -->
 								<div class="swiper-slide">
-										<img src="${ctp}/images/11.jpg" alt="Slide 1" />
+										<img src="${ctp}/images/main1.jpg" alt="Slide 1" />
 								</div>
 								<div class="swiper-slide">
-										<img src="${ctp}/images/12.jpg" alt="Slide 2" />
+										<img src="${ctp}/images/main2.jpg" alt="Slide 2" />
 								</div>
 								<div class="swiper-slide">
-										<img src="${ctp}/images/13.jpg" alt="Slide 3" />
+										<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
 								</div>
 								<!-- 추가 슬라이드 -->
 						</div>
@@ -77,7 +77,7 @@
         hide: true
       },
       loop: false,         // 무한 루프
-      effect: 'fade',
+      /* effect: 'fade', */
       loopAdditionalSlides: 1,
       autoplay: {
         delay: 2500,      // 자동으로 슬라이드 전환 (밀리초 단위)
