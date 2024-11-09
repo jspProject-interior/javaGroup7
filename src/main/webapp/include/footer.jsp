@@ -10,16 +10,16 @@
 		hr {
 		  border: 0;
 		  height: 1.5px;
-		  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+		  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0));
 		  margin: 0;
 		  margin-bottom: 10px;
 		}
 	</style>
 </head>
 <body>
-	<div style="width: 100%; background-color: #a67d3f; padding: 20px 0;">
+	<div style="width: 100%; background-color: #a67d3f; padding: 1.5%;">
 		<div class="row">
-			<div class="col" style="text-align: left; margin-left: 5%;">
+			<div class="col" style="text-align: left; margin-left: 3%;">
 				<div><a href="" style="color: white;"><font size="6px">고객센터</font></a></div>
 				<div class="input-group" style="margin-top: 10px;">
 					<div class="input-group-append"><font size="4px" color="white"><b>1234-1234</b></font></div>  
@@ -49,8 +49,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col text-left text-white" style="margin-left: 5%;">
-				<hr style="width: 200%;">
+			<div class="col text-left text-white" style="margin-left: 3%;">
+				<hr style="width: 100%;">
 				<div>주식회사 그린테리어 | 대표이사 : hm & sy | 주소: 충청북도 청주시 서원구 사직대로 109 4층 | 사업자등록번호 : 123-45-67890 | 이메일: info.grinterior.com</div>	
 				<div>ⓒ 2024 grinterior. All Rights Reserved.</div>
 			</div>

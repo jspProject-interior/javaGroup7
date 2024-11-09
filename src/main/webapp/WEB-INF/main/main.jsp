@@ -56,7 +56,10 @@
 </style>
 </head>
 <body>
-		<!-- 본문 영역 -->
+<div>
+<!-- header -->
+<jsp:include page="/include/header.jsp"/>
+	<!-- 본문 영역 -->
 	<div class="swiper">
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
@@ -89,25 +92,29 @@
 				</div>
 			</div>
 		<!-- 추가 슬라이드 -->
+		
 		</div>
 	</div>
-
+</div>
 						
 
 		<!-- Swiper 초기화 스크립트 -->
-		<script>
-			var swiper = new Swiper('.swiper', {
-				  slidesPerView: 1,  // 한 번에 보일 슬라이드 개수
-				  spaceBetween: 0,   // 슬라이드 간격
-				  centeredSlides: true, // 슬라이드가 중앙에 오지 않도록 설정
-				  loop: true,         // 무한 루프
-				  loopAdditionalSlides: 1,
-				  autoplay: {
-				    delay: 2500,      // 자동으로 슬라이드 전환 (밀리초 단위)
-				    disableOnInteraction: false
-				  }
-				});
-  </script>
+<script>
+		var swiper = new Swiper('.swiper', {
+			  slidesPerView: 1,  // 한 번에 보일 슬라이드 개수
+			  spaceBetween: 0,   // 슬라이드 간격
+			  centeredSlides: true, // 슬라이드가 중앙에 오지 않도록 설정
+			  loop: true,         // 무한 루프
+			  loopAdditionalSlides: 1,
+			  autoplay: {
+			    delay: 2500,      // 자동으로 슬라이드 전환 (밀리초 단위)
+			    disableOnInteraction: false
+			  }
+			});
+
+	
+</script>
+<!-- footer -->
 <jsp:include page="/include/footer.jsp"/>
 </body>
 </html>
