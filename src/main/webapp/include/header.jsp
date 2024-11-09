@@ -6,65 +6,82 @@
 <head>
   <meta charset="UTF-8">
   <title>header.jsp</title>
-<jsp:include page="/include/bs4.jsp"/>
-<style>
-	#navbar {
-	  display: flex;
-	  justify-content: space-between;
-	  position: fixed; /* 네비게이션 바를 고정 */
-	  width: 100%;
-	  z-index: 100; /* 다른 요소들보다 위에 표시 */
-	  top: 0; /* 페이지 상단에 고정 */
-	  left: 0; /* 좌측 끝에 고정 */
-	  color: var(--color-dark-gray);
-	  background-color: transparent; /* 스크롤 전에는 투명 */
-	  transition: background-color 0.5s ease-in-out; /* 배경색 전환 애니메이션 */
-	  padding: 1%;
-	}
-	
-	/* 스크롤 200px 이상일 때 배경색 흰색으로 변경 */
-	#navbar.fixed {
-	  background-color: white;
-	}
-	
-	/* 네비게이션 메뉴 스타일 */
-	.nav {
-	  list-style: none;
-	  display: flex;
-	}
-	
-	.nav li {
-	  margin: 0 15px;
-	}
-	
-	.nav a {
-	  text-decoration: none;
-	  color: var(--color-dark-gray);
-	}
-</style>
+	<jsp:include page="/include/bs4.jsp"/>
+	<script src="https://kit.fontawesome.com/0c69fdf2c0.js" crossorigin="anonymous"></script>
+	<style>
+		#navbar {
+		  display: flex;
+		  justify-content: space-between;
+		  position: fixed; /* 네비게이션 바를 고정 */
+		  width: 100%;
+		  z-index: 100; /* 다른 요소들보다 위에 표시 */
+		  top: 0; /* 페이지 상단에 고정 */
+		  left: 0; /* 좌측 끝에 고정 */
+		  color: var(--color-dark-gray);
+		  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.3) 100%); /* 스크롤 전에는 투명 */
+		  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* 배경색과 텍스트 색 전환 애니메이션 */
+		  padding: 1%;
+		  font-size: 1.2em;
+		}
+		
+		/* 스크롤 200px 이상일 때 배경색 흰색으로 변경 */
+		#navbar.fixed {
+		  background-color: white;
+		  color: black; /* 배경이 흰색일 때 텍스트 색상을 검정으로 변경 */
+		}
+		
+		/* 네비게이션 메뉴 스타일 */
+		.nav {
+		  list-style: none;
+		  display: flex;
+		}
+		
+		.nav li {
+		  margin: 0 15px;
+		}
+		
+		.nav a {
+		  text-decoration: none;
+		  color: white; /* 부모의 색상을 그대로 따르도록 설정 */
+		  transition: color 0.5s ease-in-out; /* 링크 색상 전환 애니메이션 */
+		}
+
+		/* 스크롤 시 텍스트 색상 변경 */
+		#navbar.fixed .nav a {
+		  color: black; /* 배경이 흰색일 때 링크 색상은 검정 */
+		}
+		
+		/* 메뉴 아이콘 색상 변경 */
+		#navbar.fixed .nav i {
+		  color: black; /* 배경이 흰색일 때 아이콘 색상은 검정 */
+		}
+		.nav_menu{
+			text
+		}
+	</style>
 </head>
 <body>
 	<!-- ***** Header Area Start ***** -->
 	<header class="header-area header-sticky wow slideInDown animated" data-wow-duration="0.75s" data-wow-delay="0s">
 	  <div class="row">
-	    <div class="col">
-	      <nav class="main-nav" id="navbar">
-	        <!-- ***** 로고 ***** -->
-	        <a href="#" class="Logo">GRINTERIOR</a> 
-	        <!-- ***** 메뉴 ***** -->
-	        <ul class="nav">
-	          <li><a href="#" class="active">인테리어</a></li>
-	          <li><a href="#">가구</a></li>
-	          <li><a href="#">컨설팅 사례</a></li>
-	          <li><a href="#">검색</a></li>
-	          <li><a href="#">장바구니</a></li>
-	          <li><a href="#">관심목록</a></li>
-	          <li><a href="#">로그인</a></li>
-	          <li><a href="#">메뉴</a></li>
-	        </ul>
-	      </nav>
-	    </div>
-	  </div>
+      <nav class="main-nav" id="navbar">
+        <!-- ***** 로고 ***** -->
+        <a href="#" class="Logo" style="padding-left: 1%">GRINTERIOR</a> 
+        <!-- ***** 메뉴 ***** -->
+        <ul class="nav" style="">
+          <li class="nav_menu"><a href="#" class="active">인테리어</a></li>
+          <li class="nav_menu"><a href="#">가구</a></li>
+          <li class="nav_menu"><a href="#">컨설팅 사례</a></li>
+        </ul>
+        <ul class="nav">
+          <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
+          <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
+          <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
+          <li><a href="#"><i class="fa-regular fa-user"></i></a></li>
+          <li><a href="#"><i class="fa-solid fa-bars"></i></a></li>
+        </ul>
+      </nav>
+    </div>
 	</header>
 	<!-- ***** Header Area End ***** -->
 	
