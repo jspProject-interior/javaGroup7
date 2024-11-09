@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-		pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
@@ -40,18 +39,34 @@
     overflow: hidden;
 	}
 	
-	/* swiper-slide에 이미지 배경을 채우도록 설정 */
-	.swiper-slide img {
+	
+	.mainImgCrop img {
 		position: relative;
 		bottom: 0;
 	  width: 100%;
 	  height: 663;
 	}
 	
+	.interiorImgCrop img {
+	  width: 300px;
+	  height: 400px;
+	}
+	
 	.mainImgText{
 		position: absolute;
 		bottom: 40%;
 		left: 5%;
+	}
+	
+	.interior-li{
+		display: inline;
+	}
+	.dot{
+		font-size: 1px;
+	}
+	.blank{
+		height: 100px;
+		width: 100%;
 	}
 </style>
 </head>
@@ -60,7 +75,7 @@
 <!-- header -->
 <jsp:include page="/include/header.jsp"/>
 	<!-- 본문 영역 -->
-	<div class="swiper">
+	<div class="swiper-main">
 		<!-- Additional required wrapper -->
 		<div class="swiper-wrapper">
 		<!-- Slides -->
@@ -95,25 +110,124 @@
 		
 		</div>
 	</div>
+	
+<!-- Swiper 초기화 스크립트 -->
+<script>
+	var swiper = new Swiper('.swiper-main', {
+		  slidesPerView: 1,  // 한 번에 보일 슬라이드 개수
+		  spaceBetween: 0,   // 슬라이드 간격
+		  centeredSlides: true, // 슬라이드가 중앙에 오지 않도록 설정
+		  loop: true,         // 무한 루프
+		  loopAdditionalSlides: 1,
+		  autoplay: {
+		    delay: 2500,      // 자동으로 슬라이드 전환 (밀리초 단위)
+		    disableOnInteraction: false
+		  }
+		});
+	
+</script>
+	
+	<!-- 가구 -->
+	<div>
+		
+	</div>
+	
+	<div class="blank"></div>
+	
+	<!-- 인테리어 -->
+	<div style="padding-left: 4.5%">
+		<div>GRINTERIOR만의 PICK!</div>
+		<ul style="padding: 0;">
+			<li class="interior-li">● 내추럴</li>
+			<li class="interior-li">● 모던</li>
+			<li class="interior-li">● 빈티지</li>
+			<li class="interior-li">● 그 외 스타일</li>
+		</ul>
+		<div class="swiper-interior">
+			<!-- Additional required wrapper -->
+			<div class="swiper-wrapper">
+			<!-- Slides -->
+				<div class="swiper-slide">
+					<div class="interiorImgCrop">
+						<img src="${ctp}/images/main1.jpg" alt="Slide 1" />
+					</div>
+					<div class="mainImgText">
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="interiorImgCrop">
+						<img src="${ctp}/images/main2.jpg" alt="Slide 2" />
+					</div>
+					<div class="mainImgText">
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="interiorImgCrop">
+						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+					</div>
+					<div class="mainImgText">
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="interiorImgCrop">
+						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+					</div>
+					<div class="mainImgText">
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="interiorImgCrop">
+						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+					</div>
+					<div class="mainImgText">
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="interiorImgCrop">
+						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+					</div>
+					<div class="mainImgText">
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="interiorImgCrop">
+						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+					</div>
+					<div class="mainImgText">
+					</div>
+				</div>
+				<div class="swiper-slide">
+					<div class="interiorImgCrop">
+						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+					</div>
+					<div class="mainImgText">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="blank"></div>
+	
 </div>
 						
 
-		<!-- Swiper 초기화 스크립트 -->
-<script>
-		var swiper = new Swiper('.swiper', {
-			  slidesPerView: 1,  // 한 번에 보일 슬라이드 개수
-			  spaceBetween: 0,   // 슬라이드 간격
-			  centeredSlides: true, // 슬라이드가 중앙에 오지 않도록 설정
-			  loop: true,         // 무한 루프
-			  loopAdditionalSlides: 1,
-			  autoplay: {
-			    delay: 2500,      // 자동으로 슬라이드 전환 (밀리초 단위)
-			    disableOnInteraction: false
-			  }
-			});
 
-	
+<!-- Swiper 초기화 스크립트 -->
+<script>
+	var swiper = new Swiper('.swiper-interior', {
+		  slidesPerView: 5,  // 한 번에 보일 슬라이드 개수
+		  spaceBetween : 1,
+		  loopAdditionalSlides : 1,
+		  loop: false,         // 무한 루프
+		  autoplay: {
+		    delay: 2500,      // 자동으로 슬라이드 전환 (밀리초 단위)
+		    disableOnInteraction: false
+		  }
+		});
 </script>
+
+
 <!-- footer -->
 <jsp:include page="/include/footer.jsp"/>
 </body>
