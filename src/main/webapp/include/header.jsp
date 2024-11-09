@@ -27,11 +27,6 @@
 		  margin: 0 10px;
 		}
 		
-		/* 스크롤 200px 이상일 때 배경색 흰색으로 변경 */
-		#navbar.fixed {
-		  background: white;
-		  color: black; /* 배경이 흰색일 때 텍스트 색상을 검정으로 변경 */
-		}
 		
 		/* 네비게이션 메뉴 스타일 */
 		.nav {
@@ -57,6 +52,11 @@
 		  color: white;
 		}
 
+		/* 스크롤 200px 이상일 때 배경색 흰색으로 변경 */
+		#navbar.fixed {
+		  background: white;
+		  color: black; /* 배경이 흰색일 때 텍스트 색상을 검정으로 변경 */
+		}
 		/* 스크롤 시 텍스트 색상 변경 */
 		#navbar.fixed a {
 		  color: black; /* 배경이 흰색일 때 아이콘 색상은 검정 */
@@ -66,6 +66,16 @@
 		}
 		#navbar.fixed .nav i {
 		  color: black; /* 배경이 흰색일 때 아이콘 색상은 검정 */
+		}
+		
+		.nav a:hover {
+		  color: white;
+		  text-decoration: none;
+		}
+		
+		.main-nav a:hover {
+		  color: white;
+		  text-decoration: none;
 		}
 		
 	</style>

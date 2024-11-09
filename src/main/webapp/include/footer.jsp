@@ -5,8 +5,12 @@
 <html>
 <head>
   <meta charset="UTF-8">
+	<jsp:include page="/include/fonts.jsp"/>
 	<jsp:include page="/include/bs4.jsp"/>
 	<style type="text/css">
+		body{
+			font-family: 'GmarketSansMedium';
+		}
 		hr {
 		  border: 0;
 		  height: 1.5px;

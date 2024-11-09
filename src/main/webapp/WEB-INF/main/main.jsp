@@ -9,6 +9,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jsp:include page="/include/bs4.jsp" />
+<jsp:include page="/include/fonts.jsp" />
 
 	<!-- Swiper CSS -->
 	<link rel="stylesheet"
@@ -22,15 +23,6 @@
 	/* swiper-container에 상대 위치 설정 */
 	.swiper {
 	    position: relative;
-	}
-	
-	.swiper-scrollbar {
-	    position: absolute;
-	    left: 10px;
-	    top: 60%;
-	    background-color: white;
-	    border-radius: 10px;
-	    height: 1px;
 	}
 	
 	.mainImgCrop{
@@ -59,10 +51,21 @@
 	  height: 400px;
 	}
 	
-	.mainImgText{
+	.mainImgText {
 		position: absolute;
 		bottom: 40%;
-		left: 5%;
+		left: 4.5%;
+		color: white;
+	}
+	.titleEng{
+	  font-family: 'TTBookendBatangR';
+	  font-size: 25px;
+	}
+	
+	.titleKor{
+	  font-family: 'Chosunilbo_myungjo';
+	  font-weight: 400;
+	  font-size: 40px;
 	}
 	
 	.interior-li{
@@ -80,6 +83,11 @@
 		font-weight: bold;
 		font-family: 'EliceDigitalBaeum-Bd';
 	}
+	
+	#MAGAZINE{
+		font-family: 'GowunBatang-Regular';
+		font-size: 20px;
+	}
 </style>
 </head>
 <body>
@@ -94,8 +102,8 @@
 					<img src="${ctp}/images/main1.jpg" alt="Slide 1" />
 				</div>
 				<div class="mainImgText">
-					<p class="text-2xl font-normal text-white">HOME STYLING</p>
-					<h2 class="text-5xl font-normal text-white">전문가가 제안하는<br>최고의 가구 경험</h2>
+					<div class="titleEng">HOME STYLING</div>
+					<div class="titleKor">전문가가 제안하는<br>최고의 가구 경험</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
@@ -103,8 +111,8 @@
 					<img src="${ctp}/images/main2.jpg" alt="Slide 2" />
 				</div>
 				<div class="mainImgText">
-					<p class="text-2xl font-normal text-white">HIGH-END STYLING</p>
-					<h2 class="text-5xl font-normal text-white">프리미엄 공간<br>나만의 고요한 안식처</h2>
+					<div class="titleEng">HIGH-END STYLING</div>
+					<div class="titleKor">프리미엄 공간<br>나만의 고요한 안식처</div>
 				</div>
 			</div>
 			<div class="swiper-slide">
@@ -112,8 +120,8 @@
 					<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
 				</div>
 				<div class="mainImgText">
-					<p class="text-2xl font-normal text-white">PREMIUM STYLING</p>
-					<h2 class="text-5xl font-normal text-white">한남더힐<br>꿈의 집 미리보기</h2>
+					<div class="titleEng">PREMIUM STYLING</div>
+					<div class="titleKor">한남더힐<br>꿈의 집 미리보기</div>
 				</div>
 			</div>
 		
@@ -145,7 +153,7 @@
 	
 	<!-- 인테리어 -->
 	<div style="padding-left: 4.5%">
-		<div style="padding-bottom: 10px; font-size: 30px;"><b>GRINTERIOR MAGAZINE</b></div>
+		<div id="MAGAZINE" style="padding-bottom: 10px; font-size: 30px;"><b>GRINTERIOR MAGAZINE</b></div>
 	
 		<div class="swiper-interior">
 			<div class="swiper-wrapper">
