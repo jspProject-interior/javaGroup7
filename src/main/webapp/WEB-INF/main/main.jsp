@@ -68,6 +68,7 @@
 	.interior-li{
 		display: inline;
 	}
+	
 	.blank{
 		height: 100px;
 		width: 100%;
@@ -77,6 +78,7 @@
 		margin-top: 5px;
 		font-size: 12px;
 		font-weight: bold;
+		font-family: 'EliceDigitalBaeum-Bd';
 	}
 </style>
 </head>
@@ -93,7 +95,7 @@
 				</div>
 				<div class="mainImgText">
 					<p class="text-2xl font-normal text-white">HOME STYLING</p>
-					<h2 class="text-5xl font-normal css-1iydhhf text-white">전문가가 제안하는<br>최고의 가구 경험</h2>
+					<h2 class="text-5xl font-normal text-white">전문가가 제안하는<br>최고의 가구 경험</h2>
 				</div>
 			</div>
 			<div class="swiper-slide">
@@ -102,7 +104,7 @@
 				</div>
 				<div class="mainImgText">
 					<p class="text-2xl font-normal text-white">HIGH-END STYLING</p>
-					<h2 class="text-5xl font-normal css-1iydhhf text-white">프리미엄 공간<br>나만의 고요한 안식처</h2>
+					<h2 class="text-5xl font-normal text-white">프리미엄 공간<br>나만의 고요한 안식처</h2>
 				</div>
 			</div>
 			<div class="swiper-slide">
@@ -111,7 +113,7 @@
 				</div>
 				<div class="mainImgText">
 					<p class="text-2xl font-normal text-white">PREMIUM STYLING</p>
-					<h2 class="text-5xl font-normal css-1iydhhf text-white">한남더힐<br>꿈의 집 미리보기</h2>
+					<h2 class="text-5xl font-normal text-white">한남더힐<br>꿈의 집 미리보기</h2>
 				</div>
 			</div>
 		

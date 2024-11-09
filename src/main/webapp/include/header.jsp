@@ -7,7 +7,7 @@
   <meta charset="UTF-8">
   <title>header.jsp</title>
 	<jsp:include page="/include/bs4.jsp"/>
-	<script src="https://kit.fontawesome.com/0c69fdf2c0.js" crossorigin="anonymous"></script>
+	<jsp:include page="/include/fonts.jsp"/>
 	<style>
 		#navbar {
 		  display: flex;
@@ -21,7 +21,10 @@
 		  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.3) 100%); /* 스크롤 전에는 투명 */
 		  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* 배경색과 텍스트 색 전환 애니메이션 */
 		  padding: 1%;
-		  font-size: 1.2em;
+		}
+		
+		.nav li {
+		  margin: 0 10px;
 		}
 		
 		/* 스크롤 200px 이상일 때 배경색 흰색으로 변경 */
@@ -34,30 +37,37 @@
 		.nav {
 		  list-style: none;
 		  display: flex;
+		  padding-top: 7px;
 		}
-		
-		.nav li {
-		  margin: 0 15px;
-		}
-		
+
 		.nav a {
 		  text-decoration: none;
-		  color: white; /* 부모의 색상을 그대로 따르도록 설정 */
-		  transition: color 0.5s ease-in-out; /* 링크 색상 전환 애니메이션 */
+		  color: white;
+		  transition: color 0.5s ease-in-out;
+		  font-family: 'EliceDigitalBaeum-Bd';
+		  font-size: 20px;
+		}
+		
+		.Logo{
+			font-family: "Playfair Display", serif;
+		  font-optical-sizing: auto;
+		  font-weight: 500;
+		  font-style: normal;
+		  font-size: 25px;
+		  color: white;
 		}
 
 		/* 스크롤 시 텍스트 색상 변경 */
+		#navbar.fixed a {
+		  color: black; /* 배경이 흰색일 때 아이콘 색상은 검정 */
+		}
 		#navbar.fixed .nav a {
 		  color: black; /* 배경이 흰색일 때 링크 색상은 검정 */
 		}
-		
-		/* 메뉴 아이콘 색상 변경 */
 		#navbar.fixed .nav i {
 		  color: black; /* 배경이 흰색일 때 아이콘 색상은 검정 */
 		}
-		.nav_menu{
-			text
-		}
+		
 	</style>
 </head>
 <body>
