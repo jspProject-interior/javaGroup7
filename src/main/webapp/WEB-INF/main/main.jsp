@@ -39,6 +39,13 @@
     overflow: hidden;
 	}
 	
+	.swiper-interior {
+    overflow-x: hidden;  /* 가로 스크롤 숨기기 */
+	}
+	
+	.swiper-wrapper {
+	    width: 100%;  /* swiper-wrapper 너비를 100%로 설정 */
+	}
 	
 	.mainImgCrop img {
 		position: relative;
@@ -78,10 +85,8 @@
 <!-- header -->
 <jsp:include page="/include/header.jsp"/>
 	<!-- 본문 영역 -->
-	<div class="swiper-main">
-		<!-- Additional required wrapper -->
+<div class="swiper">
 		<div class="swiper-wrapper">
-		<!-- Slides -->
 			<div class="swiper-slide">
 				<div class="mainImgCrop">
 					<img src="${ctp}/images/main1.jpg" alt="Slide 1" />
@@ -109,26 +114,25 @@
 					<h2 class="text-5xl font-normal css-1iydhhf text-white">한남더힐<br>꿈의 집 미리보기</h2>
 				</div>
 			</div>
-		<!-- 추가 슬라이드 -->
 		
 		</div>
 	</div>
-	
-<!-- Swiper 초기화 스크립트 -->
-<script>
-	var swiper = new Swiper('.swiper-main', {
-		  slidesPerView: 1,  // 한 번에 보일 슬라이드 개수
-		  spaceBetween: 0,   // 슬라이드 간격
-		  centeredSlides: true, // 슬라이드가 중앙에 오지 않도록 설정
-		  loop: true,         // 무한 루프
-		  loopAdditionalSlides: 1,
-		  autoplay: {
-		    delay: 2500,      // 자동으로 슬라이드 전환 (밀리초 단위)
-		    disableOnInteraction: false
-		  }
-		});
-	
-</script>
+
+
+		<!-- Swiper 초기화 스크립트 -->
+		<script>
+			var swiper = new Swiper('.swiper', {
+				  slidesPerView: 1,  // 한 번에 보일 슬라이드 개수
+				  spaceBetween: 0,   // 슬라이드 간격
+				  centeredSlides: true, // 슬라이드가 중앙에 오지 않도록 설정
+				  loop: true,         // 무한 루프
+				  loopAdditionalSlides: 1,
+				  autoplay: {
+				    delay: 2500,      // 자동으로 슬라이드 전환 (밀리초 단위)
+				    disableOnInteraction: false
+				  }
+				});
+  </script>
 	
 	<!-- 가구 -->
 	<div>
@@ -140,6 +144,7 @@
 	<!-- 인테리어 -->
 	<div style="padding-left: 4.5%">
 		<div style="padding-bottom: 10px; font-size: 30px;"><b>GRINTERIOR MAGAZINE</b></div>
+	
 		<div class="swiper-interior">
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
@@ -176,7 +181,8 @@
 					<div class="interiorImgCrop">
 						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
 					</div>
-					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
+						<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -184,15 +190,14 @@
 	
 	<div class="blank"></div>
 	
-</div>
 						
 
 
-<!-- Swiper 초기화 스크립트 -->
+<!-- <!-- Swiper 초기화 스크립트 -->
 <script>
 	var swiper = new Swiper('.swiper-interior', {
 		  slidesPerView: 5,  // 한 번에 보일 슬라이드 개수
-		  spaceBetween : 1,
+		  spaceBetween : 0,
 		  loopAdditionalSlides : 1,
 		  loop: false,         // 무한 루프
 		  autoplay: {
