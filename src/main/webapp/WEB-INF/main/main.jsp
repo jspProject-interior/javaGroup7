@@ -61,9 +61,6 @@
 	.interior-li{
 		display: inline;
 	}
-	.dot{
-		font-size: 1px;
-	}
 	.blank{
 		height: 100px;
 		width: 100%;
