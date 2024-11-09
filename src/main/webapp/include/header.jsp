@@ -26,7 +26,7 @@
 		
 		/* 스크롤 200px 이상일 때 배경색 흰색으로 변경 */
 		#navbar.fixed {
-		  background-color: white;
+		  background: white;
 		  color: black; /* 배경이 흰색일 때 텍스트 색상을 검정으로 변경 */
 		}
 		
@@ -66,14 +66,14 @@
 	  <div class="row">
       <nav class="main-nav" id="navbar">
         <!-- ***** 로고 ***** -->
-        <a href="#" class="Logo" style="padding-left: 1%">GRINTERIOR</a> 
+        <a href="#" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a> 
         <!-- ***** 메뉴 ***** -->
-        <ul class="nav" style="">
+        <ul class="nav" style="padding-left:0; padding-right: 30%;">
           <li class="nav_menu"><a href="#" class="active">인테리어</a></li>
           <li class="nav_menu"><a href="#">가구</a></li>
           <li class="nav_menu"><a href="#">컨설팅 사례</a></li>
         </ul>
-        <ul class="nav">
+        <ul class="nav" style="padding-right: 4.5%;">
           <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
           <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
           <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
@@ -93,7 +93,7 @@
 	  document.addEventListener("scroll", () => {
 	    const scrollY = window.scrollY; // 현재 스크롤 위치
 	    // 스크롤이 200px 이상이면 'fixed' 클래스를 추가하여 배경색을 흰색으로 변경
-	    if (scrollY > 200) {
+	    if (scrollY > 40) {
 	      navbar.classList.add("fixed");
 	    } else {
 	      navbar.classList.remove("fixed");
