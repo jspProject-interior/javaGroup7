@@ -65,6 +65,12 @@
 		height: 100px;
 		width: 100%;
 	}
+	
+	.interiorText{
+		margin-top: 5px;
+		font-size: 12px;
+		font-weight: bold;
+	}
 </style>
 </head>
 <body>
@@ -133,72 +139,44 @@
 	
 	<!-- 인테리어 -->
 	<div style="padding-left: 4.5%">
-		<div>GRINTERIOR만의 PICK!</div>
-		<ul style="padding: 0;">
-			<li class="interior-li">● 내추럴</li>
-			<li class="interior-li">● 모던</li>
-			<li class="interior-li">● 빈티지</li>
-			<li class="interior-li">● 그 외 스타일</li>
-		</ul>
+		<div style="padding-bottom: 10px; font-size: 30px;"><b>GRINTERIOR MAGAZINE</b></div>
 		<div class="swiper-interior">
-			<!-- Additional required wrapper -->
 			<div class="swiper-wrapper">
-			<!-- Slides -->
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
 						<img src="${ctp}/images/main1.jpg" alt="Slide 1" />
 					</div>
-					<div class="mainImgText">
-					</div>
+					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
 						<img src="${ctp}/images/main2.jpg" alt="Slide 2" />
 					</div>
-					<div class="mainImgText">
-					</div>
+					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
 						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
 					</div>
-					<div class="mainImgText">
-					</div>
+					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
 						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
 					</div>
-					<div class="mainImgText">
-					</div>
+					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
 						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
 					</div>
-					<div class="mainImgText">
-					</div>
+					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
 						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
 					</div>
-					<div class="mainImgText">
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
-					</div>
-					<div class="mainImgText">
-					</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
-					</div>
-					<div class="mainImgText">
-					</div>
+					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 			</div>
 		</div>
