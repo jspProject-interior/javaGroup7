@@ -88,6 +88,34 @@
 		font-family: 'GowunBatang-Regular';
 		font-size: 20px;
 	}
+	
+	.grid-container {
+	  display: grid;
+	  grid-template-columns: repeat(3, 1fr); /* 3개의 열 설정 */
+	  grid-template-rows: auto auto; /* 두 개의 행 설정 */
+	  grid-gap: 10px; /* 그리드 간격 설정 */
+	}
+	
+	.item:nth-child(1) {
+	  grid-column: 1; /* 1번째 아이템은 1열 */
+	  grid-row: span 2; /* 1번째 아이템은 1행 */
+	}
+	
+	.item:nth-child(2) {
+	  grid-column: 2; /* 2번째 아이템은 2열 */
+	  grid-row: span 2; /* 2번째 아이템은 1행 */
+	}
+	
+	.item:nth-child(3) {
+	  grid-column: 3; /* 3번째 아이템은 3열 */
+	  grid-row: 1; /* 3번째 아이템은 1행 */
+	}
+	
+	.item:nth-child(4) {
+	  grid-column: 3; /* 4번째 아이템은 3열 */
+	  grid-row: 2; /* 4번째 아이템은 2행 */
+	}
+
 </style>
 </head>
 <body>
@@ -145,9 +173,12 @@
   </script>
 	
 	<!-- 가구 -->
-	<div>
-		
-	</div>
+<div class="grid-container">
+  <div class="item"><img src="${ctp}/images/main1.jpg"/>아이템 1</div>
+  <div class="item"><img src="${ctp}/images/main1.jpg"/>아이템 2</div>
+  <div class="item"><img src="${ctp}/images/main1.jpg"/>아이템 3</div>
+  <div class="item"><img src="${ctp}/images/main1.jpg"/>아이템 4</div>
+</div>
 	
 	<div class="blank"></div>
 	
