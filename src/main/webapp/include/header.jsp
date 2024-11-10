@@ -77,6 +77,10 @@
 		  color: white;
 		  text-decoration: none;
 		}
+		.nav_menu{
+		  margin-left: 0;
+		  padding-left: 50px;
+		}
 		
 	</style>
 </head>
