@@ -6,92 +6,180 @@
 <head>
   <meta charset="UTF-8">
   <title>header.jsp</title>
-	<jsp:include page="/include/bs4.jsp"/>
-	<jsp:include page="/include/fonts.jsp"/>
-	<style>
-		#navbar {
-		  display: flex;
-		  justify-content: space-between;
-		  position: fixed; /* 네비게이션 바를 고정 */
-		  width: 100%;
-		  z-index: 100; /* 다른 요소들보다 위에 표시 */
-		  top: 0; /* 페이지 상단에 고정 */
-		  left: 0; /* 좌측 끝에 고정 */
-		  color: var(--color-dark-gray);
-		  background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.3) 100%); /* 스크롤 전에는 투명 */
-		  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* 배경색과 텍스트 색 전환 애니메이션 */
-		  padding: 1%;
-		}
-		
-		.nav li {
-		  margin: 0 10px;
-		}
-		
-		
-		/* 네비게이션 메뉴 스타일 */
-		.nav {
-		  list-style: none;
-		  display: flex;
-		  padding-top: 7px;
-		}
+  <jsp:include page="/include/bs4.jsp"/>
+  <jsp:include page="/include/fonts.jsp"/>
+  <style>
+    #navbar {
+      display: flex;
+      justify-content: space-between;
+      position: fixed;
+      width: 100%;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      color: var(--color-dark-gray);
+      background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
+      transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+      padding: 1%;
+      height: 60px;
+    }
 
-		.nav a {
-		  text-decoration: none;
-		  color: white;
-		  transition: color 0.5s ease-in-out;
-		  font-family: 'EliceDigitalBaeum-Bd';
-		  font-size: 20px;
-		}
-		
-		.Logo{
-			font-family: "Playfair Display", serif;
-		  font-optical-sizing: auto;
-		  font-weight: 500;
-		  font-style: normal;
-		  font-size: 25px;
-		  color: white;
-		}
+    .nav li {
+      margin: 0 10px;
+    }
 
-		/* 스크롤 200px 이상일 때 배경색 흰색으로 변경 */
-		#navbar.fixed {
-		  background: white;
-		  color: black; /* 배경이 흰색일 때 텍스트 색상을 검정으로 변경 */
-		}
-		/* 스크롤 시 텍스트 색상 변경 */
-		#navbar.fixed a {
-		  color: black; /* 배경이 흰색일 때 아이콘 색상은 검정 */
-		}
-		#navbar.fixed .nav a {
-		  color: black; /* 배경이 흰색일 때 링크 색상은 검정 */
-		}
-		#navbar.fixed .nav i {
-		  color: black; /* 배경이 흰색일 때 아이콘 색상은 검정 */
-		}
-		
-		.nav a:hover {
-		  color: white;
-		  text-decoration: none;
-		}
-		
-		.main-nav a:hover {
-		  color: white;
-		  text-decoration: none;
-		}
-		.nav_menu{
-		  margin-left: 0;
-		  padding-left: 50px;
-		}
-		
-	</style>
+    .nav {
+      list-style: none;
+      display: flex;
+      padding-top: 7px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.5s ease-in-out;
+      font-family: 'EliceDigitalBaeum-Bd';
+      font-size: 20px;
+    }
+
+    .Logo {
+      font-family: "Playfair Display", serif;
+      font-size: 25px;
+      color: white;
+    }
+    .menu {
+      cursor: pointer;
+      width: 25px;
+      height: 30px;
+      position: relative;
+    }
+
+    .menu .bar {
+      width: 25px;
+      height: 3px;
+      background-color: white;
+      margin: 6px 0;
+      transition: 0.3s ease-in-out;
+    }
+
+    .nav a:hover {
+      color: white;
+    }
+    #navbar.fixed {
+      background: white;
+      color: black;
+    }
+    #navbar.fixed a {
+      color: black;
+    }
+    #navbar.fixed .nav a {
+      color: black;
+    }
+    #navbar.fixed .menu .bar {
+      background-color: black;
+    }
+
+    .menu.active .bar:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu.active .bar:first-child {
+      transform: rotate(45deg);
+      position: absolute;
+      top: 3px;
+      left: 0;
+    }
+
+    .menu.active .bar:last-child {
+      transform: rotate(-45deg);
+      position: absolute;
+      top: 3px;
+      left: 0;
+    }
+
+    .side-menu {
+      position: fixed;
+      right: -1100px;
+      height: calc(100%);
+      width: 1100px;
+      background-color: white;
+      overflow-x: hidden;
+      transition: right 0.3s ease-in-out;
+      z-index: 99;
+      opacity: 70%;
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 98;
+    }
+
+    .overlay.active {
+      display: block;
+    }
+  </style>
+  <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function() {
+	  // 햄버거 버튼 클릭 시 메뉴와 배경 토글
+	  function toggleSidebar() {
+	    const menu = document.querySelector(".menu");
+	    const sideMenu = document.querySelector(".side-menu");
+	    const overlay = document.querySelector(".overlay");
+
+	    // 햄버거 아이콘과 메뉴 상태를 토글
+	    menu.classList.toggle("active");
+	    sideMenu.classList.toggle("open");
+	    overlay.classList.toggle("active");
+	  }
+
+	  // 배경 클릭 시 메뉴 닫기
+	  document.querySelector(".overlay").addEventListener("click", function() {
+	    const menu = document.querySelector(".menu");
+	    const sideMenu = document.querySelector(".side-menu");
+	    const overlay = document.querySelector(".overlay");
+
+	    // 메뉴와 배경 숨기기
+	    menu.classList.remove("active");
+	    sideMenu.classList.remove("open");
+	    overlay.classList.remove("active");
+	  });
+
+	  // 네비게이션바 고정 처리 (스크롤에 따라)
+	  const navbar = document.querySelector("#navbar");
+	  document.addEventListener("scroll", () => {
+	    const scrollY = window.scrollY;
+	    if (scrollY > 40) {
+	      navbar.classList.add("fixed");
+	    } else {
+	      navbar.classList.remove("fixed");
+	    }
+	  });
+
+	  // 햄버거 버튼 클릭 시 메뉴 열고 닫기
+	  const menuButton = document.querySelector(".menu");
+	  if (menuButton) {
+	    menuButton.addEventListener("click", toggleSidebar);
+	  }
+	});
+
+</script>
+
 </head>
 <body>
-	<!-- ***** Header Area Start ***** -->
-	<header class="header-area header-sticky wow slideInDown animated" data-wow-duration="0.75s" data-wow-delay="0s">
-	  <div class="row">
+  <header class="header-area header-sticky wow slideInDown animated" data-wow-duration="0.75s" data-wow-delay="0s">
+    <div class="row">
       <nav class="main-nav" id="navbar">
-        <!-- ***** 로고 ***** -->
-        <a href="#" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a> 
-        <!-- ***** 메뉴 ***** -->
+        <a href="#" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a>
         <ul class="nav" style="padding-left:0; padding-right: 30%;">
           <li class="nav_menu"><a href="#" class="active">인테리어</a></li>
           <li class="nav_menu"><a href="#">가구</a></li>
@@ -101,28 +189,28 @@
           <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
           <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
           <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
-          <li><a href="#"><i class="fa-regular fa-user"></i></a></li>
-          <li><a href="#"><i class="fa-solid fa-bars"></i></a></li>
+          <li>
+            <div class="pv-box">
+              <div class="container" style="padding-left: 5px;">
+                <div class="menu menu-icon" onclick="toggleSidebar()">
+                  <div class="bar"></div>
+                  <div class="bar"></div>
+                  <div class="bar"></div>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
       </nav>
     </div>
-	</header>
-	<!-- ***** Header Area End ***** -->
-	
-	<script>
-		// 네비게이션 바를 선택
-	  const navbar = document.querySelector("#navbar");
-	
-	  // 스크롤 이벤트 리스너
-	  document.addEventListener("scroll", () => {
-	    const scrollY = window.scrollY; // 현재 스크롤 위치
-	    // 스크롤이 200px 이상이면 'fixed' 클래스를 추가하여 배경색을 흰색으로 변경
-	    if (scrollY > 40) {
-	      navbar.classList.add("fixed");
-	    } else {
-	      navbar.classList.remove("fixed");
-	    }
-	  });
-	</script>
+  </header>
+
+  <div class="overlay"></div>
+
+  <div class="side-menu">
+  
+  
+  </div>
+
 </body>
 </html>
