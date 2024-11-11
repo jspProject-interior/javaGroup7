@@ -33,4 +33,42 @@ public class MemberDAO {
      }
    }
  }
+
+//Member Table에서 ID 검색하기
+	public MemberVO getMemberIdCheck(String mid) {
+		MemberVO vo = new MemberVO();
+		try {
+			sql = "select * from member where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+	     vo.setIdx(rs.getInt("idx"));
+	     vo.setMid(rs.getString("mid"));
+	     vo.setPwd(rs.getString("pwd"));
+	     vo.setName(rs.getString("name"));
+	     vo.setNickName(rs.getString("nickName"));
+	     vo.setTel(rs.getString("tel"));
+	     vo.setEmail(rs.getString("email"));
+	     vo.setResident(rs.getString("resident"));
+	     vo.setAddress(rs.getString("address"));
+	     vo.setGender(rs.getString("gender"));
+	     vo.setBirthday(rs.getString("birthday"));
+	     vo.setLevel(rs.getInt("level"));
+	     vo.setIndustry(rs.getString("industry"));
+	     vo.setPhoto(rs.getString("photo"));
+	     vo.setUserDel(rs.getString("userDel"));
+	     vo.setJoinDay(rs.getString("joinDay"));
+	     vo.setLastDate(rs.getString("lastDate"));
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}
+		finally {
+			rsClose();
+		}
+		
+		return vo;
+	}
 }

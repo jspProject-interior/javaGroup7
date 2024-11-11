@@ -5,6 +5,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="${ctp}/images/favicon.png">
   <title>인테리어 | 그린테리어</title>
 <jsp:include page="/include/bs4.jsp"/>
 <style type="text/css">

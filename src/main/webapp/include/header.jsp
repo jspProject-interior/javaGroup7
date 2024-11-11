@@ -108,8 +108,23 @@
       transition: right 0.3s ease-in-out;
       z-index: 99;
     }
+    
+    .side-menu-login {
+      position: fixed;
+      right: -500px;
+      height: calc(100%);
+      width: 500px;
+      background-color: white;
+      overflow-x: hidden;
+      transition: right 0.3s ease-in-out;
+      z-index: 99;
+    }
 
     .side-menu.open {
+      right: 0;
+    }
+    
+    .side-menu-login.open {
       right: 0;
     }
 
@@ -596,8 +611,8 @@
      document.addEventListener("DOMContentLoaded", function() {
        // 햄버거 버튼 클릭 시 메뉴와 배경 토글
        function toggleSidebar() {
-           const menu = document.querySelector(".menu");
-          const sideMenu = document.querySelector(".side-menu");
+       	const menu = document.querySelector(".menu");
+        const sideMenu = document.querySelector(".side-menu");
         const overlay = document.querySelector(".overlay");
 
            // 햄버거 아이콘과 메뉴 상태를 토글
@@ -641,8 +656,52 @@
         sideMenu.classList.toggle("pink");  // 슬라이드 메뉴 바 색상 토글
        };
    });
+     
+     
+     /* 로그인 시 */
+      document.addEventListener("DOMContentLoaded", function() {
+       // 햄버거 버튼 클릭 시 메뉴와 배경 토글
+       function toggleSidebar() {
+        const menu = document.querySelector(".menu");
+      	const sideMenuLogin = document.querySelector(".side-menu-login");
+        const overlay = document.querySelector(".overlay");
 
+           // 햄버거 아이콘과 메뉴 상태를 토글
+        menu.classList.toggle("active");
+        sideMenuLogin.classList.toggle("open");
+        overlay.classList.toggle("active");
+       }
 
+       // 배경 클릭 시 메뉴 닫기
+       document.querySelector(".overlay").addEventListener("click", function() {
+        const menu = document.querySelector(".menu");
+        const sideMenuLogin = document.querySelector(".side-menu-login");
+        const overlay = document.querySelector(".overlay");
+
+           // 메뉴와 배경 숨기기
+        menu.classList.remove("active");
+        sideMenulogin.classList.remove("open");
+        overlay.classList.remove("active");
+       });
+
+       // 네비게이션바 고정 처리 (스크롤에 따라)
+       const navbar = document.querySelector("#navbar");
+       document.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        if (scrollY > 40) {
+           navbar.classList.add("fixed");
+        } else {
+          navbar.classList.remove("fixed");
+        }
+       });
+
+    // 햄버거 버튼 클릭 시 메뉴 열고 닫기
+       const menuButton = document.querySelector(".menu");
+       if (menuButton) {
+        menuButton.addEventListener("click", toggleSidebar);
+       }
+
+   	});
   
   // 로그인 창 jsp
   $(function() {
@@ -775,32 +834,60 @@
   </header>
 
   <div class="overlay"></div>
-
-  <div class="side-menu">
-     <div class="materialContainer">
-        <div class="box">
-          <div class="title">LOGIN</div>
-          <div class="input">
-             <label for="name">ID</label>
-             <input type="text" name="mid" id="mid">
-             <span class="spin"></span>
-          </div>
-          <div class="input">
-             <label for="pass">Password</label>
-             <input type="password" name="pwd" id="pwd">
-             <span class="spin"></span>
-          </div>
-          <div class="button login">
-             <button><span>LOGIN</span><i class="fa fa-check"></i></button>
-          </div>
-          <a href="" class="pass-forgot">비밀번호를 잊어버리셨습니까?</a>
-          </div>
-      
-        <div class="material-button alt-2" onclick="toggleSidebarColor()">
-           <span class="shape"></span>
-         </div>
-      </div>
-  </div>
-
+  
+	<c:if test="${empty sMid}">
+	  <div class="side-menu">
+	  	<form action="MemberLogin.mem">
+	    	<div class="materialContainer">
+	        <div class="box">
+	          <div class="title">LOGIN</div>
+	          <div class="input">
+	             <label for="mid">ID</label>
+	             <input type="text" name="mid" id="mid">
+	             <span class="spin"></span>
+	          </div>
+	          <div class="input">
+	             <label for="pass">Password</label>
+	             <input type="password" name="pwd" id="pwd">
+	             <span class="spin"></span>
+	          </div>
+	          <div class="button login">
+	             <button type="submit"><span>LOGIN</span><i class="fa fa-check"></i></button>
+	          </div>
+	          <a href="" class="pass-forgot">비밀번호를 잊어버리셨습니까?</a>
+	          </div>
+	      
+	        <div class="material-button alt-2" onclick="toggleSidebarColor()">
+	           <span class="shape"></span>
+	         </div>
+	      </div>
+	    </form>
+	  </div>
+  </c:if>
+	<c:if test="${!empty sMid}">
+	  <div class="side-menu-login">
+	  	<form action="MemberLogin.mem">
+	    	<div class="materialContainer">
+	        <div class="box">
+	          <div class="title">LOGIN</div>
+	          <div class="input">
+	             <label for="mid">ID</label>
+	             <input type="text" name="mid" id="mid">
+	             <span class="spin"></span>
+	          </div>
+	          <div class="input">
+	             <label for="pass">Password</label>
+	             <input type="password" name="pwd" id="pwd">
+	             <span class="spin"></span>
+	          </div>
+	          <div class="button login">
+	             <button type="submit"><span>LOGIN</span><i class="fa fa-check"></i></button>
+	          </div>
+	          <a href="" class="pass-forgot">비밀번호를 잊어버리셨습니까?</a>
+	          </div>
+	      </div>
+	    </form>
+	  </div>
+  </c:if>
 </body>
 </html>
