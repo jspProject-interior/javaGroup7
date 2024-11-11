@@ -1,10 +1,6 @@
 @charset "UTF-8";
 /* footerStyle.css */
 
-/* styles.css */
-
-/* styles.css */
-
 body {
     font-family: 'GmarketSansMedium';
 }
@@ -78,8 +74,4 @@ hr.footer-hr {
 
 .footer div {
     font-size: 12px;
-}
-
-.footer{
-		
 }

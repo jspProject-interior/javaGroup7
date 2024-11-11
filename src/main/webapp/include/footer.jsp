@@ -5,9 +5,9 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="${ctp}/css/footerStyle.css">
   <jsp:include page="/include/fonts.jsp"/>
   <jsp:include page="/include/bs4.jsp"/>
- <link rel="stylesheet" type="text/css" href="${ctp}/css/footerStyle.css">
   
 </head>
 <body>

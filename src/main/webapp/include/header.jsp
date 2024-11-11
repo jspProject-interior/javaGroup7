@@ -758,7 +758,7 @@
           </div>
           <div class="input">
              <label for="pass">Password</label>
-             <input type="password" name="pass" id="pass">
+             <input type="password" name="pwd" id="pwd">
              <span class="spin"></span>
           </div>
           <div class="button login">
