@@ -21,24 +21,16 @@
       background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
       transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
       padding: 1%;
-      height: 60px;
-    }
-
-    .nav li {
-      margin: 0 10px;
     }
 
     .nav {
       list-style: none;
       display: flex;
-      padding-top: 7px;
     }
-
-    
 
     .Logo {
 		  font-family: "Playfair Display", serif;
-		  font-size: 25px;
+		  font-size: 30px;
 		  color: white; /* 기본 글자 색상 */
 		  text-decoration: none; /* 기본 밑줄 제거 */
 		}
@@ -136,6 +128,8 @@
     .overlay.active {
       display: block;
     }
+    
+    
   </style>
   <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function() {
@@ -189,15 +183,15 @@
     <div class="row">
       <nav class="main-nav" id="navbar">
         <a href="#" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a>
-        <ul class="nav" style="padding-left:0; padding-right: 30%;">
+        <ul class="nav" style="padding-top:0.5%; padding-left:5%; padding-right: 30%;">
           <li class="nav_menu"><a href="#" class="active">인테리어</a></li>
-          <li class="nav_menu"><a href="#">가구</a></li>
+          <li class="nav_menu" style="padding: 0 50px;"><a href="#">가구</a></li>
           <li class="nav_menu"><a href="#">컨설팅 사례</a></li>
         </ul>
-        <ul class="nav" style="padding-right: 4.5%;">
-          <li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>
-          <li><a href="#"><i class="fa-solid fa-cart-shopping"></i></a></li>
-          <li><a href="#"><i class="fa-regular fa-heart"></i></a></li>
+        <ul class="nav" style="padding-top:0.5%; padding-right: 3%;">
+          <li><a href="#"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a></li>
+          <li><a href="#" style="padding: 0 20px;"><i class="fa-solid fa-cart-shopping fa-lg"></i></a></li>
+          <li><a href="#" style="padding-right:20px;"><i class="fa-regular fa-heart fa-lg"></i></a></li>
           <li>
             <div class="pv-box">
               <div class="container" style="padding-left: 5px;">
