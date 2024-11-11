@@ -646,6 +646,35 @@
   
   // 로그인 창 jsp
   $(function() {
+	  $(".input input").focus(function() {
+
+	      $(this).parent(".input").each(function() {
+	         $("label", this).css({
+	            "line-height": "18px",
+	            "font-size": "18px",
+	            "font-weight": "100",
+	            "top": "0px"
+	         })
+	         $(".spin", this).css({
+	            "width": "100%"
+	         })
+	      });
+	   }).blur(function() {
+	      $(".spin").css({
+	         "width": "0px"
+	      })
+	      if ($(this).val() == "") {
+	         $(this).parent(".input").each(function() {
+	            $("label", this).css({
+	               "line-height": "60px",
+	               "font-size": "24px",
+	               "font-weight": "300",
+	               "top": "10px"
+	            })
+	         });
+
+	      }
+	   });
       $(".button").click(function(e) {
          var pX = e.pageX,
             pY = e.pageY,
@@ -753,7 +782,7 @@
           <div class="title">LOGIN</div>
           <div class="input">
              <label for="name">ID</label>
-             <input type="text" name="name" id="name">
+             <input type="text" name="mid" id="mid">
              <span class="spin"></span>
           </div>
           <div class="input">
@@ -762,7 +791,7 @@
              <span class="spin"></span>
           </div>
           <div class="button login">
-             <button><span>LOGIN</span> <i class="fa fa-check"></i></button>
+             <button><span>LOGIN</span><i class="fa fa-check"></i></button>
           </div>
           <a href="" class="pass-forgot">비밀번호를 잊어버리셨습니까?</a>
           </div>
