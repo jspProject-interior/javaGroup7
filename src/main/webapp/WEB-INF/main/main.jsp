@@ -132,7 +132,33 @@
 	  grid-row: 3;
 	  background-image: url("${ctp}/images/main1.jpg");
 	}
+	h6 {
+			position: fixed;
+			right: 1rem;
+			bottom: -50px;
+			transition: 0.7s ease;
+		}
+		.on {
+			opacity: 0.8;
+			cursor: pointer;
+			bottom: 0;
+		}
 </style>
+<script>
+	'use strict'
+//화살표클릭시 화면 상단이동(부드럽게)
+	$(window).scroll(function(){
+  if($(this).scrollTop() > 100){
+     $("#topBtn").addClass("on");
+  }
+  else{
+     $("#topBtn").removeClass("on");
+  }
+  $("#topBtn").click(function() {
+			window.scrollTo({top:0, behavior: "smooth"});	
+		});
+	});
+</script>
 </head>
 <body>
 <div>
@@ -247,7 +273,8 @@
 	
 	<div class="blank"></div>
 	
-						
+	<!-- 위로가기 버튼 -->
+  <h6 id="topBtn" class="text-right mr-3"><i class="fa-solid fa-circle-chevron-up fa-2x"></i></h6>					
 
 
 <!-- <!-- Swiper 초기화 스크립트 -->
