@@ -143,6 +143,15 @@
 			cursor: pointer;
 			bottom: 0;
 		}
+		.mainBtn{
+			color: white;
+			padding: 80px;
+		}
+		.mainBtnBack{
+			background-color: black;
+			padding: 15px 0;
+			border-radius: 5%;
+		}
 </style>
 <script>
 	'use strict'
@@ -194,8 +203,19 @@
 					<div class="titleKor">한남더힐<br>꿈의 집 미리보기</div>
 				</div>
 			</div>
-		
 		</div>
+	</div>
+	<div id="mainBtnContainer" class="input-group">
+		<a href="">
+			<div class="mainBtnBack">
+				<span class="mainBtn">인테리어 컨설팅 서비스<i class="fa-solid fa-circle-arrow-right"></i></span>
+			</div>
+		</a>
+		<a href="">
+			<div class="mainBtnBack">
+				<span class="mainBtn">인테리어 컨설팅 서비스<i class="fa-solid fa-cart-arrow-down"></i></span>
+			</div>
+		</a>
 	</div>
 
 
