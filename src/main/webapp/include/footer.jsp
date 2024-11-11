@@ -9,7 +9,6 @@
   <jsp:include page="/include/bs4.jsp"/>
  <link rel="stylesheet" type="text/css" href="${ctp}/css/footerStyle.css">
   
-  <style type="text/css"></style>
 </head>
 <body>
 	<div class="header-container">

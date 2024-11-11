@@ -155,7 +155,7 @@
 			padding: 50px;
 		}
 		.mainBtnBack{
-			background-color: black;
+			background-color: #a67d3f;
 			padding: 12px 0;
 		}
 		.mainBtnBack i{
