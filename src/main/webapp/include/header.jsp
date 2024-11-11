@@ -719,9 +719,9 @@
   <header class="header-area header-sticky wow slideInDown animated" data-wow-duration="0.75s" data-wow-delay="0s">
     <div class="row">
       <nav class="main-nav" id="navbar">
-        <a href="#" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a>
+        <a href="/main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a>
         <ul class="nav" style="padding-top:0.5%; padding-left:5%; padding-right: 30%;">
-          <li class="nav_menu"><a href="#" class="active">인테리어</a></li>
+          <li class="nav_menu"><a href="Interior.in" class="active">인테리어</a></li>
           <li class="nav_menu" style="padding: 0 50px;"><a href="#">가구</a></li>
           <li class="nav_menu"><a href="#">컨설팅 사례</a></li>
         </ul>

@@ -218,7 +218,7 @@
 			</div>
 		</div>
 		<div id="mainBtnContainer" class="input-group">
-			<a href="">
+			<a href="Interior.in">
 				<div class="mainBtnBack" style="border-radius: 0 0 0 10px;">
 					<span class="mainBtn">INTERIOR<i class="fa-solid fa-circle-arrow-right"></i></span>
 				</div>
