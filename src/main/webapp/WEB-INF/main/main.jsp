@@ -90,10 +90,10 @@
 	}
 	.grid-container {
 	  display: grid;
-	  gap: 10px;
-	  background-color: #2196F3;
-	  padding: 10px;
-	  margin: 4%;
+	  gap: 30px;
+	  padding: 20px;
+	  margin: 0 3.5%;
+	  height: 500px;
 	}
 	
 	.grid-item {
@@ -101,30 +101,36 @@
 	  text-align: center;
 	  padding: 20px;
 	  font-size: 30px;
+	  border-radius: 30px;
 	}
 	
 	.item1 {
 	  grid-column: 1;
 	  grid-row: 1 / span 2;
+	  background-image: url("${ctp}/images/main1.jpg");
 	}
 	
 	.item2 {
 	  grid-column: 2 / span 2;
 	  grid-row: 1 / span 2;
+	  background-image: url("${ctp}/images/main1.jpg");
 	}
 	
 	.item3 {
 	  grid-column: 4;
 	  grid-row: 1;
+	  background-image: url("${ctp}/images/main1.jpg")
 	}
 	.item4 {
 	  grid-column: 4;
 	  grid-row: 2;
+	  background-image: url("${ctp}/images/main1.jpg");
 	}
 	
 	.item5 {
 	  grid-column: 1 / span 3;
 	  grid-row: 3;
+	  background-image: url("${ctp}/images/main1.jpg");
 	}
 </style>
 </head>
@@ -184,10 +190,10 @@
 	
 	<!-- 가구 -->
 	<div class="grid-container">
-	  <div class="grid-item item1">11</div>
-	  <div class="grid-item item2">2</div>
-	  <div class="grid-item item3">3</div>  
-	  <div class="grid-item item4">4</div>
+	  <div class="grid-item item1"></div>
+	  <div class="grid-item item2"></div>
+	  <div class="grid-item item3"></div>  
+	  <div class="grid-item item4"></div>
 	</div>
 	
 	<div class="blank"></div>
