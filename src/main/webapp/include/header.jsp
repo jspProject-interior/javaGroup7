@@ -706,7 +706,7 @@
                   "height": "50%",
                   "transform": "rotate(45deg)"
                })
-                  location.href="";
+                  location.href="MemberJoin.mem";
             }, 1000)
             $(this).removeClass('material-button');
          }
