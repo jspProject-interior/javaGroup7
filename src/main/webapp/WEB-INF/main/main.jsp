@@ -144,18 +144,22 @@
 			bottom: 0;
 		}
 		#mainBtnContainer{
-			font-family: 'EliceDigitalBaeum-Bd';
+			font-family: "Playfair Display", serif;
 			position: absolute;
-			bottom: 230px;
+			bottom: 30%;
 			left: 4.5%;
 			z-index: 10;
+			font-weight: 500;
+		}
+		#mainBtnContainer a{
+		 text-decoration: none;
 		}
 		.mainBtn{
 			color: white;
 			padding: 0 50px;
 		}
 		.mainBtnBack{
-			background-color: #a67d3f;
+			background-color: #af9e84;
 			padding: 12px 0;
 		}
 		.mainBtnBack i{
@@ -219,7 +223,7 @@
 					<span class="mainBtn">INTERIOR<i class="fa-solid fa-circle-arrow-right"></i></span>
 				</div>
 			</a>
-			<a href="">
+			<a href="" style="padding-left: 5px;">
 				<div class="mainBtnBack" style="border-radius: 0 10px 0 0;">
 					<span class="mainBtn">FURNITURE<i class="fa-solid fa-cart-arrow-down"></i></span>
 				</div>
