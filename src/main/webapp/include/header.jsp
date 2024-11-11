@@ -34,19 +34,20 @@
       padding-top: 7px;
     }
 
-    .nav a {
-      text-decoration: none;
-      color: white;
-      transition: color 0.5s ease-in-out;
-      font-family: 'EliceDigitalBaeum-Bd';
-      font-size: 20px;
-    }
+    
 
     .Logo {
-      font-family: "Playfair Display", serif;
-      font-size: 25px;
-      color: white;
-    }
+		  font-family: "Playfair Display", serif;
+		  font-size: 25px;
+		  color: white; /* 기본 글자 색상 */
+		  text-decoration: none; /* 기본 밑줄 제거 */
+		}
+		
+		.Logo:hover {
+		  color: white; /* 마우스를 올려도 색상 변화 없음 */
+		  text-decoration: none; /* 밑줄 제거 */
+		}
+		
     .menu {
       cursor: pointer;
       width: 25px;
@@ -61,9 +62,17 @@
       margin: 6px 0;
       transition: 0.3s ease-in-out;
     }
+    .nav a {
+      text-decoration: none;
+      color: white;
+      transition: color 0.5s ease-in-out;
+      font-family: 'EliceDigitalBaeum-Bd';
+      font-size: 20px;
+    }
 
     .nav a:hover {
       color: white;
+      text-decoration: none;
     }
     #navbar.fixed {
       background: white;

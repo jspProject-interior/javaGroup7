@@ -14,7 +14,7 @@
 	    font-style: normal;
 		}
 		
-		/* 내용 */
+		/* nav 한글, 인테리어텍스트 */
 		@font-face {
 	    font-family: 'EliceDigitalBaeum-Bd';
 	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_elice@1.0/EliceDigitalBaeum-Bd.woff2') format('woff2');
@@ -29,6 +29,22 @@
 		    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
 		    font-weight: normal;
 		    font-style: normal;
+		}
+		
+		/* titleEng */
+		@font-face {
+	    font-family: 'TTBookendBatangR';
+	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-2@1.0/TTBookendBatangR.woff2') format('woff2');
+	    font-weight: 400;
+	    font-style: normal;
+		}
+		
+		/* titleKor */
+		@font-face {
+	    font-family: 'Chosunilbo_myungjo';
+	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
 		}
 		
 		@font-face {
@@ -64,12 +80,7 @@
 	    font-style: normal;
 		}
 		
-		@font-face {
-	    font-family: 'TTBookendBatangR';
-	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-2@1.0/TTBookendBatangR.woff2') format('woff2');
-	    font-weight: 400;
-	    font-style: normal;
-		}
+		
 		
 		@font-face {
 	    font-family: 'kdg_Medium';
@@ -85,12 +96,7 @@
 	    font-style: normal;
 		}
 		
-		@font-face {
-	    font-family: 'Chosunilbo_myungjo';
-	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff') format('woff');
-	    font-weight: normal;
-	    font-style: normal;
-		}
+		
 		
 		@font-face {
 	    font-family: 'PartialSansKR-Regular';
