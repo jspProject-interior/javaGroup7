@@ -143,14 +143,23 @@
 			cursor: pointer;
 			bottom: 0;
 		}
+		#mainBtnContainer{
+			font-family: 'EliceDigitalBaeum-Bd';
+			position: absolute;
+			bottom: 230px;
+			left: 4.5%;
+			z-index: 10;
+		}
 		.mainBtn{
 			color: white;
-			padding: 80px;
+			padding: 50px;
 		}
 		.mainBtnBack{
 			background-color: black;
-			padding: 15px 0;
-			border-radius: 5%;
+			padding: 12px 0;
+		}
+		.mainBtnBack i{
+			padding-left: 10px; 
 		}
 </style>
 <script>
@@ -204,18 +213,18 @@
 				</div>
 			</div>
 		</div>
-	</div>
-	<div id="mainBtnContainer" class="input-group">
-		<a href="">
-			<div class="mainBtnBack">
-				<span class="mainBtn">인테리어 컨설팅 서비스<i class="fa-solid fa-circle-arrow-right"></i></span>
-			</div>
-		</a>
-		<a href="">
-			<div class="mainBtnBack">
-				<span class="mainBtn">인테리어 컨설팅 서비스<i class="fa-solid fa-cart-arrow-down"></i></span>
-			</div>
-		</a>
+		<div id="mainBtnContainer" class="input-group">
+			<a href="">
+				<div class="mainBtnBack" style="border-radius: 0 0 0 10px;">
+					<span class="mainBtn">INTERIOR<i class="fa-solid fa-circle-arrow-right"></i></span>
+				</div>
+			</a>
+			<a href="">
+				<div class="mainBtnBack" style="border-radius: 0 10px 0 0;">
+					<span class="mainBtn">FURNITURE<i class="fa-solid fa-cart-arrow-down"></i></span>
+				</div>
+			</a>
+		</div>
 	</div>
 
 
