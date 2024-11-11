@@ -213,7 +213,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- <div id="mainBtnContainer" class="input-group">
+		<div id="mainBtnContainer" class="input-group">
 			<a href="">
 				<div class="mainBtnBack" style="border-radius: 0 0 0 10px;">
 					<span class="mainBtn">INTERIOR<i class="fa-solid fa-circle-arrow-right"></i></span>
@@ -224,7 +224,7 @@
 					<span class="mainBtn">FURNITURE<i class="fa-solid fa-cart-arrow-down"></i></span>
 				</div>
 			</a>
-		</div> -->
+		</div>
 	</div>
 
 
