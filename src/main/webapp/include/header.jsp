@@ -706,14 +706,10 @@
 	               "height": "50%",
 	               "transform": "rotate(45deg)"
 	            })
-	         }, 700)
+   					location.href="";
+	         }, 1000)
 	         $(this).removeClass('material-button');
 	      }
-
-	      /* if ($(".alt-2").hasClass('material-buton')) {
-	         $(".alt-2").removeClass('material-buton');
-	         $(".alt-2").addClass('material-button');
-	      } */
 	   });
 	});
 </script>
