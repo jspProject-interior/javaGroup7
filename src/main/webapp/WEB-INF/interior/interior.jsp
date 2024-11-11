@@ -5,16 +5,94 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>.jsp</title>
+  <title>인테리어 | 그린테리어</title>
 <jsp:include page="/include/bs4.jsp"/>
+<style type="text/css">
+	.interior{
+		position: relative;
+	}
+	
+	.interior img{
+		width: 100%;
+		height: 500px;
+	}
+	
+	.main{
+		font-family: 'GowunBatang-Regular';
+		font-size: 50px;
+		position: absolute;
+		color: white;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		text-align: center;
+	}
+	
+	.grid-container {
+	  display: grid;
+	  margin: 0;
+	  padding: 0;
+	  gap: 10px;
+	  
+	}
+	
+	.grid-item img{
+		width: auto;
+		height: 300px;
+	}
+	
+	.item1 {
+	  grid-column: 1;
+	}
+	
+	.item2 {
+	  grid-column: 2;
+	}
+	
+	.item3 {
+	  grid-column: 3;
+	}
+	.item4 {
+	  grid-column: 4;
+	}
+	
+	.item5 {
+	  grid-column: 5;
+	}
+</style>
 </head>
 <jsp:include page="/include/header.jsp"/>
 <body>
-<p><br/></p>
-<div class="container">
- 	
+<div class="interior">
+	<img src="${ctp}/images/interior/interiorMain.jpg"/>
+	<div class="main">GRINTERIOR</div>
 </div>
-<p><br/></p>
+<div class="">
+
+	<%-- <c:forEach var="" items="" varStatus="st"> --%>
+		<div class="grid-container">
+			<div class="grid-item item1">
+				<img src="${ctp}/images/interior/modern/mordern1/1.jpg">
+				
+			</div>
+			<div class="grid-item item2">
+				<img src="${ctp}/images/interior/modern/mordern1/1.jpg">
+				
+			</div>
+			<div class="grid-item item3">
+				<img src="${ctp}/images/interior/modern/mordern1/1.jpg">
+				
+			</div>
+			<div class="grid-item item4">
+				<img src="${ctp}/images/interior/modern/mordern1/1.jpg">
+				
+			</div>
+			<div class="grid-item item5">
+				<img src="${ctp}/images/interior/modern/mordern1/1.jpg">
+				
+			</div>
+	<%-- </c:forEach> --%>
+</div>
 <jsp:include page="/include/footer.jsp"/>
 </body>
 </html>

@@ -90,6 +90,7 @@
 	}
 	.grid-container {
 	  display: grid;
+	  grid-template-columns: auto 300px;
 	  gap: 30px;
 	  padding: 20px;
 	  margin: 0 3.5%;
