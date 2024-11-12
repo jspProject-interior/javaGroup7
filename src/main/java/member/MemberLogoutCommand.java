@@ -12,7 +12,7 @@ public class MemberLogoutCommand implements MemberInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String nickName = (String) session.getAttribute("sNickName");
+		String sMid = (String) session.getAttribute("sMid");
 		session.invalidate();
 	}
 }

@@ -5,7 +5,7 @@ public class MemberVO {
 	private String mid;
 	private String pwd;
 	private String name;
-	private String nickName;
+	private String company;
 	private String tel;
 	private String email;
 	private String resident;
@@ -13,12 +13,10 @@ public class MemberVO {
 	private String gender;
 	private String birthday;
 	private int level;
-	private String industry;
 	private String photo;
 	private String userDel;
 	private String joinDay;
 	private String lastDate;
-	
 	public int getIdx() {
 		return idx;
 	}
@@ -43,11 +41,11 @@ public class MemberVO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getNickName() {
-		return nickName;
+	public String getCompany() {
+		return company;
 	}
-	public void setNickName(String nickName) {
-		this.nickName = nickName;
+	public void setCompany(String company) {
+		this.company = company;
 	}
 	public String getTel() {
 		return tel;
@@ -91,12 +89,6 @@ public class MemberVO {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	public String getIndustry() {
-		return industry;
-	}
-	public void setIndustry(String industry) {
-		this.industry = industry;
-	}
 	public String getPhoto() {
 		return photo;
 	}
@@ -121,12 +113,11 @@ public class MemberVO {
 	public void setLastDate(String lastDate) {
 		this.lastDate = lastDate;
 	}
-	
 	@Override
 	public String toString() {
-		return "MemberVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", name=" + name + ", nickName=" + nickName
+		return "MemberVO [idx=" + idx + ", mid=" + mid + ", pwd=" + pwd + ", name=" + name + ", company=" + company
 				+ ", tel=" + tel + ", email=" + email + ", resident=" + resident + ", address=" + address + ", gender=" + gender
-				+ ", birthday=" + birthday + ", level=" + level + ", industry=" + industry + ", photo=" + photo + ", userDel="
-				+ userDel + ", joinDay=" + joinDay + ", lastDate=" + lastDate + "]";
+				+ ", birthday=" + birthday + ", level=" + level + ", photo=" + photo + ", userDel=" + userDel + ", joinDay="
+				+ joinDay + ", lastDate=" + lastDate + "]";
 	}
 }

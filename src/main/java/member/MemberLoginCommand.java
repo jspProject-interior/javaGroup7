@@ -44,7 +44,6 @@ public class MemberLoginCommand implements MemberInterface {
 			// 세션에 저장할 항목
 			HttpSession session = request.getSession();
 			session.setAttribute("sMid", mid);
-			session.setAttribute("sNickName", vo.getNickName());
 			session.setAttribute("sLevel", vo.getLevel());
 			session.setAttribute("sLastDate", vo.getLastDate());
 			

@@ -48,7 +48,7 @@ public class MemberDAO {
 	     vo.setMid(rs.getString("mid"));
 	     vo.setPwd(rs.getString("pwd"));
 	     vo.setName(rs.getString("name"));
-	     vo.setNickName(rs.getString("nickName"));
+	     vo.setCompany(rs.getString("company"));
 	     vo.setTel(rs.getString("tel"));
 	     vo.setEmail(rs.getString("email"));
 	     vo.setResident(rs.getString("resident"));
@@ -56,7 +56,6 @@ public class MemberDAO {
 	     vo.setGender(rs.getString("gender"));
 	     vo.setBirthday(rs.getString("birthday"));
 	     vo.setLevel(rs.getInt("level"));
-	     vo.setIndustry(rs.getString("industry"));
 	     vo.setPhoto(rs.getString("photo"));
 	     vo.setUserDel(rs.getString("userDel"));
 	     vo.setJoinDay(rs.getString("joinDay"));
