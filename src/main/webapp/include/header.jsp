@@ -8,6 +8,7 @@
   <title>header.jsp</title>
   <jsp:include page="/include/bs4.jsp"/>
   <jsp:include page="/include/fonts.jsp"/>
+  <script type="text/javascript" src="${ctp}/js/headerJs.js"></script>
   <style>
     #navbar {
       display: flex;
@@ -111,9 +112,9 @@
     
     .side-menu-login {
       position: fixed;
-      right: -500px;
+      right: -400px;
       height: calc(100%);
-      width: 500px;
+      width: 400px;
       background-color: white;
       overflow-x: hidden;
       transition: right 0.3s ease-in-out;
@@ -605,202 +606,65 @@
      background-color: #8a7c66; /* 분홍색 */
    }
    
-
+   .menu-list {
+	    display: flex;
+	    flex-wrap: wrap;
+		}
+	
+		.menu-list li {
+		    width: 45%; /* 각 항목이 2개씩 한 행에 배치되도록 설정 */
+		    list-style: none;
+		}
+		
+		.menu-list a {
+	    text-decoration: none;
+	    display: block;
+	    color: black;
+		}
+		
+		.menu-list a:hover {
+	    text-decoration: none;
+	    color: black;
+		}
+		
+		.sideTitle{
+			color: gray;
+			margin-bottom: 15px;
+		}
+		
+		#ml a{
+			color: black;
+			text-decoration: none;
+			margin-bottom: 10px;
+		}
+		
+		.container{
+			font-size: 15px;
+			font-family: 'SUIT-Regular';
+		}
+		
+		.mainMenu li{
+			margin-bottom: 20px;
+			font-weight: bold;
+		}
+		.mainMenu a{
+			color: black;
+			text-decoration: none;
+		}
+		.mainMenu a:hover{
+			color: black;
+			text-decoration: none;
+		}
+		.sideTitle a{
+			color: gray;
+			text-decoration: none;
+		}
+		.sideTitle a:hover{
+			color: gray;
+			text-decoration: none;
+		}
   </style>
-  <script type="text/javascript">
-     document.addEventListener("DOMContentLoaded", function() {
-       // 햄버거 버튼 클릭 시 메뉴와 배경 토글
-       function toggleSidebar() {
-       	const menu = document.querySelector(".menu");
-        const sideMenu = document.querySelector(".side-menu");
-        const overlay = document.querySelector(".overlay");
-
-           // 햄버거 아이콘과 메뉴 상태를 토글
-        menu.classList.toggle("active");
-        sideMenu.classList.toggle("open");
-        overlay.classList.toggle("active");
-       }
-
-       // 배경 클릭 시 메뉴 닫기
-       document.querySelector(".overlay").addEventListener("click", function() {
-        const menu = document.querySelector(".menu");
-        const sideMenu = document.querySelector(".side-menu");
-        const overlay = document.querySelector(".overlay");
-
-           // 메뉴와 배경 숨기기
-        menu.classList.remove("active");
-        sideMenu.classList.remove("open");
-        overlay.classList.remove("active");
-       });
-
-       // 네비게이션바 고정 처리 (스크롤에 따라)
-       const navbar = document.querySelector("#navbar");
-       document.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        if (scrollY > 40) {
-           navbar.classList.add("fixed");
-        } else {
-          navbar.classList.remove("fixed");
-        }
-       });
-
-       // 햄버거 버튼 클릭 시 메뉴 열고 닫기
-       const menuButton = document.querySelector(".menu");
-       if (menuButton) {
-        menuButton.addEventListener("click", toggleSidebar);
-       }
-
-       // 로그인 창 내 + 버튼 클릭 시 슬라이드 메뉴 색상 변경
-       window.toggleSidebarColor = function() {
-        const sideMenu = document.querySelector(".side-menu");
-        sideMenu.classList.toggle("pink");  // 슬라이드 메뉴 바 색상 토글
-       };
-   });
-     
-     
-     /* 로그인 시 */
-      document.addEventListener("DOMContentLoaded", function() {
-       // 햄버거 버튼 클릭 시 메뉴와 배경 토글
-       function toggleSidebar() {
-        const menu = document.querySelector(".menu");
-      	const sideMenuLogin = document.querySelector(".side-menu-login");
-        const overlay = document.querySelector(".overlay");
-
-           // 햄버거 아이콘과 메뉴 상태를 토글
-        menu.classList.toggle("active");
-        sideMenuLogin.classList.toggle("open");
-        overlay.classList.toggle("active");
-       }
-
-       // 배경 클릭 시 메뉴 닫기
-       document.querySelector(".overlay").addEventListener("click", function() {
-        const menu = document.querySelector(".menu");
-        const sideMenuLogin = document.querySelector(".side-menu-login");
-        const overlay = document.querySelector(".overlay");
-
-           // 메뉴와 배경 숨기기
-        menu.classList.remove("active");
-        sideMenulogin.classList.remove("open");
-        overlay.classList.remove("active");
-       });
-
-       // 네비게이션바 고정 처리 (스크롤에 따라)
-       const navbar = document.querySelector("#navbar");
-       document.addEventListener("scroll", () => {
-        const scrollY = window.scrollY;
-        if (scrollY > 40) {
-           navbar.classList.add("fixed");
-        } else {
-          navbar.classList.remove("fixed");
-        }
-       });
-
-    // 햄버거 버튼 클릭 시 메뉴 열고 닫기
-       const menuButton = document.querySelector(".menu");
-       if (menuButton) {
-        menuButton.addEventListener("click", toggleSidebar);
-       }
-
-   	});
   
-  // 로그인 창 jsp
-  $(function() {
-	  $(".input input").focus(function() {
-
-	      $(this).parent(".input").each(function() {
-	         $("label", this).css({
-	            "line-height": "18px",
-	            "font-size": "18px",
-	            "font-weight": "100",
-	            "top": "0px"
-	         })
-	         $(".spin", this).css({
-	            "width": "100%"
-	         })
-	      });
-	   }).blur(function() {
-	      $(".spin").css({
-	         "width": "0px"
-	      })
-	      if ($(this).val() == "") {
-	         $(this).parent(".input").each(function() {
-	            $("label", this).css({
-	               "line-height": "60px",
-	               "font-size": "24px",
-	               "font-weight": "300",
-	               "top": "10px"
-	            })
-	         });
-
-	      }
-	   });
-      $(".button").click(function(e) {
-         var pX = e.pageX,
-            pY = e.pageY,
-            oX = parseInt($(this).offset().left),
-            oY = parseInt($(this).offset().top);
-
-         $(this).append('<span class="click-efect x-' + oX + ' y-' + oY + '" style="margin-left:' + (pX - oX) + 'px;margin-top:' + (pY - oY) + 'px;"></span>')
-         $('.x-' + oX + '.y-' + oY + '').animate({
-            "width": "500px",
-            "height": "500px",
-            "top": "-250px",
-            "left": "-250px",
-
-         }, 600);
-         $("button", this).addClass('active');
-      })
-
-      $(".alt-2").click(function() {
-         if (!$(this).hasClass('material-button')) {
-            $(".shape").css({
-               "width": "100%",
-               "height": "100%",
-               "transform": "rotate(0deg)"
-            })
-
-            setTimeout(function() {
-               $(".overbox").css({
-                  "overflow": "initial"
-               })
-            }, 600)
-
-
-            $(".overbox .title").fadeOut(300);
-            $(".overbox .input").fadeOut(300);
-            $(".overbox .button").fadeOut(300);
-
-            $(".alt-2").addClass('material-buton');
-         }
-
-      })
-
-      $(".material-button").click(function() {
-
-         if ($(this).hasClass('material-button')) {
-            setTimeout(function() {
-               $(".overbox").css({
-                  "overflow": "hidden"
-               })
-               $(".box").addClass("back");
-            }, 200)
-            $(this).addClass('active').animate({
-               "width": "700px",
-               "height": "700px"
-            });
-            setTimeout(function() {
-               $(".shape").css({
-                  "width": "50%",
-                  "height": "50%",
-                  "transform": "rotate(45deg)"
-               })
-                  location.href="MemberJoin.mem";
-            }, 1000)
-            $(this).removeClass('material-button');
-         }
-      });
-   });
-</script>
 
 </head>
 <body>
@@ -866,27 +730,40 @@
   </c:if>
 	<c:if test="${!empty sMid}">
 	  <div class="side-menu-login">
-	  	<form action="MemberLogin.mem">
-	    	<div class="materialContainer">
-	        <div class="box">
-	          <div class="title">LOGIN</div>
-	          <div class="input">
-	             <label for="mid">ID</label>
-	             <input type="text" name="mid" id="mid">
-	             <span class="spin"></span>
-	          </div>
-	          <div class="input">
-	             <label for="pass">Password</label>
-	             <input type="password" name="pwd" id="pwd">
-	             <span class="spin"></span>
-	          </div>
-	          <div class="button login">
-	             <button type="submit"><span>LOGIN</span><i class="fa fa-check"></i></button>
-	          </div>
-	          <a href="" class="pass-forgot">비밀번호를 잊어버리셨습니까?</a>
-	          </div>
-	      </div>
-	    </form>
+	  	<div class="container" style="width: 80%; margin-top: 35%;">
+	  		<div>
+		  		<div class="sideTitle">GRINTERIOR</div>
+		  		<ul class="mainMenu">
+		  			<li><a href="">서비스 소개</a></li>
+		  			<li><a href="">가구 쇼핑</a></li>
+		  			<li><a href="">컨설팅 사례</a></li>
+		  		</ul>
+	  		</div>
+	  		<hr>
+	  		<div>
+		  		<div class="sideTitle">마이페이지</div>
+		  		<ul class="menu-list" id="ml">
+		  			<li><a href="">내 정보</a></li>
+		  			<li><a href="">관심목록</a></li>
+		  			<li><a href="">구매내역</a></li>
+		  			<li><a href="">장바구니</a></li>
+		  		</ul>
+	  		</div>
+	  		<hr>
+	  		<div>
+		  		<div class="sideTitle">문의사항</div>
+		  		<ul class="menu-list" id="ml">
+		  			<li><a href="">배송관련</a></li>
+		  			<li><a href="">비용/결제/환불</a></li>
+		  			<li><a href="">취소/교환/반품</a></li>
+		  			<li><a href="">서비스/일반</a></li>
+		  		</ul>
+	  		</div>
+	  		<div>
+	  		<hr>
+		  		<div class="sideTitle"><a href="MemberLogout.mem">로그아웃</a></div>
+	  		</div>
+	    </div>
 	  </div>
   </c:if>
 </body>

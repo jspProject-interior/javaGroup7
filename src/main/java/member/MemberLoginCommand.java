@@ -55,7 +55,7 @@ public class MemberLoginCommand implements MemberInterface {
 			session.setAttribute("strLevel", strLevel);
 			
 					
-			request.setAttribute("message", mid + "님 해윙");
+			request.setAttribute("message", "NO");
 			request.setAttribute("url", "main.main");
 		}
 

@@ -48,6 +48,20 @@
 		}
 		
 		@font-face {
+	    font-family: 'SUIT-Regular';
+	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
+	    font-weight: normal;
+	    font-style: normal;
+		}
+		
+		@font-face {
+	    font-family: 'NoonnuBasicGothicRegular';
+	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noon-2410@1.0/NoonnuBasicGothicRegular.woff2') format('woff2');
+	    font-weight: normal;
+	    font-style: normal;
+		}
+		
+		@font-face {
 		    font-family: 'Danjo-bold-Regular';
 		    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-1@1.1/Danjo-bold-Regular.woff2') format('woff2');
 		    font-weight: normal;
@@ -61,8 +75,6 @@
 		}
 		
 		
-
-
 
 		@font-face {
 		    font-family: 'Danjo-bold-Regular';
