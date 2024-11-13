@@ -12,8 +12,9 @@
 	.body{
 		background-color: #eee;
 	}
-	div{
+	form div{
 		margin-bottom: 10px;
+		background-color: white;
 	}
 </style>
 <script type="text/javascript">
@@ -23,37 +24,35 @@
 </script>
 </head>
 <jsp:include page="/include/header.jsp"/>
-<body>
-<form name="myform" action="InteriorInput.in">
-	<div style="width: 90%; padding-left: 4.5%;">
-		<div class="text-center">상품등록</div>
+<body style="background-color: lightgray;">
+<form name="myform" action="InteriorInput.in" style="padding-left: 4.5%; align-content: center;">
+	<div class="text-center">상품등록</div>
+	<div>
+		<div class="title">업체명</div>
+		<hr>
 		<div>
-			<div class="title">업체명</div>
-			<hr>
-			<div>
-				<input type="text" class="form-control" value="GRINTERIOR" readonly>
-			</div>
+			<input type="text" class="form-control" value="GRINTERIOR" readonly>
 		</div>
+	</div>
+	<div>
+		<div class="title">카테고리</div>
+		<hr>
 		<div>
-			<div class="title">카테고리</div>
-			<hr>
-			<div>
-				<select class="form-control">
-					<option>카테고리</option>
-					<option value="modern">모던</option>
-					<option value="natural">네츄럴</option>
-					<option value="vintage">빈티지</option>
-					<option value="etc">기타</option>
-				</select>
-				<div class="mt-2" id="etc"><textarea rows="5" class="form-control"></textarea></div>
-			</div>
+			<select class="form-control">
+				<option>카테고리</option>
+				<option value="modern">모던</option>
+				<option value="natural">네츄럴</option>
+				<option value="vintage">빈티지</option>
+				<option value="etc">기타</option>
+			</select>
+			<div class="mt-2" id="etc"><textarea rows="5" class="form-control"></textarea></div>
 		</div>
+	</div>
+	<div>
+		<div class="title">판매가</div>
+		<hr>
 		<div>
-			<div class="title">판매가</div>
-			<hr>
-			<div>
-				
-			</div>
+			
 		</div>
 	</div>
 </form>

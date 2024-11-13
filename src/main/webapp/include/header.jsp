@@ -64,6 +64,21 @@
       color: black;
       text-decoration: none;
     }
+    
+    #navbar.fixed {
+      background: white;
+      color: black;
+    }
+    #navbar.fixed a {
+      color: black;
+    }
+    #navbar.fixed .nav a {
+      color: black;
+    }
+    #navbar.fixed .menu .bar {
+      background-color: black;
+    }
+    
     .menu-icon{
     	color:black;
     }
