@@ -186,7 +186,7 @@
 <body>
 <div>
 <!-- header -->
-<jsp:include page="/include/header.jsp"/>
+<jsp:include page="/include/mainHeader.jsp"/>
 	<!-- 본문 영역 -->
 <div class="swiper">
 		<div class="swiper-wrapper">

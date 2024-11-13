@@ -11,9 +11,8 @@
 </head>
 <jsp:include page="/include/header.jsp"/>
 <body>
-<p><br/></p>
-<div class="container">
-	 	
+<div style="margin-left: 4.5%; padding-top: 5%;">
+	<div class="text-center">상품등록</div>
 </div>
 <p><br/></p>
 <jsp:include page="/include/footer.jsp"/>

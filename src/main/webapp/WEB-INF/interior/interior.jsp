@@ -62,7 +62,7 @@
 	}
 </style>
 </head>
-<jsp:include page="/include/header.jsp"/>
+<jsp:include page="/include/mainHeader.jsp"/>
 <body>
 <div class="interior">
 	<img src="${ctp}/images/interior/interiorMain.jpg"/>
