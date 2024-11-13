@@ -8,7 +8,7 @@ create table member(
   company     varchar(30),                                     /*   업체명(개인은 null)	*/
   tel         varchar(15),                                     /*   전화번호 : 010-1234-5678 */
   email       varchar(60)     not null,                        /*   이메일(아이디/비밀번호 분실시에 사용) - 형식체크필수 */
-  resident    varchar(30)     not null,                        /*   주민등록번호   */
+  resident    varchar(30)     not null,                        /*   주민등록번호 (사업자번호)   */
   address     varchar(100),                                    /*   주소(우편번호:다음 API 활용) */
   gender      char(2),                                         /*   회원 성별 */
   birthday    datetime,                                        /*   회원 생일 */

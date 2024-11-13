@@ -15,12 +15,10 @@
       justify-content: space-between;
       position: fixed;
       width: 100%;
-      z-index: 100;
+      z-index: 0;
       top: 0;
       left: 0;
       color: var(--color-dark-gray);
-      background: linear-gradient(to top, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 0.3) 100%);
-      transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
       padding: 1%;
     }
 
@@ -32,12 +30,12 @@
     .Logo {
         font-family: "Playfair Display", serif;
         font-size: 30px;
-        color: white; /* 기본 글자 색상 */
+        color: black; /* 기본 글자 색상 */
         text-decoration: none; /* 기본 밑줄 제거 */
       }
       
     .Logo:hover {
-      color: white; /* 마우스를 올려도 색상 변화 없음 */
+      color: black; /* 마우스를 올려도 색상 변화 없음 */
       text-decoration: none; /* 밑줄 제거 */
     }
       
@@ -48,37 +46,26 @@
       position: relative;
     }
 
-    .menu .bar {
+    .menu .bar { /*햄버거 바*/
       width: 25px;
       height: 3px;
-      background-color: white;
+      background-color: black;
       margin: 6px 0;
-      transition: 0.3s ease-in-out;
     }
     .nav a {
       text-decoration: none;
-      color: white;
+      color: black;
       transition: color 0.5s ease-in-out;
       font-family: 'EliceDigitalBaeum-Bd';
       font-size: 20px;
     }
 
     .nav a:hover {
-      color: white;
+      color: black;
       text-decoration: none;
     }
-    #navbar.fixed {
-      background: white;
-      color: black;
-    }
-    #navbar.fixed a {
-      color: black;
-    }
-    #navbar.fixed .nav a {
-      color: black;
-    }
-    #navbar.fixed .menu .bar {
-      background-color: black;
+    .menu-icon{
+    	color:black;
     }
 
     .menu.active .bar:nth-child(2) {
@@ -237,8 +224,6 @@
 			text-decoration: none;
 		}
   </style>
-  
-
 </head>
 <body>
   <header class="header-area header-sticky wow slideInDown animated" data-wow-duration="0.75s" data-wow-delay="0s">

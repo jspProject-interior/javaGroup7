@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" href="${ctp}/images/favicon.png">
+  <link rel="icon" href="${ctp}/images/main/favicon.png">
   <title>회원가입 | 그린테리어</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -545,7 +545,7 @@
   <div id="customerForm" style="display:none;">   
    <div class="container h-100">
 	    <div class="row h-100">
-	      <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+	      <div class="d-table h-100" style="width: 100%">
 	        <div class="d-table-cell align-middle">
 	          <div class="card">
 	            <div class="card-body">
@@ -575,8 +575,8 @@
 	                    <div id="nameError" class="text-primary"></div>
 	                  </div>
 	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>닉네임 (NICKNAME)</label>
-	                    <input type="text" class="form-control form-control-lg" name="nickName" id="nickName" placeholder="한글,영문 또는 특수문자">
+	                    <font color="red"><b>*&nbsp;</b></font><label>주민등록번호 (RESIDENT)</label>
+	                    <input type="text" class="form-control form-control-lg" name="resident" id="resident" placeholder="주민번호 앞 7자리만 입력해주세요">
 	                    <span id="nickNameCheck"></span>
 	                  </div>
 	                  <div class="form-group">
@@ -591,7 +591,7 @@
 	                    <span id="telCheck"><font color="red">&nbsp;전화번호 형식에 맞지 않습니다!</font></span>
 	                  </div>
 	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>이메일<font color="#00bfff" style="font-size: 0.8em;">&nbsp;&nbsp;회원가입 후 이메일을 확인하여 인증을 완료해야 로그인이 가능합니다!</font></label>
+	                    <font color="red"><b>*&nbsp;</b></font><label>이메일</label>
 	                    <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="이메일 형식에 맞춰 입력해주세요">
 	                    <span id="emailCheck"><font color="red">&nbsp;이메일을 입력해주시기 바랍니다!</font></span>
 	                  </div>
@@ -658,14 +658,17 @@
 	                     <div id="pwdError2" class="text-primary"></div>
 	                  </div>
 	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>성명 (NAME)</label>
+	                    <font color="red"><b>*&nbsp;</b></font><label>대표자명 (NAME)</label>
 	                    <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문">
 	                    <div id="nameError" class="text-primary"></div>
 	                  </div>
 	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>닉네임 (NICKNAME)</label>
-	                    <input type="text" class="form-control form-control-lg" name="nickName" id="nickName" placeholder="한글,영문 또는 특수문자">
-	                    <span id="nickNameCheck"></span>
+	                    <font color="red"><b>*&nbsp;</b></font><label>업체명 (COMPANY)</label>
+	                    <input type="text" class="form-control form-control-lg" name="company" id="company" placeholder="한글,영문 또는 특수문자">
+	                  </div>
+	                   <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>사업자번호</label>
+	                    <input type="text" class="form-control form-control-lg" name="resident" id="resident" placeholder="주민번호 앞 7자리만 입력해주세요">
 	                  </div>
 	                  <div class="form-group">
 	                    <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
@@ -679,10 +682,14 @@
 	                    <span id="telCheck"><font color="red">&nbsp;전화번호 형식에 맞지 않습니다!</font></span>
 	                  </div>
 	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>이메일<font color="#00bfff" style="font-size: 0.8em;">&nbsp;&nbsp;회원가입 후 이메일을 확인하여 인증을 완료해야 로그인이 가능합니다!</font></label>
+	                    <font color="red"><b>*&nbsp;</b></font><label>이메일</label>
 	                    <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="이메일 형식에 맞춰 입력해주세요">
 	                    <span id="emailCheck"><font color="red">&nbsp;이메일을 입력해주시기 바랍니다!</font></span>
 	                  </div>
+                    <div class="form-group">
+                      <font color="red"><b>*&nbsp;</b></font><label>로고(LOGO)</label>
+                      <input class="form-control-file" type="file" name="photo" id="photo"/>
+                    </div>
 	                  <div class="form-group">
 	                    <label>주소</label>
 	                    <input class="btn btn-secondary text-right float-right" type="button" value="주소 찾기" onclick="sample6_execDaumPostcode()">

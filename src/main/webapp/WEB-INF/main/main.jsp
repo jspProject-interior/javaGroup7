@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" href="${ctp}/images/favicon.png">
+<link rel="icon" href="${ctp}/images/main/favicon.png">
 <title>GRINTERIOR | PROJECT_HMSY</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -108,30 +108,30 @@
 	.item1 {
 	  grid-column: 1;
 	  grid-row: 1 / span 2;
-	  background-image: url("${ctp}/images/main1.jpg");
+	  background-image: url("${ctp}/images/main/main1.jpg");
 	}
 	
 	.item2 {
 	  grid-column: 2 / span 2;
 	  grid-row: 1 / span 2;
-	  background-image: url("${ctp}/images/main1.jpg");
+	  background-image: url("${ctp}/images/main/main1.jpg");
 	}
 	
 	.item3 {
 	  grid-column: 4;
 	  grid-row: 1;
-	  background-image: url("${ctp}/images/main1.jpg")
+	  background-image: url("${ctp}/images/main/main1.jpg")
 	}
 	.item4 {
 	  grid-column: 4;
 	  grid-row: 2;
-	  background-image: url("${ctp}/images/main1.jpg");
+	  background-image: url("${ctp}/images/main/main1.jpg");
 	}
 	
 	.item5 {
 	  grid-column: 1 / span 3;
 	  grid-row: 3;
-	  background-image: url("${ctp}/images/main1.jpg");
+	  background-image: url("${ctp}/images/main/main1.jpg");
 	}
 	h6 {
 			position: fixed;
@@ -192,7 +192,7 @@
 		<div class="swiper-wrapper">
 			<div class="swiper-slide">
 				<div class="mainImgCrop">
-					<img src="${ctp}/images/main1.jpg" alt="Slide 1" />
+					<img src="${ctp}/images/main/main1.jpg" alt="Slide 1" />
 				</div>
 				<div class="mainImgText">
 					<div class="titleEng">HOME STYLING</div>
@@ -201,7 +201,7 @@
 			</div>
 			<div class="swiper-slide">
 				<div class="mainImgCrop">
-					<img src="${ctp}/images/main2.jpg" alt="Slide 2" />
+					<img src="${ctp}/images/main/main2.jpg" alt="Slide 2" />
 				</div>
 				<div class="mainImgText">
 					<div class="titleEng">HIGH-END STYLING</div>
@@ -210,7 +210,7 @@
 			</div>
 			<div class="swiper-slide">
 				<div class="mainImgCrop">
-					<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+					<img src="${ctp}/images/main/main3.jpg" alt="Slide 3" />
 				</div>
 				<div class="mainImgText">
 					<div class="titleEng">PREMIUM STYLING</div>
@@ -266,37 +266,37 @@
 			<div class="swiper-wrapper">
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main1.jpg" alt="Slide 1" />
+						<img src="${ctp}/images/main/main1.jpg" alt="Slide 1" />
 					</div>
 					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main2.jpg" alt="Slide 2" />
+						<img src="${ctp}/images/main/main2.jpg" alt="Slide 2" />
 					</div>
 					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+						<img src="${ctp}/images/main/main3.jpg" alt="Slide 3" />
 					</div>
 					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+						<img src="${ctp}/images/main/main3.jpg" alt="Slide 3" />
 					</div>
 					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+						<img src="${ctp}/images/main/main3.jpg" alt="Slide 3" />
 					</div>
 					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 				</div>
 				<div class="swiper-slide">
 					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main3.jpg" alt="Slide 3" />
+						<img src="${ctp}/images/main/main3.jpg" alt="Slide 3" />
 					</div>
 						<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
 					</div>
