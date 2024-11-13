@@ -542,124 +542,93 @@
 	</div>
 
   <!-- 고객 회원가입 폼 (초기에는 숨김) -->
-  <div id="customerForm" style="display:none;">      
-<div id="container">
-<div class="container-xl p-5 my-5"  id="top">	
-	<form name="myform" method="post" action="/javaweb8J/JoinOk.kn_mem" style="width:80%; margin:0px auto">
-    <h2 class="text-center" style="margin-bottom:50px">회원가입</h2>
-    <br/>
-    <div class="form-group">
-      <label for="mid">아이디 <span class="must">*</span> &nbsp; &nbsp;<input type="button" value="아이디 중복체크" class="btn btn-sm" onclick="idCheck()"/></label>
-      <input type="text" class="form-control" name="mid" id="mid" onchange="midCheck()" placeholder="아이디를 입력하세요." required autofocus/>
-    	<div id="midError" class="text-primary"></div>
-    </div>
-    <div class="form-group">
-      <label for="pwd1">비밀번호 <span class="must">*</span></label>
-      <input type="password" class="form-control" maxlength=20 name="pwd1" id="pwd1" onchange="pwd1Check()" placeholder="비밀번호를 입력하세요." required />
-      <div id="pwdError" class="text-primary"></div>
-    </div>
-    <div class="form-group">
-      <label for="pwd2">비밀번호 확인 <span class="must">*</span></label>
-      <input type="password" class="form-control" maxlength=20 name="pwd2" id="pwd2" onchange="pwd2Check()" placeholder="비밀번호를 입력하세요." required />
-      <div id="pwdError2" class="text-primary"></div>
-    </div>
-    <div class="form-group">
-      <label for="name">성명 <span class="must">*</span></label>
-      <input type="text" class="form-control" name="name" id="name" onchange="nameCheck()" placeholder="성명을 입력하세요." required />
-    	<div id="nameError" class="text-primary"></div>
-    </div>
-    <div class="form-group">
-      <label for="email1" >이메일 <span class="must">*</span></label>
-        <div class="input-group mb-1">
-          <input type="text" class="form-control" id="email1" name="email1" onblur="emailCheck()" placeholder="Email을 입력하세요." required />
-          <div class="input-group-append">
-            <select name="email2" class="custom-select">
-              <option value="naver.com" selected>naver.com</option>
-              <option value="hanmail.net">hanmail.net</option>
-              <option value="hotmail.com">hotmail.com</option>
-              <option value="gmail.com">gmail.com</option>
-              <option value="nate.com">nate.com</option>
-              <option value="yahoo.com">yahoo.com</option>
-            </select>
-          </div>
-        </div>
-    	<div id="emailError" class="text-primary"></div>
-      <input type="hidden" name="email" id="email"/>
-    </div>
-    <div class="form-group">
-      <div class="input-group mb-1">
-        <div class="input-group-prepend">
-          <span class="input-group-text">전화번호 <span class="must">*</span></span> &nbsp;&nbsp;
-            <select name="tel1" name="tel1" id="tel1" class="custom-select">
-              <option value="010" selected>010</option>
-              <option value="02">서울</option>
-              <option value="031">경기</option>
-              <option value="032">인천</option>
-              <option value="041">충남</option>
-              <option value="042">대전</option>
-              <option value="043">충북</option>
-              <option value="051">부산</option>
-              <option value="052">울산</option>
-              <option value="061">전북</option>
-              <option value="062">광주</option>
-            </select>  -
-        </div>
-        <input type="number" name="tel2" id="tel2" size=4 maxlength=4 oninput='handleOnInput(this, 4)' class="form-control inputs"/>  -
-        <input type="number" name="tel3" id="tel3" size=4 maxlength=4 oninput='handleOnInput(this, 4)' onchange="telCheck()" class="form-control inputs"/>
-    	  <input type="hidden" name="tel" id="tel"/>
-      </div>
-      <div id="telError" class="text-primary"></div>
-    </div>
-    <div class="form-group">
-      <label for="birthday">생년월일 <span class="must">*</span></label>
-			<input type="date" name="birthday" id="birthday" onchange="birthdayCheck()" class="form-control"/>
-			<div id="birthdayError" class="text-primary"></div>
-    </div>    
-    <div class="form-group">
-      <div class="form-check-inline">
-        <span class="input-group-text">성별 </span> &nbsp; &nbsp;
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gender" value="남자">남자
-        </label>
-      </div>
-      <div class="form-check-inline">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gender" value="여자">여자
-        </label>
-      </div>
-      <div class="form-check-inline">
-        <label class="form-check-label">
-          <input type="radio" class="form-check-input" name="gender" value="미선택" checked>미선택
-        </label>
-      </div>
-    </div>
-    <div class="form-group">
-      <label for="address">주소 </label>
-      <input type="hidden" name="address" id="address">
-      <div class="input-group mb-1">
-        <input type="text" name="postcode" id="sample6_postcode" placeholder="우편번호" class="form-control">
-        <div class="input-group-append">
-          <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" class="btn btn-sm">
-        </div>
-      </div>
-      <input type="text" name="roadAddress" id="sample6_address" size="50" placeholder="주소" class="form-control mb-1">
-      <div class="input-group mb-1">
-        <input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소" class="form-control"> &nbsp;&nbsp;
-        <div class="input-group-append">
-          <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목" class="form-control">
-        </div>
-      </div>
-    </div>
-  	<hr/>
-  	<small style="color:red; margin-top:15px">별(*) 표시는 필수 입력사항입니다.</small>
-		<div class="text-center" style="margin: 50px 0px">
-    	<button type="button" onclick="joinCheck()" class="jClick" style="background-color:#FFDB7E; border:none; color:brown">회원가입</button>
-      <input type="hidden" name="memType" value="개인"/>
-  	</div>
-  </form>
-</div>
+  <div id="customerForm" style="display:none;">   
+   <div class="container h-100">
+	    <div class="row h-100">
+	      <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+	        <div class="d-table-cell align-middle">
+	          <div class="card">
+	            <div class="card-body">
+	              <div class="m-sm-4 p-2">
+	                <div class="mb-3"> 
+	                <font color="red">*</font> 필수 입력 항목(고객)
+	                </div>  
+ 										<form name="myform" method="post" action="#">
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>아이디 (ID)</label>
+	                    <input type="text" class="form-control form-control-lg" name="mid" id="mid" onchange="midCheck()" placeholder="영문과 숫자를 포함한 4-12자 이내"required autofocus/>
+	                    <div id="midError" class="text-primary"></div>
+	                  </div>
+	                  <div class="form-group password">
+	                    <font color="red"><b>*&nbsp;</b></font><label class="password">비밀번호 (PASSWORD)</label> &nbsp; <span class="pwdEyes"><i class="fa fa-eye fa-lg"></i></span>
+	                    <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" onchange="pwd1Check()" placeholder="특수문자, 영문 대소문자, 숫자를 포함한 8-16자 이내">
+	                    <div id="pwdError" class="text-primary"></div>
+	                  </div>
+	                  <div class="form-group passwordCheck">
+	                    <font color="red"><b>*&nbsp;</b></font><label>비밀번호 재확인 (PASSWORD CHECK)</label> &nbsp; <span class="rePwdEyes"><i class="fa fa-eye fa-lg"></i></span>
+	                    <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" onchange="pwd2Check()" placeholder="비밀번호 재확인">
+	                     <div id="pwdError2" class="text-primary"></div>
+	                  </div>
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>성명 (NAME)</label>
+	                    <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문">
+	                    <div id="nameError" class="text-primary"></div>
+	                  </div>
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>닉네임 (NICKNAME)</label>
+	                    <input type="text" class="form-control form-control-lg" name="nickName" id="nickName" placeholder="한글,영문 또는 특수문자">
+	                    <span id="nickNameCheck"></span>
+	                  </div>
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
+	                    <div class="input-group">
+	                      <div class="input-group-append">
+	                        <input type="text" class="form-control form-control-lg"  name="tel1" id="tel1" value="010" readonly=""/>
+	                        <input type="text" class="form-control form-control-lg" name="tel2" id="tel2" placeholder="가운데 4자리"/>
+	                        <input type="text" class="form-control form-control-lg" name="tel3" id="tel3" placeholder="마지막 4자리"/>
+	                      </div>
+	                    </div>
+	                    <span id="telCheck"><font color="red">&nbsp;전화번호 형식에 맞지 않습니다!</font></span>
+	                  </div>
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>이메일<font color="#00bfff" style="font-size: 0.8em;">&nbsp;&nbsp;회원가입 후 이메일을 확인하여 인증을 완료해야 로그인이 가능합니다!</font></label>
+	                    <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="이메일 형식에 맞춰 입력해주세요">
+	                    <span id="emailCheck"><font color="red">&nbsp;이메일을 입력해주시기 바랍니다!</font></span>
+	                  </div>
+	                  <div class="form-group">
+	                    <label>주소</label>
+	                    <input class="btn btn-secondary text-right float-right" type="button" value="주소 찾기" onclick="sample6_execDaumPostcode()">
+	                  </div>
+	                  <div id="homeAddressInput">
+	                    <div class="form-group">
+	                      <label>우편번호</label>
+	                      <div class="input-group">
+	                        <input class="form-control form-control-lg" type="text" name="postcode" id="sample6_postcode" readonly=""/>
+	                      </div>
+	                    </div>
+	                    <div class="form-group">
+	                      <label>도로명 주소 / 지번 주소</label>
+	                      <input class="form-control form-control-lg" type="text" name="roadAddress" id="sample6_address" readonly=""/>
+	                    </div>
+	                    <div class="form-group">
+	                      <label>상세 주소</label>
+	                      <input class="form-control form-control-lg" type="text" name="detailAddress" id="sample6_detailAddress"/>
+	                    </div>
+	                  </div>
+	                  <p><br/></p>
+	                  <div class="text-center mt-3">
+	                    <input type="button" value="회원가입" class="form-control btn btn-lg btn-secondary" onclick="joinCheck()">
+	                  </div>
+	                </form>
+ 								</div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
   </div>
-  </div>
+
     <!-- 업체 회원가입 폼 (초기에는 숨김) -->
   <div id="companyForm" style="display:none;">
 	  <div class="container h-100">
@@ -672,39 +641,39 @@
 	                <div class="mb-3">
 	                  <font color="red">*</font> 필수 입력 항목(업체)
 	                </div>
-	                <form name="joinForm" method="post">
+	                <form name="myform" method="post" action="/javaweb8J/JoinOk.kn_mem">
 	                  <div class="form-group">
 	                    <font color="red"><b>*&nbsp;</b></font><label>아이디 (ID)</label>
-	                    <input class="form-control form-control-lg" type="text" name="mid" id="mid" placeholder="영문과 숫자를 포함한 4-12자 이내">
-	                    <span id="midCheck"><font color="red">&nbsp;아이디 형식을 확인해주시기 바랍니다!</font></span>
+	                    <input type="text" class="form-control form-control-lg" name="mid" id="mid" onchange="midCheck()" placeholder="영문과 숫자를 포함한 4-12자 이내"required autofocus/>
+	                    <div id="midError" class="text-primary"></div>
 	                  </div>
 	                  <div class="form-group password">
 	                    <font color="red"><b>*&nbsp;</b></font><label class="password">비밀번호 (PASSWORD)</label> &nbsp; <span class="pwdEyes"><i class="fa fa-eye fa-lg"></i></span>
-	                    <input class="form-control form-control-lg" type="password" name="pwd" id="pwd" placeholder="특수문자, 영문 대소문자, 숫자를 포함한 8-16자 이내">
-	                    <span id="pwdCheck"><font color="red">&nbsp;8~16자 영문 대 소문자, 숫자, 특수문자 (키보드 0~9)를 사용하세요.</font></span>
+	                    <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" onchange="pwd1Check()" placeholder="특수문자, 영문 대소문자, 숫자를 포함한 8-16자 이내">
+	                    <div id="pwdError" class="text-primary"></div>
 	                  </div>
 	                  <div class="form-group passwordCheck">
 	                    <font color="red"><b>*&nbsp;</b></font><label>비밀번호 재확인 (PASSWORD CHECK)</label> &nbsp; <span class="rePwdEyes"><i class="fa fa-eye fa-lg"></i></span>
-	                    <input class="form-control form-control-lg" type="password" name="rePwd" id="rePwd" placeholder="비밀번호 재확인">
-	                    <span id="rePwdCheck"><font color="red">&nbsp;입력하신 비밀번호와 일치하지 않습니다!</font></span>
+	                    <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" onchange="pwd2Check()" placeholder="비밀번호 재확인">
+	                     <div id="pwdError2" class="text-primary"></div>
 	                  </div>
 	                  <div class="form-group">
 	                    <font color="red"><b>*&nbsp;</b></font><label>성명 (NAME)</label>
-	                    <input class="form-control form-control-lg" type="text" name="name" id="name" placeholder="한글 또는 영문">
-	                    <span id="nameCheck"></span>
+	                    <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문">
+	                    <div id="nameError" class="text-primary"></div>
 	                  </div>
 	                  <div class="form-group">
 	                    <font color="red"><b>*&nbsp;</b></font><label>닉네임 (NICKNAME)</label>
-	                    <input class="form-control form-control-lg" type="text" name="nickName" id="nickName" placeholder="한글,영문 또는 특수문자">
+	                    <input type="text" class="form-control form-control-lg" name="nickName" id="nickName" placeholder="한글,영문 또는 특수문자">
 	                    <span id="nickNameCheck"></span>
 	                  </div>
 	                  <div class="form-group">
 	                    <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
 	                    <div class="input-group">
 	                      <div class="input-group-append">
-	                        <input class="form-control form-control-lg" type="text" name="tel1" id="tel1" value="010" readonly=""/>
-	                        <input class="form-control form-control-lg" type="text" name="tel2" id="tel2" placeholder="가운데 4자리"/>
-	                        <input class="form-control form-control-lg" type="text" name="tel3" id="tel3" placeholder="마지막 4자리"/>
+	                        <input type="text" class="form-control form-control-lg"  name="tel1" id="tel1" value="010" readonly=""/>
+	                        <input type="text" class="form-control form-control-lg" name="tel2" id="tel2" placeholder="가운데 4자리"/>
+	                        <input type="text" class="form-control form-control-lg" name="tel3" id="tel3" placeholder="마지막 4자리"/>
 	                      </div>
 	                    </div>
 	                    <span id="telCheck"><font color="red">&nbsp;전화번호 형식에 맞지 않습니다!</font></span>
