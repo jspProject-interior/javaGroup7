@@ -128,11 +128,6 @@
 	  background-image: url("${ctp}/images/main/main1.jpg");
 	}
 	
-	.item5 {
-	  grid-column: 1 / span 3;
-	  grid-row: 3;
-	  background-image: url("${ctp}/images/main/main1.jpg");
-	}
 	h6 {
 			position: fixed;
 			right: 1rem;

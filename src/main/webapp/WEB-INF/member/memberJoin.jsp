@@ -59,8 +59,6 @@
     }
     
     /* 라디오버튼 css */
-		
-		
 		ul, li, dl, dt, dd, p, span {
 			margin:0;
 			padding:0
@@ -85,7 +83,7 @@
 		display:flex;
 		align-items: center;
 		justify-content: center;
-		gap:10%;
+		gap: 10%;
 		margin-top: 20%;
 		margin-bottom: 1%;
 		}
@@ -212,15 +210,20 @@
   </style>
   
   <script>
-  // 정규식 검사 함수
- // 아이디 중복버튼을 클릭했는지의 여부를 확인하기 위한 변수(버튼 클릭 후엔 내용 수정처리 불가)
+ 		// 아이디 중복버튼을 클릭했는지의 여부를 확인하기 위한 변수(버튼 클릭 후엔 내용 수정처리 불가)
 		let idCheckSw = 0;
+ 
+		// 정규식 검사 함수
+		let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자
+	  let regex2 = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/g;  //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
+	  let regex3 = /^[가-힣a-zA-Z]+$/;  // (성명)한글,영문만 적어도 1자이상 
+ 		let regex4 = /^[0-9a-zA-Z]+$/g; // 이메일 
+ 		let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
 		
 		// 아이디 중복 검사 
 		function idCheck() {
 			let mid = myform.mid.value.trim();
-			let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자
-			let url = "/javaweb8J/IdCheck.kn_mem?mid="+mid;
+			let url = "MemberIdCheck.mem?mid="+mid;
 			
 			if(mid == "") {
 				alert("아이디를 입력하세요");
@@ -234,18 +237,16 @@
   		  document.getElementById("midError").innerHTML="";
 				idCheckSw = 1;
 				myform.mid.readOnly = true;
-				window.open(url, "nWin", "width=580px, height=250px");
+				window.open(url, "idCheckWindow", "width=500px, height=250px");
 			}
 		}
 		
 		// 전화번호 길이 제한(4자리 이상부터 입력 불가)
 		function handleOnInput(el, maxlength) {
 		  if(el.value.length > maxlength)  {
-		    el.value 
-		      = el.value.substr(0, maxlength);
+		    el.value = el.value.substr(0, maxlength);
 		  }
 		}
-		
 		// 첫 번째 전화번호 내용 입력 후 자동으로 커서 옮기기
 		$(document).ready(function() {
 	    $(".inputs").keyup(function () {
@@ -255,7 +256,6 @@
 	    });
 		});	
 		
-		
 		let check = true;
 
 		// 가입부분 체크
@@ -264,31 +264,26 @@
 		  let pwd1 = document.getElementById("pwd1").value.trim();
 		  let pwd2 = document.getElementById("pwd2").value.trim();
 		  let name = document.getElementById("name").value.trim();
-	  
-    	let email1 = myform.email1.value.trim();
-    	let email2 = myform.email2.value;
-    	let email = email1 + "@" + email2;
-    	
-		  let birthday = myform.birthday.value;
-		  
+		 	let resident = document.getElementById("resident").value.trim();
+	  	let company = dicument.getElementById("comany").value.trim();
+	  	
 		  let tel1 = myform.tel1.value;
 		  let tel2 = myform.tel2.value;
 		  let tel3 = myform.tel3.value;
 		  let tel = tel1 + "-" + tel2 + "-" + tel3;
-		  
+	  	
+    	let email1 = myform.email1.value.trim();
+    	let email2 = myform.email2.value;
+    	let email = email1 + "@" + email2;
+    	
 		  let postcode = myform.postcode.value + " ";
 		  let roadAddress = myform.roadAddress.value + " ";
 		  let detailAddress = myform.detailAddress.value + " ";
 		  let extraAddress = myform.extraAddress.value + " ";
+			let adress = postcode + " /" + roadAddress + " /" + detailAddress + " /" + extraAddress + " ";
 		  
 		  
-		  let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자 
-		  let regex2 = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/g; 
-		  //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
 		  
-		  let regex3 = /^[가-힣a-zA-Z]+$/;  // (성명)한글,영문만 적어도 1자이상 
-	 		let regex4 = /^[0-9a-zA-Z]+$/g; // 이메일 
-	 		let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
 			
 		  	
 		  // 아이디 확인
@@ -391,7 +386,7 @@
 		}
 		
 		function midCheck() {
-			let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자 
+			//let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자 
 			let mid = document.getElementById("mid").value.trim();
 			document.getElementById("midError").innerHTML="";
 			
@@ -406,7 +401,7 @@
 		  }			
 		}
 		function pwd1Check() {
-			let regex2 = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/g; //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
+			//let regex2 = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/g; //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
 			let pwd1 = document.getElementById("pwd1").value.trim();
 			document.getElementById("pwdError").innerHTML="";
 			
@@ -440,7 +435,7 @@
 		}
 		
 		function nameCheck() {
-			let regex3 = /^[가-힣a-zA-Z]+$/;  // (성명)한글,영문만 적어도 1자이상 
+			//let regex3 = /^[가-힣a-zA-Z]+$/;  // (성명)한글,영문만 적어도 1자이상 
 			let name = document.getElementById("name").value.trim();
 			document.getElementById("nameError").innerHTML="";
 			
@@ -456,7 +451,7 @@
 		}
 		
 		function emailCheck() {
-			let regex4 = /^[0-9a-zA-Z]+$/g; // 이메일
+			//let regex4 = /^[0-9a-zA-Z]+$/g; // 이메일
     	let email1 = document.getElementById("email1").value.trim();
 		  document.getElementById("emailError").innerHTML="";
 
@@ -472,7 +467,7 @@
 		}
 		
 		function telCheck() {
-			let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
+			//let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
 		  let tel1 = myform.tel1.value;
 		  let tel2 = myform.tel2.value;
 		  let tel3 = myform.tel3.value;
@@ -491,21 +486,6 @@
 		    document.getElementById("telError").innerHTML="";
 		    check = true;
 		  }
-		}
-		
-		function birthdayCheck() {
-			let birthday = myform.birthday.value;
-			document.getElementById("birthError").innerHTML="";
-			
-		  // 생년월일 확인
-		  if(birthday==""){
-		    document.getElementById("birthError").innerHTML="생일에 맞춰 특별 쿠폰을 보내드립니다. 생년월일을 입력해주세요.";
-		    check = false;
-		  }
-		  else {
-		    document.getElementById("birthError").innerHTML="";
-		    check = true;
-		  }			
 		}
 		
 		/* 회원가입폼 */  
@@ -545,7 +525,7 @@
   <div id="customerForm" style="display:none;">   
    <div class="container h-100">
 	    <div class="row h-100">
-	      <div class="d-table h-100" style="width: 100%">
+	      <div class="d-table h-100" style="width: 70%; margin-left: 15%">
 	        <div class="d-table-cell align-middle">
 	          <div class="card">
 	            <div class="card-body">
@@ -633,7 +613,7 @@
   <div id="companyForm" style="display:none;">
 	  <div class="container h-100">
 	    <div class="row h-100">
-	      <div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+	      <div class="d-table h-100" style="width: 70%; margin-left: 15%">
 	        <div class="d-table-cell align-middle">
 	          <div class="card">
 	            <div class="card-body">
