@@ -66,9 +66,8 @@
 <body>
 <div class="interior">
 	<img src="${ctp}/images/interior/interiorMain.jpg"/>
-	<div class="main">GRINTERIOR</div>
+	<div class="main"><a href="InteriorInput.in">GRINTERIOR</a></div>
 </div>
-<div class="">
 
 	<%-- <c:forEach var="" items="" varStatus="st"> --%>
 		<div class="grid-container">
@@ -92,6 +91,7 @@
 				<img src="${ctp}/images/interior/modern/mordern1/1.jpg">
 				
 			</div>
+			
 	<%-- </c:forEach> --%>
 </div>
 <jsp:include page="/include/footer.jsp"/>

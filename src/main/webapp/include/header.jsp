@@ -761,7 +761,10 @@
 	  		</div>
 	  		<div>
 	  		<hr>
-		  		<div class="sideTitle"><a href="MemberLogout.mem">로그아웃</a></div>
+		  		<div class="input-group" style="display: flex; justify-content: space-between; width: 100%;">
+			  		<div class="sideTitle"><a href="MemberLogout.mem">로그아웃</a></div>
+			  		<c:if test="${sLevel == 0}"><div class="sideTitle"><a href="admin.ad">관리자</a></div></c:if>
+		  		</div>
 	  		</div>
 	    </div>
 	  </div>

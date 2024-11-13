@@ -22,6 +22,9 @@ public class InteriorController extends HttpServlet{
 		if(com.equals("/Interior")) {
 			viewPage += "/interior.jsp";
 		}
+		else if(com.equals("/InteriorInput")) {
+			viewPage += "/interiorInput.jsp";
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		
