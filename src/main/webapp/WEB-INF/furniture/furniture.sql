@@ -7,7 +7,6 @@ create table furniture(
    category      varchar(30),                                                      /*   카테고리(빈티지,모던 | 소파, 테이블)   */   
   title            varchar(100)      not null,                                   /* 게시글 제목 */
    price            int                     default 0,                                 /*   가격   */
-   content         text                   not null,                                    /* 글 내용 */
   titleImg      varchar(100)       default 'noimage.jpg',               /* 회원 사진 */
   subImg         varchar(100)       default 'noimage.jpg',               /* 회원 사진 */
   thumbnail      varchar(100)       default 'noimage.jpg',               /* 회원 사진 */

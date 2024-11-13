@@ -215,17 +215,17 @@
  
 		// 정규식 검사 함수
 		let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자
-	  let regex2 = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/g;  //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
-	  let regex3 = /^[가-힣a-zA-Z]+$/;  // (성명)한글,영문만 적어도 1자이상 
- 		let regex4 = /^[0-9a-zA-Z]+$/g; // 이메일 
- 		let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
+	  let regex2 = /^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/;  //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
+	  let regex3 = /^[가-힣a-zA-Z]$/;  // (성명)한글,영문만 적어도 1자이상 
+ 		let regex4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
+ 		let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/; //(전화번호)
+ 		let regex6 = /\d{7,10}$/g; //(resident)
 		
 		// 아이디 중복 검사 
 		function idCheck() {
-			let mid = myform.mid.value.trim();
-			let url = "MemberIdCheck.mem?mid="+mid;
+			let mid = document.getElementById("mid").value;
 			
-			if(mid == "") {
+			if(mid.trim() == "") {
 				alert("아이디를 입력하세요");
 				myform.mid.focus();
 			}
@@ -235,9 +235,9 @@
 			}
 			else {
   		  document.getElementById("midError").innerHTML="";
-				idCheckSw = 1;
-				myform.mid.readOnly = true;
+				let url = "MemberIdCheck.mem?mid="+mid;
 				window.open(url, "idCheckWindow", "width=500px, height=250px");
+				idCheckSw = 1;
 			}
 		}
 		
@@ -266,7 +266,7 @@
 		  let name = document.getElementById("name").value.trim();
 		 	let resident = document.getElementById("resident").value.trim();
 	  	let company = dicument.getElementById("comany").value.trim();
-	  	
+	  	 
 		  let tel1 = myform.tel1.value;
 		  let tel2 = myform.tel2.value;
 		  let tel3 = myform.tel3.value;
@@ -282,7 +282,9 @@
 		  let extraAddress = myform.extraAddress.value + " ";
 			let adress = postcode + " /" + roadAddress + " /" + detailAddress + " /" + extraAddress + " ";
 		  
-		  
+			let fName
+		  // 코스라이브러리 받아주는 서블릿쪽이 멀티파츠로 받아야 합니다 (사진을 넘길때- 업체에서 멀티파츠 갯 파라멬타)
+			
 		  
 			
 		  	
@@ -512,12 +514,12 @@
   <!--Customer(1)/Company(2)  -->
   <div class="wrap">
 	  <div class="radio_area">
-	    <input type="radio" name="it_radio" id="it_radio1" value="1" onclick="showCustomerForm()">
-	    <label for="it_radio1"><span></span>고객 </label>  
+	    <input type="radio" name="level" id="level1" value="1" onclick="showCustomerForm()">
+	    <label for="level1"><span></span>고객 </label>  
 	  </div>
 	  <div class="radio_area">
-	    <input type="radio" name="it_radio" id="it_radio2" value="1" onclick="showCompanyForm()">
-	    <label for="it_radio2"><span></span>업체 </label>  
+	    <input type="radio" name="level" id="level0" onclick="showCompanyForm()">
+	    <label for="level0"><span></span>업체 </label>  
 	  </div>   
 	</div>
 
@@ -533,10 +535,11 @@
 	                <div class="mb-3"> 
 	                <font color="red">*</font> 필수 입력 항목(고객)
 	                </div>  
- 										<form name="myform" method="post" action="#">
+ 									<form name="myform" method="post" action="MemberJoinOk.mem">
 	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>아이디 (ID)</label>
-	                    <input type="text" class="form-control form-control-lg" name="mid" id="mid" onchange="midCheck()" placeholder="영문과 숫자를 포함한 4-12자 이내"required autofocus/>
+	                    <font color="red"><b>*&nbsp;</b></font><label class="m-0 p-0">아이디 (ID)</label>
+	                    <input type="button" value="아이디 중복체크" class="btn btn-sm text-right float-right mb-1" onclick="idCheck()"/>
+	                    <input type="text" class="form-control form-control-lg" name="mid" id="mid" onchange="midCheck()" placeholder="영문과 숫자를 포함한 4-20자 이내" required autofocus/>
 	                    <div id="midError" class="text-primary"></div>
 	                  </div>
 	                  <div class="form-group password">
@@ -638,18 +641,24 @@
 	                     <div id="pwdError2" class="text-primary"></div>
 	                  </div>
 	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>대표자명 (NAME)</label>
-	                    <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문">
-	                    <div id="nameError" class="text-primary"></div>
+	                    <font color="red"><b>*&nbsp;</b></font><label>업종</label>
+	                    <input type="radio" class="form-control form-control-sm" name="level" id="level2" value="2">인테리어
+	                    <input type="radio" class="form-control form-control-sm" name="level" id="level3" value="3">가구
 	                  </div>
 	                  <div class="form-group">
 	                    <font color="red"><b>*&nbsp;</b></font><label>업체명 (COMPANY)</label>
 	                    <input type="text" class="form-control form-control-lg" name="company" id="company" placeholder="한글,영문 또는 특수문자">
 	                  </div>
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>대표자명 (NAME)</label>
+	                    <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문">
+	                    <div id="nameError" class="text-primary"></div>
+	                  </div>
 	                   <div class="form-group">
 	                    <font color="red"><b>*&nbsp;</b></font><label>사업자번호</label>
 	                    <input type="text" class="form-control form-control-lg" name="resident" id="resident" placeholder="주민번호 앞 7자리만 입력해주세요">
 	                  </div>
+	                  
 	                  <div class="form-group">
 	                    <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
 	                    <div class="input-group">

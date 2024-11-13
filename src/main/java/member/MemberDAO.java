@@ -70,4 +70,18 @@ public class MemberDAO {
 		
 		return vo;
 	}
+/*
+	public int setMemberJoinOk(MemberVO vo) {
+		int res = 0;
+		try {
+			sql = "insert into member values(default, ?, ?, ?, ?, ?, ?, ?, ?,, ?, ?, ?, default, default, default, default, default, default, default);";
+			
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 (MemberJoinOk) :"+e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+*/
 }

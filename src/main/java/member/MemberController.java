@@ -23,7 +23,17 @@ public class MemberController extends HttpServlet {
 		if(com.equals("/MemberJoin")) { //회원가입 입력창
 			viewPage += "/memberJoin.jsp";
 		}
-		else if(com.equals("/MemberLogin")) { //회원가입 입력창
+		else if(com.equals("/MemberJoinOk")) {
+			command = new MemberJoinOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/MemberIdCheck")) {
+			command = new MemberIdCheckCommand();
+			command.execute(request, response);
+			viewPage += "/memberIdCheck.jsp";
+		}
+		else if(com.equals("/MemberLogin")) { //로그인 입력창
 			command = new MemberLoginCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
@@ -33,6 +43,8 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "main.main";
 		}
+		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}
