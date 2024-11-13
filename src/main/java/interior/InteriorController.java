@@ -23,6 +23,8 @@ public class InteriorController extends HttpServlet{
 			viewPage += "/interior.jsp";
 		}
 		else if(com.equals("/InteriorInput")) {
+			command = new InteriorInputCommand();
+			command.execute(request, response);
 			viewPage += "/interiorInput.jsp";
 		}
 		
