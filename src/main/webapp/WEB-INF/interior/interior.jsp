@@ -111,7 +111,7 @@
     </div>
     <div class="grid-container">
       <c:forEach var="vo" items="${vos}" varStatus="st">
-	      <a href="#">
+	      <a href="InteriorContent.in?idx=${vo.idx}">
 	        <div class="grid-item">
 	          <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
 	          <div class="title">${vo.title}</div>

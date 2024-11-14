@@ -32,6 +32,11 @@ public class InteriorController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		else if(com.equals("/InteriorContent")) {
+			command = new InteriorContentCommand();
+			command.execute(request, response);
+			viewPage += "/interiorContent.jsp";
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		
