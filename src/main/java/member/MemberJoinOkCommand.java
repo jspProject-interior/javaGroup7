@@ -11,7 +11,7 @@ public class MemberJoinOkCommand implements MemberInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String mid = request.getParameter("mid") ==null ? "" : request.getParameter("mid");
-		String pwd = request.getParameter("pwd") ==null ? "" : request.getParameter("pwd");
+		String pwd = request.getParameter("pwd2") ==null ? "" : request.getParameter("pwd2");
 		String name = request.getParameter("name") ==null ? "" : request.getParameter("name");
 		String company = request.getParameter("company") ==null ? "" : request.getParameter("company");
 		String tel = request.getParameter("tel") ==null ? "" : request.getParameter("tel");
@@ -23,7 +23,7 @@ public class MemberJoinOkCommand implements MemberInterface {
 		String birthday = null;
 		String gender = null;
 		
-		if(level == 1) {
+		if(level == 999) {
 			 birthday = resident.substring(0,5);
 			 gender = resident.substring(6,1);			
 		}
