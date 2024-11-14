@@ -16,7 +16,7 @@ public class MemberJoinOkCommand implements MemberInterface {
 		String company = request.getParameter("company") ==null ? "" : request.getParameter("company");
 		String tel = request.getParameter("tel") ==null ? "" : request.getParameter("tel");
 		String email = request.getParameter("email") ==null ? "" : request.getParameter("email");
-		String resident = request.getParameter("resident") ==null ? "" : request.getParameter("resident");
+		String resident = request.getParameter("resident1") ==null ? "" : request.getParameter("resident1");
 		String address = request.getParameter("address") ==null ? "" : request.getParameter("address");
 		String photo = request.getParameter("photo") ==null ? "" : request.getParameter("photo");
 		int level = (request.getParameter("level") == null || request.getParameter("level").equals("")) ? 999 : Integer.parseInt(request.getParameter("level"));
@@ -47,7 +47,7 @@ public class MemberJoinOkCommand implements MemberInterface {
 		System.out.println("vo : " + vo);
 		
 		MemberDAO dao = new MemberDAO();
-	/*	
+	
 		int res = dao.setMemberJoinOk(vo);
 		
 		if(res != 0) {
@@ -58,7 +58,7 @@ public class MemberJoinOkCommand implements MemberInterface {
 			request.setAttribute("message", "회원 가입 실패");
 			request.setAttribute("url", "MemberJoin.mem");
 		}
-		*/
+	
 	}
 
 }

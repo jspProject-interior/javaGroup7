@@ -10,36 +10,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <jsp:include page="/include/bs4.jsp"/>
   <jsp:include page="/include/fonts.jsp"/>
-  
-  <!-- Bootstrap 4 CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-  
-  <!-- jQuery, Popper.js, Bootstrap JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard-dynamic-subset.css"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <script src="${ctp}/js/woo.js"></script>
   <style>
-    body {
-      background-image: url("${ctp}/images/interior/modern/mordern1/1.jpg");
-    }
-    
 		body,html {
 			height:100%;
 			margin:0;
 			padding:0;
 			font-family:'EliceDigitalBaeum-Bd';
+      background-image: url("${ctp}/images/interior/modern/mordern1/1.jpg");
+      background-size: cover;
+ 			background-position: center;
 		}
-    .card {
-      margin-bottom: 1.5rem;
-      box-shadow: 0 1px 15px 1px rgba(52,40,104,.08);
-    }
-    .input-group-append {
-      z-index: 0;
-    }
-    #homeAddressInput {
-      display: none;
-    }
+		.container {
+		  display: flex;
+		  justify-content: center; /* 수평 중앙 정렬 */
+		  align-items: center; /* 수직 중앙 정렬 */
+		  padding-bottom: 3%; /* 폼 아래에 여백을 줘서 배경 이미지가 5% 정도 보이게 함 */
+		}
     .Logo {
       font-family: "Playfair Display", serif;
       font-size: 30px;
@@ -52,10 +40,6 @@
     }
     span {
     display: none;
-    }
-    
-    input.form-control {
-    font-size: 15px;
     }
     
     /* 라디오버튼 css */
@@ -144,7 +128,6 @@
 		}    
 		
 		 /* 애니메이션 효과 */
-    
      /* 라디오 버튼 선택 시 상단으로 이동하는 효과 */
     .wrap.move-up {
       margin-top: 50px; /* 두 버튼을 상단으로 이동시킴 */
@@ -181,6 +164,12 @@
     html {scroll-behavior:smooth;}
 		#container {font-size: 1.1em;}
 		
+    #homeAddressInput {
+      display: none;
+    }
+    input.form-control {
+    font-size: 15px;
+    }
 		.text-primary {
 			font-size: 0.8em;
 			padding:2px 10px;
@@ -196,16 +185,76 @@
 		}
 		.btn {
 		  background-color: white;
-  		border-color: #ffa0c5;
-  		color: #ffa0c5;
+  		border-color: #8a7c66;
+  		color: #8a7c66;
   		border-width: medium;
 		}
 		.btn:hover {
-			background-color: #ffa0c5;
+			background-color: #8a7c66;
 			color: white;
 		}
-		.must {
-  		color: #ffa0c5;
+    .input-group-append {
+      z-index: 0;
+    }
+    
+    /* 색상 변수 */
+		:root {
+				--bg: #fff;
+				--text: #382b22;
+				--light-pink: #e4dfcb;
+				--pink: #8a7c66;
+				--dark-pink: #6e5f4f;
+				--pink-border: #8a7c66;
+				--pink-shadow: #b8b094;
+		}
+    /* 회원가입 등록 버튼 */
+    button.learn-more {
+		font-size: 25px;
+		font-weight: 600;
+		width: 100%;
+		color: var(--text);
+		text-transform: uppercase;
+		padding: 10px 15px;
+		background: var(--light-pink);
+		border: 2px solid var(--pink-border);
+		border-radius: 0.75em;
+		transform-style: preserve-3d;
+		transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background	150ms cubic-bezier(0, 0, 0.58, 1);
+		}
+		
+		button.learn-more::before {
+				position: absolute;
+				content: '';
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: var(--dark-pink);
+				border-radius: inherit;
+				box-shadow: 0 0 0 2px var(--pink-border), 0 0.625em 0 0 var(--pink-shadow);
+				transform: translate3d(0, 0.75em, -1em);
+				transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow	150ms cubic-bezier(0, 0, 0.58, 1);
+		}
+
+		button.learn-more:hover {
+				transform: translate(0, 0.25em);
+		}
+		
+		button.learn-more:hover::before {
+				box-shadow: 0 0 0 2px var(--pink-border), 0 0.5em 0 0 var(--pink-shadow);
+				transform: translate3d(0, 0.5em, -1em);
+		}
+		
+		button.learn-more:active {
+				background: var(--light-pink);
+				transform: translate(0em, 0.75em);
+		}
+		
+		button.learn-more:active::before {
+				box-shadow: 0 0 0 2px var(--pink-border), 0 0 var(--pink-shadow);
+				transform: translate3d(0, 0, -1em);
 		}
   </style>
   
@@ -216,30 +265,28 @@
 		// 정규식 검사 함수
 		let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자
 	  let regex2 = /^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/;  //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
-	  let regex3 = /^[가-힣a-zA-Z]+$/;  // (성명)한글,영문만 적어도 1자이상 
+	  let regex3 = /^[가-힣a-zA-Z]{1,10}$/;  // (성명)한글,영문만 적어도 1자이상 
  		let regex4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
  		let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/; //(전화번호)
- 		let regex6 = /\d{7}$/; //(resident-고객)
+ 		let regex6 = /\d{6}[1-4]$/; //(resident-고객(주민등록번호):마지막자리는 성별을 나타내서 1-4까지의 숫자만 들어오도록)
  		let regex7 = /\d{10}$/; //(resident-업체)
-		
-		// 가입부분 체크
+
+ /* 고 객 회 원 가 입 */		
+		// 회원가입부분 체크
 		function joinCheck(){
 		  let mid = document.getElementById("mid").value.trim();
 		  let pwd1 = document.getElementById("pwd1").value.trim();
 		  let pwd2 = document.getElementById("pwd2").value.trim();
 		  let name = document.getElementById("name").value.trim();
-		 	let resident = document.getElementById("resident").value.trim();
-	  	let company = dicument.getElementById("comany").value.trim();
+		 	let resident = document.getElementById("resident1").value.trim();
+	  	//let company = dicument.getElementById("comany").value.trim();
+	  	let email = dicument.getElementById("email").value.trim();
 	  	 
 		  let tel1 = myform.tel1.value;
 		  let tel2 = myform.tel2.value;
 		  let tel3 = myform.tel3.value;
 		  let tel = tel1 + "-" + tel2 + "-" + tel3;
 	  	
-    	let email1 = myform.email1.value.trim();
-    	let email2 = myform.email2.value;
-    	let email = email1 + "@" + email2;
-    	
 		  let postcode = myform.postcode.value + " ";
 		  let roadAddress = myform.roadAddress.value + " ";
 		  let detailAddress = myform.detailAddress.value + " ";
@@ -283,7 +330,7 @@
 				  
 		  // 성명 확인
 		  if(!regex3.test(name)){
-		    document.getElementById("nameError").innerHTML="성명이 올바르지 않습니다.(한글/영문만 1자이상)";
+		    document.getElementById("nameError").innerHTML="성명이 올바르지 않습니다.(한글/영문만 10자 이내)";
 		    check = false;
 		  }
 		  else {
@@ -292,7 +339,7 @@
 		  }
 		   
 		  // 이메일확인
-		  if(!regex4.test(email1)){
+		  if(!regex4.test(email)){
 		    document.getElementById("emailError").innerHTML="이메일이 올바르지 않습니다.";
 		    check = false;
 		  }
@@ -301,15 +348,13 @@
 			  check = true;
 		  }	 
 				     
-				
-
 		  // 전화번호 확인
 		  if(tel2==="" || tel3===""){
 		    document.getElementById("telError").innerHTML="전화번호를 입력해주세요.";
 		    check = false;
 		  }
 		  else if(!regex5.test(tel)){
-		    document.getElementById("telError").innerHTML="전화번호를 완성해주세요.";
+		    document.getElementById("telError").innerHTML="전화번호 형식에 맞게 입력해주세요.";
 		    check = false;
 		  }
 		  else {
@@ -317,15 +362,14 @@
 		    check = true;
 		  }
 		  
-		  // 생년월일 확인
-		  if(birthday==""){
-		    document.getElementById("birthdayError").innerHTML="생일에 맞춰 특별 쿠폰을 보내드립니다. 생년월일을 입력해주세요.";
-		    check = false;
-		  }
-		  else {
-		    document.getElementById("birthdayError").innerHTML="";
-		    check = true;
-		  }		  
+		  if(!regex6.test(resident)){
+			    document.getElementById("residentError1").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
+			    check = false;
+			  }
+			  else {
+				  document.getElementById("residentError1").innerHTML="";
+				  check = true;
+			  }
 		  
 		  
 		  if(!check){
@@ -342,6 +386,7 @@
 			    myform.tel.value = tel;
 			    myform.address.value = postcode + "/" + roadAddress + "/" + detailAddress + "/" + extraAddress + "/";
 			    myform.email.value = email;
+			    
 			   	myform.submit();
 				}
 		  }
@@ -428,13 +473,13 @@
 		}
 		
 		function nameCheck() {
-			//let regex3 = /^[가-힣a-zA-Z]+$/;  // (성명)한글,영문만 적어도 1자이상 
+			//let regex3 = /^[가-힣a-zA-Z]{1,10}$/;  // (성명)한글,영문만 적어도 1자이상 
 			let name = document.getElementById("name").value.trim();
 			document.getElementById("nameError").innerHTML="";
 			
 		  // 성명 확인
 		  if(!regex3.test(name)){
-		    document.getElementById("nameError").innerHTML="성명이 올바르지 않습니다.(한글/영문만 1자이상)";
+		    document.getElementById("nameError").innerHTML="성명이 올바르지 않습니다.(한글/영문만 10자 이하)";
 		    check = false;
 		  }
 		  else {
@@ -442,31 +487,26 @@
 			  check = true;
 			  document.getElementById('name').addEventListener('keydown', function(event) {
 			        if (event.key === 'Enter') {
-		        	  document.getElementById('resident').focus();
+		        	  document.getElementById('resident1').focus();
 			        }
 				    });
 		  }			
 		}
 		
-		
-		
-		
-		
-		
 		function residentCheck1() {
-			//let regex6 = /\d{7}$/; //(resident-고객)
-			let resident = document.getElementById("resident").value.trim();
-			document.getElementById("residentError").innerHTML="";
+			//let regex6 = /\d{6}[1-4]$/; //(resident-고객)
+			let resident = document.getElementById("resident1").value.trim();
+			document.getElementById("residentError1").innerHTML="";
 			
 		  // 주민번호 확인
 		  if(!regex6.test(resident)){
-		    document.getElementById("residentError").innerHTML="주민등록번호가 올바르지 않습니다.(주민등록번호 앞 7자리만)";
+		    document.getElementById("residentError1").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
 		    check = false;
 		  }
 		  else {
-			  document.getElementById("residentError").innerHTML="";
+			  document.getElementById("residentError1").innerHTML="";
 			  check = true;
-			  document.getElementById('resident').addEventListener('keydown', function(event) {
+			  document.getElementById('resident1').addEventListener('keydown', function(event) {
 	        if (event.key === 'Enter') {
         	  document.getElementById('tel2').focus();
 	        }
@@ -526,30 +566,25 @@
 		    });
 		  }
 		}
-	 		
-		
-		
-		
-		
-		
-	 		
+
 		function emailCheck() {
-			//let regex4 = /^[0-9a-zA-Z]+$/g; // 이메일
-    	let email1 = document.getElementById("email1").value.trim();
+			//let regex4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
+			let email = document.getElementById("email").value.trim();
 		  document.getElementById("emailError").innerHTML="";
 
 		  // 이메일확인
-		  if(!regex4.test(email1)){
-		    document.getElementById("emailError").innerHTML="이메일이 올바르지 않습니다.";
+		  if(!regex4.test(email)){
+		    document.getElementById("emailError").innerHTML="올바르지 않는 이메일 형식입니다.";
 		    check = false;
 		  }
 		  else {
 			  document.getElementById("emailError").innerHTML="";
 			  check = true;
+			  
 		  }			
 		}
 	 		
-	 		
+/* 업 체 회 원 가 입  */	 		
 	 		
 	 		
 	 		
@@ -593,35 +628,35 @@
 <form name="myform" method="post" action="MemberJoinOk.mem">
   <div id="customerForm" style="display:none;">   
    <div class="container h-100">
-		<div class="card" style="width: 72%; margin-left: 14%">
+		<div class="card" style="width: 72%;">
 		  <div class="card-body">
 		    <div class="m-sm-4 p-3">
 		      <div class="mb-3"> <font color="red">*</font> 필수 입력 항목(고객)</div>  
 		      <div class="form-group">
-		        <font color="red"><b>*&nbsp;</b></font><label class="m-0 p-0">아이디 (ID)</label>
-		        <input type="button" value="아이디 중복체크" class="btn btn-sm text-right float-right mb-1" onclick="idCheck()"/>
-		        <input type="text" class="form-control form-control-lg" name="mid" id="mid" oninput="midCheck()" placeholder="영문과 숫자를 포함한 4~20자 이내" required autofocus/>
+		        <font color="red"><b>*&nbsp;</b></font><label for="mid" class="m-0 p-0">아이디 (ID)</label>
+		        <input type="button" value="아이디 중복체크" class="btn text-right float-right mb-1" onclick="idCheck()"/>
+		        <input type="text" class="form-control form-control-lg" name="mid" id="mid" oninput="midCheck()" maxlength="20" placeholder="영문과 숫자를 포함한 4~20자 이내" required autofocus/>
 		        <div id="midError" class="text-primary"></div>
 		      </div>
 		      <div class="form-group password">
-		        <font color="red"><b>*&nbsp;</b></font><label class="password">비밀번호 (PASSWORD)</label>
-		        <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" oninput="pwd1Check()" placeholder="영문/숫자 필수, 특수문자 가능 4~20자 이내">
+		        <font color="red"><b>*&nbsp;</b></font><label for="pwd1" class="password">비밀번호 (PASSWORD)</label>
+		        <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" oninput="pwd1Check()" maxlength="20" placeholder="영문/숫자 필수, 특수문자 가능 4~20자 이내">
 		        <div id="pwdError1" class="text-primary"></div>
 		      </div>
 		      <div class="form-group passwordCheck">
-		        <font color="red"><b>*&nbsp;</b></font><label>비밀번호 재확인 (PASSWORD CHECK)</label>
-		        <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" oninput="pwd2Check()" placeholder="비밀번호 재확인">
+		        <font color="red"><b>*&nbsp;</b></font><label for="pwd2">비밀번호 재확인 (PASSWORD CHECK)</label>
+		        <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" oninput="pwd2Check()" maxlength="20" placeholder="비밀번호 재확인">
 		         <div id="pwdError2" class="text-primary"></div>
 		      </div>
           <div class="form-group">
-            <font color="red"><b>*&nbsp;</b></font><label>성명 (NAME)</label>
-            <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문만">
+            <font color="red"><b>*&nbsp;</b></font><label for="name" >성명 (NAME)</label>
+            <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" maxlength="10" placeholder="한글 또는 영문 10자 이내">
             <div id="nameError" class="text-primary"></div>
           </div>
           <div class="form-group">
-            <font color="red"><b>*&nbsp;</b></font><label>주민등록번호 (RESIDENT)</label>
-            <input type="text" class="form-control form-control-lg" name="resident" id="resident" maxlength="7" oninput="residentCheck1()" placeholder="주민등록번호 앞 7자리만">
-            <div id="residentError" class="text-primary"></div>
+            <font color="red"><b>*&nbsp;</b></font><label for="resident1" >주민등록번호 (RESIDENT)</label>
+            <input type="text" class="form-control form-control-lg" name="resident1" id="resident1" maxlength="7" oninput="residentCheck1()" placeholder="주민등록번호 앞 7자리만">
+            <div id="residentError1" class="text-primary"></div>
           </div>
           <div class="form-group">
             <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
@@ -643,46 +678,42 @@
 				    	<div id="telError" class="text-primary"></div>
           	</div>
           </div>
-                  
-                  
-                  
-                  <div class="form-group">
-                    <font color="red"><b>*&nbsp;</b></font><label>이메일</label>
-                    <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="이메일 형식에 맞춰 입력해주세요">
-                    <span id="emailCheck"><font color="red">&nbsp;이메일을 입력해주시기 바랍니다!</font></span>
-                  </div>
-                  
-                  
-                  
-                  <div class="form-group">
-                    <label>주소</label>
-                    <input class="btn btn-secondary text-right float-right" type="button" value="주소 찾기" onclick="sample6_execDaumPostcode()">
-                  </div>
-                  <div id="homeAddressInput">
-                    <div class="form-group">
-                      <label>우편번호</label>
-                      <div class="input-group">
-                        <input class="form-control form-control-lg" type="text" name="postcode" id="sample6_postcode" readonly=""/>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label>도로명 주소 / 지번 주소</label>
-                      <input class="form-control form-control-lg" type="text" name="roadAddress" id="sample6_address" readonly=""/>
-                    </div>
-                    <div class="form-group">
-                      <label>상세 주소</label>
-                      <input class="form-control form-control-lg" type="text" name="detailAddress" id="sample6_detailAddress"/>
-                    </div>
-                  </div>
-                  <p><br/></p>
-                  <div class="text-center mt-3">
-                    <input type="button" value="회원가입" class="form-control btn btn-lg btn-secondary" onclick="joinCheck()">
-                  </div>
- 								</div>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
+          <div class="form-group">
+            <font color="red"><b>*&nbsp;</b></font><label for="email">이메일</label>
+            <input class="form-control form-control-lg" type="email" name="email" id="email" oninput="emailCheck()" placeholder="이메일 형식에 맞춰 입력해주세요">
+            <div id="emailError" class="text-primary"></div>
+          </div>
+          <div class="form-group">
+            <font color="red"><b>*&nbsp;</b></font><label for="address">주소</label><input class="btn text-right float-right" type="button" value="주소 찾기" onclick="sample6_execDaumPostcode()">
+            <input type="hidden" name="address" id="address">
+            
+          </div>
+          <div id="homeAddressInput">
+            <div class="form-group">
+              <div class="input-group-append mb-1">
+				        <input type="text" name="postcode" id="sample6_postcode"  placeholder="우편번호" class="form-control" style="width: 150px;" onclick="sample6_execDaumPostcode()" readonly>
+				      </div>
+				     	<div class="input-group">
+				     		<input type="text" name="roadAddress" id="sample6_address" placeholder="주소" class="form-control mb-1" onclick="sample6_execDaumPostcode()" readonly>
+				     	</div>
+				      <div class="input-group">
+				        <div class="input-group-append" style="display: flex; width: 100%;">
+				          <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목" class="form-control" style="flex: 4;" onclick="sample6_execDaumPostcode()" readonly>
+				        	<input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소" class="form-control" style="flex: 6;">
+				        </div>
+				      </div>
+				    </div>
+				  </div>
+					<p><br/></p>
+          <div class="text-center">
+          	<button class="learn-more" type="submit" onclick="joinCheck()">회 원 가 입</button>
+            <!-- <input type="button" value="회원가입" class="btn form-control" onclick="joinCheck()"> -->
+          </div>
+				</div>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- 업체 회원가입 폼 (초기에는 숨김) -->
   <div id="companyForm" style="display:none;">

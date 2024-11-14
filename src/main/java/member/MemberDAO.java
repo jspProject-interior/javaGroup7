@@ -70,12 +70,25 @@ public class MemberDAO {
 		
 		return vo;
 	}
-/*
+
 	public int setMemberJoinOk(MemberVO vo) {
 		int res = 0;
 		try {
-			sql = "insert into member values(default, ?, ?, ?, ?, ?, ?, ?, ?,, ?, ?, ?, default, default, default, default, default, default, default);";
-			
+			sql = "insert into member values(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, default, default);";
+			pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, vo.getMid());
+      pstmt.setString(2, vo.getPwd());
+      pstmt.setString(3, vo.getName());
+      pstmt.setString(4, vo.getCompany());
+      pstmt.setString(5, vo.getTel());
+      pstmt.setString(6, vo.getEmail());
+      pstmt.setString(7, vo.getResident());
+      pstmt.setString(8, vo.getAddress());
+      pstmt.setString(9, vo.getGender());
+      pstmt.setString(10, vo.getBirthday());
+      pstmt.setInt(11, vo.getLevel());
+      pstmt.setString(12, vo.getPhoto());
+      res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 (MemberJoinOk) :"+e.getMessage());
 		} finally {
@@ -83,5 +96,4 @@ public class MemberDAO {
 		}
 		return res;
 	}
-*/
 }
