@@ -97,7 +97,7 @@ input[type="file"] {
 }
 
 /* 버튼 스타일 */
-button[type="submit"] {
+button[type="button"] {
 		color: white;
 		font-size: 18px;
 		padding: 15px 30px;

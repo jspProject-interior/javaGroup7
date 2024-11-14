@@ -103,11 +103,11 @@
 </head>
 <jsp:include page="/include/mainHeader.jsp"/>
 <body>
-  <form name="myform" action="InteriorInput.in">
+  <form name="myform">
     <div class="interior">
       <img src="${ctp}/images/interior/interiorMain.jpg"/>
       <div class="main">GRINTERIOR</div>
-      <button type="submit" class="btn btn-success">게시물 등록</button>
+      <input type="button" onclick="location.href='InteriorInput.in'" class="btn btn-success" value="게시물 등록"/>
     </div>
     <div class="grid-container">
       <c:forEach var="vo" items="${vos}" varStatus="st">

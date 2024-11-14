@@ -41,13 +41,18 @@ public class InteriorInputCommand implements InteriorInterface {
 		HttpSession session = request.getSession();
 		String mid = (String) session.getAttribute("sMid");
 		String company = multipartRequest.getParameter("company") == null ? "" : multipartRequest.getParameter("company");
-		String category = multipartRequest.getParameter("category") == null ? "" : multipartRequest.getParameter("category");
 		String title = multipartRequest.getParameter("title") == null ? "" : multipartRequest.getParameter("title");
 		int price = multipartRequest.getParameter("price") == null || multipartRequest.getParameter("price").equals("") ? 0 : Integer.parseInt(multipartRequest.getParameter("price"));
 		String titleImg = multipartRequest.getFilesystemName("titleImg") == null ? "" : multipartRequest.getFilesystemName("titleImg");
 		String subImg = multipartRequest.getFilesystemName("subImg") == null ? "" : multipartRequest.getFilesystemName("subImg");
 		String thumbnail = multipartRequest.getFilesystemName("thumbnail") == null ? "" : multipartRequest.getFilesystemName("thumbnail");
 		int fSize = (multipartRequest.getParameter("fSize")==null || multipartRequest.getParameter("fSize").equals("")) ? 0 : Integer.parseInt(multipartRequest.getParameter("fSize"));
+		
+		String category = multipartRequest.getParameter("category") == null ? "" : multipartRequest.getParameter("category");
+		
+		if(category.equals("ETC")) {
+			category = multipartRequest.getParameter("etc") == null ? "" : multipartRequest.getParameter("etc");
+		}
 		
 		InteriorVO vo = new InteriorVO();
 		

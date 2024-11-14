@@ -10,41 +10,94 @@
   <jsp:include page="/include/bs4.jsp"/>
   <link rel="stylesheet" type="text/css" href="${ctp}/css/interiorInput.css">
   <script type="text/javascript">
+  function fCheck() {
+	    let titleImg = document.getElementById("image-upload-main").value;
+	    let subImg = document.getElementById("image-upload-detail").value;
+	    let thumbnail = document.getElementById("image-upload-thumbnail").value;
+	    let titleImgExt = titleImg.substring(titleImg.lastIndexOf(".") + 1).toLowerCase();
+	    let subImgExt = subImg.substring(subImg.lastIndexOf(".") + 1).toLowerCase();
+	    let thumbnailExt = thumbnail.substring(thumbnail.lastIndexOf(".") + 1).toLowerCase();
+	    let maxSize = 1024 * 1024 * 50;
+	    let validExtensions = ['jpg', 'gif', 'png'];
+			let title = document.getElementById("title").value;
+			let category = document.getElementById("category").value;
+	    
+	    if (title.trim() == "") {
+	        alert("제목을 입력해주세요");
+	        myform.title.focus();
+	        return false;
+	    }
+	    
+	    if (category.trim() == "null") {
+	        alert("카테고리를 선택해주세요");
+	        myform.category.focus();
+	        return false;
+	    }
+	    
+	    if (titleImg.trim() === "" || subImg.trim() === "" || thumbnail.trim() === "") {
+	        alert("업로드할 파일을 선택하세요");
+	        myform.title.focus();
+	        return false;
+	    }
+
+	    // 파일 크기 확인
+	    let titleImgSize = document.getElementById("image-upload-main").files[0].size;
+	    let subImgSize = document.getElementById("image-upload-detail").files[0].size;
+	    let thumbnailSize = document.getElementById("image-upload-thumbnail").files[0].size;
+	    if (titleImgSize > maxSize || subImgSize > maxSize || thumbnailSize > maxSize) {
+	        alert("업로드할 1개 파일의 최대용량은 50MByte 입니다.");
+	        myform.title.focus();
+	        return false;
+	    }
+
+	    if (!validExtensions.includes(titleImgExt)) {
+	        alert("대표 이미지 업로드 가능한 파일은 'jpg/gif/png'만 가능합니다.");
+	        myform.title.focus();
+	        return false;
+	    }
+	    if (!validExtensions.includes(subImgExt)) {
+	        alert("상세 페이지 업로드 가능한 파일은 'jpg/gif/png'만 가능합니다.");
+	        myform.title.focus();
+	        return false;
+	    }
+	    if (!validExtensions.includes(thumbnailExt)) {
+	        alert("썸네일 이미지 업로드 가능한 파일은 'jpg/gif/png'만 가능합니다.");
+	        myform.title.focus();
+	        return false;
+	    }
+	    myform.submit();
+	}
+
+  
   $(function() {
-	    // '기타'를 선택했을 때만 #etc 영역을 보이도록 설정
 	    $('select[name="category"]').change(function() {
-	      // 선택된 값이 'etc'일 때 #etc 영역 보이기
-	      if ($(this).val() === 'etc') {
-	        $('#etc').show();  // #etc 영역 보이기
+	      if ($(this).val() === 'ETC') {
+	        $('#etc').show();
 	      } else {
-	        $('#etc').hide();   // '기타'가 아닐 경우 #etc 영역 숨기기
+	        $('#etc').hide();
 	      }
 	    });
 
-	    // 페이지 로드 시 카테고리 값에 따라 #etc 영역을 초기화
-	    if ($('select[name="category"]').val() === 'etc') {
+	    if ($('select[name="category"]').val() === 'ETC') {
 	      $('#etc').show();
 	    } else {
 	      $('#etc').hide();
 	    }
 	  });
     
-		//이미지 선택 시 미리보기 처리 함수
 		  function handleImageChange(event, previewId) {
-		    const file = event.target.files[0]; // 파일 객체 얻기
+		    const file = event.target.files[0];
 		    if (file) {
-		      const reader = new FileReader(); // FileReader 객체 생성
+		      const reader = new FileReader();
 		      
-		      // 파일이 읽히면 실행되는 콜백 함수
 		      reader.onload = function(e) {
-		        const imageUrl = e.target.result; // 이미지 URL 얻기
-		        const imagePreview = document.getElementById(previewId); // 미리보기 이미지 요소
+		        const imageUrl = e.target.result;
+		        const imagePreview = document.getElementById(previewId);
 		        
-		        imagePreview.src = imageUrl; // 이미지 URL을 src에 설정
-		        imagePreview.style.display = 'block'; // 이미지를 표시
+		        imagePreview.src = imageUrl;
+		        imagePreview.style.display = 'block';
 		      };
 		      
-		      // 파일을 Data URL 형식으로 읽어들임
 		      reader.readAsDataURL(file);
 		    }
 		  }
@@ -54,7 +107,7 @@
   <jsp:include page="/include/header.jsp"/>
   <div class="contain">
     <h1 style="font-family: 'EliceDigitalBaeum-Bd';">게시물 등록</h1>
-    <form name="myform" method="post" action="InteriorInputOk.in"  enctype="multipart/form-data">
+    <form name="myform" method="post" enctype="multipart/form-data" action="InteriorInputOk.in">
 
       <!-- 업체명 -->
       <div class="form-group">
@@ -67,8 +120,8 @@
       <div class="form-group">
         <div class="section-title">카테고리</div>
         <hr>
-        <select class="form-control" name="category">
-          <option>카테고리</option>
+        <select class="form-control" id="category" name="category">
+          <option value="null">카테고리</option>
           <option value="MODERN">모던</option>
           <option value="NATURALnatural">네츄럴</option>
           <option value="VINTAGE">빈티지</option>
@@ -95,7 +148,7 @@
 			    <div class="section-title">대표이미지</div>
 			    <div class="image-upload-container">
 			      <label for="image-upload-main" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-			        <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
+			        <div class="plus-icon" id="titleImg"><i class="fa-solid fa-plus"></i></div>
 			        <img id="image-preview-main" class="image-preview" style="display: none;" />
 			      </label>
 			      <input type="file" id="image-upload-main" name="titleImg" accept="image/*" onchange="handleImageChange(event, 'image-preview-main')" />
@@ -107,7 +160,7 @@
 			    <div class="section-title">상세페이지</div>
 			    <div class="image-upload-container">
 			      <label for="image-upload-detail" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-			        <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
+			        <div class="plus-icon" id="subImg"><i class="fa-solid fa-plus"></i></div>
 			        <img id="image-preview-detail" class="image-preview" style="display: none;" />
 			      </label>
 			      <input type="file" id="image-upload-detail" name="subImg" accept="image/*" onchange="handleImageChange(event, 'image-preview-detail')" />
@@ -119,7 +172,7 @@
 			    <div class="section-title">썸네일이미지</div>
 			    <div class="image-upload-container">
 			      <label for="image-upload-thumbnail" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-			        <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
+			        <div class="plus-icon" id="thumbnail"><i class="fa-solid fa-plus"></i></div>
 			        <img id="image-preview-thumbnail" class="image-preview" style="display: none;" />
 			      </label>
 			      <input type="file" id="image-upload-thumbnail" name="thumbnail" accept="image/*" onchange="handleImageChange(event, 'image-preview-thumbnail')" />
@@ -130,8 +183,8 @@
 			</div>
 
       <!-- 제출 버튼 -->
-      <button class="learn-more" type="submit">상품 등록</button>
-      <input type="hidden" name="fSize" value="10"/>
+      <button class="learn-more" type="button" onclick="fCheck()">게시물 등록</button>
+      <input type="hidden" name="fSize"/>
     </form>
   </div>
   

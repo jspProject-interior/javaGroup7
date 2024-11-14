@@ -50,7 +50,17 @@
 	  width: 300px;
 	  height: 400px;
 	}
-	
+	.interiorImgCrop{
+		background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+      text-decoration: none;
+  		color: inherit;
+	}
 	.mainImgText {
 		position: absolute;
 		bottom: 40%;
