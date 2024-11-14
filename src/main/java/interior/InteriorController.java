@@ -20,12 +20,17 @@ public class InteriorController extends HttpServlet{
 		com = com.substring(com.lastIndexOf("/"), com.lastIndexOf("."));
 		
 		if(com.equals("/Interior")) {
+			command = new InteriorCommand();
+			command.execute(request, response);
 			viewPage += "/interior.jsp";
 		}
 		else if(com.equals("/InteriorInput")) {
+			viewPage += "/interiorInput.jsp";
+		}
+		else if(com.equals("/InteriorInputOk")) {
 			command = new InteriorInputCommand();
 			command.execute(request, response);
-			viewPage += "/interiorInput.jsp";
+			viewPage = "/include/message.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

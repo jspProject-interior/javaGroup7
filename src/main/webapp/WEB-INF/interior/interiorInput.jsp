@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <link rel="icon" href="${ctp}/images/favicon.png">
+  <link rel="icon" href="${ctp}/images/main/favicon.png">
   <title>인테리어 등록하기 | 그린테리어</title>
   <jsp:include page="/include/bs4.jsp"/>
   <link rel="stylesheet" type="text/css" href="${ctp}/css/interiorInput.css">
@@ -54,7 +54,7 @@
   <jsp:include page="/include/header.jsp"/>
   <div class="contain">
     <h1 style="font-family: 'EliceDigitalBaeum-Bd';">게시물 등록</h1>
-    <form name="myform" action="InteriorInput.in">
+    <form name="myform" method="post" action="InteriorInputOk.in"  enctype="multipart/form-data">
 
       <!-- 업체명 -->
       <div class="form-group">
@@ -69,10 +69,10 @@
         <hr>
         <select class="form-control" name="category">
           <option>카테고리</option>
-          <option value="modern">모던</option>
-          <option value="natural">네츄럴</option>
-          <option value="vintage">빈티지</option>
-          <option value="etc" onclick="etcShow()">기타</option>
+          <option value="MODERN">모던</option>
+          <option value="NATURALnatural">네츄럴</option>
+          <option value="VINTAGE">빈티지</option>
+          <option value="ETC" onclick="etcShow()">기타</option>
         </select>
         <div id="etc" class="hidden">
           <textarea rows="5" name="etc" class="form-control" placeholder="기타 카테고리 입력"></textarea>
@@ -131,6 +131,7 @@
 
       <!-- 제출 버튼 -->
       <button class="learn-more" type="submit">상품 등록</button>
+      <input type="hidden" name="fSize" value="10"/>
     </form>
   </div>
   

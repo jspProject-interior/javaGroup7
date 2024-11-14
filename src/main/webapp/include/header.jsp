@@ -19,7 +19,7 @@
       top: 0;
       left: 0;
       color: var(--color-dark-gray);
-      padding: 1%;
+      padding: 1% 4.5% 1% 1%;
     }
 
     .nav {
@@ -250,7 +250,7 @@
           <li class="nav_menu" style="padding: 0 50px;"><a href="#">가구</a></li>
           <li class="nav_menu"><a href="#">컨설팅 사례</a></li>
         </ul>
-        <ul class="nav" style="padding-top:0.5%; padding-right: 3%;">
+        <ul class="nav" style="padding-top:0.5%;">
           <li><a href="#"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a></li>
           <li><a href="#" style="padding: 0 20px;"><i class="fa-solid fa-cart-shopping fa-lg"></i></a></li>
           <li><a href="#" style="padding-right:20px;"><i class="fa-regular fa-heart fa-lg"></i></a></li>

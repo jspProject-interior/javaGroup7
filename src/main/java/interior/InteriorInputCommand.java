@@ -1,6 +1,8 @@
 package interior;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Enumeration;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -14,22 +16,66 @@ public class InteriorInputCommand implements InteriorInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String mid = (String) session.getAttribute("sMid");
-		
-		String realPath = request.getServletContext().getRealPath("/images/pds");
+		String realPath = request.getServletContext().getRealPath("/images/interior/upload");
 		int maxSize = 1024 * 1024	* 30;	// 1024Byte=1KB=2^10 , 1MB=1024KBte=2^20Byte=1024B*1024B
 		String encoding = "UTF-8";
 		
 		MultipartRequest multipartRequest = new MultipartRequest(request, realPath, maxSize, encoding, new DefaultFileRenamePolicy());
 		
-		String company = multipartRequest.getParameter("company") == null ? "" : request.getParameter("company");
-		String category = multipartRequest.getParameter("category") == null ? "" : request.getParameter("category");
-		String title = multipartRequest.getParameter("title") == null ? "" : request.getParameter("title");
-		String titleImg = multipartRequest.getParameter("titleImg") == null ? "" : request.getParameter("titleImg");
-		String subImg = multipartRequest.getParameter("subImg") == null ? "" : request.getParameter("subImg");
-		String thumbnail = multipartRequest.getParameter("thumbnail") == null ? "" : request.getParameter("thumbnail");
+		Enumeration fileNames = multipartRequest.getFileNames();
 		
+		String file = "";
+		String ofName = "";
+		String fsName = "";
+		while(fileNames.hasMoreElements()) {
+			file = (String) fileNames.nextElement();
+			
+			if(multipartRequest.getFilesystemName(file) != null) { 
+				ofName += multipartRequest.getOriginalFileName(file) + "/";
+				fsName += multipartRequest.getFilesystemName(file) + "/";
+			}
+		}
+		ofName = ofName.substring(0, ofName.lastIndexOf("/"));
+		fsName = fsName.substring(0, fsName.lastIndexOf("/"));
+		
+		HttpSession session = request.getSession();
+		String mid = (String) session.getAttribute("sMid");
+		String company = multipartRequest.getParameter("company") == null ? "" : multipartRequest.getParameter("company");
+		String category = multipartRequest.getParameter("category") == null ? "" : multipartRequest.getParameter("category");
+		String title = multipartRequest.getParameter("title") == null ? "" : multipartRequest.getParameter("title");
+		int price = multipartRequest.getParameter("price") == null || multipartRequest.getParameter("price").equals("") ? 0 : Integer.parseInt(multipartRequest.getParameter("price"));
+		String titleImg = multipartRequest.getFilesystemName("titleImg") == null ? "" : multipartRequest.getFilesystemName("titleImg");
+		String subImg = multipartRequest.getFilesystemName("subImg") == null ? "" : multipartRequest.getFilesystemName("subImg");
+		String thumbnail = multipartRequest.getFilesystemName("thumbnail") == null ? "" : multipartRequest.getFilesystemName("thumbnail");
+		int fSize = (multipartRequest.getParameter("fSize")==null || multipartRequest.getParameter("fSize").equals("")) ? 0 : Integer.parseInt(multipartRequest.getParameter("fSize"));
+		
+		InteriorVO vo = new InteriorVO();
+		
+		vo.setMid(mid);
+		vo.setCompany(company);
+		vo.setCategory(category);
+		vo.setTitle(title);
+		vo.setPrice(price);
+		vo.setTitleImg(titleImg);
+		vo.setSubImg(subImg);
+		vo.setThumbnail(thumbnail);
+		vo.setfName(ofName);
+		vo.setfSName(fsName);
+		vo.setfSize(fSize);
+		
+		System.out.println("vo : " + vo);
+		
+		InteriorDAO dao = new InteriorDAO();
+		
+		int res = dao.setInteriorInput(vo);
+		
+		if(res != 0) {
+			request.setAttribute("message", "게시물 등록이 완료되었습니다.");
+			request.setAttribute("url", "Interior.in");
+		}
+		else {
+			request.setAttribute("message", "잠시 후 다시 시도해주세요.");
+			request.setAttribute("url", "InteriorInput.in");
+		}
 	}
 }
-
