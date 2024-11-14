@@ -216,48 +216,12 @@
 		// 정규식 검사 함수
 		let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자
 	  let regex2 = /^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/;  //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
-	  let regex3 = /^[가-힣a-zA-Z]$/;  // (성명)한글,영문만 적어도 1자이상 
+	  let regex3 = /^[가-힣a-zA-Z]+$/;  // (성명)한글,영문만 적어도 1자이상 
  		let regex4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
  		let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/; //(전화번호)
- 		let regex6 = /\d{7,10}$/g; //(resident)
+ 		let regex6 = /\d{7}$/; //(resident-고객)
+ 		let regex7 = /\d{10}$/; //(resident-업체)
 		
-		// 아이디 중복 검사 
-		function idCheck() {
-			let mid = document.getElementById("mid").value;
-			
-			if(mid.trim() == "") {
-				alert("아이디를 입력하세요");
-				myform.mid.focus();
-			}
-			else if(!regex1.test(mid)) {
-				document.getElementById("midError").innerHTML="아이디 형식에 맞춰주세요.(영어/숫자만 4~20자)";
-		    myform.mid.focus();
-			}
-			else {
-  		  document.getElementById("midError").innerHTML="";
-				let url = "MemberIdCheck.mem?mid="+mid;
-				window.open(url, "idCheckWindow", "width=500px, height=250px");
-				idCheckSw = 1;
-			}
-		}
-		
-		// 전화번호 길이 제한(4자리 이상부터 입력 불가)
-		function handleOnInput(el, maxlength) {
-		  if(el.value.length > maxlength)  {
-		    el.value = el.value.substr(0, maxlength);
-		  }
-		}
-		// 첫 번째 전화번호 내용 입력 후 자동으로 커서 옮기기
-		$(document).ready(function() {
-	    $(".inputs").keyup(function () {
-        if (this.value.length == this.maxLength) {
-          $(this).next('.inputs').focus();
-        }
-	    });
-		});	
-		
-		let check = true;
-
 		// 가입부분 체크
 		function joinCheck(){
 		  let mid = document.getElementById("mid").value.trim();
@@ -282,12 +246,8 @@
 		  let extraAddress = myform.extraAddress.value + " ";
 			let adress = postcode + " /" + roadAddress + " /" + detailAddress + " /" + extraAddress + " ";
 		  
-			let fName
 		  // 코스라이브러리 받아주는 서블릿쪽이 멀티파츠로 받아야 합니다 (사진을 넘길때- 업체에서 멀티파츠 갯 파라멬타)
 			
-		  
-			
-		  	
 		  // 아이디 확인
 		  if(!regex1.test(mid)) {
 		    document.getElementById("midError").innerHTML="아이디 형식에 맞춰주세요.(영어/숫자만 4~20자)";
@@ -300,12 +260,12 @@
 		  
 		  // 비밀번호 확인
 		  if(!regex2.test(pwd1)) {
-		    document.getElementById("pwdError").innerHTML="비밀번호가 올바르지 않습니다.(영어/숫자 필수, 특수문자 가능 4~20자)";
+		    document.getElementById("pwdError1").innerHTML="비밀번호가 올바르지 않습니다.(영어/숫자 필수, 특수문자 가능 4~20자)";
 		    check = false;
 		  }
 		  else {
-		    document.getElementById("pwdError").innerHTML="";
-			    
+		    document.getElementById("pwdError1").innerHTML="";
+		    
 			  if(pwd2=== "") {
 			    document.getElementById("pwdError2").innerHTML="비밀번호를 다시 입력해주세요.";
 			    check = false;
@@ -315,7 +275,7 @@
 			    check = false;
 			  }
 			  else {
-		  	  document.getElementById("pwdError").innerHTML="";
+		  	  document.getElementById("pwdError1").innerHTML="";
 		  	  document.getElementById("pwdError2").innerHTML="";
 		  	  check = true;
 			  }
@@ -387,6 +347,27 @@
 		  }
 		}
 		
+		// 아이디 중복 검사 
+		function idCheck() {
+			let mid = myform.mid.value.trim();
+			//let mid = document.getElementById("mid").value;
+			
+			if(mid == "") {
+				alert("아이디를 입력하세요");
+				myform.mid.focus();
+			}
+			else if(!regex1.test(mid)) {
+				document.getElementById("midError").innerHTML="아이디 형식에 맞춰주세요.(영어/숫자만 4~20자)";
+		    myform.mid.focus();
+			}
+			else {
+  		  document.getElementById("midError").innerHTML="";
+				let url = "MemberIdCheck.mem?mid="+mid;
+				document.getElementById('mid').readOnly = true;
+				window.open(url, "idCheckWindow", "width=500px, height=250px");
+				idCheckSw = 1;
+			}
+		}
 		function midCheck() {
 			//let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자 
 			let mid = document.getElementById("mid").value.trim();
@@ -402,37 +383,47 @@
 			   check = true;
 		  }			
 		}
+		
 		function pwd1Check() {
 			//let regex2 = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/g; //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
 			let pwd1 = document.getElementById("pwd1").value.trim();
-			document.getElementById("pwdError").innerHTML="";
+			document.getElementById("pwdError1").innerHTML="";
 			
 		  // 비밀번호 확인
 		  if(!regex2.test(pwd1)) {
-		    document.getElementById("pwdError").innerHTML="비밀번호가 올바르지 않습니다.(영어/숫자 필수, 특수문자 가능 4~20자)";
+		    document.getElementById("pwdError1").innerHTML="비밀번호가 올바르지 않습니다.(영어/숫자 필수, 특수문자 가능 4~20자)";
 		    check = false;
 		  }
 		  else {
-		    document.getElementById("pwdError").innerHTML="";
+		    document.getElementById("pwdError1").innerHTML="";
 	  	  check = true;
+	  		document.getElementById('pwd1').addEventListener('keydown', function(event) {
+	        if (event.key === 'Enter') {
+        	  document.getElementById('pwd2').focus();
+	        }
+		    });
 	  	}	
 		}
 		function pwd2Check() {
 			let pwd1 = document.getElementById("pwd1").value.trim();
 			let pwd2 = document.getElementById("pwd2").value.trim();
-			document.getElementById("pwdError").innerHTML="";
+			document.getElementById("pwdError1").innerHTML="";
 			document.getElementById("pwdError2").innerHTML="";
-			
-			
-		  // 비밀번호 확인2
+
+			// 비밀번호 확인2
 		  if(pwd1 !== pwd2) {
 			    document.getElementById("pwdError2").innerHTML="비밀번호가 동일하지 않습니다.";
 			    check = false;
 		  }
 		  else {
-	  	  document.getElementById("pwdError").innerHTML="";
+	  	  document.getElementById("pwdError1").innerHTML="";
 	  	  document.getElementById("pwdError2").innerHTML="";
 	  	  check = true;
+	  		document.getElementById('pwd2').addEventListener('keydown', function(event) {
+	        if (event.key === 'Enter') {
+        	  document.getElementById('name').focus();
+	        }
+		    });
 		  }
 		}
 		
@@ -449,9 +440,99 @@
 		  else {
 			  document.getElementById("nameError").innerHTML="";
 			  check = true;
+			  document.getElementById('name').addEventListener('keydown', function(event) {
+			        if (event.key === 'Enter') {
+		        	  document.getElementById('resident').focus();
+			        }
+				    });
 		  }			
 		}
 		
+		
+		
+		
+		
+		
+		function residentCheck1() {
+			//let regex6 = /\d{7}$/; //(resident-고객)
+			let resident = document.getElementById("resident").value.trim();
+			document.getElementById("residentError").innerHTML="";
+			
+		  // 주민번호 확인
+		  if(!regex6.test(resident)){
+		    document.getElementById("residentError").innerHTML="주민등록번호가 올바르지 않습니다.(주민등록번호 앞 7자리만)";
+		    check = false;
+		  }
+		  else {
+			  document.getElementById("residentError").innerHTML="";
+			  check = true;
+			  document.getElementById('resident').addEventListener('keydown', function(event) {
+	        if (event.key === 'Enter') {
+        	  document.getElementById('tel2').focus();
+	        }
+		    });
+		  }			
+		}
+/* 		function residentCheck2() {
+			//let regex7 = /\d{10}$/; //(resident-업체)
+			let resident = document.getElementById("resident").value.trim();
+			document.getElementById("residentError").innerHTML="";
+			
+		  // 사업자번호 확인
+		  if(!regex7.test(resident)){
+		    document.getElementById("residentError").innerHTML="사업자등록번호가 올바르지 않습니다.(사업자등록번호 10자리)";
+		    check = false;
+		  }
+		  else {
+			  document.getElementById("residentError").innerHTML="";
+			  check = true;
+			  document.getElementById('resident').addEventListener('keydown', function(event) {
+	        if (event.key === 'Enter') {
+        	  document.getElementById('tel2').focus();
+	        }
+		    });
+		  }			
+		} */
+		
+		function telCheck() {
+			//let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
+		  let tel1 = myform.tel1.value;
+		  let tel2 = myform.tel2.value;
+		  let tel3 = myform.tel3.value;
+		  let tel = tel1 + "-" + tel2 + "-" + tel3;
+		  
+		  // 전화번호 확인
+		  if(tel2===""){
+		    document.getElementById("telError").innerHTML="전화번호를 입력해주세요.";
+		    document.getElementById('tel2').focus();
+		    check = false;
+		  }
+		  else if(tel3===""){
+		    document.getElementById("telError").innerHTML="전화번호를 입력해주세요.";
+		    document.getElementById('tel3').focus();
+		    check = false;
+		  }
+		  else if(!regex5.test(tel)){
+		    document.getElementById("telError").innerHTML="전화번호 형식에 맞게 입력해주세요.";
+		    check = false;
+		  }
+		  else {
+		    document.getElementById("telError").innerHTML="";
+		    check = true;
+		    document.getElementById('tel3').addEventListener('keydown', function(event) {
+	        if (event.key === 'Enter') {
+	      	  document.getElementById('email').focus();
+	        }
+		    });
+		  }
+		}
+	 		
+		
+		
+		
+		
+		
+	 		
 		function emailCheck() {
 			//let regex4 = /^[0-9a-zA-Z]+$/g; // 이메일
     	let email1 = document.getElementById("email1").value.trim();
@@ -467,28 +548,13 @@
 			  check = true;
 		  }			
 		}
+	 		
+	 		
+	 		
+	 		
+	 		
+	 		
 		
-		function telCheck() {
-			//let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
-		  let tel1 = myform.tel1.value;
-		  let tel2 = myform.tel2.value;
-		  let tel3 = myform.tel3.value;
-		  let tel = tel1 + "-" + tel2 + "-" + tel3;
-		  
-		  // 전화번호 확인
-		  if(tel2==="" || tel3===""){
-		    document.getElementById("telError").innerHTML="전화번호를 입력해주세요.";
-		    check = false;
-		  }
-		  else if(!regex5.test(tel)){
-		    document.getElementById("telError").innerHTML="전화번호를 완성해주세요.";
-		    check = false;
-		  }
-		  else {
-		    document.getElementById("telError").innerHTML="";
-		    check = true;
-		  }
-		}
 		
 		/* 회원가입폼 */  
   function showCustomerForm() {
@@ -524,93 +590,99 @@
 	</div>
 
   <!-- 고객 회원가입 폼 (초기에는 숨김) -->
+<form name="myform" method="post" action="MemberJoinOk.mem">
   <div id="customerForm" style="display:none;">   
    <div class="container h-100">
-	    <div class="row h-100">
-	      <div class="d-table h-100" style="width: 70%; margin-left: 15%">
-	        <div class="d-table-cell align-middle">
-	          <div class="card">
-	            <div class="card-body">
-	              <div class="m-sm-4 p-2">
-	                <div class="mb-3"> 
-	                <font color="red">*</font> 필수 입력 항목(고객)
-	                </div>  
- 									<form name="myform" method="post" action="MemberJoinOk.mem">
-	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label class="m-0 p-0">아이디 (ID)</label>
-	                    <input type="button" value="아이디 중복체크" class="btn btn-sm text-right float-right mb-1" onclick="idCheck()"/>
-	                    <input type="text" class="form-control form-control-lg" name="mid" id="mid" onchange="midCheck()" placeholder="영문과 숫자를 포함한 4-20자 이내" required autofocus/>
-	                    <div id="midError" class="text-primary"></div>
-	                  </div>
-	                  <div class="form-group password">
-	                    <font color="red"><b>*&nbsp;</b></font><label class="password">비밀번호 (PASSWORD)</label> &nbsp; <span class="pwdEyes"><i class="fa fa-eye fa-lg"></i></span>
-	                    <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" onchange="pwd1Check()" placeholder="특수문자, 영문 대소문자, 숫자를 포함한 8-16자 이내">
-	                    <div id="pwdError" class="text-primary"></div>
-	                  </div>
-	                  <div class="form-group passwordCheck">
-	                    <font color="red"><b>*&nbsp;</b></font><label>비밀번호 재확인 (PASSWORD CHECK)</label> &nbsp; <span class="rePwdEyes"><i class="fa fa-eye fa-lg"></i></span>
-	                    <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" onchange="pwd2Check()" placeholder="비밀번호 재확인">
-	                     <div id="pwdError2" class="text-primary"></div>
-	                  </div>
-	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>성명 (NAME)</label>
-	                    <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문">
-	                    <div id="nameError" class="text-primary"></div>
-	                  </div>
-	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>주민등록번호 (RESIDENT)</label>
-	                    <input type="text" class="form-control form-control-lg" name="resident" id="resident" placeholder="주민번호 앞 7자리만 입력해주세요">
-	                    <span id="nickNameCheck"></span>
-	                  </div>
-	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
-	                    <div class="input-group">
-	                      <div class="input-group-append">
-	                        <input type="text" class="form-control form-control-lg"  name="tel1" id="tel1" value="010" readonly=""/>
-	                        <input type="text" class="form-control form-control-lg" name="tel2" id="tel2" placeholder="가운데 4자리"/>
-	                        <input type="text" class="form-control form-control-lg" name="tel3" id="tel3" placeholder="마지막 4자리"/>
-	                      </div>
-	                    </div>
-	                    <span id="telCheck"><font color="red">&nbsp;전화번호 형식에 맞지 않습니다!</font></span>
-	                  </div>
-	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>이메일</label>
-	                    <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="이메일 형식에 맞춰 입력해주세요">
-	                    <span id="emailCheck"><font color="red">&nbsp;이메일을 입력해주시기 바랍니다!</font></span>
-	                  </div>
-	                  <div class="form-group">
-	                    <label>주소</label>
-	                    <input class="btn btn-secondary text-right float-right" type="button" value="주소 찾기" onclick="sample6_execDaumPostcode()">
-	                  </div>
-	                  <div id="homeAddressInput">
-	                    <div class="form-group">
-	                      <label>우편번호</label>
-	                      <div class="input-group">
-	                        <input class="form-control form-control-lg" type="text" name="postcode" id="sample6_postcode" readonly=""/>
-	                      </div>
-	                    </div>
-	                    <div class="form-group">
-	                      <label>도로명 주소 / 지번 주소</label>
-	                      <input class="form-control form-control-lg" type="text" name="roadAddress" id="sample6_address" readonly=""/>
-	                    </div>
-	                    <div class="form-group">
-	                      <label>상세 주소</label>
-	                      <input class="form-control form-control-lg" type="text" name="detailAddress" id="sample6_detailAddress"/>
-	                    </div>
-	                  </div>
-	                  <p><br/></p>
-	                  <div class="text-center mt-3">
-	                    <input type="button" value="회원가입" class="form-control btn btn-lg btn-secondary" onclick="joinCheck()">
-	                  </div>
-	                </form>
+		<div class="card" style="width: 72%; margin-left: 14%">
+		  <div class="card-body">
+		    <div class="m-sm-4 p-3">
+		      <div class="mb-3"> <font color="red">*</font> 필수 입력 항목(고객)</div>  
+		      <div class="form-group">
+		        <font color="red"><b>*&nbsp;</b></font><label class="m-0 p-0">아이디 (ID)</label>
+		        <input type="button" value="아이디 중복체크" class="btn btn-sm text-right float-right mb-1" onclick="idCheck()"/>
+		        <input type="text" class="form-control form-control-lg" name="mid" id="mid" oninput="midCheck()" placeholder="영문과 숫자를 포함한 4~20자 이내" required autofocus/>
+		        <div id="midError" class="text-primary"></div>
+		      </div>
+		      <div class="form-group password">
+		        <font color="red"><b>*&nbsp;</b></font><label class="password">비밀번호 (PASSWORD)</label>
+		        <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" oninput="pwd1Check()" placeholder="영문/숫자 필수, 특수문자 가능 4~20자 이내">
+		        <div id="pwdError1" class="text-primary"></div>
+		      </div>
+		      <div class="form-group passwordCheck">
+		        <font color="red"><b>*&nbsp;</b></font><label>비밀번호 재확인 (PASSWORD CHECK)</label>
+		        <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" oninput="pwd2Check()" placeholder="비밀번호 재확인">
+		         <div id="pwdError2" class="text-primary"></div>
+		      </div>
+          <div class="form-group">
+            <font color="red"><b>*&nbsp;</b></font><label>성명 (NAME)</label>
+            <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문만">
+            <div id="nameError" class="text-primary"></div>
+          </div>
+          <div class="form-group">
+            <font color="red"><b>*&nbsp;</b></font><label>주민등록번호 (RESIDENT)</label>
+            <input type="text" class="form-control form-control-lg" name="resident" id="resident" maxlength="7" oninput="residentCheck1()" placeholder="주민등록번호 앞 7자리만">
+            <div id="residentError" class="text-primary"></div>
+          </div>
+          <div class="form-group">
+            <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
+            <div class="input-group">
+              <div class="input-group-append">
+                <select name="tel1" name="tel1" id="tel1" class="form-control">
+		              <option value="010" selected>010</option>
+		              <option value="02">02</option>
+				          <option value="032">032</option>
+				          <option value="033">033</option>
+				          <option value="041">041</option>
+				          <option value="042">042</option>
+				          <option value="043">043</option>
+		            </select>
+                <input type="text" class="form-control form-control-lg" name="tel2" id="tel2" maxlength="4" placeholder="가운데 자리"/>
+                <input type="text" class="form-control form-control-lg" name="tel3" id="tel3" maxlength="4" onchange="telCheck()" placeholder="마지막 자리"/>
+                <input type="hidden" name="tel" id="tel"/>
+				    	</div>
+				    	<div id="telError" class="text-primary"></div>
+          	</div>
+          </div>
+                  
+                  
+                  
+                  <div class="form-group">
+                    <font color="red"><b>*&nbsp;</b></font><label>이메일</label>
+                    <input class="form-control form-control-lg" type="email" name="email" id="email" placeholder="이메일 형식에 맞춰 입력해주세요">
+                    <span id="emailCheck"><font color="red">&nbsp;이메일을 입력해주시기 바랍니다!</font></span>
+                  </div>
+                  
+                  
+                  
+                  <div class="form-group">
+                    <label>주소</label>
+                    <input class="btn btn-secondary text-right float-right" type="button" value="주소 찾기" onclick="sample6_execDaumPostcode()">
+                  </div>
+                  <div id="homeAddressInput">
+                    <div class="form-group">
+                      <label>우편번호</label>
+                      <div class="input-group">
+                        <input class="form-control form-control-lg" type="text" name="postcode" id="sample6_postcode" readonly=""/>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>도로명 주소 / 지번 주소</label>
+                      <input class="form-control form-control-lg" type="text" name="roadAddress" id="sample6_address" readonly=""/>
+                    </div>
+                    <div class="form-group">
+                      <label>상세 주소</label>
+                      <input class="form-control form-control-lg" type="text" name="detailAddress" id="sample6_detailAddress"/>
+                    </div>
+                  </div>
+                  <p><br/></p>
+                  <div class="text-center mt-3">
+                    <input type="button" value="회원가입" class="form-control btn btn-lg btn-secondary" onclick="joinCheck()">
+                  </div>
  								</div>
 	            </div>
 	          </div>
 	        </div>
 	      </div>
-	    </div>
-	  </div>
-  </div>
 
     <!-- 업체 회원가입 폼 (초기에는 숨김) -->
   <div id="companyForm" style="display:none;">
@@ -624,8 +696,7 @@
 	                <div class="mb-3">
 	                  <font color="red">*</font> 필수 입력 항목(업체)
 	                </div>
-	                <form name="myform" method="post" action="/javaweb8J/JoinOk.kn_mem">
-	                  <div class="form-group">
+	               <!--    <div class="form-group">
 	                    <font color="red"><b>*&nbsp;</b></font><label>아이디 (ID)</label>
 	                    <input type="text" class="form-control form-control-lg" name="mid" id="mid" onchange="midCheck()" placeholder="영문과 숫자를 포함한 4-12자 이내"required autofocus/>
 	                    <div id="midError" class="text-primary"></div>
@@ -702,8 +773,7 @@
 	                  <p><br/></p>
 	                  <div class="text-center mt-3">
 	                    <input type="button" value="회원가입" class="form-control btn btn-lg btn-secondary" onclick="joinCheck()">
-	                  </div>
-	                </form>
+	                  </div> -->
 	              </div>
 	            </div>
 	          </div>
@@ -712,5 +782,6 @@
 	    </div>
 	  </div>
   </div>
+	                </form>
 </body>
 </html>
