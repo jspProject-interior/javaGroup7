@@ -642,7 +642,7 @@
 				data : {level : level},
 				success:function(res){
 					if(res != "0"){
-						alert(ALevel);
+						alert(res);
 					}
 				},
 				error:function(){
