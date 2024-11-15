@@ -295,16 +295,16 @@
  		/* 고 객 회 원 가 입 */		
 		// 아이디 중복 검사 
 		function idCheck() {
-			let mid = customer.mid.value;
+			let mid = myform.mid.value;
 			//let mid = document.getElementById("mid").value;
 			
 			if(mid == "") {
 				alert("아이디를 입력하세요");
-				customer.mid.focus();
+				myform.mid.focus();
 			}
 			else if(!regex1.test(mid)) {
 				document.getElementById("midError").innerHTML="아이디 형식에 맞춰주세요.(영어/숫자만 4~20자)";
-		    customer.mid.focus();
+		    myform.mid.focus();
 			}
 			else {
   		  document.getElementById("midError").innerHTML="";
@@ -417,7 +417,7 @@
 		  else {
 			  document.getElementById("residentError").innerHTML="";
 			  if (birthday.length >= 6) {
-				  customer.gender.focus();
+				  myform.gender.focus();
 	      }
 		  }
 		}
@@ -465,14 +465,14 @@
 		
 		function telCheck() {
 			//let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
-		  let tel1 = customer.tel1.value;
-		  let tel2 = customer.tel2.value;
-		  let tel3 = customer.tel3.value;
+		  let tel1 = myform.tel1.value;
+		  let tel2 = myform.tel2.value;
+		  let tel3 = myform.tel3.value;
 		  let tel = tel1 + "-" + tel2 + "-" + tel3;
 		  
 		  // 전화번호 확인
 		  if (document.getElementById("tel2").value.length >= 4) {
-			  customer.tel3.focus();
+			  myform.tel3.focus();
       }
 		  if(tel2===""){
 		    document.getElementById("telError").innerHTML="전화번호를 입력해주세요.";
@@ -519,19 +519,19 @@
 			let birthday = document.getElementById("birthday").value.trim();
 			let gender = document.getElementById("gender").value.trim();
 	  	 
-		  let tel1 = customer.tel1.value;
-		  let tel2 = customer.tel2.value;
-		  let tel3 = customer.tel3.value;
+		  let tel1 = myform.tel1.value;
+		  let tel2 = myform.tel2.value;
+		  let tel3 = myform.tel3.value;
 		  let tel = tel1 + "-" + tel2 + "-" + tel3;
 	  	
-		  let postcode = customer.postcode.value + " ";
-		  let roadAddress = customer.roadAddress.value + " ";
-		  let detailAddress = customer.detailAddress.value + " ";
-		  let extraAddress = customer.extraAddress.value + " ";
+		  let postcode = myform.postcode.value + " ";
+		  let roadAddress = myform.roadAddress.value + " ";
+		  let detailAddress = myform.detailAddress.value + " ";
+		  let extraAddress = myform.extraAddress.value + " ";
 			let address = postcode + " /" + roadAddress + " /" + detailAddress + " /" + extraAddress + " ";
 		  
-			//let birthdayR = customer.birthday.value.trim();
-			//let genderR = customer.gender.value.trim(); 
+			//let birthdayR = myform.birthday.value.trim();
+			//let genderR = myform.gender.value.trim(); 
 		  let resident = birthday + "-" + gender; 
 			
 		  // 코스라이브러리 받아주는 서블릿쪽이 멀티파츠로 받아야 합니다 (사진을 넘길때- 업체에서 멀티파츠 갯 파라멬타)
@@ -616,13 +616,13 @@
 		  }
 	    if(idCheckSw == 0) {
 				alert("아이디 중복확인을 해주세요.");
-				document.getElementById("idCheckBtn").focus();
+				document.getElementById("mid").focus();
 			} 
 			else {
-		    customer.tel.value = tel;
-		    customer.address.value = address;	    
-		    customer.resident.value = resident;
-		   	customer.submit();
+		    myform.tel.value = tel;
+		    myform.address.value = address;	    
+		    myform.resident.value = resident;
+		   	myform.submit();
 			}
 		}
 	 		
@@ -635,6 +635,21 @@
 		
 		/* 회원가입폼 */  
   function showCustomerForm() {
+			let level = myform.level.value;
+			$.ajax({
+				type : "post",
+				url  : "AjaxLevel.mem",
+				data : {level : level},
+				success:function(res){
+					if(res != "0"){
+						alert(ALevel);
+					}
+				},
+				error:function(){
+					alert("ALevel 전송오류");
+				}
+			});
+			
 	    document.getElementById('customerForm').style.display = 'block';  // 고객 폼 보이기
  	    document.getElementById('customerForm').classList.add('show'); 		// 애니메이션 효과 추가
 	    document.getElementById('companyForm').style.display = 'none';    // 업체 폼 숨기기
@@ -653,22 +668,24 @@
 <body>
   <p><br/></p>
   <div><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
-	<form name="customer" method="post" action="MemberJoinOk.mem">
+	<form name="myform" method="post" action="MemberJoinOk.mem">
 	  <!--Customer(1)/Company()  -->
 	  <div class="wrap">
 		  <div class="radio_area">
 		    <input type="radio" name="level" id="level1" value="1" onclick="showCustomerForm()">
-		    <label for="level1"><span></span>고객 </label>  
+		    <label for="level1"><span></span>고객 ${voLevel}</label>  
 		  </div>
 		  <div class="radio_area">
 		    <input type="radio" name="level" id="level0" onclick="showCompanyForm()">
-		    <label for="level0"><span></span>업체 </label>  
+		    <label for="level0"><span></span>업체 ${level}</label>  
 		  </div>   
 		</div>
 		
 	  <!-- 고객 회원가입 폼 (초기에는 숨김) -->
-		  <div id="customerForm" style="display:none;">   
-		   <div class="container h-100">
+		  <div id="customerForm" style="display:none;">
+		  	<c:if test="${vo.level==1}"><jsp:include page="/include/customerForm.jsp"/></c:if>
+		   
+		   <!-- <div class="container h-100">
 				<div class="card" style="width: 72%;">
 				  <div class="card-body">
 				    <div class="m-sm-4 p-3">
@@ -755,12 +772,12 @@
 							<p><br/></p>
 		          <div class="text-center">
 		          	<button class="learn-more" type="button" onclick="joinCheck()">회 원 가 입</button>
-		            <!-- <input type="button" value="회원가입" class="btn form-control" onclick="joinCheck()"> -->
+		            <input type="button" value="회원가입" class="btn form-control" onclick="joinCheck()">
 		          </div>
 						</div>
 		      </div>
 		    </div>
-		  </div>
+		  </div> -->
 		</div>
 	</form>
 	

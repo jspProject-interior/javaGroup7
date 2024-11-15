@@ -43,6 +43,11 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "main.main";
 		}
+		else if(com.equals("/AjaxLevel")) {
+			command = new AjaxLevelCommand();
+			command.execute(request, response);
+			return;
+		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
