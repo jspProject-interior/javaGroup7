@@ -18,7 +18,7 @@ public class MemberJoinOkCommand implements MemberInterface {
 		String email = request.getParameter("email") ==null ? "" : request.getParameter("email");
 		String resident = request.getParameter("resident") ==null ? "" : request.getParameter("resident");
 		String address = request.getParameter("address") ==null ? "" : request.getParameter("address");
-		String photo = request.getParameter("photo") ==null ? "" : request.getParameter("photo");
+		String photo = request.getParameter("photo") ==null ? "noimage.jpg" : request.getParameter("photo");
 		//String levelStr = request.getParameter("level") == null ? "" : request.getParameter("level");
 		int level = (request.getParameter("level") == null || request.getParameter("level").equals("")) ? 999 : Integer.parseInt(request.getParameter("level"));
 		String birthdayStr = request.getParameter("birthday") ==null ? "" : request.getParameter("birthday");
