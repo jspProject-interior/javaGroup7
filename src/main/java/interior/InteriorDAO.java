@@ -127,4 +127,28 @@ public class InteriorDAO {
 		}
 		return vo;
 	}
+
+	public int setInteriorUpdate(InteriorVO vo, int idx) {
+		int res = 0;
+		try {
+			sql = "update interior set category = ?, title = ?, price = ?, titleImg = ?, subImg = ?, thumbnail = ?, fName = ?, fSName = ?, fSize = ? where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getCategory());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setInt(3, vo.getPrice());
+			pstmt.setString(4, vo.getTitleImg());
+			pstmt.setString(5, vo.getSubImg());
+			pstmt.setString(6, vo.getThumbnail());
+			pstmt.setString(7, vo.getfName());
+			pstmt.setString(8, vo.getfSName());
+			pstmt.setInt(9, vo.getfSize());
+			pstmt.setInt(10, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
 }

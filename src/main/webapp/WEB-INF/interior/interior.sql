@@ -22,3 +22,7 @@ create table interior(
 select * from interior;
 
 drop table interior;
+
+delete from interior where idx > 10;
+
+update interior set category='모던', title='왜 다 바뀜?', price=0, titleImg='main.jpg', subImg='sub.jpg', thumbnail='thumbnail.jpg' where idx=1;

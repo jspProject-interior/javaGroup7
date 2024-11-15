@@ -194,6 +194,10 @@
     <img src="${ctp}/images/interior/upload/${vo.titleImg}" alt="${vo.title}">
   </div>
   <div class="contain">
+  <div class="input-group">
+	  <a href="InteriorUpdate.in?idx=${vo.idx}" class="btn btn-success">수정하기</a>
+	  <a href="" class="btn btn-danger ml-2">삭제하기</a>
+  </div>
     <div class="input-group">
 	    <div class="title">${vo.title}</div>
 	    <div class="trash"> | </div>
