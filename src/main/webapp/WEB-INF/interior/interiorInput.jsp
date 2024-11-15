@@ -123,7 +123,7 @@
         <select class="form-control" id="category" name="category">
           <option value="null">카테고리</option>
           <option value="MODERN">모던</option>
-          <option value="NATURALnatural">네츄럴</option>
+          <option value="NATURAL">네츄럴</option>
           <option value="VINTAGE">빈티지</option>
           <option value="ETC" onclick="etcShow()">기타</option>
         </select>

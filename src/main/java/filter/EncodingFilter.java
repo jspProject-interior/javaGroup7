@@ -13,24 +13,19 @@ import javax.servlet.annotation.WebFilter;
 @WebFilter("/*")
 public class EncodingFilter implements Filter{
 	
-	/*
-	 * @Override public void init(FilterConfig filterConfig) throws ServletException
-	 * { System.out.println("이곳은 init 메소드 입니다."); }
-	 */
 
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-	  request.setCharacterEncoding("utf-8");
-	  response.setContentType("text/html; charset=utf-8");
-	  //System.out.println("11. 필터 수행 전");
-	  
-	  chain.doFilter(request, response);
-	  
-	  //System.out.println("22. 필터 수행 후");
-	  
+		String uri = ((javax.servlet.http.HttpServletRequest) request).getRequestURI();
+
+    // 정적 리소스의 경우 필터 처리하지 않음
+    if (uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith(".png") || uri.endsWith(".jpg") || uri.endsWith(".jpeg") || uri.endsWith(".gif")) {
+        chain.doFilter(request, response);
+        return;
+    }
+
+    request.setCharacterEncoding("utf-8");
+    response.setContentType("text/html; charset=utf-8");
+    chain.doFilter(request, response);
 	}
-	/*
-	 * @Override public void destroy() { System.out.println("이곳은 destroy 메소드 입니다.");
-	 * }
-	 */
 }
