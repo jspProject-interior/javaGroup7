@@ -20,6 +20,7 @@ public class AjaxLevel extends HttpServlet{
 		
 		System.out.println(vo);
 		request.setAttribute("vo", vo);
+		request.setAttribute("level", ALevel);
 		response.getWriter().write(ALevel+"");
 	}
 }
