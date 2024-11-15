@@ -220,8 +220,8 @@
     /* 색상 변수 */
 		:root {
 			--bg: #fff;
-			--text: #382b22;
-			--light-pink: #e4dfcb;
+			--text: #fff;
+			--light-pink: #e8e6df;
 			--pink: #8a7c66;
 			--dark-pink: #6e5f4f;
 			--pink-border: #8a7c66;
