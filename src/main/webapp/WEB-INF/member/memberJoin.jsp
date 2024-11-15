@@ -281,6 +281,9 @@
   <script>
  		// 아이디 중복버튼을 클릭했는지의 여부를 확인하기 위한 변수(버튼 클릭 후엔 내용 수정처리 불가)
 		let idCheckSw = 0;
+ 		
+ 		//유효성 체크
+		let check = true;
  
 		// 정규식 검사 함수
 		let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자
@@ -288,7 +291,7 @@
 	  let regex3 = /^[가-힣a-zA-Z]{1,10}$/;  // (성명)한글,영문만 적어도 1자이상 
  		let regex4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
  		let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/; //(전화번호)
- 		let regex6 = /[0-9]{6}[1-4]{1}$/; //(resident-고객(주민등록번호):마지막자리는 성별을 나타내서 1-4까지의 숫자만 들어오도록) 오류임
+ 		let regex6 = /[0-9]{6}$/; //(birthday)
  		//let regex6 = /\d{6}[1-4]$/; //(resident-고객(주민등록번호):마지막자리는 성별을 나타내서 1-4까지의 숫자만 들어오도록)
  		//let regex7 = /\d{10}$/; //(resident-업체)
 
@@ -296,6 +299,7 @@
 		// 아이디 중복 검사 
 		function idCheck() {
 			let mid = myform.mid.value.trim();
+			
 			//let mid = document.getElementById("mid").value;
 			
 			if(mid == "") {
@@ -395,7 +399,7 @@
 		}
 		
 		function residentCheck1() {
-			//let regex6 = /\d{6}[1-4]$/; //(resident-고객)
+			//let regex6 = /\d{6}$/; //(resident-고객)
 			let resident = document.getElementById("resident1").value.trim();
 			document.getElementById("residentError1").innerHTML="";
 			
@@ -414,6 +418,50 @@
 		    });
 		  }			
 		}
+		
+		function birthdayCheck() {
+			//let regex6 = /\d{6}$/; //(birthday)
+			let birthday = document.getElementById("birthday").value.trim();
+			document.getElementById("birthday").innerHTML="";
+			
+			// 생년월일 확인
+			if(!regex6.test(birthday)){
+			    document.getElementById("residentError").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
+			    check = false;
+			  }
+		  else {
+			  document.getElementById("residentError").innerHTML="";
+			  document.getElementById('birthday').addEventListener('input', function() {
+	        if (regex6.test(birthday)) {
+	        	document.getElementById('gender').focus();
+	        }
+		    });
+		  }
+			return check;
+		}
+		
+		function genderCheck() {
+	    let gender = document.getElementById("gender").value.trim();
+	    document.getElementById("residentError").innerHTML = "";
+
+	    // 성별 값이 1~4 사이에 있는지 확인
+	    if (gender < 1 || gender > 4 || isNaN(gender)) {
+	        document.getElementById("residentError").innerHTML = "주민등록번호가 올바르지 않습니다.(성별은 1~4 사이의 숫자여야 합니다)";
+	        check = false;
+	    }
+	    else {
+        document.getElementById("residentError").innerHTML = "";
+        document.getElementById('gender').addEventListener('keydown', function(event) {
+	        if (event.key === 'Enter') {
+	        	document.getElementById('tel2').focus();
+	        }
+		    });
+	    }
+	    return check;  // 유효성 검사 결과 반환
+		}
+		
+		
+		
 /* 		function residentCheck2() {
 			//let regex7 = /\d{10}$/; //(resident-업체)
 			let resident = document.getElementById("resident").value.trim();
@@ -491,9 +539,10 @@
 		  let pwd1 = document.getElementById("pwd1").value.trim();
 		  let pwd2 = document.getElementById("pwd2").value.trim();
 		  let name = document.getElementById("name").value.trim();
-		 	let resident = document.getElementById("resident1").value.trim();
 	  	//let company = document.getElementById("comany").value.trim();
 	  	let email = document.getElementById("email").value.trim();
+			let birthday = document.getElementById("birthday").value.trim();
+			let gender = document.getElementById("gender").value.trim();
 	  	 
 		  let tel1 = myform.tel1.value;
 		  let tel2 = myform.tel2.value;
@@ -504,8 +553,12 @@
 		  let roadAddress = myform.roadAddress.value + " ";
 		  let detailAddress = myform.detailAddress.value + " ";
 		  let extraAddress = myform.extraAddress.value + " ";
-			let adress = postcode + " /" + roadAddress + " /" + detailAddress + " /" + extraAddress + " ";
+			let address = postcode + " /" + roadAddress + " /" + detailAddress + " /" + extraAddress + " ";
 		  
+			//let birthdayR = myform.birthday.value.trim();
+			//let genderR = myform.gender.value.trim(); 
+		  let resident = birthday + "-" + gender; 
+			
 		  // 코스라이브러리 받아주는 서블릿쪽이 멀티파츠로 받아야 합니다 (사진을 넘길때- 업체에서 멀티파츠 갯 파라멬타)
 			
 		  // 아이디 확인
@@ -575,12 +628,12 @@
 		    check = true;
 		  }
 		  
-		  if(!regex6.test(resident)){
-			    document.getElementById("residentError1").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
+		  if(!regex6.test(birthday)|| gender < 1 || gender > 4){
+			    document.getElementById("residentError").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
 			    check = false;
 			  }
 			  else {
-				  document.getElementById("residentError1").innerHTML="";
+				  document.getElementById("residentError").innerHTML="";
 				  check = true;
 			  }
 		  
@@ -596,6 +649,7 @@
 				else {
 			    myform.tel.value = tel;
 			    myform.address.value = address;	    
+			    myform.resident.value = resident;
 			   	myform.submit();
 				}
 		  }
@@ -629,6 +683,9 @@
   <p><br/></p>
   <div><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
   
+
+  <!-- 고객 회원가입 폼 (초기에는 숨김) -->
+	<form name="myform" method="post" action="MemberJoinOk.mem">
   <!--Customer(1)/Company(2)  -->
   <div class="wrap">
 	  <div class="radio_area">
@@ -640,9 +697,6 @@
 	    <label for="level0"><span></span>업체 </label>  
 	  </div>   
 	</div>
-
-  <!-- 고객 회원가입 폼 (초기에는 숨김) -->
-	<form name="myform" method="post" action="MemberJoinOk.mem">
 	  <div id="customerForm" style="display:none;">   
 	   <div class="container h-100">
 			<div class="card" style="width: 72%;">
@@ -671,10 +725,15 @@
 	            <div id="nameError" class="text-primary"></div>
 	          </div>
 	          <div class="form-group">
-	            <font color="red"><b>*&nbsp;</b></font><label for="resident1" >주민등록번호 (RESIDENT)</label>
-	            <input type="text" class="form-control form-control-lg" name="resident1" id="resident1" maxlength="7" oninput="residentCheck1()" placeholder="주민등록번호 앞 7자리만">
-							<input type="hidden" name="resident" id="resident"/>	            
-	            <div id="residentError1" class="text-primary"></div>
+	            <font color="red"><b>*&nbsp;</b></font><label>주민등록번호 (RESIDENT)</label>
+	             <div class="input-group">
+	              <div class="input-group-append" style="display: flex; width: 100%;">
+			            <input type="text" class="form-control form-control-lg" name="birthday" id="birthday" maxlength="6" oninput="birthdayCheck()"  placeholder="주민등록번호 앞 6자리만">
+			            <input type="text" class="form-control form-control-lg" name="gender" id="gender" maxlength="1" onkeyup="genderCheck()"  placeholder="주민등록번호 뒤 1자리만">
+									<input type="hidden" name="resident" id="resident"/>	  
+								</div> 
+	            	<div id="residentError" class="text-primary"></div>
+							</div>         
 	          </div>
 	          <div class="form-group">
 	            <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>

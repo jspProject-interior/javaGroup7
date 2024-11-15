@@ -16,17 +16,50 @@ public class MemberJoinOkCommand implements MemberInterface {
 		String company = request.getParameter("company") ==null ? "" : request.getParameter("company");
 		String tel = request.getParameter("tel") ==null ? "" : request.getParameter("tel");
 		String email = request.getParameter("email") ==null ? "" : request.getParameter("email");
-		String resident = request.getParameter("resident1") ==null ? "" : request.getParameter("resident1");
+		String resident = request.getParameter("resident") ==null ? "" : request.getParameter("resident");
 		String address = request.getParameter("address") ==null ? "" : request.getParameter("address");
 		String photo = request.getParameter("photo") ==null ? "" : request.getParameter("photo");
+		//String levelStr = request.getParameter("level") == null ? "" : request.getParameter("level");
 		int level = (request.getParameter("level") == null || request.getParameter("level").equals("")) ? 999 : Integer.parseInt(request.getParameter("level"));
-		String birthday = null;
-		String gender = null;
+		String birthdayStr = request.getParameter("birthday") ==null ? "" : request.getParameter("birthday");
+		String genderStr = request.getParameter("gender") ==null ? "" : request.getParameter("gender");
 		
-		if(level == 999) {
-			 birthday = resident.substring(0,5);
-			 gender = resident.substring(6,1);			
+		String birthday = "";
+		String gender = "";
+		System.out.println("level : " + level);
+		// 성별 변환	
+		if(genderStr.equals("1")||genderStr.equals("3")) {
+			gender = "남성";
 		}
+		else {
+			gender = "여성";
+		}
+		
+		// 생년월일 변환	
+		if(genderStr.equals("1")||genderStr.equals("2")) {
+			String year = "19" + birthdayStr.substring(0, 2);
+      String month = birthdayStr.substring(2, 4);       
+      String day = birthdayStr.substring(4, 6);
+      
+      birthday = year + "-" + month + "-" + day;
+		}
+		else if(genderStr.equals("3")||genderStr.equals("4")){
+			String year = "20" + birthdayStr.substring(0, 2);
+      String month = birthdayStr.substring(2, 4);       
+      String day = birthdayStr.substring(4, 6);
+      
+      birthday = year + "-" + month + "-" + day;
+		}
+		else {
+			birthday = "1900-01-01";
+		}
+		
+		//level 변환
+		/*
+		 * if (!levelStr.isEmpty()) { try { level = Integer.valueOf(levelStr); // 문자열을
+		 * Integer로 변환 후 기본형 int로 사용 } catch (NumberFormatException e) { level = 999;
+		 * System.out.println("sql오류 : " + e.getMessage()); } }
+		 */
 		
 		MemberVO vo = new MemberVO();
 		
