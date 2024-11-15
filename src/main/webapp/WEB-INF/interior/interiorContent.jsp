@@ -175,7 +175,17 @@
 	  color: #333;
 	  padding-bottom: 20px;
 	}
-	  
+	h6 {
+			position: fixed;
+			right: 1rem;
+			bottom: -50px;
+			transition: 0.7s ease;
+		}
+		.on {
+			opacity: 0.8;
+			cursor: pointer;
+			bottom: 0;
+		}
   </style>
 </head>
 <jsp:include page="/include/header.jsp"/>
@@ -210,7 +220,6 @@
       </c:forEach>
     </div>
   </div>
-  <h6 id="topBtn" class="text-right mr-3"><i class="fa-solid fa-circle-chevron-up fa-2x"></i></h6>
   <jsp:include page="/include/footer.jsp"/>
 </body>
 </html>
