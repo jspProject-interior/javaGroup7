@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctp" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
+<html>
 <head>
   <link rel="icon" href="${ctp}/images/main/favicon.png">
   <title>회원가입 | 그린테리어</title>
@@ -11,6 +12,7 @@
   <jsp:include page="/include/fonts.jsp"/>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script src="${ctp}/js/woo.js"></script>
+  <%-- <link rel="stylesheet" type="text/css" href="${ctp}/css/memberJoin.css"> --%>
   <style>
 		body,html {
 			height:100%;
@@ -21,22 +23,27 @@
       background-size: cover;
  			background-position: center;
 		}
+		
 		.container {
 		  display: flex;
 		  justify-content: center; /* 수평 중앙 정렬 */
 		  align-items: center; /* 수직 중앙 정렬 */
 		  padding-bottom: 3%; /* 폼 아래에 여백을 줘서 배경 이미지가 5% 정도 보이게 함 */
 		}
+		
     .Logo {
       font-family: "Playfair Display", serif;
       font-size: 30px;
       color: white;
       text-decoration: none;
     }
+    
+    
     .Logo:hover {
       color: white;
       text-decoration: none;
     }
+    
     span {
     display: none;
     }
@@ -52,11 +59,11 @@
 			color:#777
 		}
 		
-		li{
+		li {
 			list-style:none
 		}
 		
-		*, :after, :before{
+		*, :after, :before {
 		-webkit-box-sizing:border-box;
 		-moz-box-sizing:border-box;
 		box-sizing:border-box
@@ -69,9 +76,9 @@
 		gap: 10%;
 		margin-top: 20%;
 		margin-bottom: 1%;
-		}
+		  }
 		
-		.wrap .radio_area label{
+		.wrap .radio_area label {
 		cursor:pointer;
 		display:flex;
 		align-items:center;
@@ -86,7 +93,7 @@
 		transition:all .3s ease;
 		}
 		
-		.wrap .radio_area label span{
+		.wrap .radio_area label span {
 		opacity:.3;
 		display:flex;
 		width:20px;
@@ -96,7 +103,7 @@
 		transition:all .3s ease;
 		}
 		
-		.wrap .radio_area label span:before{
+		.wrap .radio_area label span:before {
 		content:"";
 		width:6px;
 		height:6px;
@@ -106,23 +113,25 @@
 		transition:all .3s ease;
 		}
 		
-		.wrap .radio_area label:hover{
+		.wrap .radio_area label:hover {
 		background:#e1e1e1;
 		}
 		
-		.radio_area input[type=radio]{
+		.radio_area input[type=radio] {
 		display:none;
 		}
 		
-		.radio_area input[type=radio]:checked + label{
+		.radio_area input[type=radio]:checked + label {
 		color:#fff;
 		background:#111;
 		}
-		.radio_area input[type=radio]:checked + label span{
+		
+		.radio_area input[type=radio]:checked + label span {
 		opacity:1;
 		border-color:#fff;
 		}
-		.radio_area input[type=radio]:checked + label span:before{
+		
+		.radio_area input[type=radio]:checked + label span:before {
 		background:#fff;
 		}    
 		
@@ -159,104 +168,116 @@
       }
     }
     
-    /*회원가입*/
-    html {scroll-behavior:smooth;}
-		#container {font-size: 1.1em;}
+    /* 회원가입 */
+    html {
+   		scroll-behavior:smooth;
+    }
+    
+		#container {
+			font-size: 1.1em;
+		}
 		
     #homeAddressInput {
       display: none;
     }
+    
     input.form-control {
-    font-size: 15px;
+    	font-size: 15px;
     }
+    
 		.text-primary {
 			font-size: 0.8em;
 			padding:2px 10px;
 		}
+		
 		.form-control {
 			border-radius:70px; 
 		}
+		
 		.jClick {
 			width:100%;
 		  max-width: 300px;
 	    padding: 15px;
 	    border-radius:500px; 
 		}
+		
 		.btn {
 		  background-color: white;
   		border-color: #8a7c66;
   		color: #8a7c66;
   		border-width: medium;
 		}
+		
 		.btn:hover {
 			background-color: #8a7c66;
 			color: white;
 		}
+		
     .input-group-append {
       z-index: 0;
     }
     
     /* 색상 변수 */
 		:root {
-				--bg: #fff;
-				--text: #382b22;
-				--light-pink: #e4dfcb;
-				--pink: #8a7c66;
-				--dark-pink: #6e5f4f;
-				--pink-border: #8a7c66;
-				--pink-shadow: #b8b094;
+			--bg: #fff;
+			--text: #382b22;
+			--light-pink: #e4dfcb;
+			--pink: #8a7c66;
+			--dark-pink: #6e5f4f;
+			--pink-border: #8a7c66;
+			--pink-shadow: #b8b094;
 		}
+		
     /* 회원가입 등록 버튼 */
     button.learn-more {
-		font-size: 25px;
-		font-weight: 600;
-		width: 100%;
-		color: var(--text);
-		text-transform: uppercase;
-		padding: 10px 15px;
-		background: var(--light-pink);
-		border: 2px solid var(--pink-border);
-		border-radius: 0.75em;
-		transform-style: preserve-3d;
-		transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background	150ms cubic-bezier(0, 0, 0.58, 1);
+			font-size: 25px;
+			font-weight: 600;
+			width: 100%;
+			color: var(--text);
+			text-transform: uppercase;
+			padding: 10px 15px;
+			background: var(--light-pink);
+			border: 2px solid var(--pink-border);
+			border-radius: 0.75em;
+			transform-style: preserve-3d;
+			transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background	150ms cubic-bezier(0, 0, 0.58, 1);
 		}
 		
 		button.learn-more::before {
-				position: absolute;
-				content: '';
-				width: 100%;
-				height: 100%;
-				top: 0;
-				left: 0;
-				right: 0;
-				bottom: 0;
-				background: var(--dark-pink);
-				border-radius: inherit;
-				box-shadow: 0 0 0 2px var(--pink-border), 0 0.625em 0 0 var(--pink-shadow);
-				transform: translate3d(0, 0.75em, -1em);
-				transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow	150ms cubic-bezier(0, 0, 0.58, 1);
+			position: absolute;
+			content: '';
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: var(--dark-pink);
+			border-radius: inherit;
+			box-shadow: 0 0 0 2px var(--pink-border), 0 0.625em 0 0 var(--pink-shadow);
+			transform: translate3d(0, 0.75em, -1em);
+			transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow	150ms cubic-bezier(0, 0, 0.58, 1);
 		}
 
 		button.learn-more:hover {
-				transform: translate(0, 0.25em);
+			transform: translate(0, 0.25em);
 		}
 		
 		button.learn-more:hover::before {
-				box-shadow: 0 0 0 2px var(--pink-border), 0 0.5em 0 0 var(--pink-shadow);
-				transform: translate3d(0, 0.5em, -1em);
+			box-shadow: 0 0 0 2px var(--pink-border), 0 0.5em 0 0 var(--pink-shadow);
+			transform: translate3d(0, 0.5em, -1em);
 		}
 		
 		button.learn-more:active {
-				background: var(--light-pink);
-				transform: translate(0em, 0.75em);
+			background: var(--light-pink);
+			transform: translate(0em, 0.75em);
 		}
 		
 		button.learn-more:active::before {
-				box-shadow: 0 0 0 2px var(--pink-border), 0 0 var(--pink-shadow);
-				transform: translate3d(0, 0, -1em);
+			box-shadow: 0 0 0 2px var(--pink-border), 0 0 var(--pink-shadow);
+			transform: translate3d(0, 0, -1em);
 		}
   </style>
-  
   <script>
  		// 아이디 중복버튼을 클릭했는지의 여부를 확인하기 위한 변수(버튼 클릭 후엔 내용 수정처리 불가)
 		let idCheckSw = 0;
@@ -271,8 +292,7 @@
  		//let regex6 = /\d{6}[1-4]$/; //(resident-고객(주민등록번호):마지막자리는 성별을 나타내서 1-4까지의 숫자만 들어오도록)
  		//let regex7 = /\d{10}$/; //(resident-업체)
 
- /* 고 객 회 원 가 입 */		
-		
+ 		/* 고 객 회 원 가 입 */		
 		// 아이디 중복 검사 
 		function idCheck() {
 			let mid = myform.mid.value.trim();
@@ -659,8 +679,8 @@
 	          <div class="form-group">
 	            <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
 	            <div class="input-group">
-	              <div class="input-group-append">
-	                <select name="tel1" name="tel1" id="tel1" class="form-control">
+	              <div class="input-group-append" style="display: flex; width: 100%;">
+	                <select name="tel1" name="tel1" id="tel1" class="form-control" style="flex: 2;">
 			              <option value="010" selected>010</option>
 			              <option value="02">02</option>
 					          <option value="032">032</option>
@@ -669,8 +689,8 @@
 					          <option value="042">042</option>
 					          <option value="043">043</option>
 			            </select>
-	                <input type="text" class="form-control form-control-lg" name="tel2" id="tel2" maxlength="4" placeholder="가운데 자리"/>
-	                <input type="text" class="form-control form-control-lg" name="tel3" id="tel3" maxlength="4" onchange="telCheck()" placeholder="마지막 자리"/>
+	                <input type="text" class="form-control form-control-lg" name="tel2" id="tel2" maxlength="4" placeholder="가운데 자리" style="flex: 4;"/>
+	                <input type="text" class="form-control form-control-lg" name="tel3" id="tel3" maxlength="4" onchange="telCheck()" placeholder="마지막 자리" style="flex: 4;"/>
 	                <input type="hidden" name="tel" id="tel"/>
 					    	</div>
 					    	<div id="telError" class="text-primary"></div>
