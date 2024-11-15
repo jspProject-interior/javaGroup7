@@ -1,16 +1,16 @@
 @charset "UTF-8";
 /* footerStyle.css */
 
-body {
+.footer {
     font-family: 'GmarketSansMedium';
 }
 
-.header-container {
+.footer .header-container {
     background-color: #a67d3f;
     padding: 1.5%;
 }
 
-hr.footer-hr {
+.footer hr.footer-hr {
     border: 0;
     height: 1.5px;
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
@@ -18,60 +18,60 @@ hr.footer-hr {
     margin-bottom: 10px;
 }
 
-.left-col {
+.footer .left-col {
     text-align: left;
     margin-left: 3%;
 }
 
-.middle-col {
+.footer .middle-col {
     padding-left: 250px;
 }
 
-.title-link {
+.footer .title-link {
     color: white;
     font-size: 25px;
 }
 
-.input-group.contact-info {
+.footer .input-group.contact-info {
     margin-top: 10px;
 }
 
-.phone-number {
+.footer .phone-number {
     color: white;
     font-size: 16px;
     font-weight: bold;
 }
 
-.business-hours {
+.footer .business-hours {
     color: white;
     font-size: 14px;
     padding-top: 2px;
 }
 
-.input-group-append.text-white.pt-2.info-list {
+.footer .input-group-append.text-white.pt-2.info-list {
     font-size: 12px;
     padding-left: 20px;
 }
 
-.info-list ul {
+.footer .info-list ul {
     padding-left: 4.5%;
     padding-top: 10px;
     color: white;
     font-size: 13px;
 }
 
-.menu-link {
+.footer .menu-link {
     color: white;
     padding-left: 10px;
     font-size: 14px;
 }
 
-.footer {
+.footer .footer {
     text-align: left;
     font-size: 12px;
-		padding-left: 4.5%;
+    padding-left: 4.5%;
 }
 
-.footer div {
+.footer .footer div {
     font-size: 12px;
 }

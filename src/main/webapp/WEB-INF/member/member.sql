@@ -1,5 +1,7 @@
 select * from member;
 
+show tables;
+
 create table member(
   idx         int             not null auto_increment,         /*   회원/업체 고유번호 */
   mid         varchar(30)     not null,                        /*   회원/압체 아이디(중복불허) */

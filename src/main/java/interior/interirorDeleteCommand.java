@@ -26,7 +26,6 @@ public class interirorDeleteCommand implements InteriorInterface {
 			sub.delete();
 			thumb.delete();
 			res = "1";
-			System.out.println("여기 안타?");
 		}
 		
 		response.getWriter().write(res);

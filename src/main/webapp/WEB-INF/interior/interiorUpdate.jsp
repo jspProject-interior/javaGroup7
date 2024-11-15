@@ -77,10 +77,8 @@
 	    	data : query,
 	    	success:function(res) {
     			if(res != "0") {
-    				alert("사진 삭제 성공");
     				myform.submit();
     			}
-    			else alert("사진 삭제 실패");
     		},
     		error : function() {
     			alert("전송오류!");

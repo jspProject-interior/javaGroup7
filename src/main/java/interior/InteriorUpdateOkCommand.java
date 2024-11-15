@@ -67,7 +67,6 @@ public class InteriorUpdateOkCommand implements InteriorInterface {
 		vo.setfSName(fsName);
 		vo.setfSize(fSize);
 		
-		System.out.println("vo : " + vo);
 		
 		InteriorDAO dao = new InteriorDAO();
 		
