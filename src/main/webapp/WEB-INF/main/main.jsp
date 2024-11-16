@@ -39,6 +39,9 @@
 	    width: 100%;  /* swiper-wrapper 너비를 100%로 설정 */
 	}
 	
+	a:hover{
+		text-decoration: none;
+	}
 	.mainImgCrop img {
 		position: relative;
 		bottom: 0;
@@ -47,19 +50,21 @@
 	}
 	
 	.interiorImgCrop img {
-	  width: 300px;
+	  width: 100%;
 	  height: 400px;
+	  -webkit-transform: scale(1);
+		transform: scale(1);
+		transition: .2s ease-in-out;
+	}
+	
+	.interiorImgCrop img:hover {
+	  transform: scale(1.05);
 	}
 	.interiorImgCrop{
 		background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       text-align: center;
-      transition: box-shadow 0.3s ease;
       text-decoration: none;
-  		color: inherit;
 	}
 	.mainImgText {
 		position: absolute;
@@ -88,10 +93,16 @@
 	}
 	
 	.interiorText{
+		color: black;
 		margin-top: 5px;
 		font-size: 12px;
 		font-weight: bold;
 		font-family: 'EliceDigitalBaeum-Bd';
+		text-decoration: none;
+	}
+	
+	.interiorText:hover{
+		text-decoration: none;
 	}
 	
 	#MAGAZINE{
@@ -170,6 +181,20 @@
 		}
 		.mainBtnBack i{
 			padding-left: 10px; 
+		}
+		.swiper-slide:hover{
+			text-decoration: none;
+		}
+		.swiper-slide a {
+    text-decoration: none; /* 기본적으로 밑줄 제거 */
+		}
+		
+		.swiper-slide a:hover {
+		    text-decoration: none; /* 마우스를 올려도 밑줄 제거 */
+		}
+		
+		.interiorTextSub{
+	    color: #95a5a6;
 		}
 </style>
 <script>
@@ -269,46 +294,24 @@
 	
 		<div class="swiper-interior">
 			<div class="swiper-wrapper">
-				<div class="swiper-slide">
-					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main/main1.jpg" alt="Slide 1" />
+				<c:forEach var="inVO" items="${inVOS}" varStatus="st">
+					<div class="swiper-slide">
+						<a href="InteriorContent.in?idx=${inVO.idx}">
+							<div class="interiorImgCrop">
+								<img src="${ctp}/images/interior/upload/${inVO.thumbnail}" alt="Slide ${st.count}" />
+							</div>
+							<div class="interiorText">${inVO.title}</div>
+							<div class="input-group">
+								<div class="interiorText interiorTextSub input-group-prepend">${inVO.company} |</div>
+								<div class="interiorText interiorTextSub input-group-append ml-1"> ${inVO.category}</div>
+							</div>
+						</a>
 					</div>
-					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main/main2.jpg" alt="Slide 2" />
-					</div>
-					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main/main3.jpg" alt="Slide 3" />
-					</div>
-					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main/main3.jpg" alt="Slide 3" />
-					</div>
-					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main/main3.jpg" alt="Slide 3" />
-					</div>
-					<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
-				</div>
-				<div class="swiper-slide">
-					<div class="interiorImgCrop">
-						<img src="${ctp}/images/main/main3.jpg" alt="Slide 3" />
-					</div>
-						<div class="interiorText">2024년도 인테리어 트렌드 4가지</div>
-					</div>
-				</div>
+				</c:forEach>
 			</div>
 		</div>
 	</div>
+</div>
 	
 	<div class="blank"></div>
 	
@@ -320,11 +323,11 @@
 <script>
 	var swiper = new Swiper('.swiper-interior', {
 		  slidesPerView: 5,  // 한 번에 보일 슬라이드 개수
-		  spaceBetween : 0,
+		  spaceBetween : 20,
 		  loopAdditionalSlides : 1,
-		  loop: false,         // 무한 루프
+		  loop: true,         // 무한 루프
 		  autoplay: {
-		    delay: 2500,      // 자동으로 슬라이드 전환 (밀리초 단위)
+		    delay: 2000,      // 자동으로 슬라이드 전환 (밀리초 단위)
 		    disableOnInteraction: false
 		  }
 		});
