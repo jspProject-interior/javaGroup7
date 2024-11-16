@@ -28,7 +28,7 @@
   
   function winClose() {
 	  opener.window.myform.mid.value = '${vo.tempMid}';
-	  opener.window.myform.pwd1.focus();
+	  //opener.window.myform.pwd1.focus();
 	  window.close();
   }
    </script>

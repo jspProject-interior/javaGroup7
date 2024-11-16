@@ -70,7 +70,7 @@ public class MemberDAO {
 		
 		return vo;
 	}
-
+//회원가입
 	public int setMemberJoinOk(MemberVO vo) {
 		int res = 0;
 		try {

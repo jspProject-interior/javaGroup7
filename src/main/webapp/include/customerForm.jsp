@@ -23,142 +23,9 @@
 		  align-items: center; /* 수직 중앙 정렬 */
 		  padding-bottom: 3%; /* 폼 아래에 여백을 줘서 배경 이미지가 5% 정도 보이게 함 */
 		}
-		
-    .Logo {
-      font-family: "Playfair Display", serif;
-      font-size: 30px;
-      color: white;
-      text-decoration: none;
-    }
-    
-    
-    .Logo:hover {
-      color: white;
-      text-decoration: none;
-    }
     
     span {
     display: none;
-    }
-    
-    /* 라디오버튼 css */
-		ul, li, dl, dt, dd, p, span {
-			margin:0;
-			padding:0
-		}
-		
-		a {
-			text-decoration:none;
-			color:#777
-		}
-		
-		li {
-			list-style:none
-		}
-		
-		*, :after, :before {
-		-webkit-box-sizing:border-box;
-		-moz-box-sizing:border-box;
-		box-sizing:border-box
-		}
-		
-		.wrap {
-		display:flex;
-		align-items: center;
-		justify-content: center;
-		gap: 10%;
-		margin-top: 20%;
-		margin-bottom: 1%;
-		  }
-		
-		.wrap .radio_area label {
-		cursor:pointer;
-		display:flex;
-		align-items:center;
-		gap:20px;
-		height:50px;
-		padding:0 30px 0 20px;
-		border-radius:30px;
-		font-size:25px;
-		font-weight:500;
-		color:#999;
-		background:#f2f2f2;
-		transition:all .3s ease;
-		}
-		
-		.wrap .radio_area label span {
-		opacity:.3;
-		display:flex;
-		width:20px;
-		height:20px;
-		border:2px solid #111;
-		border-radius:50%;
-		transition:all .3s ease;
-		}
-		
-		.wrap .radio_area label span:before {
-		content:"";
-		width:6px;
-		height:6px;
-		margin:auto;
-		border-radius:50%;
-		background:#111;
-		transition:all .3s ease;
-		}
-		
-		.wrap .radio_area label:hover {
-		background:#e1e1e1;
-		}
-		
-		.radio_area input[type=radio] {
-		display:none;
-		}
-		
-		.radio_area input[type=radio]:checked + label {
-		color:#fff;
-		background:#111;
-		}
-		
-		.radio_area input[type=radio]:checked + label span {
-		opacity:1;
-		border-color:#fff;
-		}
-		
-		.radio_area input[type=radio]:checked + label span:before {
-		background:#fff;
-		}    
-		
-		 /* 애니메이션 효과 */
-     /* 라디오 버튼 선택 시 상단으로 이동하는 효과 */
-    .wrap.move-up {
-      margin-top: 50px; /* 두 버튼을 상단으로 이동시킴 */
-    }
-
-    .wrap .radio_area input[type=radio] + label ,.wrap.move-up {
-      position: relative;
-      margin-top: 0%; /* 선택된 라디오 버튼을 위로 밀기 */
-      transition: all .5s ease-in-out;
-    }
-    
-    #customerForm, #companyForm {
-      display: none;
-      transition: all .5s ease-in-out; /* 부드러운 전환 */
-    }
-
-    #customerForm.show, #companyForm.show {
-      display: block;
-      animation: slideUp 0.5s forwards; /* 폼이 올라오는 애니메이션 */
-    }
-
-    @keyframes slideUp {
-      0% {
-        transform: translateY(20%);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
     }
     
     /* 회원가입 */
@@ -523,8 +390,6 @@
 		  let extraAddress = myform.extraAddress.value + " ";
 			let address = postcode + " /" + roadAddress + " /" + detailAddress + " /" + extraAddress + " ";
 		  
-			//let birthdayR = myform.birthday.value.trim();
-			//let genderR = myform.gender.value.trim(); 
 		  let resident = birthday + "-" + gender; 
 			
 		  // 코스라이브러리 받아주는 서블릿쪽이 멀티파츠로 받아야 합니다 (사진을 넘길때- 업체에서 멀티파츠 갯 파라멬타)

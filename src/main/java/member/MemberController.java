@@ -20,7 +20,7 @@ public class MemberController extends HttpServlet {
 		String com = request.getRequestURI();
 		com = com.substring(com.lastIndexOf("/"), com.lastIndexOf("."));
 		
-		if(com.equals("/MemberJoin")) { //회원가입 입력창
+		if(com.equals("/MemberJoin")) { //회원가입
 			viewPage += "/memberJoin.jsp";
 		}
 		else if(com.equals("/MemberJoinOk")) {
@@ -28,7 +28,7 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/MemberIdCheck")) {
+		else if(com.equals("/MemberIdCheck")) { //아이디중복확인
 			command = new MemberIdCheckCommand();
 			command.execute(request, response);
 			viewPage += "/memberIdCheck.jsp";

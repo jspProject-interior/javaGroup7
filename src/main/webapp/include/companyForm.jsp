@@ -295,8 +295,8 @@
  		/* 고 객 회 원 가 입 */		
 		// 아이디 중복 검사 
 		function idCheck() {
-			let mid = myform.mid.value;
-			//let mid = document.getElementById("mid").value;
+			//let mid = myform.mid.value;
+			let mid = document.getElementById("mid").value;
 			
 			if(mid == "") {
 				alert("아이디를 입력하세요");
