@@ -215,7 +215,7 @@
 <body>
   <p><br/></p>
   <div><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
-	<form name="myform" method="post" action="MemberJoinOk.mem">
+	<form name="myform1" method="post" action="MemberJoinOk.mem">
 	  <!--Customer(1)/Company()  -->
 	  <div class="wrap">
 		  <div class="radio_area">
@@ -227,10 +227,10 @@
 		    <label for="level0"><span></span>업체 ${param.level}</label>  
 		  </div>   
 		</div>
+	</form>
 	  <!-- 고객 회원가입 폼 (초기에는 숨김) -->
 	  <div id="customerForm" style="display:none;"></div>
     <!-- 업체 회원가입 폼 (초기에는 숨김) -->
 	  <div id="companyForm" style="display:none;"></div>
-	</form>
 </body>
 </html>
