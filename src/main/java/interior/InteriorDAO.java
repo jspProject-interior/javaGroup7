@@ -59,11 +59,19 @@ public class InteriorDAO {
 	}
 
 //	인테리어 게시물 전체 불러오기
-	public ArrayList<InteriorVO> getinteriorList() {
+	public ArrayList<InteriorVO> getinteriorList(String category) {
 		ArrayList<InteriorVO> vos = new ArrayList<InteriorVO>();
 		try {
-			sql = "select * from interior";
-			pstmt = conn.prepareStatement(sql);
+			if(category.equals("ALL")) {
+				sql = "select * from interior";
+				pstmt = conn.prepareStatement(sql);
+			}
+			else {
+				sql = "select * from interior where category = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, category);
+			}
+			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

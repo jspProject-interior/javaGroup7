@@ -3,6 +3,7 @@
 
 .footer {
     font-family: 'GmarketSansMedium';
+    overflow-x: hidden;
 }
 
 .footer .header-container {

@@ -21,6 +21,10 @@ create table interior(
 
 select * from interior;
 
+select * from interior where category = 'MODERN';
+
+select * from interior where idx = 4;
+
 drop table interior;
 
 delete from interior where idx > 10;

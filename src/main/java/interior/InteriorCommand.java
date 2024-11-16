@@ -6,18 +6,15 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 public class InteriorCommand implements InteriorInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		String mid = (String) session.getAttribute("");
-		
+		String category = request.getParameter("category") == null ? "ALL" : request.getParameter("category");
 		InteriorDAO dao = new InteriorDAO();
 		
-		ArrayList<InteriorVO> vos = dao.getinteriorList();
+		ArrayList<InteriorVO> vos = dao.getinteriorList(category);
 		
 		request.setAttribute("vos", vos);
 	}

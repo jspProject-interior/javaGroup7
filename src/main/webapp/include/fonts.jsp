@@ -47,6 +47,14 @@
 	    font-style: normal;
 		}
 		
+		/* 인테리어 메뉴바 */
+		@font-face {
+		    font-family: 'ChosunGu';
+		    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+		
 		@font-face {
 	    font-family: 'SUIT-Regular';
 	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');
@@ -67,12 +75,7 @@
 		    font-weight: normal;
 		    font-style: normal;
 		}
-		@font-face {
-		    font-family: 'ChosunGu';
-		    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@1.0/ChosunGu.woff') format('woff');
-		    font-weight: normal;
-		    font-style: normal;
-		}
+		
 		
 		
 

@@ -21,7 +21,7 @@ public class MainController extends HttpServlet{
 		InteriorDAO inDAO = new InteriorDAO();
 		InteriorVO inVO = new InteriorVO();
 		
-		ArrayList<InteriorVO> inVOS = inDAO.getinteriorList();
+		ArrayList<InteriorVO> inVOS = inDAO.getinteriorList("ALL");
 		
 		request.setAttribute("inVOS", inVOS);
 		

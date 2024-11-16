@@ -125,6 +125,7 @@
           <option value="MODERN">모던</option>
           <option value="NATURAL">네츄럴</option>
           <option value="VINTAGE">빈티지</option>
+          <option value="UNIQUE">유니크</option>
           <option value="ETC" onclick="etcShow()">기타</option>
         </select>
         <div id="etc" class="hidden">

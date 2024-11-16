@@ -99,7 +99,43 @@
     .title{
     	padding: 0 20px;
     }
+    .contain{
+    	border: 1px solid #eee;
+    	margin: 1% 4.5%;
+    }
+    
+		button {
+		  color: gray;
+		  border: none;
+		  background: transparent;
+		  padding: 16px;
+		  font-size: 16px;
+		  border-bottom: 3px solid transparent;
+		}
+		
+    button.act {
+		  font-weight: bold;
+		  color: black;
+		  border-bottom: 3px solid black;
+		}
+		
+		.input-group {
+		  display: flex;
+		  justify-content: flex-start;
+		  gap: 10px;
+		  font-family: 'ChosunGu';
+		  font-weight: light;
+		}
   </style>
+  <script type="text/javascript">
+  	'use strict';
+  	
+  	function choice(category) {
+  	  location.href = "Interior.in?category=" + category;
+  	}
+  	
+
+  </script>
 </head>
 <jsp:include page="/include/mainHeader.jsp"/>
 <body>
@@ -108,6 +144,15 @@
       <img src="${ctp}/images/interior/interiorMain.jpg"/>
       <div class="main">GRINTERIOR</div>
       <input type="button" onclick="location.href='InteriorInput.in'" class="btn btn-success" value="게시물 등록"/>
+    </div>
+    <div class="contain">
+    	<div class="input-group">
+			  <button type="button" onclick="choice('ALL')" class="<c:if test='${param.category eq "ALL"}'>act</c:if>">전체</button>
+			  <button type="button" onclick="choice('MODERN')" class="<c:if test='${param.category eq "MODERN"}'>act</c:if>">모던</button>
+			  <button type="button" onclick="choice('NATURAL')" class="<c:if test='${param.category eq "NATURAL"}'>act</c:if>">네츄럴</button>
+			  <button type="button" onclick="choice('VINTAGE')" class="<c:if test='${param.category eq "VINTAGE"}'>act</c:if>">빈티지</button>
+			  <button type="button" onclick="choice('UNIQUE')" class="<c:if test='${param.category eq "UNIQUE"}'>act</c:if>">유니크</button>
+			</div>
     </div>
     <div class="grid-container">
       <c:forEach var="vo" items="${vos}" varStatus="st">

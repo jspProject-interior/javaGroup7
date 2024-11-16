@@ -18,7 +18,7 @@ public class InteriorContentCommand implements InteriorInterface {
 		InteriorDAO dao = new InteriorDAO();
 		
 		vo = dao.getInteriorContent(idx);
-		ArrayList<InteriorVO> vos = dao.getinteriorList();
+		ArrayList<InteriorVO> vos = dao.getinteriorList("ALL");
 		
 		request.setAttribute("vos", vos);
 		request.setAttribute("vo", vo);
