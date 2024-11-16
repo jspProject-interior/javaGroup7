@@ -300,29 +300,6 @@
 	    }
 		}
 		
-		
-		
-/* 		function residentCheck2() {
-			//let regex7 = /\d{10}$/; //(resident-업체)
-			let resident = document.getElementById("resident").value.trim();
-			document.getElementById("residentError").innerHTML="";
-			
-		  // 사업자번호 확인
-		  if(!regex7.test(resident)){
-		    document.getElementById("residentError").innerHTML="사업자등록번호가 올바르지 않습니다.(사업자등록번호 10자리)";
-		   return false;;
-		  }
-		  else {
-			  document.getElementById("residentError").innerHTML="";
-			  check = true;
-			  document.getElementById('resident').addEventListener('keydown', function(event) {
-	        if (event.key === 'Enter') {
-        	  document.getElementById('tel2').focus();
-	        }
-		    });
-		  }			
-		} */
-		
 		function telCheck() {
 			//let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
 		  let tel1 = myform.tel1.value;
@@ -528,7 +505,7 @@
 	            <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
 	            <div class="input-group">
 	              <div class="input-group-append" style="display: flex; width: 100%;">
-	                <select name="tel1" name="tel1" id="tel1" class="form-control" style="flex: 2;">
+	                <select name="tel1" id="tel1" class="form-control" style="flex: 2;">
 			              <option value="010" selected>010</option>
 			              <option value="02">02</option>
 					          <option value="032">032</option>
@@ -572,6 +549,7 @@
 						<p><br/></p>
 	          <div class="text-center">
 	          	<button class="learn-more" type="button" onclick="joinCheck()">회 원 가 입</button>
+	            <input type="hidden" name="level" id="level" value="1">
 	          </div>
 					</div>
 	      </div>

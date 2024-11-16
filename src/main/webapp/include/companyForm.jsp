@@ -4,17 +4,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="icon" href="${ctp}/images/main/favicon.png">
-  <title>회원가입 | 그린테리어</title>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <jsp:include page="/include/bs4.jsp"/>
-  <jsp:include page="/include/fonts.jsp"/>
-  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-  <script src="${ctp}/js/woo.js"></script>
-  <%-- <link rel="stylesheet" type="text/css" href="${ctp}/css/memberJoin.css"> --%>
+  <script src="https://kit.fontawesome.com/0c69fdf2c0.js" crossorigin="anonymous"></script>
   <style>
-		body,html {
+  body,html {
 			height:100%;
 			margin:0;
 			padding:0;
@@ -30,142 +24,9 @@
 		  align-items: center; /* 수직 중앙 정렬 */
 		  padding-bottom: 3%; /* 폼 아래에 여백을 줘서 배경 이미지가 5% 정도 보이게 함 */
 		}
-		
-    .Logo {
-      font-family: "Playfair Display", serif;
-      font-size: 30px;
-      color: white;
-      text-decoration: none;
-    }
-    
-    
-    .Logo:hover {
-      color: white;
-      text-decoration: none;
-    }
     
     span {
     display: none;
-    }
-    
-    /* 라디오버튼 css */
-		ul, li, dl, dt, dd, p, span {
-			margin:0;
-			padding:0
-		}
-		
-		a {
-			text-decoration:none;
-			color:#777
-		}
-		
-		li {
-			list-style:none
-		}
-		
-		*, :after, :before {
-		-webkit-box-sizing:border-box;
-		-moz-box-sizing:border-box;
-		box-sizing:border-box
-		}
-		
-		.wrap {
-		display:flex;
-		align-items: center;
-		justify-content: center;
-		gap: 10%;
-		margin-top: 20%;
-		margin-bottom: 1%;
-		  }
-		
-		.wrap .radio_area label {
-		cursor:pointer;
-		display:flex;
-		align-items:center;
-		gap:20px;
-		height:50px;
-		padding:0 30px 0 20px;
-		border-radius:30px;
-		font-size:25px;
-		font-weight:500;
-		color:#999;
-		background:#f2f2f2;
-		transition:all .3s ease;
-		}
-		
-		.wrap .radio_area label span {
-		opacity:.3;
-		display:flex;
-		width:20px;
-		height:20px;
-		border:2px solid #111;
-		border-radius:50%;
-		transition:all .3s ease;
-		}
-		
-		.wrap .radio_area label span:before {
-		content:"";
-		width:6px;
-		height:6px;
-		margin:auto;
-		border-radius:50%;
-		background:#111;
-		transition:all .3s ease;
-		}
-		
-		.wrap .radio_area label:hover {
-		background:#e1e1e1;
-		}
-		
-		.radio_area input[type=radio] {
-		display:none;
-		}
-		
-		.radio_area input[type=radio]:checked + label {
-		color:#fff;
-		background:#111;
-		}
-		
-		.radio_area input[type=radio]:checked + label span {
-		opacity:1;
-		border-color:#fff;
-		}
-		
-		.radio_area input[type=radio]:checked + label span:before {
-		background:#fff;
-		}    
-		
-		 /* 애니메이션 효과 */
-     /* 라디오 버튼 선택 시 상단으로 이동하는 효과 */
-    .wrap.move-up {
-      margin-top: 50px; /* 두 버튼을 상단으로 이동시킴 */
-    }
-
-    .wrap .radio_area input[type=radio] + label ,.wrap.move-up {
-      position: relative;
-      margin-top: 0%; /* 선택된 라디오 버튼을 위로 밀기 */
-      transition: all .5s ease-in-out;
-    }
-    
-    #customerForm, #companyForm {
-      display: none;
-      transition: all .5s ease-in-out; /* 부드러운 전환 */
-    }
-
-    #customerForm.show, #companyForm.show {
-      display: block;
-      animation: slideUp 0.5s forwards; /* 폼이 올라오는 애니메이션 */
-    }
-
-    @keyframes slideUp {
-      0% {
-        transform: translateY(20%);
-        opacity: 0;
-      }
-      100% {
-        transform: translateY(0);
-        opacity: 1;
-      }
     }
     
     /* 회원가입 */
@@ -220,8 +81,8 @@
     /* 색상 변수 */
 		:root {
 			--bg: #fff;
-			--text: #fff;
-			--light-pink: #e8e6df;
+			--text: #382b22;
+			--light-pink: #e4dfcb;
 			--pink: #8a7c66;
 			--dark-pink: #6e5f4f;
 			--pink-border: #8a7c66;
@@ -277,6 +138,40 @@
 			box-shadow: 0 0 0 2px var(--pink-border), 0 0 var(--pink-shadow);
 			transform: translate3d(0, 0, -1em);
 		}
+		
+		/*업종선택*/
+    .industry-option {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+    .industry-option input[type="radio"] {
+        display: none;
+    }
+
+    .industry-option:hover {
+        background-color: #f0f0f0;
+    }
+
+    .industry-option input[type="radio"]:checked + i {
+        color: #007bff; /* 체크된 라디오버튼 아이콘 색상 */
+    }
+
+    .industry-option i {
+        font-size: 20px;
+        color: #555;
+    }
+
+    .industry-option input[type="radio"]:checked + i {
+        color: #007bff;
+    }
+		
   </style>
   <script>
  		// 아이디 중복버튼을 클릭했는지의 여부를 확인하기 위한 변수(버튼 클릭 후엔 내용 수정처리 불가)
@@ -288,9 +183,7 @@
 	  let regex3 = /^[가-힣a-zA-Z]{1,10}$/;  // (성명)한글,영문만 적어도 1자이상 
  		let regex4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
  		let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/; //(전화번호)
- 		let regex6 = /[0-9]{6}$/; //(birthday)
- 		//let regex6 = /\d{6}[1-4]$/; //(resident-고객(주민등록번호):마지막자리는 성별을 나타내서 1-4까지의 숫자만 들어오도록)
- 		//let regex7 = /\d{10}$/; //(resident-업체)
+ 		let regex6 = /\d{10}$/; //(resident-업체)
 
  		/* 고 객 회 원 가 입 */		
 		// 아이디 중복 검사 
@@ -405,50 +298,13 @@
 		  }			
 		}
 		
-		function birthdayCheck() {
-			//let regex6 = /\d{6}$/; //(birthday)
-			let birthday = document.getElementById("birthday").value;
-			document.getElementById("birthday").innerHTML="";
-			
-			// 생년월일 확인
-			if(!regex6.test(birthday)){
-			    document.getElementById("residentError").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
-			  }
-		  else {
-			  document.getElementById("residentError").innerHTML="";
-			  if (birthday.length >= 6) {
-				  myform.gender.focus();
-	      }
-		  }
-		}
-		
-		function genderCheck() {
-	    let gender = document.getElementById("gender").value.trim();
-	    document.getElementById("residentError").innerHTML = "";
-
-	    // 성별 값이 1~4 사이에 있는지 확인
-	    if (gender < 1 || gender > 4 || isNaN(gender)) {
-	        document.getElementById("residentError").innerHTML = "주민등록번호가 올바르지 않습니다.(성별은 1~4 사이의 숫자여야 합니다)";
-	    }
-	    else {
-        document.getElementById("residentError").innerHTML = "";
-        document.getElementById('gender').addEventListener('keydown', function(event) {
-	        if (event.key === 'Enter') {
-	        	document.getElementById('tel2').focus();
-	        }
-		    });
-	    }
-		}
-		
-		
-		
-/* 		function residentCheck2() {
-			//let regex7 = /\d{10}$/; //(resident-업체)
+ 		function residentCheck() {
+			//let regex6 = /\d{10}$/; //(resident-업체)
 			let resident = document.getElementById("resident").value.trim();
 			document.getElementById("residentError").innerHTML="";
 			
 		  // 사업자번호 확인
-		  if(!regex7.test(resident)){
+		  if(!regex6.test(resident)){
 		    document.getElementById("residentError").innerHTML="사업자등록번호가 올바르지 않습니다.(사업자등록번호 10자리)";
 		   return false;;
 		  }
@@ -461,7 +317,7 @@
 	        }
 		    });
 		  }			
-		} */
+		} 
 		
 		function telCheck() {
 			//let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
@@ -625,68 +481,65 @@
 		   	myform.submit();
 			}
 		}
-	 		
-/* 업 체 회 원 가 입  */	 		
-	 		
-	 		
-	 		
-	 		
 
 </script>
 </head>
 <body>
-	<form name="myform" method="post" action="MemberJoinOk.mem">
+	<form name="myform" id="myform" method="post" action="MemberJoinOk.mem">
 	 <div class="container h-100">
 			<div class="card" style="width: 72%;">
 			  <div class="card-body">
 			    <div class="m-sm-4 p-3">
 			      <div class="mb-3"> <font color="red">*</font> 필수 입력 항목(업체)<div>  
-	                
-	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>아이디 (ID)</label>
-	                    <input type="text" class="form-control form-control-lg" name="mid" id="mid" onchange="midCheck()" placeholder="영문과 숫자를 포함한 4-12자 이내"required autofocus/>
-	                    <div id="midError" class="text-primary"></div>
-	                  </div>
-	                  
-	                  <div class="form-group password">
-	                    <font color="red"><b>*&nbsp;</b></font><label class="password">비밀번호 (PASSWORD)</label> &nbsp; <span class="pwdEyes"><i class="fa fa-eye fa-lg"></i></span>
-	                    <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" onchange="pwd1Check()" placeholder="특수문자, 영문 대소문자, 숫자를 포함한 8-16자 이내">
-	                    <div id="pwdError" class="text-primary"></div>
-	                  </div>
-	                  
-	                  <div class="form-group passwordCheck">
-	                    <font color="red"><b>*&nbsp;</b></font><label>비밀번호 재확인 (PASSWORD CHECK)</label> &nbsp; <span class="rePwdEyes"><i class="fa fa-eye fa-lg"></i></span>
-	                    <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" onchange="pwd2Check()" placeholder="비밀번호 재확인">
-	                     <div id="pwdError2" class="text-primary"></div>
-	                  </div>
-	                  
-	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>업종</label>
-	                    <input type="radio" class="form-control form-control-sm" name="level" id="level2" value="2">인테리어
-	                    <input type="radio" class="form-control form-control-sm" name="level" id="level3" value="3">가구
-	                  </div>
-	                  
-	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>업체명 (COMPANY)</label>
-	                    <input type="text" class="form-control form-control-lg" name="company" id="company" placeholder="한글,영문 또는 특수문자">
-	                  </div>
-	                  
-	                  <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>대표자명 (NAME)</label>
-	                    <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문">
-	                    <div id="nameError" class="text-primary"></div>
-	                  </div>
-	                  
-	                   <div class="form-group">
-	                    <font color="red"><b>*&nbsp;</b></font><label>사업자번호</label>
-	                    <input type="text" class="form-control form-control-lg" name="resident" id="resident" placeholder="주민번호 앞 7자리만 입력해주세요">
-	                  </div>
-	                  
+			      <div class="form-group">
+			        <font color="red"><b>*&nbsp;</b></font><label for="mid" class="m-0 p-0">아이디 (ID)</label>
+			        <input type="button" value="아이디 중복체크" id="idCheckBtn" class="btn text-right float-right mb-1" onclick="idCheck()"/>
+			        <input type="text" class="form-control form-control-lg" name="mid" id="mid" oninput="midCheck()" maxlength="20" placeholder="영문과 숫자를 포함한 4~20자 이내" required autofocus/>
+			        <div id="midError" class="text-primary"></div>
+			      </div>
+	       		<div class="form-group password">
+			        <font color="red"><b>*&nbsp;</b></font><label for="pwd1" class="password">비밀번호 (PASSWORD)</label>
+			        <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" oninput="pwd1Check()" maxlength="20" placeholder="영문/숫자 필수, 특수문자 가능 4~20자 이내">
+			        <div id="pwdError1" class="text-primary"></div>
+			      </div>
+			      <div class="form-group passwordCheck">
+			        <font color="red"><b>*&nbsp;</b></font><label for="pwd2">비밀번호 재확인 (PASSWORD CHECK)</label>
+			        <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" oninput="pwd2Check()" maxlength="20" placeholder="비밀번호 재확인">
+			         <div id="pwdError2" class="text-primary"></div>
+			      </div>             
+						<div class="form-group">
+						    <font color="red"><b>*&nbsp;</b></font><label>업종</label>
+						    <fieldset style="border: 0; padding: 0; display: flex; gap: 20px;">
+						        <label for="level2" class="industry-option">
+						            <input type="radio" name="level" id="level2" value="2">
+						            <i class="fa-solid fa-brush"></i> 인테리어
+						        </label>
+						        <label for="level3" class="industry-option">
+						            <input type="radio" name="level" id="level3" value="3">
+						            <i class="fa-solid fa-couch"></i> 가구
+						        </label>
+						    </fieldset>
+						</div>
+            <div class="form-group">
+              <font color="red"><b>*&nbsp;</b></font><label>업체명 (COMPANY)</label>
+              <input type="text" class="form-control form-control-lg" name="company" id="company" placeholder="업체명">
+              <!-- <div id="companyError" class="text-primary"></div> -->
+            </div>
+            <div class="form-group">
+              <font color="red"><b>*&nbsp;</b></font><label>대표자명 (NAME)</label>
+             	<input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" maxlength="10" placeholder="한글 또는 영문 10자 이내">
+     				 <div id="nameError" class="text-primary"></div>
+   				  </div>
+   				  <div class="form-group">
+          		<font color="red"><b>*&nbsp;</b></font><label>사업자등록번호</label>
+           	 	<input type="text" class="form-control form-control-lg" name="resident" id="resident" maxlength="10" oninput="residentCheck1()" placeholder="사업자 등록 번호 10자리">
+           	  <div id="residentError" class="text-primary"></div>
+	          </div>        
 	          <div class="form-group">
 	            <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
 	            <div class="input-group">
 	              <div class="input-group-append" style="display: flex; width: 100%;">
-	                <select name="tel1" name="tel1" id="tel1" class="form-control" style="flex: 2;">
+	                <select name="tel1" id="tel1" class="form-control" style="flex: 2;">
 			              <option value="010" selected>010</option>
 			              <option value="02">02</option>
 					          <option value="032">032</option>
@@ -702,19 +555,16 @@
 					    	<div id="telError" class="text-primary"></div>
 	          	</div>
 	          </div>
-	                  
 	          <div class="form-group">
 	            <font color="red"><b>*&nbsp;</b></font><label for="email">이메일</label>
 	            <input class="form-control form-control-lg" type="text" name="email" id="email" oninput="emailCheck()" placeholder="이메일 형식에 맞춰 입력해주세요">
 	            <div id="emailError" class="text-primary"></div>
 	          </div>
-	                  
-                    <div class="form-group">
-                      <font color="red"><b>*&nbsp;</b></font><label>로고(LOGO)</label>
-                      <input class="form-control-file" type="file" name="photo" id="photo"/>
-                    </div>
-                    
 	          <div class="form-group">
+	            <font color="red"><b>*&nbsp;</b></font><label>로고(LOGO)</label>
+	            <input type="file" class="form-control-file border" name="photo" id="photo"/>
+	          </div>
+ 						<div class="form-group">
 	            <font color="red"><b>*&nbsp;</b></font><label for="address">주소</label><input class="btn text-right float-right" type="button" value="주소 찾기" onclick="sample6_execDaumPostcode()">
 	            <input type="hidden" name="address" id="address">
 	          </div>
@@ -738,10 +588,10 @@
 	          <div class="text-center">
 	          	<button class="learn-more" type="button" onclick="joinCheck()">회 원 가 입</button>
 	          </div>
+					 </div>
 					</div>
 	      </div>
 	    </div>
-	  </div>
 	  </div>
 	  </div>
   </form>
