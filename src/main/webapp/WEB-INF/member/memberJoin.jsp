@@ -635,7 +635,7 @@
 		
 		/* 회원가입폼 */  
   function showCustomerForm() {
-			let level = myform.level.value;
+			let level = document.getElementById("level1").value;
 			$.ajax({
 			    type: "POST",
 			    url: "AjaxLevel.mem",
@@ -655,7 +655,7 @@
 	  }
 
 	  function showCompanyForm() {
-		  let level = myform.level.value;
+		  let level = document.getElementById("level0").value;
 			$.ajax({
 			    type: "POST",
 			    url: "AjaxLevel.mem",
@@ -686,7 +686,7 @@
 		    <label for="level1"><span></span>고객 ${vo.level}</label>  
 		  </div>
 		  <div class="radio_area">
-		    <input type="radio" name="level" id="level0" value="999" onclick="showCompanyForm()">
+		    <input type="radio" name="level" id="level0" value="" onclick="showCompanyForm()">
 		    <label for="level0"><span></span>업체 ${param.level}</label>  
 		  </div>   
 		</div>
