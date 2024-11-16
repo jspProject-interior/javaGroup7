@@ -621,7 +621,8 @@
 </script>
 </head>
 <body>
-  <div class="container h-100">
+	<form name="myform" method="post" action="MemberJoinOk.mem">
+	  <div class="container h-100">
 			<div class="card" style="width: 72%;">
 			  <div class="card-body">
 			    <div class="m-sm-4 p-3">
@@ -706,11 +707,11 @@
 						<p><br/></p>
 	          <div class="text-center">
 	          	<button class="learn-more" type="button" onclick="joinCheck()">회 원 가 입</button>
-	            <!-- <input type="button" value="회원가입" class="btn form-control" onclick="joinCheck()"> -->
 	          </div>
 					</div>
 	      </div>
 	    </div>
 	  </div>
+  </form>
 </body>
 </html>

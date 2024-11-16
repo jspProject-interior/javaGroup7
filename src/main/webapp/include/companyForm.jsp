@@ -631,69 +631,119 @@
 	 		
 	 		
 	 		
-		
-		
-		/* 회원가입폼 */  
-  function showCustomerForm() {
-			let level = myform.level.value;
-			$.ajax({
-			    type: "POST",
-			    url: "AjaxLevel.mem",
-			    data: { level: level },
-			    success: function (data) {
-            $('#customerForm').html(data);
-			    },
-			    error: function () {
-			        alert("Ajax 호출 오류 발생");
-			    }
-			});
-			
-	    document.getElementById('customerForm').style.display = 'block';  // 고객 폼 보이기
- 	    document.getElementById('customerForm').classList.add('show'); 		// 애니메이션 효과 추가
-	    document.getElementById('companyForm').style.display = 'none';    // 업체 폼 숨기기
-	    document.querySelector('.wrap').classList.add('move-up'); // 라디오 버튼 위치 위로 이동
-	  }
-
-	  function showCompanyForm() {
-		  let level = myform.level.value;
-			$.ajax({
-			    type: "POST",
-			    url: "AjaxLevel.mem",
-			    data: { level: level },
-			    success: function (data) {
-          $('#companyForm').html(data);
-			    },
-			    error: function () {
-			        alert("Ajax 호출 오류 발생");
-			    }
-			});
-	    document.getElementById('companyForm').style.display = 'block';   // 업체 폼 보이기
-	    document.getElementById('companyForm').classList.add('show'); // 애니메이션 효과 추가
-	    document.getElementById('customerForm').style.display = 'none';   // 고객 폼 숨기기
-	    document.querySelector('.wrap').classList.add('move-up');
-	  }
 
 </script>
 </head>
 <body>
-  <p><br/></p>
-  <div><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
 	<form name="myform" method="post" action="MemberJoinOk.mem">
-	  <!--Customer(1)/Company()  -->
-	  <div class="wrap">
-		  <div class="radio_area">
-		    <input type="radio" name="level" id="level1" value="1" onclick="showCustomerForm()">
-		    <label for="level1"><span></span>고객 ${vo.level}</label>  
-		  </div>
-		  <div class="radio_area">
-		    <input type="radio" name="level" id="level0" value="999" onclick="showCompanyForm()">
-		    <label for="level0"><span></span>업체 ${param.level}</label>  
-		  </div>   
-		</div>
-	  <!-- 고객 회원가입 폼 (초기에는 숨김) -->
-	  <div id="customerForm" style="display:none;"></div>
-    <!-- 업체 회원가입 폼 (초기에는 숨김) -->
-	  <div id="companyForm" style="display:none;"></div>
-	</form>
+	 <div class="container h-100">
+			<div class="card" style="width: 72%;">
+			  <div class="card-body">
+			    <div class="m-sm-4 p-3">
+			      <div class="mb-3"> <font color="red">*</font> 필수 입력 항목(업체)<div>  
+	                
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>아이디 (ID)</label>
+	                    <input type="text" class="form-control form-control-lg" name="mid" id="mid" onchange="midCheck()" placeholder="영문과 숫자를 포함한 4-12자 이내"required autofocus/>
+	                    <div id="midError" class="text-primary"></div>
+	                  </div>
+	                  
+	                  <div class="form-group password">
+	                    <font color="red"><b>*&nbsp;</b></font><label class="password">비밀번호 (PASSWORD)</label> &nbsp; <span class="pwdEyes"><i class="fa fa-eye fa-lg"></i></span>
+	                    <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" onchange="pwd1Check()" placeholder="특수문자, 영문 대소문자, 숫자를 포함한 8-16자 이내">
+	                    <div id="pwdError" class="text-primary"></div>
+	                  </div>
+	                  
+	                  <div class="form-group passwordCheck">
+	                    <font color="red"><b>*&nbsp;</b></font><label>비밀번호 재확인 (PASSWORD CHECK)</label> &nbsp; <span class="rePwdEyes"><i class="fa fa-eye fa-lg"></i></span>
+	                    <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" onchange="pwd2Check()" placeholder="비밀번호 재확인">
+	                     <div id="pwdError2" class="text-primary"></div>
+	                  </div>
+	                  
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>업종</label>
+	                    <input type="radio" class="form-control form-control-sm" name="level" id="level2" value="2">인테리어
+	                    <input type="radio" class="form-control form-control-sm" name="level" id="level3" value="3">가구
+	                  </div>
+	                  
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>업체명 (COMPANY)</label>
+	                    <input type="text" class="form-control form-control-lg" name="company" id="company" placeholder="한글,영문 또는 특수문자">
+	                  </div>
+	                  
+	                  <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>대표자명 (NAME)</label>
+	                    <input type="text" class="form-control form-control-lg"  name="name" id="name" onchange="nameCheck()" placeholder="한글 또는 영문">
+	                    <div id="nameError" class="text-primary"></div>
+	                  </div>
+	                  
+	                   <div class="form-group">
+	                    <font color="red"><b>*&nbsp;</b></font><label>사업자번호</label>
+	                    <input type="text" class="form-control form-control-lg" name="resident" id="resident" placeholder="주민번호 앞 7자리만 입력해주세요">
+	                  </div>
+	                  
+	          <div class="form-group">
+	            <font color="red"><b>*&nbsp;</b></font><label>전화번호</label>
+	            <div class="input-group">
+	              <div class="input-group-append" style="display: flex; width: 100%;">
+	                <select name="tel1" name="tel1" id="tel1" class="form-control" style="flex: 2;">
+			              <option value="010" selected>010</option>
+			              <option value="02">02</option>
+					          <option value="032">032</option>
+					          <option value="033">033</option>
+					          <option value="041">041</option>
+					          <option value="042">042</option>
+					          <option value="043">043</option>
+			            </select>
+	                <input type="text" class="form-control form-control-lg" name="tel2" id="tel2" maxlength="4" onkeyup="telCheck()" placeholder="가운데 자리" style="flex: 4;"/>
+	                <input type="text" class="form-control form-control-lg" name="tel3" id="tel3" maxlength="4" onkeyup="telCheck()" placeholder="마지막 자리" style="flex: 4;"/>
+	                <input type="hidden" name="tel" id="tel"/>
+					    	</div>
+					    	<div id="telError" class="text-primary"></div>
+	          	</div>
+	          </div>
+	                  
+	          <div class="form-group">
+	            <font color="red"><b>*&nbsp;</b></font><label for="email">이메일</label>
+	            <input class="form-control form-control-lg" type="text" name="email" id="email" oninput="emailCheck()" placeholder="이메일 형식에 맞춰 입력해주세요">
+	            <div id="emailError" class="text-primary"></div>
+	          </div>
+	                  
+                    <div class="form-group">
+                      <font color="red"><b>*&nbsp;</b></font><label>로고(LOGO)</label>
+                      <input class="form-control-file" type="file" name="photo" id="photo"/>
+                    </div>
+                    
+	          <div class="form-group">
+	            <font color="red"><b>*&nbsp;</b></font><label for="address">주소</label><input class="btn text-right float-right" type="button" value="주소 찾기" onclick="sample6_execDaumPostcode()">
+	            <input type="hidden" name="address" id="address">
+	          </div>
+	          <div id="homeAddressInput">
+	            <div class="form-group">
+	              <div class="input-group-append mb-1">
+					        <input type="text" name="postcode" id="sample6_postcode"  placeholder="우편번호" class="form-control" style="width: 150px;" onclick="sample6_execDaumPostcode()" readonly>
+					      </div>
+					     	<div class="input-group">
+					     		<input type="text" name="roadAddress" id="sample6_address" placeholder="주소" class="form-control mb-1" onclick="sample6_execDaumPostcode()" readonly>
+					     	</div>
+					      <div class="input-group">
+					        <div class="input-group-append" style="display: flex; width: 100%;">
+					          <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목" class="form-control" style="flex: 4;" onclick="sample6_execDaumPostcode()" readonly>
+					        	<input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소" class="form-control" style="flex: 6;">
+					        </div>
+					      </div>
+					    </div>
+					  </div>
+						<p><br/></p>
+	          <div class="text-center">
+	          	<button class="learn-more" type="button" onclick="joinCheck()">회 원 가 입</button>
+	          </div>
+					</div>
+	      </div>
+	    </div>
+	  </div>
+	  </div>
+	  </div>
+  </form>
 </body>
 </html>

@@ -11,10 +11,15 @@ public class AjaxLevelCommand implements MemberInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int ALevel = (request.getParameter("level")==null || request.getParameter("level").equals("")) ? 0 : Integer.parseInt(request.getParameter("level"));
-		
+		int ALevel = (request.getParameter("level")==null || request.getParameter("level").equals("")) ? 999 : Integer.parseInt(request.getParameter("level"));
+		System.out.println(ALevel);
 		
 		request.setAttribute("level", ALevel);
-		request.getRequestDispatcher("/include/customerForm.jsp").forward(request, response);
+		if(ALevel==1) {
+			request.getRequestDispatcher("/include/customerForm.jsp").forward(request, response);
+		}
+		else {
+			request.getRequestDispatcher("/include/companyForm.jsp").forward(request, response);
+		}
 	}
 }
