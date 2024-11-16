@@ -151,4 +151,19 @@ public class InteriorDAO {
 		}
 		return res;
 	}
+
+	public int InteriorDelete(int idx) {
+		int res = 0;
+		try {
+			sql = "delete from interior where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
 }

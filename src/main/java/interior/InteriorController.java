@@ -47,10 +47,15 @@ public class InteriorController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/interirorDelete")) {
-			command = new interirorDeleteCommand();
+		else if(com.equals("/interirorImgDelete")) {
+			command = new interirorImgDeleteCommand();
 			command.execute(request, response);
 			return;
+		}
+		else if(com.equals("/InteriorDelete")) {
+			command = new InteriorDeleteCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

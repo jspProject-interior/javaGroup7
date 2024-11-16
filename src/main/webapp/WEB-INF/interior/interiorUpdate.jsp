@@ -73,7 +73,7 @@
 	    	}
 	    $.ajax({
 	    	type : "post",
-	    	url : "interirorDelete.in",
+	    	url : "interirorImgDelete.in",
 	    	data : query,
 	    	success:function(res) {
     			if(res != "0") {
