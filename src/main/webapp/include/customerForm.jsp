@@ -137,6 +137,7 @@
 			box-shadow: 0 0 0 2px var(--pink-border), 0 0 var(--pink-shadow);
 			transform: translate3d(0, 0, -1em);
 		}
+		
   </style>
   <script>
  		// 아이디 중복버튼을 클릭했는지의 여부를 확인하기 위한 변수(버튼 클릭 후엔 내용 수정처리 불가)

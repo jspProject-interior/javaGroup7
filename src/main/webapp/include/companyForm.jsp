@@ -175,15 +175,15 @@
   </style>
   <script>
  		// 아이디 중복버튼을 클릭했는지의 여부를 확인하기 위한 변수(버튼 클릭 후엔 내용 수정처리 불가)
-		let idCheckSw = 0;
+		let idCheckSwCom = 0;
  
 		// 정규식 검사 함수
-		let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자
-	  let regex2 = /^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/;  //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
-	  let regex3 = /^[가-힣a-zA-Z]{1,10}$/;  // (성명)한글,영문만 적어도 1자이상 
- 		let regex4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
- 		let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/; //(전화번호)
- 		let regex6 = /\d{10}$/; //(resident-업체)
+		let reg1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자
+	  let reg2 = /^(?=.*?[0-9])(?=.*?[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/;  //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
+	  let reg3 = /^[가-힣a-zA-Z]{1,10}$/;  // (성명)한글,영문만 적어도 1자이상 
+ 		let reg4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
+ 		let reg5 = /\d{2,3}-\d{3,4}-\d{4}$/; //(전화번호)
+ 		let reg6 = /\d{10}$/; //(resident-업체)
 
  		/* 고 객 회 원 가 입 */		
 		// 아이디 중복 검사 
@@ -195,7 +195,7 @@
 				alert("아이디를 입력하세요");
 				myform.mid.focus();
 			}
-			else if(!regex1.test(mid)) {
+			else if(!reg1.test(mid)) {
 				document.getElementById("midError").innerHTML="아이디 형식에 맞춰주세요.(영어/숫자만 4~20자)";
 		    myform.mid.focus();
 			}
@@ -204,16 +204,16 @@
 				let url = "MemberIdCheck.mem?mid="+mid;
 				document.getElementById('mid').readOnly = true;
 				window.open(url, "idCheckWindow", "width=500px, height=250px");
-				idCheckSw = 1;
+				idCheckSwCom = 1;
 			}
 		}
 		function midCheck() {
-			//let regex1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자 
+			//let reg1 = /^[a-zA-Z0-9]{4,20}$/; //(아이디) 영문자 또는 숫자 4~20자 
 			let mid = document.getElementById("mid").value.trim();
 			document.getElementById("midError").innerHTML="";
 			
 		  // 아이디 확인
-		  if(!regex1.test(mid)) {
+		  if(!reg1.test(mid)) {
 		    document.getElementById("midError").innerHTML="아이디 형식에 맞춰주세요.(영어/숫자만 4~20자)";
 		  } 
 		  else {
@@ -222,12 +222,12 @@
 		}
 		
 		function pwd1Check() {
-			//let regex2 = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/g; //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
+			//let reg2 = /^(?=.*[0-9])(?=.*[a-zA-Z])[a-zA-Z0-9!@#$%^&*()._-]{4,20}$/g; //(비밀번호)4자 이상 20자 이하, 영어/숫자 1개 이상 필수, 특수문자 허용
 			let pwd1 = document.getElementById("pwd1").value.trim();
 			document.getElementById("pwdError1").innerHTML="";
 			
 		  // 비밀번호 확인
-		  if(!regex2.test(pwd1)) {
+		  if(!reg2.test(pwd1)) {
 		    document.getElementById("pwdError1").innerHTML="비밀번호가 올바르지 않습니다.(영어/숫자 필수, 특수문자 가능 4~20자)";
 		  }
 		  else {
@@ -261,50 +261,31 @@
 		}
 		
 		function nameCheck() {
-			//let regex3 = /^[가-힣a-zA-Z]{1,10}$/;  // (성명)한글,영문만 적어도 1자이상 
+			//let reg3 = /^[가-힣a-zA-Z]{1,10}$/;  // (성명)한글,영문만 적어도 1자이상 
 			let name = document.getElementById("name").value.trim();
 			document.getElementById("nameError").innerHTML="";
 			
 		  // 성명 확인
-		  if(!regex3.test(name)){
+		  if(!reg3.test(name)){
 		    document.getElementById("nameError").innerHTML="성명이 올바르지 않습니다.(한글/영문만 10자 이하)";
 		  }
 		  else {
 			  document.getElementById("nameError").innerHTML="";
 			  document.getElementById('name').addEventListener('keydown', function(event) {
 			        if (event.key === 'Enter') {
-		        	  document.getElementById('resident1').focus();
+		        	  document.getElementById('resident').focus();
 			        }
 				    });
 		  }			
 		}
 		
-		function residentCheck1() {
-			//let regex6 = /\d{6}$/; //(resident-고객)
-			let resident = document.getElementById("resident1").value.trim();
-			document.getElementById("residentError1").innerHTML="";
-			
-		  // 주민번호 확인
-		  if(!regex6.test(resident)){
-		    document.getElementById("residentError1").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
-		  }
-		  else {
-			  document.getElementById("residentError1").innerHTML="";
-			  document.getElementById('resident1').addEventListener('keydown', function(event) {
-	        if (event.key === 'Enter') {
-        	  document.getElementById('tel2').focus();
-	        }
-		    });
-		  }			
-		}
-		
  		function residentCheck() {
-			//let regex6 = /\d{10}$/; //(resident-업체)
+			//let reg6 = /\d{10}$/; //(resident-업체)
 			let resident = document.getElementById("resident").value.trim();
 			document.getElementById("residentError").innerHTML="";
 			
 		  // 사업자번호 확인
-		  if(!regex6.test(resident)){
+		  if(!reg6.test(resident)){
 		    document.getElementById("residentError").innerHTML="사업자등록번호가 올바르지 않습니다.(사업자등록번호 10자리)";
 		   return false;;
 		  }
@@ -320,7 +301,7 @@
 		} 
 		
 		function telCheck() {
-			//let regex5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
+			//let reg5 = /\d{2,3}-\d{3,4}-\d{4}$/g; //(전화번호)
 		  let tel1 = myform.tel1.value;
 		  let tel2 = myform.tel2.value;
 		  let tel3 = myform.tel3.value;
@@ -336,7 +317,7 @@
 		  else if(tel3===""){
 		    document.getElementById("telError").innerHTML="전화번호를 입력해주세요.";
 		  }
-		  else if(!regex5.test(tel)){
+		  else if(!reg5.test(tel)){
 		    document.getElementById("telError").innerHTML="전화번호 형식에 맞게 입력해주세요.";
 		  }
 		  else {
@@ -350,12 +331,12 @@
 		}
 
 		function emailCheck() {
-			//let regex4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
+			//let reg4 = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/; // 이메일 
 			let email = document.getElementById("email").value.trim();
 		  document.getElementById("emailError").innerHTML="";
 
 		  // 이메일확인
-		  if(!regex4.test(email)){
+		  if(!reg4.test(email)){
 		    document.getElementById("emailError").innerHTML="올바르지 않는 이메일 형식입니다.";
 		  }
 		  else {
@@ -370,10 +351,8 @@
 		  let pwd1 = document.getElementById("pwd1").value.trim();
 		  let pwd2 = document.getElementById("pwd2").value.trim();
 		  let name = document.getElementById("name").value.trim();
-	  	//let company = document.getElementById("comany").value.trim();
 	  	let email = document.getElementById("email").value.trim();
-			let birthday = document.getElementById("birthday").value.trim();
-			let gender = document.getElementById("gender").value.trim();
+	  	let resident = document.getElementById("resident").value.trim();
 	  	 
 		  let tel1 = myform.tel1.value;
 		  let tel2 = myform.tel2.value;
@@ -385,15 +364,9 @@
 		  let detailAddress = myform.detailAddress.value + " ";
 		  let extraAddress = myform.extraAddress.value + " ";
 			let address = postcode + " /" + roadAddress + " /" + detailAddress + " /" + extraAddress + " ";
-		  
-			//let birthdayR = myform.birthday.value.trim();
-			//let genderR = myform.gender.value.trim(); 
-		  let resident = birthday + "-" + gender; 
-			
-		  // 코스라이브러리 받아주는 서블릿쪽이 멀티파츠로 받아야 합니다 (사진을 넘길때- 업체에서 멀티파츠 갯 파라멬타)
 			
 		  // 아이디 확인
-		  if(!regex1.test(mid)) {
+		  if(!reg1.test(mid)) {
 		    document.getElementById("midError").innerHTML="아이디 형식에 맞춰주세요.(영어/숫자만 4~20자)";
 		    document.getElementById("mid").focus();
 		    return false;
@@ -403,7 +376,7 @@
 		  }
 		  
 		  // 비밀번호 확인
-		  if(!regex2.test(pwd1)) {
+		  if(!reg2.test(pwd1)) {
 		    document.getElementById("pwdError1").innerHTML="비밀번호가 올바르지 않습니다.(영어/숫자 필수, 특수문자 가능 4~20자)";
 		    document.getElementById("pwd1").focus();
 		    return false;
@@ -428,7 +401,7 @@
 		  }
 				  
 		  // 성명 확인
-		  if(!regex3.test(name)){
+		  if(!reg3.test(name)){
 		    document.getElementById("nameError").innerHTML="성명이 올바르지 않습니다.(한글/영문만 10자 이내)";
 		    document.getElementById("name").focus();
 		    return false;
@@ -438,7 +411,7 @@
 		  }
 		   
 		  // 이메일확인
-		  if(!regex4.test(email)){
+		  if(!reg4.test(email)){
 		    document.getElementById("emailError").innerHTML="이메일이 올바르지 않습니다.";
 		    document.getElementById("email").focus();
 		    return false;
@@ -453,7 +426,7 @@
 		    document.getElementById("tel2").focus();
 		    return false;
 		  }
-		  else if(!regex5.test(tel)){
+		  else if(!reg5.test(tel)){
 		    document.getElementById("telError").innerHTML="전화번호 형식에 맞게 입력해주세요.";
 		    document.getElementById("tel2").focus();
 		    return false;
@@ -461,23 +434,22 @@
 		  else {
 		    document.getElementById("telError").innerHTML="";
 		  }
-		  
-		  if(!regex6.test(birthday)|| gender < 1 || gender > 4){
-			    document.getElementById("residentError").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
-			    document.getElementById("birthday").focus();
+		  // 사업자번호 확인
+		  if(!reg6.test(resident)){
+			    document.getElementById("residentError").innerHTML="사업자등록번호 형식에 맞게 입력해주세요.";
 			    return false;
 			  }
 		  else {
 			  document.getElementById("residentError").innerHTML="";
 		  }
-	    if(idCheckSw == 0) {
+		  //아이디 중복체크
+	    if(idCheckSwCom == 0) {
 				alert("아이디 중복확인을 해주세요.");
 				document.getElementById("mid").focus();
 			} 
 			else {
 		    myform.tel.value = tel;
 		    myform.address.value = address;	    
-		    myform.resident.value = resident;
 		   	myform.submit();
 			}
 		}
@@ -532,7 +504,7 @@
    				  </div>
    				  <div class="form-group">
           		<font color="red"><b>*&nbsp;</b></font><label>사업자등록번호</label>
-           	 	<input type="text" class="form-control form-control-lg" name="resident" id="resident" maxlength="10" oninput="residentCheck1()" placeholder="사업자 등록 번호 10자리">
+           	 	<input type="text" class="form-control form-control-lg" name="resident" id="resident" maxlength="10" oninput="residentCheck()" placeholder="사업자 등록 번호 10자리">
            	  <div id="residentError" class="text-primary"></div>
 	          </div>        
 	          <div class="form-group">

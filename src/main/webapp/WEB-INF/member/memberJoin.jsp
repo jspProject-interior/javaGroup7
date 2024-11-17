@@ -184,11 +184,11 @@
 			        alert("Ajax 호출 오류 발생");
 			    }
 			});
-			
+	    document.getElementById('companyForm').style.display = 'none';    // 업체 폼 숨기기
 	    document.getElementById('customerForm').style.display = 'block';  // 고객 폼 보이기
  	    document.getElementById('customerForm').classList.add('show'); 		// 애니메이션 효과 추가
-	    document.getElementById('companyForm').style.display = 'none';    // 업체 폼 숨기기
 	    document.querySelector('.wrap').classList.add('move-up'); // 라디오 버튼 위치 위로 이동
+	    
 	  }
 
 	  function showCompanyForm() {
@@ -204,9 +204,9 @@
 			        alert("Ajax 호출 오류 발생");
 			    }
 			});
+	    document.getElementById('customerForm').style.display = 'none';   // 고객 폼 숨기기
 	    document.getElementById('companyForm').style.display = 'block';   // 업체 폼 보이기
 	    document.getElementById('companyForm').classList.add('show'); // 애니메이션 효과 추가
-	    document.getElementById('customerForm').style.display = 'none';   // 고객 폼 숨기기
 	    document.querySelector('.wrap').classList.add('move-up');
 	  }
 
@@ -219,8 +219,8 @@
 	  <!--Customer(1)/Company()  -->
 	  <div class="wrap">
 		  <div class="radio_area">
-		    <input type="radio" name="level" id="level1" value="1" onclick="showCustomerForm()">
-		    <label for="level1"><span></span>고객 ${vo.level}</label>  
+		    <input type="radio" name="level" id="level1" value="1" onclick="showCustomerForm()" ${param.level==1?"checked":""}>
+		    <label for="level1"><span></span>고객</label>  
 		  </div>
 		  <div class="radio_area">
 		    <input type="radio" name="level" id="level0" value="" onclick="showCompanyForm()">
@@ -230,7 +230,9 @@
 	</form>
 	  <!-- 고객 회원가입 폼 (초기에는 숨김) -->
 	  <div id="customerForm" style="display:none;"></div>
+	  <%-- <c:if test="${param.level == 1}"><jsp:include page="/include/customerForm.jsp"/></c:if> --%>
     <!-- 업체 회원가입 폼 (초기에는 숨김) -->
 	  <div id="companyForm" style="display:none;"></div>
+	  <%-- <c:if test="${param.level == 999}"><jsp:include page="/include/companyForm.jsp"/></c:if> --%>
 </body>
 </html>
