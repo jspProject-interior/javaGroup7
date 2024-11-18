@@ -182,8 +182,6 @@
   	                    icon.classList.remove('fa-solid');
   	                    icon.classList.add('fa-regular');
   	                }
-  	            } else if (res === "0") {
-  	                alert("이미 좋아요 버튼을 클릭하셨습니다.");
   	            }
   	        },
   	        error: function () {
@@ -212,16 +210,18 @@
     </div>
     <div class="grid-container">
       <c:forEach var="vo" items="${vos}" varStatus="st">
-	        <div class="grid-item">
-	          <c:if test="${sContentGood == null}"><button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)"><i class="fa-regular fa-heart"></i></button></c:if>
-	          <c:if test="${sContentGood != null}"><button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)"><i class="fa-solid fa-heart"></i></button></c:if>
-	      		<a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
-	          	<img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
-	          	<div class="title">${vo.title}</div>
-	          	<div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
-	      		</a>
-	        </div>
-      </c:forEach>
+		    <div class="grid-item">
+		        <!-- 좋아요 상태에 따라 하트 아이콘 설정 -->
+		        <button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)">
+		            <i class="${sContentGood == null ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
+		        </button>
+		        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
+		            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
+		            <div class="title">${vo.title}</div>
+		            <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
+		        </a>
+		    </div>
+		</c:forEach>
     </div>
   </form>
   <jsp:include page="/include/footer.jsp"/>

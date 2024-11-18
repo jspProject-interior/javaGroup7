@@ -175,12 +175,13 @@ public class InteriorDAO {
 		return res;
 	}
 
-	public int setInteriorInterestCheck(int idx) {
+	public int setInteriorInterestCheck(int idx, int add) {
 		int res = 0;
 		try {
-			sql="update interior set interest = interest + 1 where idx = ?";
+			sql="update interior set interest = interest + ? where idx = ?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, idx);
+			pstmt.setInt(1, add);
+			pstmt.setInt(2, idx);
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());

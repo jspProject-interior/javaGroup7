@@ -211,17 +211,26 @@
     <hr>
     <div class="see-more">포트폴리오 더보기</div>
     <div class="grid-container">
-      <c:forEach var="vo1" items="${vos}" varStatus="st">
-      	<c:if test="${vo.idx != vo1.idx}">
-		      <a href="InteriorContent.in?idx=${vo1.idx}">
-		        <div class="grid-item">
-		          <img src="${ctp}/images/interior/upload/${vo1.thumbnail}" alt="Thumbnail">
-		          <div class="title-grid">${vo1.title}</div>
-		          <div class="company-category">${vo1.company} | ${fn:toUpperCase(vo1.category)}</div>
-		        </div>
-		      </a>
-	      </c:if>
-      </c:forEach>
+      <c:forEach var="vo" items="${vos}" varStatus="st">
+		    <div class="grid-item">
+		        <!-- 좋아요 상태에 따라 하트 아이콘 설정 -->
+		        <button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)">
+		            <c:choose>
+		                <c:when test="${sContentGood != null && sContentGood.contains('interior' + vo.idx)}">
+		                    <i class="fa-solid fa-heart"></i>
+		                </c:when>
+		                <c:otherwise>
+		                    <i class="fa-regular fa-heart"></i>
+		                </c:otherwise>
+		            </c:choose>
+		        </button>
+		        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
+		            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
+		            <div class="title">${vo.title}</div>
+		            <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
+		        </a>
+		    </div>
+		</c:forEach>
     </div>
   </div>
   <jsp:include page="/include/footer.jsp"/>

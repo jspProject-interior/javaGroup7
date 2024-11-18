@@ -20,21 +20,20 @@ public class interestCheckCommand implements InteriorInterface {
 		ArrayList<String> contentGood = (ArrayList<String>)session.getAttribute("sContentGood");
 		
 		if(contentGood == null) {
-			contentGood = new ArrayList<String>();
+	    contentGood = new ArrayList<String>();
 		}
 		String tempContentGood = "interior" + idx;
 		int res = 0;
 		if(!contentGood.contains(tempContentGood)) {
-			res = dao.setInteriorInterestCheck(idx);
-			contentGood.add(tempContentGood);
+		    res = dao.setInteriorInterestCheck(idx, 1);
+		    contentGood.add(tempContentGood);
+		} else {
+		    res = dao.setInteriorInterestCheck(idx, -1);
+		    contentGood.remove(tempContentGood);
 		}
-		else {
-			
-		}
-		session.setAttribute("sContentGood", contentGood);
-		
-		response.getWriter().write(res+"");
 
+
+		response.getWriter().write(res + "");
 	}
 
 }
