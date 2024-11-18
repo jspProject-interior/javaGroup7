@@ -186,12 +186,57 @@
 			cursor: pointer;
 			bottom: 0;
 		}
+		
+		
+		
+		/* 제목과 좋아요 버튼을 같은 행에 배치 */
+	.title-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* 제목과 버튼 사이 간격 */
+	}
+	
+	/* 좋아요 버튼 스타일 */
+	.heart-btn {
+	    background: none;
+	    border: none;
+	    cursor: pointer;
+	    font-size: 20px; /* 아이콘 크기 */
+	    color: #ff6b6b; /* 기본 색상 */
+	    transition: color 0.3s ease;
+	}
+	
+	.heart-btn:hover {
+	    color: #e74c3c; /* 호버 시 색상 변경 */
+	}
+	
+	.heart-btn .fa-regular,
+	.heart-btn .fa-solid {
+	    pointer-events: none; /* 아이콘 클릭 방지 */
+	}
+			
   </style>
+  
+  <script type="text/javascript">
+	  function toggleLike(idx, btn) {
+		    const icon = btn.querySelector('i');
+		    if (icon.classList.contains('fa-regular')) {
+		        icon.classList.remove('fa-regular');
+		        icon.classList.add('fa-solid');
+		        // 서버로 좋아요 상태 저장 요청
+		    } else {
+		        icon.classList.remove('fa-solid');
+		        icon.classList.add('fa-regular');
+		        // 서버로 좋아요 상태 취소 요청
+		    }
+		}
+  </script>
 </head>
 <jsp:include page="/include/header.jsp"/>
 <body>
   <div class="main-img">
     <img src="${ctp}/images/interior/upload/${vo.titleImg}" alt="${vo.title}">
+    
   </div>
   <div class="contain">
   <div class="input-group">
@@ -199,11 +244,20 @@
 	  <a href="InteriorDelete.in?idx=${vo.idx}" class="btn btn-danger ml-2">삭제하기</a>
   </div>
     <div class="input-group">
-	    <div class="title">${vo.title}</div>
+	    <div class="title-container">
+	        <div class="title">${vo.title}</div>
+	    </div>
 	    <div class="trash"> | </div>
 	    <div class="category input-group-append">${vo.category}</div>
-    </div>
-	    <div class="company input-group-prepend">${vo.company}</div>
+	    <div class="like-button-container">
+        <button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)">
+          <c:if test="${sContentGood != null && sContentGood.contains('interior' + vo.idx)}"><i class="fa-regular fa-heart"></i></c:if>
+          <c:if test="${sContentGood == null && sContentGood.contains('interior' + vo.idx)}"><i class="fa-solid fa-heart"></i></c:if>
+        </button>
+      </div>
+		</div>
+
+    <div class="company input-group-prepend">${vo.company}</div>
     
     <div class="sub-img">
       <img style="width: 100%;" src="${ctp}/images/interior/upload/${vo.subImg}" alt="보조 이미지">
@@ -213,17 +267,6 @@
     <div class="grid-container">
       <c:forEach var="vo" items="${vos}" varStatus="st">
 		    <div class="grid-item">
-		        <!-- 좋아요 상태에 따라 하트 아이콘 설정 -->
-		        <button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)">
-		            <c:choose>
-		                <c:when test="${sContentGood != null && sContentGood.contains('interior' + vo.idx)}">
-		                    <i class="fa-solid fa-heart"></i>
-		                </c:when>
-		                <c:otherwise>
-		                    <i class="fa-regular fa-heart"></i>
-		                </c:otherwise>
-		            </c:choose>
-		        </button>
 		        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
 		            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
 		            <div class="title">${vo.title}</div>

@@ -130,31 +130,39 @@
 		  font-weight: light;
 		}
 		
+		
 		.grid-item {
+		  text-align: center;
+		  overflow: hidden;
 		  position: relative;
 		  border: 1px solid #ddd;
 		  border-radius: 10px;
 		  overflow: hidden;
+		  transition: box-shadow 0.3s ease;
+		  text-decoration: none;
 		}
 		
-		.grid-item .heart-btn {
+		.grid-item .like-container {
 		  position: absolute;
 		  top: 10px;
 		  right: 10px;
-		  background: transparent;
-		  border: none;
-		  font-size: 20px;
-		  color: #ff6b6b; /* 기본 하트 색상 */
-		  cursor: pointer;
-		  transition: transform 0.2s ease, color 0.2s ease;
+		  display: flex;
+		  align-items: center;
+		  gap: 5px;
+		  background-color: rgba(255, 255, 255, 0.8); /* 배경 추가 */
+		  border-radius: 20px;
+		  padding: 5px 10px;
 		}
 		
-		.grid-item .heart-btn:hover {
-		  transform: scale(1.2);
+		.grid-item .like-container i {
+		  color: red;
+		  font-size: 16px;
 		}
 		
-		.grid-item .heart-btn .fa-solid {
-		  color: #ff3b3b; /* 클릭 후 가득 찬 하트 색상 */
+		.grid-item .like-container span {
+		  color: red;
+		  font-weight: bold;
+		  font-size: 14px;
 		}
 		
   </style>
@@ -163,31 +171,6 @@
   	
   	function choice(category) {
   	  location.href = "Interior.in?category=" + category;
-  	}
-  	
-  	
-  	function toggleLike(idx, button) {
-  	    $.ajax({
-  	        type: "post",
-  	        url: "interestCheck.in",
-  	        data: { idx: idx },
-  	        success: function (res) {
-  	            if (res === "1") {
-  	                // 좋아요 성공: 하트 아이콘 변경
-  	                const icon = button.querySelector('i');
-  	                if (icon.classList.contains('fa-regular')) {
-  	                    icon.classList.remove('fa-regular');
-  	                    icon.classList.add('fa-solid');
-  	                } else {
-  	                    icon.classList.remove('fa-solid');
-  	                    icon.classList.add('fa-regular');
-  	                }
-  	            }
-  	        },
-  	        error: function () {
-  	            alert('전송 오류 발생');
-  	        }
-  	    });
   	}
   </script>
 </head>
@@ -211,15 +194,15 @@
     <div class="grid-container">
       <c:forEach var="vo" items="${vos}" varStatus="st">
 		    <div class="grid-item">
-		        <!-- 좋아요 상태에 따라 하트 아이콘 설정 -->
-		        <button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)">
-		            <i class="${sContentGood == null ? 'fa-solid' : 'fa-regular'} fa-heart"></i>
-		        </button>
-		        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
-		            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
-		            <div class="title">${vo.title}</div>
-		            <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
-		        </a>
+	        <div class="like-container">
+				    <i class="fa-solid fa-heart"></i>
+				    <span>${vo.interest}</span>
+				  </div>
+	        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
+	            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
+	            <div class="title">${vo.title}</div>
+	            <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
+	        </a>
 		    </div>
 		</c:forEach>
     </div>
