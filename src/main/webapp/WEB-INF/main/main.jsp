@@ -274,11 +274,6 @@
 		     $("#mainSidevar").removeClass("on");
 		  }
 		});
-	// 견적 계산기 열기 함수
-	function openCalculator() {
-		alert("견적 계산기를 열었습니다! (여기에 실제 기능 추가)");
-	}
-	
 	
 </script>
 </head>
@@ -399,7 +394,7 @@
 	
 	<!-- Fixed Sidebar -->
 	<div class="fixed-sidebar" id="mainSidevar">
-		<div class="sidebar-item" onclick="openCalculator()">
+		<div class="sidebar-item" onclick="location.href='Calculator.cal'">
 			<font color="#af9e84" size="6em"><i class="fa-solid fa-calculator"></i></font>
 			<h4>견적 계산기</h4>
 		</div>
