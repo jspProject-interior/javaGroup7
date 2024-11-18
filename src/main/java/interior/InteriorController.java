@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("*.in")
 public class InteriorController extends HttpServlet{
@@ -19,10 +20,23 @@ public class InteriorController extends HttpServlet{
 		String com = request.getRequestURI();
 		com = com.substring(com.lastIndexOf("/"), com.lastIndexOf("."));
 		
+		HttpSession session = request.getSession();
+		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
+		
 		if(com.equals("/Interior")) {
 			command = new InteriorCommand();
 			command.execute(request, response);
 			viewPage += "/interior.jsp";
+		}
+		else if(level > 3) {
+			request.setAttribute("message", "로그인 후 사용 가능합니다.");
+			request.setAttribute("url", "/main.main");
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/InteriorContent")) {
+			command = new InteriorContentCommand();
+			command.execute(request, response);
+			viewPage += "/interiorContent.jsp";
 		}
 		else if(com.equals("/InteriorInput")) {
 			viewPage += "/interiorInput.jsp";
@@ -31,11 +45,6 @@ public class InteriorController extends HttpServlet{
 			command = new InteriorInputCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
-		}
-		else if(com.equals("/InteriorContent")) {
-			command = new InteriorContentCommand();
-			command.execute(request, response);
-			viewPage += "/interiorContent.jsp";
 		}
 		else if(com.equals("/InteriorUpdate")) {
 			command = new InteriorUpdateCommand();
