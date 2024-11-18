@@ -12,7 +12,6 @@
   <style type="text/css">
     /* 전체 배경색 */
     .content {
-      background-color: #f8f9fa;
       font-family: 'Arial', sans-serif;
       overflow-x: hidden;
     }
@@ -135,7 +134,7 @@
 		  text-decoration: none;
 	  }
 
-
+/*
 
 /* 제목 스타일 */
 	.contain .title, .contain .category, .contain .trash{
@@ -188,8 +187,7 @@
 		}
 		
 			
-			
-	/* 고정 사이드바 숨김 상태 */
+		
 		.fixed-sidebar {
 	    position: fixed;
 	    top: 20%;
@@ -204,43 +202,38 @@
 	    transition: 0.5s ease-in-out;
 		}
 		
-		/* 고정 사이드바 보임 상태 */
 		.fixed-sidebar.on {
-	    right: 10px; /* 화면 안쪽으로 이동 */
-	    opacity: 1; /* 투명도 변경으로 보이게 */
+	    right: 10px;
+	    opacity: 1;
 		}
 	
 		
-		/* 사이드바 아이템 스타일 */
 		.sidebar-item {
 	    text-align: center;
 	    cursor: pointer;
 		}
 		
-		/* 아이콘을 둥글게 */
 		.icon-circle {
 	    width: 80px;
 	    height: 80px;
 	    border-radius: 50%;
-	    background-color: #ffffff; /* 흰색 배경 */
-	    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* 그림자 효과 */
+	    background-color: #ffffff;
+	    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 	    display: flex;
 	    align-items: center;
 	    justify-content: center;
-	    transition: transform 0.3s ease, box-shadow 0.3s ease; /* 호버 애니메이션 */
+	    transition: transform 0.3s ease, box-shadow 0.3s ease;
 	    margin-bottom: 20px;
 		}
 		
-		/* 아이콘 스타일 */
 		.icon-circle i {
 		    font-size: 30px;
-		    color: #333; /* 아이콘 색상 */
+		    color: #333;
 		}
 		
-		/* 호버 효과 */
 		.icon-circle:hover {
-	    transform: scale(1.1); /* 크기 확대 */
-	    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3); /* 그림자 강화 */
+	    transform: scale(1.1);
+	    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 		}
   </style>
   
@@ -392,6 +385,6 @@
 	<!-- 위로가기 버튼 -->
   <h6 id="topBtn" class="text-right mr-3"><font color="#af9e84"><i class="fa-solid fa-circle-chevron-up fa-2x"></i></font></h6>
   
-  <jsp:include page="/include/footer.jsp"/>
 </body>
+<jsp:include page="/include/footer.jsp"/>
 </html>

@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* footerStyle.css */
 
-.footer {
+.footer-container {
     font-family: 'GmarketSansMedium';
     overflow-x: hidden;
 }
