@@ -260,10 +260,10 @@
 	    </div>
 	    <div class="trash"> | </div>
 	    <div class="category input-group-append">${vo.category}</div>
-	    <div class="like-button-container">
+	    <div class="like-button-container">=========${sContentGood.substring(8)}
         <button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)">
-          <c:if test="${empty sContentGood}"><i class="fa-regular fa-heart"></i></c:if>
-          <c:if test="${!empty sContentGood}"><i class="fa-solid fa-heart"></i></c:if>
+          <c:if test="${vo.idx eq sContentGood.substring(8)}"><i class="fa-regular fa-heart"></i></c:if>
+          <c:if test="${!vo.idx eq sContentGood.substring(8)}"><i class="fa-solid fa-heart"></i></c:if>
         </button>
       </div>
 		</div>

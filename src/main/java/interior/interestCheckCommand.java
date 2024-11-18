@@ -31,6 +31,7 @@ public class interestCheckCommand implements InteriorInterface {
 			res = "2";
 			contentGood.remove(tempContentGood);
 		}
+		System.out.println(contentGood);
 		session.setAttribute("sContentGood", contentGood);
 		response.getWriter().write(res);
 	}
