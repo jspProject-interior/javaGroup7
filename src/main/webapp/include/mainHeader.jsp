@@ -8,7 +8,7 @@
   <title>header.jsp</title>
   <jsp:include page="/include/bs4.jsp"/>
   <jsp:include page="/include/fonts.jsp"/>
-  <script type="text/javascript" src="${ctp}/js/headerJs.js"></script>
+  <script type="text/javascript" src="${ctp}/js/mainHeaderJs.js"></script>
   <style>
     #navbar {
       display: flex;

@@ -205,7 +205,7 @@
       position: fixed;
       top: 40%;
       right: -160px;;
-      width: 150px;
+      width: 130px;
       background-color: #fff;
       border: 1px solid #ddd;
       border-radius: 8px;
@@ -231,12 +231,6 @@
     .sidebar-item:hover {
       background-color: #f9f9f9;
       border-radius: 8px;
-    }
-
-    .sidebar-item img {
-      width: 30px;
-      height: 30px;
-      margin-bottom: 10px;
     }
 
     .sidebar-item h4 {

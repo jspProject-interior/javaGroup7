@@ -15,11 +15,13 @@
       justify-content: space-between;
       position: fixed;
       width: 100%;
-      z-index: 0;
+      z-index: 1000;
       top: 0;
       left: 0;
       color: var(--color-dark-gray);
       padding: 1% 4.5% 1% 1%;
+      background: white;
+      transition: top 0.3s ease;
     }
 
     .nav {
@@ -66,8 +68,8 @@
     }
     
     #navbar.fixed {
-      background: white;
       color: black;
+      background: white;
     }
     #navbar.fixed a {
       color: black;

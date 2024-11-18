@@ -5,7 +5,7 @@
         const sideMenu = document.querySelector(".side-menu");
         const overlay = document.querySelector(".overlay");
 
-        // 햄버거 아이콘과 메뉴 상태를 토글
+           // 햄버거 아이콘과 메뉴 상태를 토글
         menu.classList.toggle("active");
         sideMenu.classList.toggle("open");
         overlay.classList.toggle("active");
@@ -17,10 +17,21 @@
         const sideMenu = document.querySelector(".side-menu");
         const overlay = document.querySelector(".overlay");
 
-        // 메뉴와 배경 숨기기
+           // 메뉴와 배경 숨기기
         menu.classList.remove("active");
         sideMenu.classList.remove("open");
         overlay.classList.remove("active");
+       });
+
+       // 네비게이션바 고정 처리 (스크롤에 따라)
+       const navbar = document.querySelector("#navbar");
+       document.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        if (scrollY > 40) {
+           navbar.classList.add("fixed");
+        } else {
+          navbar.classList.remove("fixed");
+        }
        });
 
        // 햄버거 버튼 클릭 시 메뉴 열고 닫기
@@ -63,6 +74,17 @@
         overlay.classList.remove("active");
        });
 
+       // 네비게이션바 고정 처리 (스크롤에 따라)
+       const navbar = document.querySelector("#navbar");
+       document.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+        if (scrollY > 40) {
+           navbar.classList.add("fixed");
+        } else {
+          navbar.classList.remove("fixed");
+        }
+       });
+
     // 햄버거 버튼 클릭 시 메뉴 열고 닫기
        const menuButton = document.querySelector(".menu");
        if (menuButton) {
@@ -70,7 +92,7 @@
        }
 
    	});
-		
+  
   // 로그인 창 jsp
   $(function() {
 	  $(".input input").focus(function() {
@@ -168,4 +190,3 @@
          }
       });
    });
-	 
