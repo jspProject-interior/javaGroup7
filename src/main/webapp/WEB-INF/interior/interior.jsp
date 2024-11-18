@@ -199,9 +199,9 @@
 				    <span>${vo.interest}</span>
 				  </div>
 	        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
-	            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
-	            <div class="title">${vo.title}</div>
-	            <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
+            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
+            <div class="title">${vo.title}</div>
+            <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
 	        </a>
 		    </div>
 		</c:forEach>
