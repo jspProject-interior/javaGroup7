@@ -28,6 +28,9 @@ public class interestCheckCommand implements InteriorInterface {
 			res = dao.setInteriorInterestCheck(idx);
 			contentGood.add(tempContentGood);
 		}
+		else {
+			
+		}
 		session.setAttribute("sContentGood", contentGood);
 		
 		response.getWriter().write(res+"");
