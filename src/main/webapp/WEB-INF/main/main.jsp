@@ -8,6 +8,7 @@
 <title>GRINTERIOR | PROJECT_HMSY</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://kit.fontawesome.com/0c69fdf2c0.js" crossorigin="anonymous"></script>
 <jsp:include page="/include/bs4.jsp" />
 <jsp:include page="/include/fonts.jsp" />
 
@@ -18,8 +19,8 @@
 	<!-- Swiper JS -->
 	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 
-<!-- Custom CSS for Scrollbar Position -->
 <style>
+	<!-- Custom CSS for Scrollbar Position -->
 	/* swiper-container에 상대 위치 설정 */
 	.swiper {
 	    position: relative;
@@ -109,6 +110,8 @@
 		font-family: 'GowunBatang-Regular';
 		font-size: 20px;
 	}
+	
+	
 	.grid-container {
 	  display: grid;
 	  grid-template-columns: auto 300px;
@@ -148,14 +151,14 @@
 	  grid-row: 2;
 	  background-image: url("${ctp}/images/main/main1.jpg");
 	}
-	
+	/*tobBtn*/
 	h6 {
 			position: fixed;
 			right: 1rem;
 			bottom: -50px;
 			transition: 0.7s ease;
 		}
-		.on {
+		h6.on {
 			opacity: 0.8;
 			cursor: pointer;
 			bottom: 0;
@@ -196,6 +199,56 @@
 		.interiorTextSub{
 	    color: #95a5a6;
 		}
+		
+		/* Fixed Sidebar */
+	.fixed-sidebar {
+      position: fixed;
+      top: 40%;
+      right: -160px;;
+      width: 150px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      text-align: center;
+      transition: 0.7s ease;
+    }
+    .fixed-sidebar.on {
+    	right: 10px; /* 화면 안쪽으로 이동 */
+		}
+
+    .sidebar-item {
+      padding: 20px 10px ;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+
+    .sidebar-item:last-child {
+      border-bottom: none;
+    }
+
+    .sidebar-item:hover {
+      background-color: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    .sidebar-item img {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 10px;
+    }
+
+    .sidebar-item h4 {
+      font-size: 14px;
+      color: #333;
+      margin: 5px 0 0 0;
+    }
+
+    .sidebar-item p {
+      font-size: 12px;
+      color: #888;
+    }
 </style>
 <script>
 	'use strict'
@@ -211,6 +264,22 @@
 			window.scrollTo({top:0, behavior: "smooth"});	
 		});
 	});
+	
+	//스크롤 시 사이드바 나타나기
+		$(window).scroll(function(){
+		  if($(this).scrollTop() > 300){
+		     $("#mainSidevar").addClass("on");
+		  }
+		  else{
+		     $("#mainSidevar").removeClass("on");
+		  }
+		});
+	// 견적 계산기 열기 함수
+	function openCalculator() {
+		alert("견적 계산기를 열었습니다! (여기에 실제 기능 추가)");
+	}
+	
+	
 </script>
 </head>
 <body>
@@ -312,13 +381,6 @@
 		</div>
 	</div>
 </div>
-	
-	<div class="blank"></div>
-	
-	<!-- 위로가기 버튼 -->
-  <h6 id="topBtn" class="text-right mr-3"><i class="fa-solid fa-circle-chevron-up fa-2x"></i></h6>					
-
-
 <!-- <!-- Swiper 초기화 스크립트 -->
 <script>
 	var swiper = new Swiper('.swiper-interior', {
@@ -332,6 +394,25 @@
 		  }
 		});
 </script>
+	
+	<div class="blank"></div>
+	
+	<!-- Fixed Sidebar -->
+	<div class="fixed-sidebar" id="mainSidevar">
+		<div class="sidebar-item" onclick="openCalculator()">
+			<font color="#af9e84" size="6em"><i class="fa-solid fa-calculator"></i></font>
+			<h4>견적 계산기</h4>
+		</div>
+		<div class="sidebar-item">
+			<h4>최근 본 공간</h4>
+			<p>최근 본 공간이 없습니다.</p>
+		</div>
+	</div>
+	
+	<!-- 위로가기 버튼 -->
+  <h6 id="topBtn" class="text-right mr-3"><font color="#af9e84"><i class="fa-solid fa-circle-chevron-up fa-2x"></i></font></h6>					
+
+
 
 
 <!-- footer -->
