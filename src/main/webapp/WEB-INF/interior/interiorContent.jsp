@@ -184,6 +184,7 @@
 			opacity: 0.8;
 			cursor: pointer;
 			bottom: 15px;
+			z-index: 10;
 		}
 		
 			
@@ -214,8 +215,8 @@
 		}
 		
 		.icon-circle {
-	    width: 80px;
-	    height: 80px;
+	    width: 60px;
+	    height: 60px;
 	    border-radius: 50%;
 	    background-color: #ffffff;
 	    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -227,7 +228,7 @@
 		}
 		
 		.icon-circle i {
-		    font-size: 30px;
+		    font-size: 25px;
 		    color: #333;
 		}
 		
@@ -309,8 +310,8 @@
 			}
   </script>
 </head>
-<jsp:include page="/include/header.jsp"/>
 <body class="content">
+<jsp:include page="/include/header.jsp"/>
   <div class="main-img">
     <img src="${ctp}/images/interior/upload/${vo.titleImg}" alt="${vo.title}">
   </div>
@@ -385,6 +386,6 @@
 	<!-- 위로가기 버튼 -->
   <h6 id="topBtn" class="text-right mr-3"><font color="#af9e84"><i class="fa-solid fa-circle-chevron-up fa-2x"></i></font></h6>
   
-</body>
 <jsp:include page="/include/footer.jsp"/>
+</body>
 </html>

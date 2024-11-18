@@ -1,17 +1,14 @@
 @charset "UTF-8";
 /* footerStyle.css */
 
-.footer-container {
-    font-family: 'GmarketSansMedium';
-    overflow-x: hidden;
+footer {
+  font-family: 'GmarketSansMedium';
+  overflow-x: hidden;
+  background-color: #a67d3f;
+  padding: 1.5%;
 }
 
-.footer .header-container {
-    background-color: #a67d3f;
-    padding: 1.5%;
-}
-
-.footer hr.footer-hr {
+hr.footer-hr {
     border: 0;
     height: 1.5px;
     background-image: linear-gradient(to right, rgba(255, 255, 255, 0.75), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
@@ -19,60 +16,60 @@
     margin-bottom: 10px;
 }
 
-.footer .left-col {
+.left-col {
     text-align: left;
-    margin-left: 3%;
+    margin-left: 4.5%;
 }
 
-.footer .middle-col {
-    padding-left: 250px;
+.middle-col {
+    padding-left: 4.5%;
 }
 
-.footer .title-link {
+.title-link {
     color: white;
     font-size: 25px;
 }
 
-.footer .input-group.contact-info {
+.input-group.contact-info {
     margin-top: 10px;
 }
 
-.footer .phone-number {
+.phone-number {
     color: white;
     font-size: 16px;
     font-weight: bold;
 }
 
-.footer .business-hours {
+.business-hours {
     color: white;
     font-size: 14px;
     padding-top: 2px;
 }
 
-.footer .input-group-append.text-white.pt-2.info-list {
+.input-group-append.text-white.pt-2.info-list {
     font-size: 12px;
     padding-left: 20px;
 }
 
-.footer .info-list ul {
+.info-list ul {
     padding-left: 4.5%;
     padding-top: 10px;
     color: white;
     font-size: 13px;
 }
 
-.footer .menu-link {
+.menu-link {
     color: white;
     padding-left: 10px;
     font-size: 14px;
 }
 
-.footer .footer {
+.foot {
     text-align: left;
     font-size: 12px;
-    padding-left: 4.5%;
+    padding-left: 4%;
 }
 
-.footer .footer div {
+.foot div {
     font-size: 12px;
 }
