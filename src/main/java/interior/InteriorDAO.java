@@ -174,4 +174,19 @@ public class InteriorDAO {
 		}
 		return res;
 	}
+
+	public int setInteriorInterestCheck(int idx) {
+		int res = 0;
+		try {
+			sql="update interior set interest = interest + 1 where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
 }

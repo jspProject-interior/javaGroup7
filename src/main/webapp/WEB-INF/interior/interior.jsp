@@ -52,21 +52,24 @@
         grid-template-columns: 1fr;
       }
     }
-    form a {
-      background: #fff;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
+    .grid-item {
       text-align: center;
-      transition: box-shadow 0.3s ease;
-      text-decoration: none;
-  		color: inherit;
-    }
-    form a:hover {
-      box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-      text-decoration: none;
-    }
+      overflow: hidden;
+		  position: relative;
+		  border: 1px solid #ddd;
+		  border-radius: 10px;
+		  overflow: hidden;
+		  transition: box-shadow 0.3s ease; /* 애니메이션 추가 */
+		  text-decoration: none;
+		}
+		
+		.grid-item:hover {
+		  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+		  text-decoration: none;
+		}
+		.grid-item a:hover {
+		  text-decoration: none;
+		}
     .grid-item img {
       width: 100%;
       height: 180px;
@@ -104,7 +107,7 @@
     	margin: 1% 4.5%;
     }
     
-		button {
+		.contain button {
 		  color: gray;
 		  border: none;
 		  background: transparent;
@@ -126,6 +129,34 @@
 		  font-family: 'ChosunGu';
 		  font-weight: light;
 		}
+		
+		.grid-item {
+		  position: relative;
+		  border: 1px solid #ddd;
+		  border-radius: 10px;
+		  overflow: hidden;
+		}
+		
+		.grid-item .heart-btn {
+		  position: absolute;
+		  top: 10px;
+		  right: 10px;
+		  background: transparent;
+		  border: none;
+		  font-size: 20px;
+		  color: #ff6b6b; /* 기본 하트 색상 */
+		  cursor: pointer;
+		  transition: transform 0.2s ease, color 0.2s ease;
+		}
+		
+		.grid-item .heart-btn:hover {
+		  transform: scale(1.2);
+		}
+		
+		.grid-item .heart-btn .fa-solid {
+		  color: #ff3b3b; /* 클릭 후 가득 찬 하트 색상 */
+		}
+		
   </style>
   <script type="text/javascript">
   	'use strict';
@@ -134,7 +165,32 @@
   	  location.href = "Interior.in?category=" + category;
   	}
   	
-
+  	
+  	function toggleLike(idx, button) {
+  	    $.ajax({
+  	        type: "post",
+  	        url: "interestCheck.in",
+  	        data: { idx: idx },
+  	        success: function (res) {
+  	            if (res === "1") {
+  	                // 좋아요 성공: 하트 아이콘 변경
+  	                const icon = button.querySelector('i');
+  	                if (icon.classList.contains('fa-regular')) {
+  	                    icon.classList.remove('fa-regular');
+  	                    icon.classList.add('fa-solid');
+  	                } else {
+  	                    icon.classList.remove('fa-solid');
+  	                    icon.classList.add('fa-regular');
+  	                }
+  	            } else if (res === "0") {
+  	                alert("이미 좋아요 버튼을 클릭하셨습니다.");
+  	            }
+  	        },
+  	        error: function () {
+  	            alert('전송 오류 발생');
+  	        }
+  	    });
+  	}
   </script>
 </head>
 <jsp:include page="/include/mainHeader.jsp"/>
@@ -156,13 +212,15 @@
     </div>
     <div class="grid-container">
       <c:forEach var="vo" items="${vos}" varStatus="st">
-	      <a href="InteriorContent.in?idx=${vo.idx}">
 	        <div class="grid-item">
-	          <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
-	          <div class="title">${vo.title}</div>
-	          <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
+	          <c:if test="${sContentGood == null}"><button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)"><i class="fa-regular fa-heart"></i></button></c:if>
+	          <c:if test="${sContentGood != null}"><button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)"><i class="fa-solid fa-heart"></i></button></c:if>
+	      		<a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
+	          	<img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
+	          	<div class="title">${vo.title}</div>
+	          	<div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
+	      		</a>
 	        </div>
-	      </a>
       </c:forEach>
     </div>
   </form>
