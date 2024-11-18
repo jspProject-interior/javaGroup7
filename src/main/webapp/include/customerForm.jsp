@@ -54,13 +54,6 @@
 			border-radius:70px; 
 		}
 		
-		.jClick {
-			width:100%;
-		  max-width: 300px;
-	    padding: 15px;
-	    border-radius:500px; 
-		}
-		
 		.btn {
 		  background-color: white;
   		border-color: #8a7c66;

@@ -388,7 +388,7 @@
 	
 	<!-- Fixed Sidebar -->
 	<div class="fixed-sidebar" id="mainSidevar">
-		<div class="sidebar-item" onclick="location.href='Calculator.cal'">
+		<div class="sidebar-item" onclick="location.href='Calculator.ap'">
 			<font color="#af9e84" size="6em"><i class="fa-solid fa-calculator"></i></font>
 			<h4>견적 계산기</h4>
 		</div>
