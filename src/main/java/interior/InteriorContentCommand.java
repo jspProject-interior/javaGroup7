@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class InteriorContentCommand implements InteriorInterface {
 
@@ -19,6 +20,8 @@ public class InteriorContentCommand implements InteriorInterface {
 		
 		vo = dao.getInteriorContent(idx);
 		ArrayList<InteriorVO> vos = dao.getinteriorList("ALL");
+		
+		HttpSession session = request.getSession();
 		
 		request.setAttribute("vos", vos);
 		request.setAttribute("vo", vo);

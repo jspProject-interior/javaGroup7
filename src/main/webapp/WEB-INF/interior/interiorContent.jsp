@@ -201,9 +201,11 @@
 	    background: none;
 	    border: none;
 	    cursor: pointer;
-	    font-size: 20px; /* 아이콘 크기 */
+	    font-size: 30px; /* 아이콘 크기 */
 	    color: #ff6b6b; /* 기본 색상 */
 	    transition: color 0.3s ease;
+	    margin-left: 10px;
+	    margin-top: 0;
 	}
 	
 	.heart-btn:hover {
@@ -219,17 +221,26 @@
   
   <script type="text/javascript">
 	  function toggleLike(idx, btn) {
-		    const icon = btn.querySelector('i');
-		    if (icon.classList.contains('fa-regular')) {
-		        icon.classList.remove('fa-regular');
-		        icon.classList.add('fa-solid');
-		        // 서버로 좋아요 상태 저장 요청
-		    } else {
-		        icon.classList.remove('fa-solid');
-		        icon.classList.add('fa-regular');
-		        // 서버로 좋아요 상태 취소 요청
-		    }
-		}
+	    const icon = btn.querySelector('i');
+	        $.ajax({
+	        	type : "post",
+	        	url : "interestCheck.in",
+	        	data : {idx : idx},
+	        	success: function(res) {
+							if(res == "1"){
+								icon.classList.remove('fa-regular');
+				        icon.classList.add('fa-solid');
+							}
+							else if(res == "2"){
+				        icon.classList.remove('fa-solid');
+				        icon.classList.add('fa-regular');
+					    }
+						},
+						error: function() {
+							alert("안됨");
+						}
+        });
+	  }
   </script>
 </head>
 <jsp:include page="/include/header.jsp"/>
@@ -251,8 +262,8 @@
 	    <div class="category input-group-append">${vo.category}</div>
 	    <div class="like-button-container">
         <button type="button" class="heart-btn" onclick="toggleLike(${vo.idx}, this)">
-          <c:if test="${sContentGood != null && sContentGood.contains('interior' + vo.idx)}"><i class="fa-regular fa-heart"></i></c:if>
-          <c:if test="${sContentGood == null && sContentGood.contains('interior' + vo.idx)}"><i class="fa-solid fa-heart"></i></c:if>
+          <c:if test="${empty sContentGood}"><i class="fa-regular fa-heart"></i></c:if>
+          <c:if test="${!empty sContentGood}"><i class="fa-solid fa-heart"></i></c:if>
         </button>
       </div>
 		</div>

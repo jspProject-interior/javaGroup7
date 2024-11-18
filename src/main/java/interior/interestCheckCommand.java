@@ -10,7 +10,7 @@ public class interestCheckCommand implements InteriorInterface {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int idx = (request.getParameter("idx")==null || request.getParameter("idx").equals("")) ? 0 : Integer.parseInt(request.getParameter("idx"));
-	
+		
 		InteriorDAO dao = new InteriorDAO();
 		
 		HttpSession session = request.getSession();
@@ -20,16 +20,18 @@ public class interestCheckCommand implements InteriorInterface {
 			contentGood = new ArrayList<String>();
 		}
 		String tempContentGood = "interior" + idx;
-		int res = 0;
+		String res = "0";
 		if(!contentGood.contains(tempContentGood)) {
-			res = dao.setInteriorInterestCheck(idx, 1);
+			dao.setInteriorInterestCheck(idx, 1);
+			res = "1";
 			contentGood.add(tempContentGood);
 		}
 		else {
-			res = dao.setInteriorInterestCheck(idx, -1);
+			dao.setInteriorInterestCheck(idx, -1);
+			res = "2";
 			contentGood.remove(tempContentGood);
 		}
 		session.setAttribute("sContentGood", contentGood);
-		response.getWriter().write(res+"");
+		response.getWriter().write(res);
 	}
 }
