@@ -102,6 +102,9 @@
 	      border-color: #0056b3;
 	    }
 	</style>
+	<script>
+	  
+</script>
 </head>
 <jsp:include page="/include/header.jsp"/>
 <body>
@@ -116,19 +119,19 @@
         <div class="option-group">
           <label for="area">컨설팅 희망 공간</label>
           <div class="d-flex">
-            <button name="area" value="거실" class="btn btn-outline-primary me-2">거실</button>
-            <button name="area" value="침실" class="btn btn-outline-primary me-2">침실</button>
-            <button name="area" value="주방" class="btn btn-outline-primary me-2">주방</button>
-            <button name="area" value="서재" class="btn btn-outline-primary me-2">서재</button>
+            <button name="area" id="area1" value="거실" class="btn btn-outline-primary me-2">거실</button>
+            <button name="area" id="area2" value="침실" class="btn btn-outline-primary me-2">침실</button>
+            <button name="area" id="area3" value="주방" class="btn btn-outline-primary me-2">주방</button>
+            <button name="area" id="area4" value="서재" class="btn btn-outline-primary me-2">서재</button>
           </div>
         </div>
         <div class="option-group">
           <label for="size" class="form-label">평수 (공급면적)</label>
 			    <div class="d-flex">
-            <button name="size" value="20" class="btn btn-outline-primary me-2">20평</button>
-          	<button name="size" value="30" class="btn btn-outline-primary me-2">30평</button>
-            <button name="size" value="40" class="btn btn-outline-primary me-2">40평</button>
-            <button name="size" value="50" class="btn btn-outline-primary me-2">50평 이상</button>
+            <button name="size" id="size1" value="20" class="btn btn-outline-primary me-2">20평</button>
+          	<button name="size" id="size2" value="30" class="btn btn-outline-primary me-2">30평</button>
+            <button name="size" id="size3" value="40" class="btn btn-outline-primary me-2">40평</button>
+            <button name="size" id="size4" value="50" class="btn btn-outline-primary me-2">50평 이상</button>
           </div>
 			  </div>
 
@@ -137,31 +140,31 @@
         <div class="option-group">
           <label for="porch"><i class="fa-solid fa-door-open fa-xl" style="color: #74C0FC;"></i>현관</label>
           <div class="d-flex">
-            <button name="porch" value="N" class="btn btn-outline-primary me-2" data-price="0">선택안함</button>
-            <button name="porch" value="Y" class="btn btn-outline-primary me-2" data-price="286">선택함</button>
+            <button name="porch" id="porch1" value="N" class="btn btn-outline-primary me-2" data-price="0">선택안함</button>
+            <button name="porch" id="porch2" value="Y" class="btn btn-outline-primary me-2" data-price="286">선택함</button>
           </div>
         </div>
         <div class="option-group">
           <label for="papering">도배</label>
           <div class="d-flex">
-            <button name="papering" value="N" class="btn btn-outline-primary me-2" data-price="0">선택안함</button>
-            <button name="papering" value="Y" class="btn btn-outline-primary me-2" data-price="191">실크</button>
-            <button name="papering" value="Y" class="btn btn-outline-primary me-2" data-price="136">합지</button>
+            <button name="papering" id="papering1" value="N" class="btn btn-outline-primary me-2" data-price="0">선택안함</button>
+            <button name="papering" id="papering2" value="Y" class="btn btn-outline-primary me-2" data-price="191">실크</button>
+            <button name="papering" id="papering3" value="Y" class="btn btn-outline-primary me-2" data-price="136">합지</button>
           </div>
         </div>
         <div class="option-group">
           <label for="floor">바닥</label>
           <div class="d-flex">
-            <button name="floor" value="N" class="btn btn-outline-primary me-2" data-price="0">선택안함</button>
-            <button name="floor" value="Y" class="btn btn-outline-primary me-2" data-price="247">강마루</button>
-            <button name="floor" value="Y" class="btn btn-outline-primary me-2" data-price="100">장판</button>
+            <button name="floor" id="floor1" value="N" class="btn btn-outline-primary me-2" data-price="0">선택안함</button>
+            <button name="floor" id="floor2" value="Y" class="btn btn-outline-primary me-2" data-price="247">강마루</button>
+            <button name="floor" id="floor3" value="Y" class="btn btn-outline-primary me-2" data-price="100">장판</button>
           </div>
         </div>
         <div class="option-group">
           <label for="molding">몰딩</label>
           <div class="d-flex">
-            <button name="molding" value="N" class="btn btn-outline-primary me-2" data-price="0">선택안함</button>
-            <button name="molding" value="Y" class="btn btn-outline-primary me-2" data-price="70">선택함</button>
+            <button name="molding" id="molding1" value="N" class="btn btn-outline-primary me-2" data-price="0">선택안함</button>
+            <button name="molding" id="molding2" value="Y" class="btn btn-outline-primary me-2" data-price="70">선택함</button>
           </div>
         </div>
         <div class="option-group">
@@ -206,10 +209,11 @@
           <h4>견적 계산기</h4>
           <p>선택된 항목을 기준으로 견적을 계산합니다.</p>
           <hr>
-          <h5>총 예상 견적: <span id="total-estimate">0</span> 만원</h5>
+          <h5>총 예상 견적: <span name="price" id="price">0</span> 만원</h5>
           <button class="btn-estimate w-100 mt-3">견적 신청</button>
         </div>
       </div>
+      
     </div>
   </div>
 <p><br/></p>
