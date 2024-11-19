@@ -33,7 +33,7 @@ public class ApplicationController extends HttpServlet{
 		else if(com.equals("/Calculator")) { //견적계산기
 			viewPage += "/calculator.jsp";
 		}
-		else if(com.equals("/Application")) { //아이디중복확인
+		else if(com.equals("/Application")) { //상담신청서
 			command = new ApplicationCommand();
 			command.execute(request, response);
 			viewPage += "/application.jsp";
