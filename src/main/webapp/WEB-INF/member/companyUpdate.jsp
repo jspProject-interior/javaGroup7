@@ -5,6 +5,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="${ctp}/images/main/favicon.png">
+  <title>업체정보수정 | 그린테리어</title>
   <jsp:include page="/include/bs4.jsp"/>
   <script src="https://kit.fontawesome.com/0c69fdf2c0.js" crossorigin="anonymous"></script>
   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
