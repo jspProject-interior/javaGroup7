@@ -25,6 +25,9 @@ public class MemberUpdateOkCommand implements MemberInterface {
 		String birthdayStr = request.getParameter("birthday") ==null ? "" : request.getParameter("birthday");
 		String genderStr = request.getParameter("gender") ==null ? "" : request.getParameter("gender");
 		
+		
+		
+		
 		String birthday = "";
 		String gender = "";
 		// 성별 변환	
@@ -34,6 +37,7 @@ public class MemberUpdateOkCommand implements MemberInterface {
 		else {
 			gender = "여성";
 		}
+		
 	// 생년월일 변환	
 		if(genderStr.equals("1")||genderStr.equals("2")) {
 			String year = "19" + birthdayStr.substring(0, 2);
@@ -60,7 +64,6 @@ public class MemberUpdateOkCommand implements MemberInterface {
 		SecurityUtil security = new SecurityUtil();
 		pwd = security.encryptSHA256(salt + pwd);
 		pwd = salt + pwd;
-		
 		
 		//level 변환
 		/*

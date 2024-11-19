@@ -14,8 +14,6 @@ public class moveUpdateCommand implements MemberInterface {
 		HttpSession session = request.getSession();
 		int level = (int)session.getAttribute("sLevel");
 		
-		System.out.println("updateCommand Level : " + level);
-
 		if(level == 1) {
 			request.setAttribute("message", "개인 정보 수정으로 이동합니다.");
 			request.setAttribute("url", "CustomerUpdate.mem");

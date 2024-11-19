@@ -31,7 +31,6 @@
       font-size: 30px;
       color: white;
       text-decoration: none;
-      padding-top: 50px;
     }
     
     
@@ -404,10 +403,10 @@
 		  }
 		  
 		  if(!regex6.test(birthday)|| gender < 1 || gender > 4){
-			    document.getElementById("residentError").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
-			    document.getElementById("birthday").focus();
-			    return false;
-			  }
+		    document.getElementById("residentError").innerHTML="주민등록번호가 올바르지 않습니다.(생년월일 + 성별(1~4))";
+		    document.getElementById("birthday").focus();
+		    return false;
+		  }
 		  else {
 			  document.getElementById("residentError").innerHTML="";
 		  }
@@ -419,7 +418,7 @@
 </script>
 </head>
 <body>
-	<div><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
+	<div style="margin-top: 1%;"><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
 	<form name="myform" method="post" action="MemberUpdateOk.mem">
 	  <div class="container h-100">
 			<div class="card" style="width: 72%;">
@@ -495,8 +494,8 @@
 					     	</div>
 					      <div class="input-group">
 					        <div class="input-group-append" style="display: flex; width: 100%;">
-					          <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목" value="${address3}" class="form-control" style="flex: 4;" onclick="sample6_execDaumPostcode()" readonly>
-					        	<input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소" value="${address4}" class="form-control" style="flex: 6;">
+					          <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목" value="${address4}" class="form-control" style="flex: 4;" onclick="sample6_execDaumPostcode()" readonly>
+					        	<input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소" value="${address3}" class="form-control" style="flex: 6;">
 					        </div>
 					      </div>
 					    </div>

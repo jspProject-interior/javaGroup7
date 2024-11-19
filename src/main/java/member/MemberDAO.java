@@ -159,7 +159,8 @@ public class MemberDAO {
 	public int MemberUpdateOk(MemberVO vo) {
 		int res = 0;
 		try {
-			sql = "update member set pwd = ?, name = ?, company = ?, tel = ?, email = ?, resident = ?, address = ?, gender = ?, birthday = ?, level = ?, photo = ? where mid = ?";
+			sql = "update member set pwd=?, name=?, company=?, tel=?, email=?, resident=?, address=?, gender=?, birthday=?, level=?, photo=? where mid=?";
+			pstmt = conn.prepareStatement(sql);
       pstmt.setString(1, vo.getPwd());
       pstmt.setString(2, vo.getName());
       pstmt.setString(3, vo.getCompany());

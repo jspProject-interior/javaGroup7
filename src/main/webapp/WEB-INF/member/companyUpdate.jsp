@@ -32,7 +32,6 @@
       font-size: 30px;
       color: white;
       text-decoration: none;
-      padding-top: 50px;
     }
     
     
@@ -418,7 +417,7 @@
 </script>
 </head>
 <body>
-	<div><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
+	<div style="margin-top: 1%;"><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
 	<form name="myform" id="myform" method="post" action="MemberUpdateOk.mem">
 	 <div class="container h-100">
 			<div class="card" style="width: 72%;">
@@ -509,8 +508,8 @@
 					     	</div>
 					      <div class="input-group">
 					        <div class="input-group-append" style="display: flex; width: 100%;">
-					          <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목" class="form-control" value="${address3}" style="flex: 4;" onclick="sample6_execDaumPostcode()" readonly>
-					        	<input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소" class="form-control" value="${address4}" style="flex: 6;">
+					          <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목" class="form-control" value="${address4}" style="flex: 4;" onclick="sample6_execDaumPostcode()" readonly>
+					        	<input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소" class="form-control" value="${address3}" style="flex: 6;">
 					        </div>
 					      </div>
 					    </div>
