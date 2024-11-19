@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import common.SecurityUtil;
 
-public class MemberJoinOkCommand implements MemberInterface {
+public class MemberUpdateOkCommand implements MemberInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -21,7 +21,6 @@ public class MemberJoinOkCommand implements MemberInterface {
 		String resident = request.getParameter("resident") ==null ? "" : request.getParameter("resident");
 		String address = request.getParameter("address") ==null ? "" : request.getParameter("address");
 		String photo = request.getParameter("photo") ==null ? "noimage.jpg" : request.getParameter("photo");
-		//String levelStr = request.getParameter("level") == null ? "" : request.getParameter("level");
 		int level = (request.getParameter("level") == null || request.getParameter("level").equals("")) ? 999 : Integer.parseInt(request.getParameter("level"));
 		String birthdayStr = request.getParameter("birthday") ==null ? "" : request.getParameter("birthday");
 		String genderStr = request.getParameter("gender") ==null ? "" : request.getParameter("gender");
@@ -35,8 +34,7 @@ public class MemberJoinOkCommand implements MemberInterface {
 		else {
 			gender = "여성";
 		}
-		
-		// 생년월일 변환	
+	// 생년월일 변환	
 		if(genderStr.equals("1")||genderStr.equals("2")) {
 			String year = "19" + birthdayStr.substring(0, 2);
       String month = birthdayStr.substring(2, 4);       
@@ -88,17 +86,15 @@ public class MemberJoinOkCommand implements MemberInterface {
 		
 		MemberDAO dao = new MemberDAO();
 	
-		int res = dao.setMemberJoinOk(vo);
+		int res = dao.MemberUpdateOk(vo);
 		
 		if(res != 0) {
-			request.setAttribute("message", "회원 가입 완료");
+			request.setAttribute("message", "정보 수정 완료");
 			request.setAttribute("url", "main.main");
 		}
 		else {
-			request.setAttribute("message", "회원 가입 실패");
-			request.setAttribute("url", "MemberJoin.mem");
+			request.setAttribute("message", "정보 수정 실패");
+			request.setAttribute("url", "moveUpdate.mem");
 		}
-	
 	}
-
 }

@@ -66,6 +66,26 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		else if(com.equals("/moveUpdate")) { // 정보 수정으로 이동
+			command = new moveUpdateCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/CustomerUpdate")) { //	개인 정보 수정
+			command = new MemberUpdateCommand();
+			command.execute(request, response);
+			viewPage += "/customerUpdate.jsp";
+		}
+		else if(com.equals("/CompanyUpdate")) { // 업체 정보 수정
+			command = new MemberUpdateCommand();
+			command.execute(request, response);
+			viewPage += "/companyUpdate.jsp";
+		}
+		else if(com.equals("MemberUpdateOk")) { // 업체 정보 수정
+			command = new MemberUpdateOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
