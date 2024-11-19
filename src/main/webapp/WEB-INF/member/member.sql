@@ -27,3 +27,5 @@ create table member(
 insert into member values(default, 'admin', '1234', '관리자', null, '010-1234-5678', 'admin@naver.com', '123456-1234567', '청주', '관리', '2024-11-11', 0, default, default, default, default);
 
 drop table member;
+
+SET foreign_key_checks = 1;

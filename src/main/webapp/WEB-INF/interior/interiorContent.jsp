@@ -10,13 +10,11 @@
   <title>${vo.title} | 그린테리어</title>
   <jsp:include page="/include/bs4.jsp"/>
   <style type="text/css">
-    /* 전체 배경색 */
     .content {
       font-family: 'Arial', sans-serif;
       overflow-x: hidden;
     }
     
-    /* 메인 이미지 스타일 */
     .main-img {
       width: 100%;
       height: 600px;
@@ -32,7 +30,6 @@
       height: 100%;
     }
 
-    /* 컨테이너와 카드 스타일 */
     .contain {
     	width: 100%;
       max-width: 900px;
@@ -44,21 +41,19 @@
     .category {
 	  	padding-left: 20px;
 	  }
-    /* 제목 스타일 */
+	  
     .contain .title {
       font-size: 2em;
       font-weight: bold;
       color: #333;
     }
     
-    /* 회사명 및 카테고리 */
     .contain .company, .container .category {
       font-size: 1.1em;
       color: #666;
       margin-bottom: 5px;
     }
     
-    /* 추가 이미지 스타일 */
     .sub-img {
       text-align: center;
       margin-top: 20px;
@@ -112,10 +107,10 @@
 		}
 		.grid-item {
 		  width: 100%;
-		  height: 250px; /* 고정된 높이 */
+		  height: 250px;
 		}
 		.grid-item img {
-		  height: 70%; /* 이미지 높이를 비율로 설정 */
+		  height: 70%;
 		}
 		.grid-item img {
 			-webkit-transform: scale(1);
@@ -134,19 +129,9 @@
 		  text-decoration: none;
 	  }
 
-/*
 
-/* 제목 스타일 */
-	.contain .title, .contain .category, .contain .trash{
-    font-size: 25px;
-    font-weight: bold;
-    color: #2c3e50;
-    margin-bottom: 10px;
-    text-align: center;
-    letter-spacing: 0.5px;
-	}
 
-/* 회사명 및 카테고리 */
+
 	.contain .company {
     font-size: 1.2em;
     color: #95a5a6;
@@ -160,7 +145,6 @@
 		align-items: center;
 	}
 
-/* "포트폴리오 더보기" 섹션 제목 */
 		.contain hr {
 		    border: 0;
 		    height: 1px;
@@ -261,7 +245,6 @@
         });
 	  }
 	  
-	//화살표클릭시 화면 상단이동(부드럽게)
 		$(window).scroll(function(){
 	  if($(this).scrollTop() > 100){
 	     $("#topBtn").addClass("on");
@@ -274,7 +257,6 @@
 			});
 		});
 		
-		//스크롤 시 사이드바 나타나기
 			$(window).scroll(function(){
 			  if($(this).scrollTop() > 300){
 			     $("#mainSidebar").addClass("on");
@@ -285,14 +267,12 @@
 			});
 		
 			function shareContent() {
-			    // 공유할 데이터 정의
 			    const shareData = {
 			        title: '그린테리어',
 			        text: '이 멋진 인테리어를 확인해보세요!',
 			        url: window.location.href // 현재 페이지 URL
 			    };
 
-			    // Web Share API를 사용하여 공유
 			    if (navigator.share) {
 			        navigator.share(shareData)
 			            .then(() => console.log('공유 성공'))
@@ -347,26 +327,35 @@
     
   <!-- 고정 사이드바 -->
 	<div class="fixed-sidebar" id="mainSidebar">
+    <!-- 공유 -->
     <div class="sidebar-item">
       <div class="icon-circle" onclick="shareContent()">
         <i class="fa-solid fa-share-nodes"></i>
       </div>
     </div>
+    
+    <!-- 좋아요 -->
     <div class="sidebar-item">
       <div class="icon-circle" onclick="toggleLike(${vo.idx}, this)">
         ${fn:contains(sContentGood, interior+vo.idx) ? "<i class='fa-solid fa-heart'></i>" : "<i class='fa-regular fa-heart'></i>"}
       </div>
     </div>
+    
+    <!-- 상담신청 -->
     <div class="sidebar-item">
       <div class="icon-circle">
         <a href="#"><i class="fa-solid fa-comment-dots"></i></a>
       </div>
     </div>
+    
+    <!-- 신고 -->
     <div class="sidebar-item">
       <div class="icon-circle">
         <a href="#"><i class="fa-solid fa-user-slash"></i></a>
       </div>
     </div>
+    
+    <!-- 수정 -->
     <c:if test="${sMid == vo.mid}">
 	    <div class="sidebar-item">
 		    <div class="icon-circle">
@@ -374,6 +363,8 @@
 		    </div>
 	    </div>
     </c:if>
+    
+    <!-- 삭제 -->
     <c:if test="${sMid == vo.mid || sLevel == 0}">
 	    <div class="sidebar-item">
 	      <div class="icon-circle" onclick="DeleteCheck()">

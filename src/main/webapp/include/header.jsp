@@ -279,7 +279,7 @@
 	  		<div>
 		  		<div class="sideTitle">GRINTERIOR</div>
 		  		<ul class="mainMenu">
-		  			<li><a href="">서비스 소개</a></li>
+		  			<li><a href="Interior.in?category=ALL">인테리어</a></li>
 		  			<li><a href="">가구 쇼핑</a></li>
 		  			<li><a href="">컨설팅 사례</a></li>
 		  		</ul>

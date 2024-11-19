@@ -28,16 +28,16 @@ public class MemberLoginCommand implements MemberInterface {
 			return;
 		}
 		
-//			String salt = vo.getPwd().substring(0,3);
-//			
-//			SecurityUtil security = new SecurityUtil();
-//			pwd = security.encryptSHA256(salt + pwd);
-//			
-//			if(!vo.getPwd().substring(3).equals(pwd)) {
-//				request.setAttribute("message", "회원정보가 없습니다.\\n확인하고 다시 로그인하세요.");
-//				request.setAttribute("url", "MemberLogin.mem");
-//				return;
-//			}
+			String salt = vo.getPwd().substring(0,3);
+			
+			SecurityUtil security = new SecurityUtil();
+			pwd = security.encryptSHA256(salt + pwd);
+			
+			if(!vo.getPwd().substring(3).equals(pwd)) {
+				request.setAttribute("message", "회원정보가 없습니다.\\n확인하고 다시 로그인하세요.");
+				request.setAttribute("url", "main.main");
+				return;
+			}
 			
 //			---------- 로그인 처리 된 회원들 처리 ---------------
 			

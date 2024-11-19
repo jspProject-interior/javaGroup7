@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import common.SecurityUtil;
+
 public class MemberJoinOkCommand implements MemberInterface {
 
 	@Override
@@ -54,6 +56,15 @@ public class MemberJoinOkCommand implements MemberInterface {
 			birthday = "1900-01-01";
 		}
 		
+	// 비밀번호 암호화
+		long temp = (int)(Math.random()*(999-100+1))+100;
+		String salt = temp + "";
+		
+		SecurityUtil security = new SecurityUtil();
+		pwd = security.encryptSHA256(salt + pwd);
+		pwd = salt + pwd;
+		
+		
 		//level 변환
 		/*
 		 * if (!levelStr.isEmpty()) { try { level = Integer.valueOf(levelStr); // 문자열을
@@ -75,9 +86,6 @@ public class MemberJoinOkCommand implements MemberInterface {
 		vo.setLevel(level);
 		vo.setBirthday(birthday);
 		vo.setGender(gender);
-		
-		
-		System.out.println("vo : " + vo);
 		
 		MemberDAO dao = new MemberDAO();
 	

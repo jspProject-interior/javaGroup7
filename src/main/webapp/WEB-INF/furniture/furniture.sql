@@ -22,3 +22,5 @@ create table furniture(
 );
 
 select * from furniture;
+
+drop table furniture;

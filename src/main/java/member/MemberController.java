@@ -48,6 +48,24 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			return;
 		}
+		else if(com.equals("/FindAccount")) {
+			viewPage += "/findAccount.jsp";
+		}
+		else if(com.equals("/FindId")) { //아이디찾기
+			command = new FindIdCommand();
+			command.execute(request, response);
+			viewPage += "/findId.jsp";
+		}
+		else if(com.equals("/FindPassword")) { //비밀번호 변경
+			command = new FindPasswordCommand();
+			command.execute(request, response);
+			viewPage += "/findPwd.jsp";
+		}
+		else if(com.equals("/PasswordUpdate")) { //비밀번호 수정
+			command = new PasswordUpdateCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

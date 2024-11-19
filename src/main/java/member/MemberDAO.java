@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import common.GetConn;
 
@@ -92,6 +93,64 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 (MemberJoinOk) :"+e.getMessage());
 		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	public String getFindId(String name, String tel) {
+		String mid = "";
+		try {
+			sql = "select mid from member where name = ? and tel = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, tel);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				mid = rs.getString("mid");
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}
+		finally {
+			rsClose();
+		}
+		return mid;
+	}
+
+	public int getFindPwd(String mid, String name, String tel) {
+		int res = 0;
+		try {
+			sql = "select pwd from member where mid = ? and name = ? and tel = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			pstmt.setString(2, name);
+			pstmt.setString(3, tel);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				res = 1;
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}
+		finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	public int setPasswordUpdate(String pwd, String mid) {
+		int res = 0;
+		try {
+			sql = "update member set pwd = ? where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, mid);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}
+		finally {
 			pstmtClose();
 		}
 		return res;

@@ -718,7 +718,7 @@
 	          <div class="button login">
 	             <button type="submit"><span>LOGIN</span><i class="fa fa-check"></i></button>
 	          </div>
-	          <a href="" class="pass-forgot">비밀번호를 잊어버리셨습니까?</a>
+	          	<a href="FindAccount.mem" class="pass-forgot">계정을 잊어버리셨습니까?</a>
 	          </div>
 	      
 	        <div class="material-button alt-2" onclick="toggleSidebarColor()">
@@ -734,7 +734,7 @@
 	  		<div>
 		  		<div class="sideTitle">GRINTERIOR</div>
 		  		<ul class="mainMenu">
-		  			<li><a href="">서비스 소개</a></li>
+		  			<li><a href="Interior.in?category=ALL">인테리어</a></li>
 		  			<li><a href="">가구 쇼핑</a></li>
 		  			<li><a href="">컨설팅 사례</a></li>
 		  		</ul>
