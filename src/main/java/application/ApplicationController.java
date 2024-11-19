@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.MemberIdCheckCommand;
+
 @WebServlet("*.ap")
 public class ApplicationController extends HttpServlet{
 	@Override
@@ -30,6 +32,11 @@ public class ApplicationController extends HttpServlet{
 		}
 		else if(com.equals("/Calculator")) { //견적계산기
 			viewPage += "/calculator.jsp";
+		}
+		else if(com.equals("/Application")) { //아이디중복확인
+			command = new ApplicationCommand();
+			command.execute(request, response);
+			viewPage += "/application.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
