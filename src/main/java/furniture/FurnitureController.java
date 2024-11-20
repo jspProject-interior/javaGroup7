@@ -33,15 +33,15 @@ public class FurnitureController extends HttpServlet{
 			request.setAttribute("url", "/main.main");
 			viewPage = "/include/message.jsp";
 		}
-		/*
-		else if(com.equals("/InteriorContent")) {
-			command = new InteriorContentCommand();
+		else if(com.equals("/FurnitureContent")) {
+			command = new FurnitureContentCommand();
 			command.execute(request, response);
-			viewPage += "/interiorContent.jsp";
+			viewPage += "/furnitureContent.jsp";
 		}
-		else if(com.equals("/InteriorInput")) {
-			viewPage += "/interiorInput.jsp";
+		else if(com.equals("/FurnitureInput")) {
+			viewPage += "/furnitureInput.jsp";
 		}
+		/*
 		else if(com.equals("/InteriorInputOk")) {
 			command = new InteriorInputCommand();
 			command.execute(request, response);

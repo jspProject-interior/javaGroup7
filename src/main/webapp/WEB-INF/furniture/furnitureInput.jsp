@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="${ctp}/images/favicon.png">
-  <title>인테리어 등록하기 | 그린테리어</title>
+  <title>가구상품 등록하기 | 그린테리어</title>
   <jsp:include page="/include/bs4.jsp"/>
   <style type="text/css">
 		/* 기본적인 스타일링 */
@@ -338,76 +338,126 @@
 		      reader.readAsDataURL(file);
 		    }
 		  }
+		
+		  function discountType() {
+			  const saleType = document.querySelector('input[name="saleType"]:checked').value;
+			  const saleUnit = document.getElementById("saleUnit"); // id는 문자열로 가져와야 함
+			  saleUnit.value = saleType === "percent" ? "%" : "원";
+
+			  // 할인 유형 변경 후 가격 다시 계산
+			  finalPrice();
+			}
+
+			function finalPrice() {
+			  const pay = Number(document.getElementById("pay").value); // 판매가
+			  const discount = Number(document.getElementById("discount").value); // 할인 값
+			  const saleType = document.querySelector('input[name="saleType"]:checked').value; // 할인 유형
+
+			  let price = pay;
+
+			  if (saleType === "percent") {
+			    // 할인율 계산
+			    price = (pay - (pay * (discount / 100))).toFixed(0);
+			  } else {
+			    // 할인 금액 계산
+			    price = pay - discount;
+			  }
+
+			  // 최종 판매가가 음수로 내려가지 않도록 처리
+			  price = price < 0 ? 0 : price;
+
+			  // 최종 판매가 필드 업데이트
+			  document.getElementById("price").value = numberWithCommas(price); // 천 단위 콤마 추가
+			}
+			function numberWithCommas(num) {
+	      return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+	    }
+		
+		
   </script>
 </head>
 <body>
   <jsp:include page="/include/header.jsp"/>
   <div class="contain">
-    <h1 style="font-family: 'EliceDigitalBaeum-Bd';">게시물 등록</h1>
-    <form name="myform" action="InteriorInput.in">
-
+    <h1 style="font-family: 'EliceDigitalBaeum-Bd';">상품 등록</h1>
+    <form name="myform" id="myform" action="FurnitureInput.fu">
       <!-- 업체명 -->
       <div class="form-group">
         <div class="section-title">업체명</div>
         <hr>
         <input type="text" class="form-control" value="GRINTERIOR" readonly>
       </div>
-
       <!-- 카테고리 -->
       <div class="form-group">
         <div class="section-title">카테고리</div>
         <hr>
         <select class="form-control" name="category">
           <option>카테고리</option>
-          <option value="modern">모던</option>
-          <option value="natural">네츄럴</option>
-          <option value="vintage">빈티지</option>
-          <option value="etc" onclick="etcShow()">기타</option>
+          <option value="sofa">소파</option>
+          <option value="table">테이블</option>
+          <option value="chair">의자</option>
+          <option value="cabinet">수납·선반장</option>
+          <option value="lamp">조명</option>
+          <option value="bed">침대</option>
         </select>
-        <div id="etc" class="hidden">
-          <textarea rows="5" class="form-control" placeholder="기타 카테고리 입력"></textarea>
         </div>
-      </div>
-
-      <!-- 판매가 -->
-      <div class="form-group">
-        <div class="section-title">판매가</div>
+      <!-- 상품명 -->
+			<div class="form-group">
+        <div class="section-title">상품명</div>
         <hr>
-        <div class="input-group price-group">
-          <input type="number" placeholder="가격을 입력하세요" class="form-control" style="width: 95%;">
-          <input type="text" value="원" readonly class="form-control" style="width: 4%; text-align: center;">
-        </div>
+        <input type="text" name="title" id="title" class="form-control">
       </div>
-
-      <!-- 할인 설정 -->
-      <div class="form-group sale-group">
-        <div class="section-title">할인</div>
-        <hr>
-        <div class="wrap input-group">
-				  <div class="radio_area">
-				    <input type="radio" name="sale" id="saleCheck" checked>
-				    <label for="saleCheck">설정함</label>  
-				  </div>
-				  <div class="radio_area">
-				    <input type="radio" name="sale" id="unSaleCheck">
-				    <label for="unSaleCheck">설정안함</label>  
-				  </div>  
-				</div>
-				<div id="slaeBox">
-					<div class="section-title">판매가</div>
-        <hr>
-	        <div class="input-group price-group">
-	          <input type="number" placeholder="가격을 입력하세요" class="form-control" style="width: 95%;">
-	          <input type="text" value="원" readonly class="form-control" style="width: 4%; text-align: center;">
-	        </div>
-				</div>
-      </div>
+			<!-- 판매가 -->
+			<div class="form-group">
+			  <div class="section-title">판매가</div>
+			  <hr>
+			  <div class="input-group price-group">
+			    <input type="number" id="pay" placeholder="가격을 입력하세요" class="form-control" style="width: 95%;" oninput="finalPrice()"/>
+			    <input type="text" value="원" readonly class="form-control" style="width: 4%; text-align: center;">
+			  </div>
+			</div>
+			<!-- 할인 입력 -->
+			<div class="form-group sale-group">
+			  <div class="section-title">할인</div>
+			  <hr>
+			  <div class="input-group">
+			    <label style="margin-right: 10px;">
+			      <input type="radio" name="saleType" value="percent" checked onchange="discountType()"> 할인율(%)
+			    </label>
+			    <label>
+			      <input type="radio" name="saleType" value="amount" onchange="discountType()"> 할인 금액(원)
+			    </label>
+			  </div>
+			  <div class="input-group price-group">
+			    <input type="number" id="discount" placeholder="할인 값을 입력하세요" class="form-control" style="width: 95%;" oninput="finalPrice()"/>
+			    <input type="text" id="saleUnit" value="%" readonly class="form-control" style="width: 4%; text-align: center;"/>
+			  </div>
+			</div>
+			<!-- 최종 판매가 -->
+			<div class="form-group">
+			  <div class="section-title">최종 판매가</div>
+			  <hr>
+			  <div class="input-group price-group">
+			    <input type="text" id="price" readonly class="form-control" style="width: 95%;">
+			    <input type="text" value="원" readonly class="form-control" style="width: 4%; text-align: center;">
+			  </div>
+			</div>
 
       <!-- 상품 이미지 -->
 			<div class="form-group">
 			  <div class="section-title">상품 이미지</div>
 			  <hr>
-			  
+			  <div>
+			  <!-- 썸네일 이미지 -->
+			    <div class="section-title">썸네일이미지</div>
+			    <div class="image-upload-container">
+			      <label for="image-upload-thumbnail" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+			        <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
+			        <img id="image-preview-thumbnail" class="image-preview" style="display: none;" />
+			      </label>
+			      <input type="file" id="image-upload-thumbnail" accept="image/*" onchange="handleImageChange(event, 'image-preview-thumbnail')" />
+			    </div>
+			  </div>
 			  <!-- 대표 이미지 -->
 			  <div>
 			    <div class="section-title">대표이미지</div>
@@ -419,7 +469,6 @@
 			      <input type="file" id="image-upload-main" accept="image/*" onchange="handleImageChange(event, 'image-preview-main')" />
 			    </div>
 			  </div>
-			
 			  <!-- 상세페이지 이미지 -->
 			  <div>
 			    <div class="section-title">상세페이지</div>
@@ -431,27 +480,12 @@
 			      <input type="file" id="image-upload-detail" accept="image/*" onchange="handleImageChange(event, 'image-preview-detail')" />
 			    </div>
 			  </div>
-			
-			  <!-- 썸네일 이미지 -->
-			  <div>
-			    <div class="section-title">썸네일이미지</div>
-			    <div class="image-upload-container">
-			      <label for="image-upload-thumbnail" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-			        <div class="plus-icon"><i class="fa-solid fa-plus"></i></div>
-			        <img id="image-preview-thumbnail" class="image-preview" style="display: none;" />
-			      </label>
-			      <input type="file" id="image-upload-thumbnail" accept="image/*" onchange="handleImageChange(event, 'image-preview-thumbnail')" />
-			    </div>
-			  </div>
-			  
 			  <hr>
 			</div>
-
       <!-- 제출 버튼 -->
-      <button class="learn-more" type="submit">상품 등록</button>
+      <button class="learn-more" type="button">상품 등록</button>
     </form>
   </div>
-  
   <jsp:include page="/include/footer.jsp"/>
 </body>
 </html>

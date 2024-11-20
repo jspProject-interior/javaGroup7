@@ -182,18 +182,19 @@
     <div class="furniture">
       <img src="${ctp}/images/furniture/furnitureMain.jpg"/>
       <div class="main">GRINTERIOR</div>
-      <!-- <input type="button" onclick="location.href='InteriorInput.in'" class="btn btn-success" value="게시물 등록"/> -->
+      <input type="button" onclick="location.href='FurnitureInput.fu'" class="btn btn-success" value="게시물 등록"/>
     </div>
-    <!--
     <div class="contain">
     	<div class="input-group">
 			  <button type="button" onclick="choice('ALL')" class="<c:if test='${param.category eq "ALL"}'>act</c:if>">전체</button>
-			  <button type="button" onclick="choice('MODERN')" class="<c:if test='${param.category eq "MODERN"}'>act</c:if>">모던</button>
-			  <button type="button" onclick="choice('NATURAL')" class="<c:if test='${param.category eq "NATURAL"}'>act</c:if>">네츄럴</button>
-			  <button type="button" onclick="choice('VINTAGE')" class="<c:if test='${param.category eq "VINTAGE"}'>act</c:if>">빈티지</button>
-			  <button type="button" onclick="choice('UNIQUE')" class="<c:if test='${param.category eq "UNIQUE"}'>act</c:if>">유니크</button>
+			  <button type="button" onclick="choice('SOFA')" class="<c:if test='${param.category eq "SOFA"}'>act</c:if>">소파</button>
+			  <button type="button" onclick="choice('TABLE')" class="<c:if test='${param.category eq "TABLE"}'>act</c:if>">테이블</button>
+			  <button type="button" onclick="choice('CHAIR')" class="<c:if test='${param.category eq "CHAIR"}'>act</c:if>">의자</button>
+			  <button type="button" onclick="choice('CABINET')" class="<c:if test='${param.category eq "CABINET"}'>act</c:if>">수납·선반장</button>
+			  <button type="button" onclick="choice('LEMP')" class="<c:if test='${param.category eq "LEMP"}'>act</c:if>">조명</button>
+			  <button type="button" onclick="choice('BED')" class="<c:if test='${param.category eq "BED"}'>act</c:if>">침대</button>
 			</div>
-    </div>
+    </div>    
     <div class="grid-container">
       <c:forEach var="vo" items="${vos}" varStatus="st">
 		    <div class="grid-item">
@@ -201,7 +202,7 @@
 				    <i class="fa-solid fa-heart"></i>
 				    <span>${vo.interest}</span>
 				  </div>
-	        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
+	        <a class="moveContent" href="FurnitureContent.fu?idx=${vo.idx}">
             <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
             <div class="title">${vo.title}</div>
             <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
@@ -209,7 +210,6 @@
 		    </div>
 		</c:forEach>
     </div>
-  -->
   </form>
   <jsp:include page="/include/footer.jsp"/>
 </body>
