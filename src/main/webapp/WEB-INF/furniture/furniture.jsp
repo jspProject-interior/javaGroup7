@@ -203,7 +203,7 @@
 				    <span>${vo.interest}</span>
 				  </div>
 	        <a class="moveContent" href="FurnitureContent.fu?idx=${vo.idx}">
-            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
+            <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" alt="Thumbnail">
             <div class="title">${vo.title}</div>
             <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
 	        </a>
