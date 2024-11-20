@@ -743,7 +743,7 @@
 	  		<div>
 		  		<div class="sideTitle">마이페이지</div>
 		  		<ul class="menu-list" id="ml">
-		  			<li><a href="moveUpdate.mem">내 정보</a></li>
+		  			<li><a href="MyPage.mem">내 정보</a></li>
 		  			<li><a href="Love.ap?industry=ALL">관심목록</a></li>
 		  			<li><a href="">구매내역</a></li>
 		  			<li><a href="">장바구니</a></li>

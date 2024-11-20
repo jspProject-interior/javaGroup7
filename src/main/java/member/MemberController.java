@@ -81,10 +81,15 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage += "/companyUpdate.jsp";
 		}
-		else if(com.equals("/MemberUpdateOk")) { // 업체 정보 수정
+		else if(com.equals("/MemberUpdateOk")) { // 정보 수정
 			command = new MemberUpdateOkCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/MyPage")) { // 마이페이지
+			command = new MyPageCommand();
+			command.execute(request, response);
+			viewPage += "/myPage.jsp";
 		}
 		
 		
