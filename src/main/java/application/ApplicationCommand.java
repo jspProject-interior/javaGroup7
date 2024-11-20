@@ -45,9 +45,5 @@ public class ApplicationCommand implements ApplicationInterface {
 		request.setAttribute("address3", address3);
 		request.setAttribute("address4", address4);
 		
-		
-    System.out.println("price AppJsp: " + price);
-    System.out.println("area AppJsp: " + area);
-    System.out.println("size AppJsp: " + size);
 	}
 }

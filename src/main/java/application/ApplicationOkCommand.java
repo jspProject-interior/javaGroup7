@@ -36,7 +36,6 @@ public class ApplicationOkCommand implements ApplicationInterface {
 		vo.setConStartDay(conStartDay);
 		vo.setArea(area);
 		
-		System.out.println("vo:"+vo);
 		
 		int res = dao.setApplicationOk(vo);
 	

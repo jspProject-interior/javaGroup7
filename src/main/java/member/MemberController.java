@@ -8,12 +8,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @SuppressWarnings("serial")
 @WebServlet("*.mem")
 public class MemberController extends HttpServlet {
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		int level = session.getAttribute("sLevel") == null ? 999 : (int)session.getAttribute("sLevel");
+		
 		MemberInterface command = null;
 		String viewPage = "/WEB-INF/member";
 		
@@ -66,30 +70,36 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/moveUpdate")) { // 정보 수정으로 이동
-			command = new moveUpdateCommand();
-			command.execute(request, response);
-			viewPage = "/include/message.jsp";
-		}
-		else if(com.equals("/CustomerUpdate")) { //	개인 정보 수정
+		else if(com.equals("/moveUpdate") && level == 1) { // 개인 정보 수정
 			command = new MemberUpdateCommand();
 			command.execute(request, response);
 			viewPage += "/customerUpdate.jsp";
 		}
-		else if(com.equals("/CompanyUpdate")) { // 업체 정보 수정
+		else if(com.equals("/moveUpdate") && level == 2 || level == 3) { //  업체 정보 수정
 			command = new MemberUpdateCommand();
 			command.execute(request, response);
-			viewPage += "/companyUpdate.jsp";
+			viewPage += "/customerUpdate.jsp";
+		}
+		else if(com.equals("/moveUpdate") && level == 0) { // 정보 수정으로 이동
+			request.setAttribute("message", "관리자 입니다.");
+			request.setAttribute("url", "main.main");
+			viewPage = "/include/message.jsp";
 		}
 		else if(com.equals("/MemberUpdateOk")) { // 정보 수정
 			command = new MemberUpdateOkCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/MyPage")) { // 마이페이지
+		
+		else if(com.equals("/MyPage") && level == 0 || level == 1) { // 마이페이지
 			command = new MyPageCommand();
 			command.execute(request, response);
-			viewPage += "/myPage.jsp";
+			viewPage += "/customerPage.jsp";
+		}
+		else if(com.equals("/MyPage") && level == 2 || level == 3) { // 마이페이지
+			command = new MyPageCommand();
+			command.execute(request, response);
+			viewPage += "/companyPage.jsp";
 		}
 		
 		

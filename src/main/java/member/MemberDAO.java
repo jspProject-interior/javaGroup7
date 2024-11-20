@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import common.GetConn;
+import interior.InteriorVO;
 
 public class MemberDAO {
 	private Connection conn = GetConn.getConn();
@@ -91,7 +92,7 @@ public class MemberDAO {
       pstmt.setString(12, vo.getPhoto());
       res = pstmt.executeUpdate();
 		} catch (SQLException e) {
-			System.out.println("SQL 오류 (MemberJoinOk) :"+e.getMessage());
+			System.out.println("SQL 오류 : "+e.getMessage());
 		} finally {
 			pstmtClose();
 		}
@@ -182,5 +183,6 @@ public class MemberDAO {
 		}
 		return res;
 	}
+
 }
 

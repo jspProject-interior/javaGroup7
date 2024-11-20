@@ -48,6 +48,11 @@ public class ApplicationController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/love.jsp";
 		}
+		else if(com.equals("/MyPost")) { //관심 목록
+			command = new MyPostCommand();
+			command.execute(request, response);
+			viewPage += "/myPost.jsp";
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

@@ -54,7 +54,6 @@ public class InteriorUpdateOkCommand implements InteriorInterface {
 		}
 		
 		InteriorVO vo = new InteriorVO();
-		System.out.println(idx);
 		vo.setMid(mid);
 		vo.setCompany(company);
 		vo.setCategory(category);
@@ -71,7 +70,6 @@ public class InteriorUpdateOkCommand implements InteriorInterface {
 		InteriorDAO dao = new InteriorDAO();
 		
 		int res = dao.setInteriorUpdate(vo, idx);
-		System.out.println(res);
 		if(res != 0) {
 			request.setAttribute("message", "게시물 수정이 완료되었습니다.");
 			request.setAttribute("url", "Interior.in");

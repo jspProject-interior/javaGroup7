@@ -11,19 +11,20 @@ import javax.servlet.http.HttpSession;
 import interior.InteriorDAO;
 import interior.InteriorVO;
 
-public class LoveCommand implements ApplicationInterface {
+public class MyPostCommand implements ApplicationInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood") == null ? null : (ArrayList<String>)session.getAttribute("sContentGood");
+		String mid = (String)session.getAttribute("sMid");
+		String level = (String)request.getAttribute("sLevel");
 		
 		InteriorDAO InteriorDAO = new InteriorDAO();
 		
-		ArrayList<InteriorVO> InteriorVOS = InteriorDAO.getInteriorIdxSearch(request);
+		ArrayList<InteriorVO> InteriorVOS = InteriorDAO.getMyPost(mid);
 		
 		request.setAttribute("InteriorVOS", InteriorVOS);
-		request.setAttribute("sContentGood", sContentGood);
+		request.setAttribute("sLevel", level);
 	}
 
 }

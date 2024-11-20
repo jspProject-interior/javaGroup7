@@ -46,15 +46,19 @@
       background-color: #f0f0f0;
   }
   .info-Update {
+    position: absolute; /* 부모 요소 기준으로 위치 */
+    top: 30px; /* 연락처 텍스트와 수평 정렬 */
+    transform: translateY(-50%); /* 수직 중앙 정렬 */
+    right: 20px; /* 오른쪽으로 배치 */
     background: transparent;
     text-decoration: underline;
     color: black;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
+    font-size: 16px;
+    cursor: pointer;
+	}
   .info-Update:hover {
       color: black;
+      text-decoration: none;
   }
   .user-information {
       display: flex;
@@ -104,11 +108,7 @@
     color: black;  
   }
   .user-details {
-    display: flex;
     flex-direction: column;
-  }
-  .user-details div {
-    font-size: 24px;
   }
   .user-title{
   	color: gray;
@@ -137,8 +137,8 @@
 <div class="contain">
 	<div class="information">
     <div class="user-details">
-        <span class="Name"><b>${vo.name}</b></span>
-        <span class="Id">${vo.mid}</span>
+        <div class="Name">${vo.name}</div>
+        <div class="Id">${vo.mid}</div>
     </div>
     <button onclick="location.href='MemberLogout.mem'" class="logout">로그아웃</button>
 	</div>
@@ -150,7 +150,8 @@
 	  	<div class="user-title">주소</div>
 	  	<div class="user-info">${fn : replace(vo.address, '/', ' ')}</div>
 	  </div>
-		<div class="user" style="width: 40%;">
+	  
+		<div class="user" style="width: 40%; position: relative;">
 	    <div class="user-title">연락처</div>
 	    <div class="user-info">${vo.tel}</div>
     	<a href="moveUpdate.mem" class="info-Update">내 정보 수정</a>
@@ -160,19 +161,19 @@
   <div style="margin-bottom: 100px;" class="input-group">
 		<div class="tab">
 			<a href="#">
-		  	<p class="talTitle">디자인 프로젝트</p>
+		  	<p class="talTitle">배송 현황</p>
 		  	<div class="talContent">0</div>
 	  	</a>
 	  </div>
 		<div class="tab">
 	    <a href="#">
-		  	<p class="talTitle">디자인 프로젝트</p>
+		  	<p class="talTitle">장바구니</p>
 		  	<div class="talContent">0</div>
 	  	</a>
 	  </div>
 		<div class="tab">
 	    <a href="#">
-		  	<p class="talTitle">디자인 프로젝트</p>
+		  	<p class="talTitle">구매 내역</p>
 		  	<div class="talContent">0</div>
 	  	</a>
 	  </div>
@@ -180,13 +181,13 @@
   
   <div class="section-title">인테리어 컨설팅 서비스</div>
   <div class="section">
-    <a href="#"><i class="fa-regular fa-newspaper"></i> 지난 설문</a>
+    <a href="#"><i class="fa-regular fa-newspaper"></i> 상담 신청 내역</a>
   </div>
   <div class="section-title">나의 쇼핑</div>
   <div class="section">
-    <a href="#">나의 쿠폰</a>
-    <a href="#">찜한 상품</a>
-    <a href="#">나의 후기</a>
+    <a href="#"><i class="fa-solid fa-heart"></i> 찜한 상품</a>
+    <a href="#"><i class="fa-solid fa-magnifying-glass"></i> 최근 본 내역</a>
+    <a href="#"><i class="fa-regular fa-newspaper"></i> 나의 후기</a>
   </div>
 </div>
 <jsp:include page="/include/footer.jsp"/>

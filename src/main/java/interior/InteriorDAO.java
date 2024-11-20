@@ -197,7 +197,7 @@ public class InteriorDAO {
 	public ArrayList<InteriorVO> getInteriorIdxSearch(HttpServletRequest request) {
 		ArrayList<InteriorVO> vos = new ArrayList<InteriorVO>();
 		HttpSession session = request.getSession();
-		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood");
+		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood") == null ? null : (ArrayList<String>)session.getAttribute("sContentGood");
 		String interiorBoard[] = sContentGood.toString().split(",");
 		try {
 			for(int i = 0; i < interiorBoard.length; i++) {
@@ -207,6 +207,7 @@ public class InteriorDAO {
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, interiorBoard[i]);
 				rs = pstmt.executeQuery();
+				
 				while(rs.next()) {
 					vo = new InteriorVO();
 					
@@ -233,6 +234,44 @@ public class InteriorDAO {
 		} finally {
 			rsClose();
 		}
+		return vos;
+	}
+	
+	public ArrayList<InteriorVO> getMyPost(String mid) {
+		ArrayList<InteriorVO> vos = new ArrayList<InteriorVO>();
+		try {
+			sql = "select * from interior where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new InteriorVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setCompany(rs.getString("company"));
+				vo.setCategory(rs.getString("category"));
+				vo.setTitle(rs.getString("title"));
+				vo.setTitleImg(rs.getString("titleImg"));
+				vo.setSubImg(rs.getString("subImg"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setfName(rs.getString("fName"));
+				vo.setfSName(rs.getString("fSName"));
+				vo.setfSize(rs.getInt("fSize"));
+				vo.setClaim(rs.getString("claim"));
+				vo.setwDate(rs.getString("wDate"));
+				vo.setInterest(rs.getString("interest"));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}
+		finally {
+			rsClose();
+		}
+		
 		return vos;
 	}
 }
