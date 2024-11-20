@@ -19,7 +19,6 @@ public class ApplicationOkCommand implements ApplicationInterface {
 		
 		
 //		여기부터 주석 풀고 작성하시면 됩니다요
-//		int res = dao.setApplicationOk(vo);
 		
 //		vo.setMid(mid);
 //		vo.setCompany(company);
@@ -32,6 +31,8 @@ public class ApplicationOkCommand implements ApplicationInterface {
 //		vo.setfName(ofName);
 //		vo.setfSName(fsName);
 //		vo.setfSize(fSize);
+		
+//		int res = dao.setApplicationOk(vo);
 		
 //		if(res != 0) {
 //			request.setAttribute("message", "상담신청이 완료되었습니다.");
