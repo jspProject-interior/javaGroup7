@@ -680,7 +680,7 @@
         <ul class="nav" style="padding-top:0.5%; padding-right: 3%;">
           <li><a href="#"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a></li>
           <li><a href="#" style="padding: 0 20px;"><i class="fa-solid fa-cart-shopping fa-lg"></i></a></li>
-          <li><a href="#" style="padding-right:20px;"><i class="fa-regular fa-heart fa-lg"></i></a></li>
+          <li><a href="Love.ap?industry=ALL" style="padding-right:20px;"><i class="fa-regular fa-heart fa-lg"></i></a></li>
           <li>
             <div class="pv-box">
               <div class="container" style="padding-left: 5px;">
@@ -744,7 +744,7 @@
 		  		<div class="sideTitle">마이페이지</div>
 		  		<ul class="menu-list" id="ml">
 		  			<li><a href="moveUpdate.mem">내 정보</a></li>
-		  			<li><a href="">관심목록</a></li>
+		  			<li><a href="Love.ap?industry=ALL">관심목록</a></li>
 		  			<li><a href="">구매내역</a></li>
 		  			<li><a href="">장바구니</a></li>
 		  		</ul>

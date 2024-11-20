@@ -249,13 +249,13 @@
         <a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a>
         <ul class="nav" style="padding-top:0.5%; padding-left:5%; padding-right: 30%;">
           <li class="nav_menu"><a href="Interior.in?category=ALL" class="active">인테리어</a></li>
-          <li class="nav_menu" style="padding: 0 50px;"><a href="#">가구</a></li>
+          <li class="nav_menu" style="padding: 0 50px;"><a href="Furniture.fu?category=ALL">가구</a></li>
           <li class="nav_menu"><a href="#">컨설팅 사례</a></li>
         </ul>
         <ul class="nav" style="padding-top:0.5%;">
           <li><a href="#"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a></li>
           <li><a href="#" style="padding: 0 20px;"><i class="fa-solid fa-cart-shopping fa-lg"></i></a></li>
-          <li><a href="#" style="padding-right:20px;"><i class="fa-regular fa-heart fa-lg"></i></a></li>
+          <li><a href="Love.ap?industry=ALL" style="padding-right:20px;"><i class="fa-regular fa-heart fa-lg"></i></a></li>
           <li>
             <div class="pv-box">
               <div class="container" style="padding-left: 5px;">
@@ -280,7 +280,7 @@
 		  		<div class="sideTitle">GRINTERIOR</div>
 		  		<ul class="mainMenu">
 		  			<li><a href="Interior.in?category=ALL">인테리어</a></li>
-		  			<li><a href="">가구 쇼핑</a></li>
+		  			<li><a href="Furniture.fu?category=ALL">가구 쇼핑</a></li>
 		  			<li><a href="">컨설팅 사례</a></li>
 		  		</ul>
 	  		</div>
@@ -289,7 +289,7 @@
 		  		<div class="sideTitle">마이페이지</div>
 		  		<ul class="menu-list" id="ml">
 		  			<li><a href="moveUpdate.mem">내 정보</a></li>
-		  			<li><a href="">관심목록</a></li>
+		  			<li><a href="Love.ap?industry=ALL">관심목록</a></li>
 		  			<li><a href="">구매내역</a></li>
 		  			<li><a href="">장바구니</a></li>
 		  		</ul>
