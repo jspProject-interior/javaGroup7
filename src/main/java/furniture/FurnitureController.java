@@ -41,12 +41,12 @@ public class FurnitureController extends HttpServlet{
 		else if(com.equals("/FurnitureInput")) {
 			viewPage += "/furnitureInput.jsp";
 		}
-		/*
-		else if(com.equals("/InteriorInputOk")) {
-			command = new InteriorInputCommand();
+		else if(com.equals("/FurnitureInputOk")) {
+			command = new FurnitureInputCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		/*
 		else if(com.equals("/InteriorUpdate")) {
 			command = new InteriorUpdateCommand();
 			command.execute(request, response);
