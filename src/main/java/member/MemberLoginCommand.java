@@ -46,6 +46,7 @@ public class MemberLoginCommand implements MemberInterface {
 			session.setAttribute("sMid", mid);
 			session.setAttribute("sLevel", vo.getLevel());
 			session.setAttribute("sLastDate", vo.getLastDate());
+			session.setAttribute("sCompany", vo.getCompany());
 			
 			
 			

@@ -296,14 +296,14 @@
     <img src="${ctp}/images/interior/upload/${vo.titleImg}" alt="${vo.title}">
   </div>
   <div class="contain">
+    <div class="title-container">
+        <div class="title">${vo.title}</div>
+    </div>
     <div class="input-group">
-	    <div class="title-container">
-	        <div class="title">${vo.title}</div>
-	    </div>
-	    <div class="trash"> | </div>
-	    <div class="category input-group-append">${vo.category}</div>
+    	<div class="company input-group-prepend">${vo.company}</div>
+	    <div class="trash company"> / </div>
+	    <div class="category company input-group-append">${vo.category}</div>
 		</div>
-    <div class="company input-group-prepend">${vo.company}</div>
     
     <div class="sub-img">
       <img style="width: 100%;" src="${ctp}/images/interior/upload/${vo.subImg}" alt="보조 이미지">

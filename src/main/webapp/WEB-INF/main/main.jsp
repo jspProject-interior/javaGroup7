@@ -50,17 +50,29 @@
 	  height: 663;
 	}
 	
-	.interiorImgCrop img {
-	  width: 100%;
-	  height: 400px;
-	  -webkit-transform: scale(1);
-		transform: scale(1);
-		transition: .2s ease-in-out;
-	}
-	
-	.interiorImgCrop img:hover {
-	  transform: scale(1.05);
-	}
+	.interiorImgCrop {
+      background: #fff;
+      overflow: hidden;
+      text-align: center;
+      text-decoration: none;
+      position: relative;
+      width: 100%;
+      height: 400px; /* 원하는 높이 설정 */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .interiorImgCrop img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 이미지 크기에 따라 자르기 */
+      transition: transform 0.2s ease-in-out; /* 부드러운 확대 효과 */
+  }
+
+  .interiorImgCrop img:hover {
+      transform: scale(1.1); /* 마우스를 올렸을 때 확대 */
+  }
 	.interiorImgCrop{
 		background: #fff;
       overflow: hidden;
@@ -351,22 +363,22 @@
 		<div id="MAGAZINE" style="padding-bottom: 10px; font-size: 30px;"><b>GRINTERIOR MAGAZINE</b></div>
 	
 		<div class="swiper-interior">
-			<div class="swiper-wrapper">
-				<c:forEach var="inVO" items="${inVOS}" varStatus="st">
-					<div class="swiper-slide">
-						<a href="InteriorContent.in?idx=${inVO.idx}">
-							<div class="interiorImgCrop">
-								<img src="${ctp}/images/interior/upload/${inVO.thumbnail}" alt="Slide ${st.count}" />
-							</div>
-							<div class="interiorText">${inVO.title}</div>
-							<div class="input-group">
-								<div class="interiorText interiorTextSub input-group-prepend">${inVO.company} |</div>
-								<div class="interiorText interiorTextSub input-group-append ml-1"> ${inVO.category}</div>
-							</div>
-						</a>
-					</div>
-				</c:forEach>
-			</div>
+    <div class="swiper-wrapper">
+        <c:forEach var="inVO" items="${inVOS}" varStatus="st">
+            <div class="swiper-slide">
+                <a href="InteriorContent.in?idx=${inVO.idx}">
+                    <div class="interiorImgCrop">
+                        <img src="${ctp}/images/interior/upload/${inVO.thumbnail}" alt="Slide ${st.count}" />
+                    </div>
+                    <div class="interiorText">${inVO.title}</div>
+                    <div class="input-group">
+                        <div class="interiorText interiorTextSub input-group-prepend">${inVO.company} |</div>
+                        <div class="interiorText interiorTextSub input-group-append ml-1"> ${inVO.category}</div>
+                    </div>
+                </a>
+            </div>
+        </c:forEach>
+    	</div>
 		</div>
 	</div>
 </div>

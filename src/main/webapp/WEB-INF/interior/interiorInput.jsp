@@ -113,7 +113,7 @@
       <div class="form-group">
         <div class="section-title">업체명</div>
         <hr>
-        <input type="text" name="company" id="company" class="form-control" value="${sMid}" readonly>
+        <input type="text" name="company" id="company" class="form-control" value="${sCompany}" readonly>
       </div>
 
       <!-- 카테고리 -->

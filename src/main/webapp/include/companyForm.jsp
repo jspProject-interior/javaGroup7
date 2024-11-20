@@ -471,12 +471,12 @@
 			      </div>
 	       		<div class="form-group password">
 			        <font color="red"><b>*&nbsp;</b></font><label for="pwd1" class="password">비밀번호 (PASSWORD)</label>
-			        <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" oninput="pwd1Check()" maxlength="20" placeholder="영문/숫자 필수, 특수문자 가능 4~20자 이내">
+			        <input type="password" class="form-control form-control-lg"  name="pwd1" id="pwd1" oninput="pwd1Check()" value="q123" maxlength="20" placeholder="영문/숫자 필수, 특수문자 가능 4~20자 이내">
 			        <div id="pwdError1" class="text-primary"></div>
 			      </div>
 			      <div class="form-group passwordCheck">
 			        <font color="red"><b>*&nbsp;</b></font><label for="pwd2">비밀번호 재확인 (PASSWORD CHECK)</label>
-			        <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" oninput="pwd2Check()" maxlength="20" placeholder="비밀번호 재확인">
+			        <input type="password" class="form-control form-control-lg"  name="pwd2" id="pwd2" oninput="pwd2Check()" value="q123" maxlength="20" placeholder="비밀번호 재확인">
 			         <div id="pwdError2" class="text-primary"></div>
 			      </div>             
 						<div class="form-group">
