@@ -104,102 +104,86 @@
 		}
 		
 	</style>
-	<script>
-	  let totalPrice = 0; // 총 가격 변수
-	
-	  document.addEventListener('DOMContentLoaded', () => {
-		  const buttonGroups = document.querySelectorAll('.button-group');
+<script>
+  let totalPrice = 0; // 총 가격 변수
 
-		  let lastSelectedValues = {}; // 각 그룹의 마지막 선택 값을 저장
-		  let sizeMul = 0; // 초기 sizeMul 값
-		  let basePrice = 0; // sizeMul 적용 전의 기본 총합
-	    let selectedArea = ""; 
-	    let selectedSize = ""; 
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttonGroups = document.querySelectorAll('.button-group');
 
-		  buttonGroups.forEach(group => {
-		    group.addEventListener('click', (event) => {
-		      if (event.target.tagName === 'BUTTON') {
-		        const clickedButton = event.target;
-		        const groupName = clickedButton.getAttribute("name");
-		        const value1 = clickedButton.dataset.value1;
-		        const value2 = Number(clickedButton.dataset.value2);
+    let lastSelectedValues = {}; // 각 그룹의 마지막 선택 값을 저장
+    let sizeMul = 0; // 초기 sizeMul 값
+    let basePrice = 0; // sizeMul 적용 전의 기본 총합
+    let selectedArea = "";
+    let selectedSize = "";
 
-		        // 중복 클릭 방지
-		        if (clickedButton.classList.contains('disabled')) {
-		          return; // 이미 선택된 버튼은 무시
-		        }
+    buttonGroups.forEach(group => {
+      group.addEventListener('click', (event) => {
+        if (event.target.tagName === 'BUTTON') {
+          const clickedButton = event.target;
+          const groupName = clickedButton.getAttribute("name");
+          const value1 = clickedButton.dataset.value1;
+          const value2 = Number(clickedButton.dataset.value2);
 
-		        // 기존 선택 값을 basePrice에서 제거
-		        if (lastSelectedValues[groupName]) {
-		          basePrice -= lastSelectedValues[groupName];
-		        }
+          // 중복 클릭 방지
+          if (clickedButton.classList.contains('disabled')) {
+            return; // 이미 선택된 버튼은 무시
+          }
 
-		        // 그룹별 로직
-		        if (groupName === "size") {
-		        	selectedSize = value1;
-		          // sizeMul 값 설정
-		          if (value1 === "20") sizeMul = 0;
-		          else if (value1 === "30") sizeMul = 0.3;
-		          else if (value1 === "40") sizeMul = 0.5;
-		          else if (value1 === "50") sizeMul = 0.7;
+          // 기존 선택 값을 basePrice에서 제거
+          if (lastSelectedValues[groupName]) {
+            basePrice -= lastSelectedValues[groupName];
+          }
 
-		          // size는 basePrice에 직접 영향을 주지 않음
-		          lastSelectedValues[groupName] = 0; // size는 금액이 없으므로 0으로 저장
-		        }else if (groupName === "area") {
-	            selectedArea = value1;
-		        }else {
-		          // 다른 그룹은 basePrice에 값을 추가
-		          basePrice += value2; // 새 값을 추가
-		          lastSelectedValues[groupName] = value2; // 새 값을 저장
-		        }
+          // 그룹별 로직
+          if (groupName === "size") {
+            selectedSize = value1;
+            // sizeMul 값 설정
+            if (value1 === "20") sizeMul = 0;
+            else if (value1 === "30") sizeMul = 0.3;
+            else if (value1 === "40") sizeMul = 0.5;
+            else if (value1 === "50") sizeMul = 0.7;
 
-		        // totalPrice 재계산: sizeMul을 적용
-		        totalPrice = basePrice + (basePrice * sizeMul);
+            // size는 basePrice에 직접 영향을 주지 않음
+            lastSelectedValues[groupName] = 0; // size는 금액이 없으므로 0으로 저장
+          } else if (groupName === "area") {
+            selectedArea = value1;
+          } else {
+            // 다른 그룹은 basePrice에 값을 추가
+            basePrice += value2; // 새 값을 추가
+            lastSelectedValues[groupName] = value2; // 새 값을 저장
+          }
 
-		        // 버튼 상태 업데이트
-		        group.querySelectorAll('button').forEach(button => {
-		          button.classList.remove('active', 'disabled');
-		        });
-		        clickedButton.classList.add('active', 'disabled');
+          // totalPrice 재계산: sizeMul을 적용
+          totalPrice = basePrice + (basePrice * sizeMul);
 
-		        // 총 가격 업데이트
-		        document.getElementById('price').innerText = totalPrice.toFixed(0);
-		        document.getElementById('totprice').value = totalPrice.toFixed(0);
-		      }
-		      window.fCheck = () => {
-			        document.getElementById('selectArea').value = selectedArea;
-			        document.getElementById('selectSize').value = selectedSize;
-			        document.getElementById('totprice').value = totalPrice.toFixed(0);
-			        form.submit(); // 폼 제출
-			    };
-		    });
-		  });
-		});
-	  
-	  /* 상담 신청서로 값 넘김 */
-	  /* $(document).ready(function () {
-	      $(".btn").click(function () {
-	        const name = $(this).attr("name");
-	        const value1 = $(this).data("value1");
-	
-	        $.ajax({
-	          url: "application.jsp",
-	          type: "POST",
-	          data: { 
-	        	  name: name,
-	        	  value1: value1 
-	        	},
-	          success: function () {
-	            $("#response").html(response);
-	          },
-	          error: function () {
-	            console.error("AJAX 요청 실패:", error);
-	            $("#response").html("오류 발생: " + error);
-	          },
-	        });
-	      });
-	    }); */
-	</script>
+          // 버튼 상태 업데이트
+          group.querySelectorAll('button').forEach(button => {
+            button.classList.remove('active', 'disabled');
+          });
+          clickedButton.classList.add('active', 'disabled');
+
+          // 총 가격 업데이트
+          document.getElementById('price').innerText = totalPrice.toFixed(0);
+          document.getElementById('totprice').value = totalPrice.toFixed(0);
+        }
+        document.getElementById('selectArea').value = selectedArea;
+        document.getElementById('selectSize').value = selectedSize;
+      });
+    });
+  });
+
+  // 전역 범위에서 fCheck 정의
+  window.fCheck = () => {
+    const selectedSize = document.getElementById('selectSize').value;
+    if (selectedSize === "" || selectedSize === null) {
+      alert("평수를 선택해주세요.");
+      return false;
+    }
+    document.getElementById('selectSize').value = selectedSize;
+    document.forms['myform'].submit(); // 폼 제출
+  };
+</script>
+
 </head>
 <body class="calculator">
 <jsp:include page="/include/header.jsp"/>
@@ -284,7 +268,7 @@
 		          <p>선택된 항목을 기준으로 견적을 계산합니다.</p>
 		          <hr>
 		          <h5>총 예상 견적: <span data-name="price" id="price">0</span> 만원</h5>
-		          <button class="btn-estimate w-100 mt-3" onclick="fCheck()">견적 신청</button>
+		          <button type="button" class="btn-estimate w-100 mt-3" onclick="fCheck()">견적 신청</button>
 		          <input type="hidden" name="totprice" id="totprice"/>
 		          <input type="hidden" name="selectArea" id="selectArea"/>
 		          <input type="hidden" name="selectSize" id="selectSize"/>

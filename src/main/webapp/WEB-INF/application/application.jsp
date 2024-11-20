@@ -91,7 +91,7 @@
       <!-- 회원 아이디 -->
       <div class="form-group">
         <label for="mid">회원 아이디</label>
-        <input type="text" id="mid" name="mid" value="${sMid}" maxlength="20" readonly/>
+        <input type="text" id="mid" name="mid" value="${sMid}" maxlength="20" style="background-color: #eee;" readonly readonly/>
       </div>
       <!-- 회원 성명 -->
       <div class="form-group">
@@ -123,13 +123,18 @@
       <!-- 컨설팅 희망 공간 -->
       <div class="form-group">
         <label for="area">컨설팅 희망 공간</label>
-        <select id="area" name="area">
-          <option value="N">선택안함</option>
-          <option value="거실" ${vo.area == '거실' ? 'selected' : ''}>거실</option>
-          <option value="침실" ${vo.area == '침실' ? 'selected' : ''}>침실</option>
-          <option value="주방" ${vo.area == '주방' ? 'selected' : ''}>주방</option>
-          <option value="서재" ${vo.area == '서재' ? 'selected' : ''}>서재</option>
-        </select>
+      	<c:if test="${!empty vo.area}">
+      		<input type="text" value="${vo.area}" readonly style="background-color: #eee;">
+        </c:if>
+      	<c:if test="${empty vo.area}">
+		      <select id="area" name="area" >
+	          <option value="N">선택안함</option>
+	          <option value="거실">거실</option>
+	          <option value="침실">침실</option>
+	          <option value="주방">주방</option>
+	          <option value="서재">서재</option>
+	        </select>
+        </c:if>
       </div>
       <!-- 선호하는 분위기 -->
       <div class="form-group">
@@ -142,11 +147,10 @@
           <option value="북유럽">북유럽</option>
         </select>
       </div>
+      
       <!-- 견적 가격 -->
-      <div class="form-group">
-        <label for="price">견적 가격</label>
-        <input type="number" id="price" name="price" value="${vo.price}">
-      </div>
+      <input type="hidden" id="price" name="price" value="${vo.price}">
+      
       <!-- 예산 -->
       <div class="form-group">
         <label for="budget">예산</label>
@@ -155,7 +159,12 @@
       <!-- 평수 -->
       <div class="form-group">
         <label for="size">평수</label>
-        <input type="number" id="size" name="size" value="${vo.size}" required placeholder="평수를 입력하세요">
+        <c:if test="${!empty vo.size}">
+        	<input type="number" id="size" name="size" value="${vo.size}" required placeholder="평수를 입력하세요" style="background-color: #eee;" readonly>
+        </c:if>
+        <c:if test="${empty vo.size}">
+        	<input type="number" id="size" name="size" required placeholder="평수를 입력하세요" >
+        </c:if>
       </div>
       <!-- 시공 시작 희망일 -->
       <div class="form-group">
