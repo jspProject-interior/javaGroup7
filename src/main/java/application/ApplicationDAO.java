@@ -32,17 +32,27 @@ public class ApplicationDAO {
 		}
 	}
 
-	/*
-	 * public int setInteriorInput(InteriorVO vo) { int res = 0; try { sql =
-	 * "insert into interior values(default, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, default, default, default)"
-	 * ; pstmt = conn.prepareStatement(sql); pstmt.setString(1, vo.getMid());
-	 * pstmt.setString(2, vo.getCompany()); pstmt.setString(3, vo.getCategory());
-	 * pstmt.setString(4, vo.getTitle()); pstmt.setInt(5, vo.getPrice());
-	 * pstmt.setString(6, vo.getTitleImg()); pstmt.setString(7, vo.getSubImg());
-	 * pstmt.setString(8, vo.getThumbnail()); pstmt.setString(9, vo.getfName());
-	 * pstmt.setString(10, vo.getfSName()); pstmt.setInt(11, vo.getfSize()); res =
-	 * pstmt.executeUpdate(); } catch (SQLException e) {
-	 * System.out.println("SQL 오류 : " + e.getMessage()); } finally { pstmtClose(); }
-	 * return res; }
-	 */
+	public int setApplicationOk(ApplicationVO vo) {
+		int res=0;
+		try {
+			sql="insert into application values(default,?,?,?,?,?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getMid());
+			pstmt.setString(2, vo.getName());
+			pstmt.setString(3, vo.getConAddress());
+			pstmt.setString(4, vo.getTel());
+			pstmt.setString(5, vo.getCategory());
+			pstmt.setInt(6, vo.getPrice());
+			pstmt.setInt(7, vo.getBudget());
+			pstmt.setInt(8, vo.getSize());
+			pstmt.setString(9, vo.getConStartDay());
+			pstmt.setString(10, vo.getArea());
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			 System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
 }
