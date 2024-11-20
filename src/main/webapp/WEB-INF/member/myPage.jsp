@@ -6,6 +6,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="${ctp}/images/main/favicon.png">
   <title>마이페이지 | 그린테리어</title>
 <jsp:include page="/include/bs4.jsp"/>
 <style type="text/css">
@@ -55,7 +56,7 @@
   .info-Update:hover {
       color: black;
   }
-  .input-group {
+  .user-information {
       display: flex;
       margin-bottom: 30px;
   }
@@ -71,26 +72,36 @@
   }
   .tab {
       flex: 1;
-      padding: 20px;
       text-align: center;
       border: 1px solid #eee;
+      color: black;
+  }
+  .tab a{
+  	color: black;
+  	padding: 20px;
+  	text-decoration: none;
+  }
+  .tab a:hover{
+  	color: black;
+  	text-decoration: none;
   }
   .section {
-      margin-top: 30px;
-  }
-  .section div {
-      font-size: 20px;
-      margin-bottom: 10px;
-      color: #333;
+    margin-bottom: 20px;
   }
   .section a {
-      display: block;
-      color: #007BFF;
-      text-decoration: none;
-      margin: 5px 0;
+    width: 100%;
+    border: 1px solid #eee;
+    border-radius: 10px;
+		font-size: 20px;
+    display: block;
+    text-decoration: none;
+    margin: 5px 0;
+    color: black;
+    padding: 30px;
   }
   .section a:hover {
-      text-decoration: underline;
+    text-decoration: none;
+    color: black;  
   }
   .user-details {
     display: flex;
@@ -98,7 +109,6 @@
   }
   .user-details div {
     font-size: 24px;
-    margin-bottom: 5px;
   }
   .user-title{
   	color: gray;
@@ -107,6 +117,19 @@
   	font-size: 18px;
   	font-weight: bold;
   }
+  .section-title{
+  	font-size: 30px;
+  	font-weight: bold;
+  	margin: 20px;
+  }
+  .Name{
+  	font-size: 30px;
+  	font-weight: bold; 
+  }
+  .Id{
+  	font-size: 20px;
+  	color: gray;
+  }
 </style>
 </head>
 <jsp:include page="/include/header.jsp"/>
@@ -114,15 +137,15 @@
 <div class="contain">
 	<div class="information">
     <div class="user-details">
-        <div>${vo.name}</div>
-        <div>${vo.mid}</div>
+        <span class="Name"><b>${vo.name}</b></span>
+        <span class="Id">${vo.mid}</span>
     </div>
     <button onclick="location.href='MemberLogout.mem'" class="logout">로그아웃</button>
 	</div>
 
 
   
-  <div class="input-group">
+  <div class="user-information">
 		<div class="user" style="width: 60%;">
 	  	<div class="user-title">주소</div>
 	  	<div class="user-info">${fn : replace(vo.address, '/', ' ')}</div>
@@ -134,27 +157,33 @@
 	  </div>
   </div>
   
-  <div class="input-group">
+  <div style="margin-bottom: 100px;" class="input-group">
 		<div class="tab">
-	  	<div>디자인 프로젝트</div>
-	  	<%-- <div>${vo.}</div> --%>
+			<a href="#">
+		  	<p class="talTitle">디자인 프로젝트</p>
+		  	<div class="talContent">0</div>
+	  	</a>
 	  </div>
 		<div class="tab">
-	    <div>장바구니</div>
-	    <%-- <div>${vo.}</div> --%>
+	    <a href="#">
+		  	<p class="talTitle">디자인 프로젝트</p>
+		  	<div class="talContent">0</div>
+	  	</a>
 	  </div>
 		<div class="tab">
-	    <div>구매내역</div>
-	    <%-- <div>${vo.}</div> --%>
+	    <a href="#">
+		  	<p class="talTitle">디자인 프로젝트</p>
+		  	<div class="talContent">0</div>
+	  	</a>
 	  </div>
   </div>
   
+  <div class="section-title">인테리어 컨설팅 서비스</div>
   <div class="section">
-    <div>인테리어 컨설팅 서비스</div>
-    <a href="#">지난 설문</a>
+    <a href="#"><i class="fa-regular fa-newspaper"></i> 지난 설문</a>
   </div>
+  <div class="section-title">나의 쇼핑</div>
   <div class="section">
-    <div>나의 쇼핑</div>
     <a href="#">나의 쿠폰</a>
     <a href="#">찜한 상품</a>
     <a href="#">나의 후기</a>

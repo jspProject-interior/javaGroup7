@@ -6,6 +6,7 @@
 <head>
   <meta charset="UTF-8">
 	<jsp:include page="/include/bs4.jsp"/>
+	<link rel="icon" href="${ctp}/images/main/favicon.png">
   <title>calculator.jsp</title>
 	<style>
 	  body.calculator {

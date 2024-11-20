@@ -8,6 +8,7 @@
 	<jsp:include page="/include/bs4.jsp"/>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
   <script src="${ctp}/js/woo.js"></script>
+  <link rel="icon" href="${ctp}/images/main/favicon.png">
   <title>application.jsp</title>
 	<style>
 	body {
