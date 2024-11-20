@@ -67,6 +67,13 @@
       font-size: 0.85rem;
       color: #666;
     }
+    
+    h1 {
+			text-align: center;
+			color: #2c3e50;
+			font-size: 28px;
+			margin-bottom: 30px;
+		}
 	</style>
 	<script>
 	
@@ -79,8 +86,8 @@
 <jsp:include page="/include/header.jsp"/>
 <p><br/></p>
 <div id="consultation-form" class="container">
-	<h2>상담 신청서</h2>
-	 <form method="POST" action="/submitConsultation"> <!-- 제출 경로 설정 -->
+	<h1 style="font-family: 'EliceDigitalBaeum-Bd';">상담 신청서</h1>
+	 <form method="POST" action="ApplicationOk.ap"> <!-- 제출 경로 설정 -->
       <!-- 회원 아이디 -->
       <div class="form-group">
         <label for="mid">회원 아이디</label>
@@ -89,7 +96,7 @@
       <!-- 회원 성명 -->
       <div class="form-group">
         <label for="name">회원 성명</label>
-        <input type="text" id="name" name="name" maxlength="10" value="">
+        <input type="text" id="name" name="name" maxlength="10" value="${MemberVO.name}" >
       </div>
       <!-- 시공 주소 -->
       <div class="form-group">
@@ -98,7 +105,7 @@
 	        <input type="text" name="postcode" id="sample6_postcode"  placeholder="우편번호" value="${address1}" class="form-control" style="width: 150px;" onclick="sample6_execDaumPostcode()" readonly>
 	      </div>
 	     	<div class="input-group">
-	     		<input type="text" name="roadAddress" id="sample6_address" placeholder="주소						===시공 받을 주소를 입력하시려면 이곳을 클릭하세요.=== " value="${address2}" class="form-control mb-1" onclick="sample6_execDaumPostcode()" readonly>
+	     		<input type="text" name="roadAddress" id="sample6_address" placeholder="   						===시공 받을 주소를 입력하시려면 이곳을 클릭하세요.=== " value="${address2}" class="form-control mb-1" onclick="sample6_execDaumPostcode()" readonly>
 	     	</div>
 	      <div class="input-group">
 	        <div class="input-group-append" style="display: flex; width: 100%;">
@@ -111,7 +118,7 @@
       <!-- 전화번호 -->
       <div class="form-group">
         <label for="tel">전화번호</label>
-        <input type="tel" id="tel" name="tel" maxlength="15" required placeholder="전화번호를 입력하세요 (예: 010-1234-5678)">
+        <input type="tel" id="tel" name="tel" maxlength="15" value="${MemberVO.tel}" required placeholder="전화번호를 입력하세요 (예: 010-1234-5678)">
       </div>
       <!-- 컨설팅 희망 공간 -->
       <div class="form-group">

@@ -167,17 +167,17 @@
 		        document.getElementById('totprice').value = totalPrice.toFixed(0);
 		      }
 		      window.fCheck = () => {
-			        form.submit(); // 폼 제출
 			        document.getElementById('selectArea').value = selectedArea;
 			        document.getElementById('selectSize').value = selectedSize;
 			        document.getElementById('totprice').value = totalPrice.toFixed(0);
+			        form.submit(); // 폼 제출
 			    };
 		    });
 		  });
 		});
 	  
 	  /* 상담 신청서로 값 넘김 */
-	  $(document).ready(function () {
+	  /* $(document).ready(function () {
 	      $(".btn").click(function () {
 	        const name = $(this).attr("name");
 	        const value1 = $(this).data("value1");
@@ -198,7 +198,7 @@
 	          },
 	        });
 	      });
-	    });
+	    }); */
 	</script>
 </head>
 <body class="calculator">

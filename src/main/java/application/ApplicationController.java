@@ -38,6 +38,11 @@ public class ApplicationController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/application.jsp";
 		}
+		else if(com.equals("/ApplicationOk")) { //상담신청서
+			command = new ApplicationOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
