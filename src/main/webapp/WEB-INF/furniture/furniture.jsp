@@ -10,139 +10,95 @@
   <title>가구 | 그린테리어</title>
   <jsp:include page="/include/bs4.jsp"/>
   <style type="text/css">
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f9;
-    }
-    .furniture img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;   /* 비율 유지하며 컨테이너 채움 */
-  		object-position: center 65%; /* 이미지의 하단부 우선 보여줌 */
-    }
-    .main {
-      font-family: 'GowunBatang-Regular';
-      font-size: 50px;
-      position: absolute;
-      color: white;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-    }
-    .grid-container {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 20px;
-      padding: 30px 4.5%;
-    }
-    @media (max-width: 1200px) {
-      .grid-container {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
-    @media (max-width: 900px) {
-      .grid-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-    @media (max-width: 600px) {
-      .grid-container {
-        grid-template-columns: 1fr;
-      }
-    }
-    .grid-item {
-      text-align: center;
-      overflow: hidden;
-		  position: relative;
-		  border: 1px solid #ddd;
-		  border-radius: 10px;
-		  overflow: hidden;
-		  transition: box-shadow 0.3s ease; /* 애니메이션 추가 */
-		  text-decoration: none;
+    /* 기본 스타일 */
+		body {
+		  font-family: Arial, sans-serif;
+		  margin: 0;
+		  padding: 0;
+		  background-color: #f4f4f9;
 		}
 		
-		.grid-item:hover {
-		  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
-		  text-decoration: none;
-		}
-		.grid-item a:hover {
-		  text-decoration: none;
-		}
-    .grid-item img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .grid-item .title {
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 10px;
-      color: #333;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      display: block;
-    }
-    .grid-item .company-category {
-      font-size: 14px;
-      color: #777;
-    }
-    .furniture {
-      position: relative;
-    }
-    .company-category{
-    	padding-bottom: 20px;
-    	font-size: 14px;
-		  color: #777;
-		  text-decoration: none;
-    }
-    
-    .title{
-    	padding: 0 20px;
-    }
-    .contain{
-    	border: 1px solid #eee;
-    	margin: 1% 4.5%;
-    }
-    
-		.contain button {
-		  color: gray;
-		  border: none;
-		  background: transparent;
-		  padding: 16px;
-		  font-size: 16px;
-		  border-bottom: 3px solid transparent;
+		.furniture img {
+		  width: 100%;
+		  height: 500px;
+		  object-fit: cover; /* 비율 유지하며 컨테이너 채움 */
+		  object-position: center 65%; /* 이미지의 하단부 우선 보여줌 */
 		}
 		
-    button.act {
-		  font-weight: bold;
-		  color: black;
-		  border-bottom: 3px solid black;
+		.main {
+		  font-family: 'GowunBatang-Regular';
+		  font-size: 50px;
+		  position: absolute;
+		  color: white;
+		  top: 50%;
+		  left: 50%;
+		  transform: translate(-50%, -50%);
+		  text-align: center;
 		}
 		
-		.input-group {
-		  display: flex;
-		  justify-content: flex-start;
-		  gap: 10px;
-		  font-family: 'ChosunGu';
-		  font-weight: light;
+		/* 그리드 스타일 */
+		.grid-container {
+		  display: grid;
+		  grid-template-columns: repeat(5, 1fr);
+		  gap: 20px;
+		  padding: 30px 4.5%;
 		}
 		
+		@media (max-width: 1200px) {
+		  .grid-container {
+		    grid-template-columns: repeat(3, 1fr);
+		    gap: 15px; /* 간격 조정 */
+		  }
+		}
 		
+		@media (max-width: 900px) {
+		  .grid-container {
+		    grid-template-columns: repeat(2, 1fr);
+		    gap: 10px; /* 간격 조정 */
+		  }
+		}
+		
+		@media (max-width: 600px) {
+		  .grid-container {
+		    grid-template-columns: 1fr;
+		    gap: 5px; /* 간격 조정 */
+		  }
+		}
+		
+		/* 그리드 아이템 */
 		.grid-item {
 		  text-align: center;
-		  overflow: hidden;
 		  position: relative;
-		  border: 1px solid #ddd;
-		  border-radius: 10px;
 		  overflow: hidden;
-		  transition: box-shadow 0.3s ease;
+		  text-decoration: none;
+		  transition: box-shadow 0.3s ease; /* 부드러운 그림자 효과 */
+		}
+		
+		.grid-item img {
+		  width: 100%;
+		  height: 400px;
+		  object-fit: cover;
+		}
+		
+		.grid-item .title {
+		  font-size: 18px;
+		  font-weight: bold;
+		  margin-top: 10px;
+		  color: #333;
+		  white-space: nowrap;
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+		  display: block;
+		}
+		
+		.grid-item .company-category {
+		  font-size: 14px;
+		  color: #777;
+		  padding-bottom: 20px;
 		  text-decoration: none;
 		}
 		
+		/* 좋아요 버튼 */
 		.grid-item .like-container {
 		  position: absolute;
 		  top: 10px;
@@ -150,7 +106,7 @@
 		  display: flex;
 		  align-items: center;
 		  gap: 5px;
-		  background-color: rgba(255, 255, 255, 0.8); /* 배경 추가 */
+		  background-color: rgba(255, 255, 255, 0.8);
 		  border-radius: 20px;
 		  padding: 5px 10px;
 		}
@@ -166,6 +122,49 @@
 		  font-size: 14px;
 		}
 		
+		/* 이미지 전환 효과 */
+		.image-container {
+		  position: relative; /* 이미지를 겹칠 컨테이너 설정 */
+		  width: 100%;
+		  height: 400px; /* 이미지 높이 */
+		  overflow: hidden; /* 이미지가 영역을 넘지 않도록 설정 */
+		}
+		
+		.image-container img {
+		  width: 100%;
+		  height: 100%;
+		  object-fit: cover; /* 이미지를 컨테이너에 맞게 조정 */
+		}
+		
+		/* 기타 스타일 */
+		.contain {
+		  border: 1px solid #eee;
+		  margin: 1% 4.5%;
+		}
+		
+		.contain button {
+		  color: gray;
+		  border: none;
+		  background: transparent;
+		  padding: 16px;
+		  font-size: 16px;
+		  border-bottom: 3px solid transparent;
+		}
+		
+		button.act {
+		  font-weight: bold;
+		  color: black;
+		  border-bottom: 3px solid black;
+		}
+		
+		.input-group {
+		  display: flex;
+		  justify-content: flex-start;
+		  gap: 10px;
+		  font-family: 'ChosunGu';
+		  font-weight: light;
+		}
+
   </style>
   <script type="text/javascript">
   	'use strict';
@@ -174,6 +173,21 @@
   	  location.href = "Interior.in?category=" + category;
   	}
   	*/
+  	function showHoverImage(container) {
+  	  const defaultImg = container.querySelector('.default-img');
+  	  const hoverImg = container.querySelector('.hover-img');
+  	  
+  	  defaultImg.style.display = 'none'; // 기본 이미지 숨기기
+  	  hoverImg.style.display = 'block'; // Hover 이미지 표시
+  	}
+
+  	function showDefaultImage(container) {
+  	  const defaultImg = container.querySelector('.default-img');
+  	  const hoverImg = container.querySelector('.hover-img');
+  	  
+  	  defaultImg.style.display = 'block'; // 기본 이미지 표시
+  	  hoverImg.style.display = 'none'; // Hover 이미지 숨기기
+  	}
   </script>
 </head>
 <jsp:include page="/include/mainHeader.jsp"/>
@@ -203,7 +217,12 @@
 				    <span>${vo.interest}</span>
 				  </div>
 	        <a class="moveContent" href="FurnitureContent.fu?idx=${vo.idx}">
-            <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" alt="Thumbnail">
+             <div class="image-container" onmouseover="showHoverImage(this)" onmouseout="showDefaultImage(this)">
+				      <!-- 기본 이미지 -->
+				      <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" alt="Thumbnail" class="default-img">
+				      <!-- Hover 시 표시할 이미지 -->
+				      <img src="${ctp}/images/furniture/upload/${vo.titleImg}" alt="Hover Image" class="hover-img" style="display: none;">
+				    </div>
             <div class="title">${vo.title}</div>
             <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
 	        </a>
