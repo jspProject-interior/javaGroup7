@@ -19,7 +19,8 @@
     .furniture img {
       width: 100%;
       height: 500px;
-      object-fit: cover;
+      object-fit: cover;   /* 비율 유지하며 컨테이너 채움 */
+  		object-position: center 65%; /* 이미지의 하단부 우선 보여줌 */
     }
     .main {
       font-family: 'GowunBatang-Regular';
@@ -179,7 +180,7 @@
 <body>
   <form name="myform">
     <div class="furniture">
-      <img src="${ctp}/images/interior/interiorMain.jpg"/>
+      <img src="${ctp}/images/furniture/furnitureMain.jpg"/>
       <div class="main">GRINTERIOR</div>
       <!-- <input type="button" onclick="location.href='InteriorInput.in'" class="btn btn-success" value="게시물 등록"/> -->
     </div>
