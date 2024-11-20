@@ -13,23 +13,10 @@ create table application(
 	budget			int							not null,													/* 예산 */
 	size				int							not null,													/* 평수 */
 	conStartDay date,																						/*시공 시작 희망일*/
-	area				varchar(10)		default 'N',												/* 컨설팅 희망 공간 */
-	porch				varchar(10)		default 'N',												/* 현관 */
-	papering		varchar(10)		default 'N',												/* 도배 */
-	floor				varchar(10)		default 'N',												/* 장판 */
-	molding			varchar(10)		default 'N',                        /* 몰딩 */
-	balcony			varchar(10)		default 'N',                        /* 발코니 */
-	kitchen			varchar(10)		default 'N',                        /* 주방 */
-	bathroom		varchar(10)		default 'N',                        /* 욕실 */
-	door				varchar(10)		default 'N',                        /* 문 */
-	bed					varchar(10)		default 'N',                        /* 침대 */
-	sofa				varchar(10)		default 'N',                        /* 소파 */
-	desk				varchar(10)		default 'N',                        /* 테이블 */
-	chair				varchar(10)		default 'N',                        /* 의자 */
-	cabinet			varchar(10)		default 'N',                        /* 수납장 */
-	lighting		varchar(10)		default 'N',												/* 조명 */
-	
+	area				varchar(10)			default 'N',												/* 컨설팅 희망 공간 */
 
   primary key(idx),
  	foreign key(mid) references member(mid)
 );
+
+drop table application;

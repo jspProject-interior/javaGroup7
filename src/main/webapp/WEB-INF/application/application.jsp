@@ -76,8 +76,27 @@
 		}
 	</style>
 	<script>
-	
-	
+		function appCheck() {
+			let postcode = myform.postcode.value + " ";
+		  let roadAddress = myform.roadAddress.value + " ";
+		  let detailAddress = myform.detailAddress.value + " ";
+		  let extraAddress = myform.extraAddress.value + " ";
+			let address = postcode + " /" + roadAddress + " /" + detailAddress + " /" + extraAddress + " ";
+			
+			
+			let area = "";
+			if(myform.selectArea.value == 'N'){
+				const choiceArea = myform.choiceArea.value;
+				area = choiceArea;
+			}
+			else {
+				area = myform.selectArea.value;
+				alert(myform.selectArea.value);
+			}
+		  myform.conAddress.value = address;	    
+		  myform.area.value = area;	    
+		  myform.submit();
+		}
 		
 	</script>
 
@@ -87,7 +106,7 @@
 <p><br/></p>
 <div id="consultation-form" class="container">
 	<h1 style="font-family: 'EliceDigitalBaeum-Bd';">상담 신청서</h1>
-	 <form method="POST" action="ApplicationOk.ap"> <!-- 제출 경로 설정 -->
+	 <form name="myform" method="POST" action="ApplicationOk.ap"> <!-- 제출 경로 설정 -->
       <!-- 회원 아이디 -->
       <div class="form-group">
         <label for="mid">회원 아이디</label>
@@ -99,21 +118,23 @@
         <input type="text" id="name" name="name" maxlength="10" value="${MemberVO.name}" >
       </div>
       <!-- 시공 주소 -->
-      <div class="form-group">
-      <label for="conAddress">시공 주소</label>
-	      <div class="input-group-append mb-1">
-	        <input type="text" name="postcode" id="sample6_postcode"  placeholder="우편번호" value="${address1}" class="form-control" style="width: 150px;" onclick="sample6_execDaumPostcode()" readonly>
-	      </div>
-	     	<div class="input-group">
-	     		<input type="text" name="roadAddress" id="sample6_address" placeholder="   						===시공 받을 주소를 입력하시려면 이곳을 클릭하세요.=== " value="${address2}" class="form-control mb-1" onclick="sample6_execDaumPostcode()" readonly>
-	     	</div>
-	      <div class="input-group">
-	        <div class="input-group-append" style="display: flex; width: 100%;">
-	          <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목" value="${address4}" class="form-control" style="flex: 4;" onclick="sample6_execDaumPostcode()" readonly>
-	        	<input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소" value="${address3}" class="form-control" style="flex: 6;">
-	        </div>
-	        <input type="hidden" id="conAddress" name="conAddress"/>
-	      </div>
+      <div id="homeAddressInput">
+	      <div class="form-group">
+	      <label for="conAddress">시공 주소</label>
+		      <div class="input-group-append mb-1">
+		        <input type="text" name="postcode" id="sample6_postcode"  placeholder="우편번호" value="${address1}" class="form-control" style="width: 150px;" onclick="sample6_execDaumPostcode()" readonly>
+		      </div>
+		     	<div class="input-group">
+		     		<input type="text" name="roadAddress" id="sample6_address" placeholder="   						===시공 받을 주소를 입력하시려면 이곳을 클릭하세요.=== " value="${address2}" class="form-control mb-1" onclick="sample6_execDaumPostcode()" readonly>
+		     	</div>
+		      <div class="input-group">
+		        <div class="input-group-append" style="display: flex; width: 100%;">
+		          <input type="text" name="extraAddress" id="sample6_extraAddress" placeholder="참고항목" value="${address4}" class="form-control" style="flex: 4;" onclick="sample6_execDaumPostcode()" readonly>
+		        	<input type="text" name="detailAddress" id="sample6_detailAddress" placeholder="상세주소" value="${address3}" class="form-control" style="flex: 6;">
+		        </div>
+		        <input type="hidden" id="conAddress" name="conAddress"/>
+		      </div>
+		    </div>
 	    </div>
       <!-- 전화번호 -->
       <div class="form-group">
@@ -122,12 +143,10 @@
       </div>
       <!-- 컨설팅 희망 공간 -->
       <div class="form-group">
-        <label for="area">컨설팅 희망 공간</label>
-      	<c:if test="${!empty vo.area}">
-      		<input type="text" value="${vo.area}" readonly style="background-color: #eee;">
-        </c:if>
+        <label for="selectArea">컨설팅 희망 공간</label>
+    		<input type="${!empty vo.area ? 'text' : 'hidden'}" id="selectArea" name="selectArea" value="${!empty vo.area ? vo.area : 'N'}" readonly style="background-color: #eee;">
       	<c:if test="${empty vo.area}">
-		      <select id="area" name="area" >
+		      <select id="choiceArea" name="choiceArea" >
 	          <option value="N">선택안함</option>
 	          <option value="거실">거실</option>
 	          <option value="침실">침실</option>
@@ -135,6 +154,7 @@
 	          <option value="서재">서재</option>
 	        </select>
         </c:if>
+        <input type="hidden" id="area" name="area"/>
       </div>
       <!-- 선호하는 분위기 -->
       <div class="form-group">
@@ -173,7 +193,7 @@
       </div>
       <!-- 제출 버튼 -->
       <div class="form-group">
-        <input type="submit" value="상담 신청하기">
+        <input type="button" onclick="appCheck()" value="상담 신청하기">
       </div>
     </form>
 </div>	    
