@@ -44,8 +44,8 @@ public class ApplicationController extends HttpServlet{
 			viewPage = "/include/message.jsp";
 		}
 		else if(com.equals("/Love")) { //관심 목록
-//			command = new LoveCommand();
-//			command.execute(request, response);
+			command = new LoveCommand();
+			command.execute(request, response);
 			viewPage += "/love.jsp";
 		}
 		

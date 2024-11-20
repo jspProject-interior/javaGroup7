@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import common.GetConn;
 
 public class InteriorDAO {
@@ -189,5 +192,47 @@ public class InteriorDAO {
 			pstmtClose();
 		}
 		return res;
+	}
+
+	public ArrayList<InteriorVO> getInteriorIdxSearch(HttpServletRequest request) {
+		ArrayList<InteriorVO> vos = new ArrayList<InteriorVO>();
+		HttpSession session = request.getSession();
+		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood");
+		String interiorBoard[] = sContentGood.toString().split(",");
+		try {
+			for(int i = 0; i < interiorBoard.length; i++) {
+				interiorBoard[i] = interiorBoard[i].replace("interior", "").replace("[", "").replace("]", "").trim();
+				
+				sql = "select * from interior where idx = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, interiorBoard[i]);
+				rs = pstmt.executeQuery();
+				while(rs.next()) {
+					vo = new InteriorVO();
+					
+					vo.setIdx(rs.getInt("idx"));
+					vo.setMid(rs.getString("mid"));
+					vo.setCompany(rs.getString("company"));
+					vo.setCategory(rs.getString("category"));
+					vo.setTitle(rs.getString("title"));
+					vo.setTitleImg(rs.getString("titleImg"));
+					vo.setSubImg(rs.getString("subImg"));
+					vo.setThumbnail(rs.getString("thumbnail"));
+					vo.setfName(rs.getString("fName"));
+					vo.setfSName(rs.getString("fSName"));
+					vo.setfSize(rs.getInt("fSize"));
+					vo.setClaim(rs.getString("claim"));
+					vo.setwDate(rs.getString("wDate"));
+					vo.setInterest(rs.getString("interest"));
+					
+					vos.add(vo);
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vos;
 	}
 }

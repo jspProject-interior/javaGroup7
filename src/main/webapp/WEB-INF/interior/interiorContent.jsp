@@ -129,9 +129,6 @@
 		  text-decoration: none;
 	  }
 
-
-
-
 	.contain .company {
     font-size: 1.2em;
     color: #95a5a6;

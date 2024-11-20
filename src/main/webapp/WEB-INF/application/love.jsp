@@ -15,11 +15,13 @@
       margin: 0;
       padding: 0;
       background-color: #f4f4f9;
+      overflow-x: hidden; 
     }
-    h6{
+    .industry{
     	font-family: 'ChosunGu';
-    	font-size: 25px;
-    	font-weight: bold;
+    	font-size: 20px;
+    	font-weight: light;
+    	margin-bottom: 30px;
     }
     .main {
 			font-family: 'EliceDigitalBaeum-Bd';
@@ -34,9 +36,9 @@
 
     .grid-container {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 20px;
-      padding: 30px 4.5%;
+      margin-bottom: 50px;
     }
     @media (max-width: 1200px) {
       .grid-container {
@@ -57,15 +59,12 @@
       text-align: center;
       overflow: hidden;
 		  position: relative;
-		  border: 1px solid #ddd;
-		  border-radius: 10px;
 		  overflow: hidden;
 		  transition: box-shadow 0.3s ease; /* 애니메이션 추가 */
 		  text-decoration: none;
 		}
 		
 		.grid-item:hover {
-		  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
 		  text-decoration: none;
 		}
 		.grid-item a:hover {
@@ -75,7 +74,13 @@
       width: 100%;
       height: 180px;
       object-fit: cover;
+			-webkit-transform: scale(1);
+			transform: scale(1);
+			transition: .5s ease-in-out;
     }
+		.grid-item:hover img {
+			transform: scale(1.05);
+		}
     .grid-item .title {
       font-size: 18px;
       font-weight: bold;
@@ -111,8 +116,7 @@
     	margin: 1% 4.5%;
     }
     .content{
-    	margin-top: 50px;
-    	margin-left: 4.5%;
+    	margin: 50px 4.5%;
     }
 		.contain button {
 		  color: gray;
@@ -140,36 +144,32 @@
 		.grid-item {
 		  text-align: center;
 		  overflow: hidden;
-		  position: relative;
-		  border: 1px solid #ddd;
-		  border-radius: 10px;
-		  overflow: hidden;
+		  position: relative; /* 하트 버튼 배치를 위해 relative 설정 */
 		  transition: box-shadow 0.3s ease;
 		  text-decoration: none;
 		}
 		
-		.grid-item .like-container {
-		  position: absolute;
-		  top: 10px;
-		  right: 10px;
-		  display: flex;
-		  align-items: center;
-		  gap: 5px;
-		  background-color: rgba(255, 255, 255, 0.8); /* 배경 추가 */
-		  border-radius: 20px;
-		  padding: 5px 10px;
+		.like-button {
+		  background: transparent;
+		  border: none;
+		  cursor: pointer;
+		  font-size: 30px;
+		  color: red;
+		  position: absolute; /* 위치를 조정하기 위해 absolute */
+		  bottom: 40px;
+		  right: 20px; /* 오른쪽 끝으로 정렬 */
+		  z-index: 2; /* 겹치는 요소보다 위로 */
 		}
 		
-		.grid-item .like-container i {
-		  color: red;
-		  font-size: 16px;
+		.like-button i {
+		  font-size: 30px;
+		  transition: transform 0.2s ease; /* 클릭 시 애니메이션 */
 		}
 		
-		.grid-item .like-container span {
-		  color: red;
-		  font-weight: bold;
-		  font-size: 14px;
+		.like-button:hover i {
+		  transform: scale(1.2); /* 클릭 시 크기 확대 효과 */
 		}
+				
 		
   </style>
   <script type="text/javascript">
@@ -178,6 +178,28 @@
   	function choice(industry) {
   	  location.href = "Love.ap?industry=" + industry;
   	}
+  	
+  	function toggleLike(idx, btn) {
+  		const icon = btn.querySelector('i');
+  	  $.ajax({
+  	    type: "post",
+  	    url: "interestCheck.in",
+  	    data: { idx: idx },
+  	    success: function (res) {
+  	      if (res == "1") {
+  	        icon.classList.remove('fa-regular');
+  	        icon.classList.add('fa-solid');
+  	      } else if (res == "2") {
+  	        icon.classList.remove('fa-solid');
+  	        icon.classList.add('fa-regular');
+  	      }
+  	    },
+  	    error: function () {
+  	      alert("안됨");
+  	    }
+  	  });
+  	}
+
   </script>
 </head>
 <jsp:include page="/include/mainHeader.jsp"/>
@@ -187,49 +209,114 @@
     	<div class="contain">
     	<div class="input-group">
 			  <button type="button" onclick="choice('ALL')" class="<c:if test='${param.industry eq "ALL"}'>act</c:if>">전체</button>
-			  <button type="button" onclick="choice('INTERIOR')" class="<c:if test='${param.industry eq "INTERIOR"}'>act</c:if>">인테리어</button>
-			  <button type="button" onclick="choice('FURNITURE')" class="<c:if test='${param.industry eq "FURNITURE"}'>act</c:if>">가구</button>
+			  <c:if test="${fn: length(FurnitureVOS) != 0}"><button type="button" onclick="choice('FURNITURE')" class="<c:if test='${param.industry eq "FURNITURE"}'>act</c:if>">가구</button></c:if>
+			  <c:if test="${fn: length(InteriorVOS) != 0}"><button type="button" onclick="choice('INTERIOR')" class="<c:if test='${param.industry eq "INTERIOR"}'>act</c:if>">인테리어</button></c:if>
 			</div>
     </div>
+    
+    
     <div class="content">
-	    <c:if test="${param.industry eq 'FURNITURE' || param.industry eq 'ALL'}">
-		    <div class="content">
-		    	<h6>가구</h6>
-			    <div class="grid-container">
-			      <c:forEach var="vo" items="${vos}" varStatus="st">
+    	<!-- 가구 -->
+	    <c:if test="${param.industry eq 'ALL' && fn: length(FurnitureVOS) != 0}">
+	    	<div class="industry">가구 <font color="red"><b>${fn: length(FurnitureVOS)}</b></font></div>
+		    <div class="grid-container">
+		      <c:forEach var="InteriorVO" items="${FurnitureVOS}" varStatus="st">
+			      <!-- 조건: industry가 'ALL'이고 반복 횟수가 4를 초과한 경우 -->
+				    <c:if test="${param.industry == 'ALL' && st.index >= 4}">
+				        <!-- 빈 내용을 출력해 사실상 반복 종료 -->
+				        <c:set var="stop" value="true" />
+				    </c:if>
+				
+				    <!-- 반복 종료 조건 -->
+				    <c:if test="${stop != true}">
 					    <div class="grid-item">
-				        <div class="like-container">
-							    <i class="fa-solid fa-heart"></i>
-							    <span>${vo.interest}</span>
-							  </div>
-				        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
-			            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
-			            <div class="title">${vo.title}</div>
-			            <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
-				        </a>
-					    </div>
+  							<!-- a 태그 -->
+							  <a class="moveContent" href="InteriorContent.in?idx=${FurnitureVOS.idx}">
+							    <img src="${ctp}/images/interior/upload/${FurnitureVOS.thumbnail}" alt="Thumbnail">
+							    <div class="title">${FurnitureVOS.title}</div>
+							    <div class="company-category">${FurnitureVOS.company} | ${FurnitureVOS.category}</div>
+							  </a>
+							  
+							  <!-- 하트 버튼 (a 태그 바깥) -->
+							  <button type="button" class="like-button" onclick="toggleLike(${FurnitureVOS.idx}, this)">
+							    <i class="${fn:contains(sContentGood, furniture+FurnitureVO.idx) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
+							  </button>
+							</div>
+		    		</c:if>
 					</c:forEach>
-			    </div>
 		    </div>
 	    </c:if>
-	    <c:if test="${param.industry eq 'INTERIOR' || param.industry eq 'ALL'}">
-		    <div class="content">
-		    	<h6>인테리어</h6>
-			    <div class="grid-container">
-			      <c:forEach var="vo" items="${vos}" varStatus="st">
-					    <div class="grid-item">
-				        <div class="like-container">
-							    <i class="fa-solid fa-heart"></i>
-							    <span>${vo.interest}</span>
-							  </div>
-				        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
-			            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
-			            <div>${vo.title}</div>
-			            <div>${vo.company} | ${fn:toUpperCase(vo.category)}</div>
-				        </a>
-					    </div>
+	    
+	    <c:if test="${param.industry eq 'Furniture'}">
+	    	<div class="industry">인테리어 <font color="red"><b>${fn: length(FurnitureVOS)}</b></font></div>
+		    <div class="grid-container">
+		      <c:forEach var="InteriorVO" items="${FurnitureVOS}" varStatus="st">
+				    <div class="grid-item">
+							<!-- a 태그 -->
+						  <a class="moveContent" href="InteriorContent.in?idx=${FurnitureVOS.idx}">
+						    <img src="${ctp}/images/interior/upload/${FurnitureVOS.thumbnail}" alt="Thumbnail">
+						    <div class="title">${FurnitureVOS.title}</div>
+						    <div class="company-category">${FurnitureVOS.company} | ${FurnitureVOS.category}</div>
+						  </a>
+						  
+						  <!-- 하트 버튼 (a 태그 바깥) -->
+						  <button type="button" class="like-button" onclick="toggleLike(${FurnitureVOS.idx}, this)">
+						    <i class="${fn:contains(sContentGood, furniture+FurnitureVO.idx) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
+						  </button>
+						</div>
 					</c:forEach>
-			    </div>
+		    </div>
+	    </c:if>
+	    
+	    <!-- 인테리어 -->
+	    <c:if test="${param.industry eq 'ALL' && fn: length(InteriorVOS) != 0}">
+	    	<div class="industry">인테리어 <font color="red"><b>${fn: length(InteriorVOS)}</b></font></div>
+		    <div class="grid-container">
+		      <c:forEach var="InteriorVO" items="${InteriorVOS}" varStatus="st">
+			      <!-- 조건: industry가 'ALL'이고 반복 횟수가 4를 초과한 경우 -->
+				    <c:if test="${param.industry == 'ALL' && st.index >= 4}">
+				        <!-- 빈 내용을 출력해 사실상 반복 종료 -->
+				        <c:set var="stop" value="true" />
+				    </c:if>
+				
+				    <!-- 반복 종료 조건 -->
+				    <c:if test="${stop != true}">
+					    <div class="grid-item">
+  							<!-- a 태그 -->
+							  <a class="moveContent" href="InteriorContent.in?idx=${InteriorVO.idx}">
+							    <img src="${ctp}/images/interior/upload/${InteriorVO.thumbnail}" alt="Thumbnail">
+							    <div class="title">${InteriorVO.title}</div>
+							    <div class="company-category">${InteriorVO.company} | ${InteriorVO.category}</div>
+							  </a>
+							  
+							  <!-- 하트 버튼 (a 태그 바깥) -->
+							  <button type="button" class="like-button" onclick="toggleLike(${InteriorVO.idx}, this)">
+							    <i class="${fn:contains(sContentGood, interior+InteriorVO.idx) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
+							  </button>
+							</div>
+		    		</c:if>
+					</c:forEach>
+		    </div>
+	    </c:if>
+	    
+	    <c:if test="${param.industry eq 'INTERIOR'}">
+	    	<div class="industry">인테리어 <font color="red"><b>${fn: length(InteriorVOS)}</b></font></div>
+		    <div class="grid-container">
+		      <c:forEach var="InteriorVO" items="${InteriorVOS}" varStatus="st">
+				    <div class="grid-item">
+							<!-- a 태그 -->
+						  <a class="moveContent" href="InteriorContent.in?idx=${InteriorVO.idx}">
+						    <img src="${ctp}/images/interior/upload/${InteriorVO.thumbnail}" alt="Thumbnail">
+						    <div class="title">${InteriorVO.title}</div>
+						    <div class="company-category">${InteriorVO.company} | ${InteriorVO.category}</div>
+						  </a>
+						  
+						  <!-- 하트 버튼 (a 태그 바깥) -->
+						  <button type="button" class="like-button" onclick="toggleLike(${InteriorVO.idx}, this)">
+						    <i class="${fn:contains(sContentGood, interior+InteriorVO.idx) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
+						  </button>
+						</div>
+					</c:forEach>
 		    </div>
 	    </c:if>
     </div>
