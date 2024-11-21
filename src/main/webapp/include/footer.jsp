@@ -45,7 +45,7 @@
 			<div class="col text-left text-white">
 				<hr class="footer-hr" width="200%">
 				<div>주식회사 그린테리어 | 대표이사 : hm & sy | 주소: 충청북도 청주시 서원구 사직대로 109 4층 | 사업자등록번호 : 123-45-67890 | 이메일: info.grinterior.com</div>	
-				<div>ⓒ 2024 grinterior. All Rights Reserved.</div>
+				<div>&copy; 2024 grinterior. All Rights Reserved.</div>
 			</div>
 		</div>
 	</footer>
