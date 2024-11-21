@@ -6,6 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import common.GetConn;
 import interior.InteriorVO;
 
@@ -213,6 +216,53 @@ public class FurnitureDAO {
 			rsClose();
 		}
 		
+		return vos;
+	}
+
+	public ArrayList<FurnitureVO> getFurnitureIdxSearch(HttpServletRequest request) {
+		ArrayList<FurnitureVO> vos = new ArrayList<FurnitureVO>();
+		HttpSession session = request.getSession();
+		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood") == null ? null : (ArrayList<String>)session.getAttribute("sContentGood");
+		String furnitureBoard[] = sContentGood.toString().split(",");
+		try {
+			for(int i = 0; i < furnitureBoard.length; i++) {
+				furnitureBoard[i] = furnitureBoard[i].replace("furniture", "").replace("[", "").replace("]", "").trim();
+				
+				sql = "select * from furniture where idx = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, furnitureBoard[i]);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					vo = new FurnitureVO();
+					
+					vo.setIdx(rs.getInt("idx"));
+					vo.setMid(rs.getString("mid"));
+					vo.setCompany(rs.getString("company"));
+					vo.setCategory(rs.getString("category"));
+					vo.setTitle(rs.getString("title"));
+					vo.setPay(rs.getInt("pay"));
+					vo.setDiscount(rs.getInt("discount"));
+					vo.setSaleUnit(rs.getString("saleUnit"));
+					vo.setPrice(rs.getInt("price"));
+					vo.setTitleImg(rs.getString("titleImg"));
+					vo.setSubImg(rs.getString("subImg"));
+					vo.setThumbnail(rs.getString("thumbnail"));
+					vo.setfName(rs.getString("fName"));
+					vo.setfSName(rs.getString("fSName"));
+					vo.setfSize(rs.getInt("fSize"));
+					vo.setClaim(rs.getString("claim"));
+					vo.setwDate(rs.getString("wDate"));
+					vo.setInterest(rs.getString("interest"));
+					
+					vos.add(vo);
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
 		return vos;
 	}
 }

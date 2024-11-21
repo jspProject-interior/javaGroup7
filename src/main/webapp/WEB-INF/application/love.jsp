@@ -217,10 +217,10 @@
     
     <div class="content">
     	<!-- 가구 -->
-	    <c:if test="${param.industry eq 'ALL' && fn: length(FurnitureVOS) != 0}">
+    	<c:if test="${param.industry eq 'ALL' && fn: length(FurnitureVOS) != 0}">
 	    	<div class="industry">가구 <font color="red"><b>${fn: length(FurnitureVOS)}</b></font></div>
 		    <div class="grid-container">
-		      <c:forEach var="InteriorVO" items="${FurnitureVOS}" varStatus="st">
+		      <c:forEach var="FurnitureVO" items="${FurnitureVOS}" varStatus="st">
 			      <!-- 조건: industry가 'ALL'이고 반복 횟수가 4를 초과한 경우 -->
 				    <c:if test="${param.industry == 'ALL' && st.index >= 4}">
 				        <!-- 빈 내용을 출력해 사실상 반복 종료 -->
@@ -231,14 +231,14 @@
 				    <c:if test="${stop != true}">
 					    <div class="grid-item">
   							<!-- a 태그 -->
-							  <a class="moveContent" href="InteriorContent.in?idx=${FurnitureVOS.idx}">
-							    <img src="${ctp}/images/interior/upload/${FurnitureVOS.thumbnail}" alt="Thumbnail">
-							    <div class="title">${FurnitureVOS.title}</div>
-							    <div class="company-category">${FurnitureVOS.company} | ${FurnitureVOS.category}</div>
+							  <a class="moveContent" href="FurnitureContent.fu?idx=${FurnitureVO.idx}">
+							    <img src="${ctp}/images/furniture/upload/${FurnitureVO.thumbnail}" alt="Thumbnail">
+							    <div class="title">${FurnitureVO.title}</div>
+							    <div class="company-category">${FurnitureVO.company} | ${FurnitureVO.category}</div>
 							  </a>
 							  
 							  <!-- 하트 버튼 (a 태그 바깥) -->
-							  <button type="button" class="like-button" onclick="toggleLike(${FurnitureVOS.idx}, this)">
+							  <button type="button" class="like-button" onclick="toggleLike(${FurnitureVO.idx}, this)">
 							    <i class="${fn:contains(sContentGood, furniture+FurnitureVO.idx) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
 							  </button>
 							</div>
@@ -247,26 +247,27 @@
 		    </div>
 	    </c:if>
 	    
-	    <c:if test="${param.industry eq 'Furniture'}">
-	    	<div class="industry">인테리어 <font color="red"><b>${fn: length(FurnitureVOS)}</b></font></div>
+	    <c:if test="${param.industry eq 'FURNITURE'}">
+	    	<div class="industry">가구 <font color="red"><b>${fn: length(FurnitureVOS)}</b></font></div>
 		    <div class="grid-container">
-		      <c:forEach var="InteriorVO" items="${FurnitureVOS}" varStatus="st">
-				    <div class="grid-item">
-							<!-- a 태그 -->
-						  <a class="moveContent" href="InteriorContent.in?idx=${FurnitureVOS.idx}">
-						    <img src="${ctp}/images/interior/upload/${FurnitureVOS.thumbnail}" alt="Thumbnail">
-						    <div class="title">${FurnitureVOS.title}</div>
-						    <div class="company-category">${FurnitureVOS.company} | ${FurnitureVOS.category}</div>
-						  </a>
-						  
-						  <!-- 하트 버튼 (a 태그 바깥) -->
-						  <button type="button" class="like-button" onclick="toggleLike(${FurnitureVOS.idx}, this)">
-						    <i class="${fn:contains(sContentGood, furniture+FurnitureVO.idx) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
-						  </button>
-						</div>
+		      <c:forEach var="FurnitureVO" items="${FurnitureVOS}" varStatus="st">
+					    <div class="grid-item">
+  							<!-- a 태그 -->
+							  <a class="moveContent" href="FurnitureContent.fu?idx=${FurnitureVO.idx}">
+							    <img src="${ctp}/images/furniture/upload/${FurnitureVO.thumbnail}" alt="Thumbnail">
+							    <div class="title">${FurnitureVO.title}</div>
+							    <div class="company-category">${FurnitureVO.company} | ${FurnitureVO.category}</div>
+							  </a>
+							  
+							  <!-- 하트 버튼 (a 태그 바깥) -->
+							  <button type="button" class="like-button" onclick="toggleLike(${FurnitureVO.idx}, this)">
+							    <i class="${fn:contains(sContentGood, furniture+FurnitureVO.idx) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
+							  </button>
+							</div>
 					</c:forEach>
 		    </div>
 	    </c:if>
+	    
 	    
 	    <!-- 인테리어 -->
 	    <c:if test="${param.industry eq 'ALL' && fn: length(InteriorVOS) != 0}">
