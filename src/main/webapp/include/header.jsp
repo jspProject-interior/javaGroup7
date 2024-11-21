@@ -306,7 +306,7 @@
 	  		<hr>
 		  		<div class="input-group" style="display: flex; justify-content: space-between; width: 100%;">
 			  		<div class="sideTitle"><a href="MemberLogout.mem">로그아웃</a></div>
-			  		<c:if test="${sLevel == 0}"><div class="sideTitle"><a href="Admin.ad">관리자</a></div></c:if>
+			  		<c:if test="${sLevel == 0}"><div class="sideTitle"><a href="AdminMain.ad">관리자</a></div></c:if>
 		  		</div>
 	  		</div>
 	    </div>

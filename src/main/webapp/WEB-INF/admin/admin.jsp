@@ -17,44 +17,7 @@
             margin: 0;
             padding: 0;
         }
-        header {
-            color: #DE8F5F;
-            padding: 15px 20px;
-            text-align: left;
-            font-family: "Playfair Display", serif;
-       			font-size: 30px;
-       			position: fixed;
-		        top: 0;
-		        background-color: #fff;
-		        width: 100%;
-		        z-index: 1000;
-        }
-        nav {
-            width: 220px;
-            position: fixed;
-            top: 80px; /* 헤더 높이와 간격 조정 */
-        		height: calc(100% - 80px);
-            padding-top: 20px;
-            padding-left: 5px;
-            font-family: 'Dovemayo_gothic'; /* 둘기마요고딕 : 동글 얇 */
-        }
-        nav a {
-            color: #97BFB4;
-            text-decoration: none;
-            font-size: 1.5em;
-            display: block;
-            padding: 10px 20px;
-            margin: 5px 0;
-            border-radius: 5px;
-        }
-        nav a:hover {
-            background-color: #457b9d;
-            color: #fff;
-            text-decoration: none;
-        }
         main {
-            margin-left: 240px;
-            padding: 70px 20px 20px 20px;
             
         }
         section {
@@ -97,32 +60,10 @@
             color: #333;
         }
 	</style>
-	<script>
-		function showTab(tabId) {
-			  const contents = document.querySelectorAll('.tab-content');
-			  contents.forEach(content => content.classList.remove('active'));
-		
-			  const activeTab = document.getElementById(tabId);
-			  if (activeTab) {
-			    activeTab.classList.add('active');
-			  }
-			}
-	</script>
 </head>
 <body>
 <p><br/></p>
   <div class="container-fluid">
-       <header>
-        <h1>GRINTERIOR Admin</h1>
-    </header>
-    <nav>
-        <a href="#user-list">회원 리스트</a>
-        <a href="#business-list">업체 리스트</a>
-        <a href="#consultation-list">상담 신청 리스트</a>
-        <a href="#post-list">게시물 리스트</a>
-        <a href="#finance">정산</a>
-        <a href="#reports">신고 글 보기</a>
-    </nav>
     <main>
         <section id="user-list">
             <h2 class="section-header">회원 리스트</h2>
@@ -173,18 +114,6 @@
         <section id="consultation-list">
             <h2 class="section-header">상담 신청 리스트</h2>
             <p>여기에 상담 신청 내역이 표시됩니다.</p>
-        </section>
-        <section id="post-list">
-            <h2 class="section-header">게시물 리스트</h2>
-            <p>게시물 관리 섹션입니다.</p>
-        </section>
-        <section id="finance">
-            <h2 class="section-header">정산</h2>
-            <p>정산 내역을 확인할 수 있습니다.</p>
-        </section>
-        <section id="reports">
-            <h2 class="section-header">신고 글 보기</h2>
-            <p>신고된 게시글을 확인합니다.</p>
         </section>
     </main>
   </div>

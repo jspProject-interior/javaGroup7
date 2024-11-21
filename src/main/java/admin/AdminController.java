@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import member.MemberJoinOkCommand;
+
 @WebServlet("*.ad")
 public class AdminController extends HttpServlet{
 	@Override
@@ -23,52 +25,33 @@ public class AdminController extends HttpServlet{
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
 		
-		if(com.equals("/Admin")) {
+		if(com.equals("/AdminMain")) {
+			viewPage += "/adminMain.jsp";
+		}
+		else if(com.equals("/AdminHeader")) {
+			viewPage += "/adminHeader.jsp";
+		}
+		else if(com.equals("/AdminNav")) {
+			viewPage += "/adminNav.jsp";
+		}
+		else if(com.equals("/Admin")) {
 			viewPage += "/admin.jsp";
 		}
-//		else if(level > 3) {
-//			request.setAttribute("message", "로그인 후 사용 가능합니다.");
-//			request.setAttribute("url", "/main.main");
-//			viewPage = "/include/message.jsp";
-//		}
-//		else if(com.equals("/InteriorContent")) {
-//			command = new InteriorContentCommand();
-//			command.execute(request, response);
-//			viewPage += "/interiorContent.jsp";
-//		}
-//		else if(com.equals("/InteriorInput")) {
-//			viewPage += "/interiorInput.jsp";
-//		}
-//		else if(com.equals("/InteriorInputOk")) {
-//			command = new InteriorInputCommand();
-//			command.execute(request, response);
-//			viewPage = "/include/message.jsp";
-//		}
-//		else if(com.equals("/InteriorUpdate")) {
-//			command = new InteriorUpdateCommand();
-//			command.execute(request, response);
-//			viewPage += "/interiorUpdate.jsp";
-//		}
-//		else if(com.equals("/InteriorUpdateOk")) {
-//			command = new InteriorUpdateOkCommand();
-//			command.execute(request, response);
-//			viewPage = "/include/message.jsp";
-//		}
-//		else if(com.equals("/interirorImgDelete")) {
-//			command = new interirorImgDeleteCommand();
-//			command.execute(request, response);
-//			return;
-//		}
-//		else if(com.equals("/InteriorDelete")) {
-//			command = new InteriorDeleteCommand();
-//			command.execute(request, response);
-//			viewPage = "/include/message.jsp";
-//		}
-//		else if(com.equals("/interestCheck")) {
-//			command = new interestCheckCommand();
-//			command.execute(request, response);
-//			return;
-//		}
+		else if(com.equals("/userList")) {
+			command = new userList();
+			command.execute(request, response);
+			viewPage += "/userList.jsp";
+		}
+		else if(com.equals("/userList")) {
+			command = new userList();
+			command.execute(request, response);
+			viewPage += "/userList.jsp";
+		}
+		else if(com.equals("/businessList")) {
+			command = new businessList();
+			command.execute(request, response);
+			viewPage += "/businessList.jsp";
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		

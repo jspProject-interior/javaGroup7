@@ -184,5 +184,50 @@ public class MemberDAO {
 		return res;
 	}
 
+	public ArrayList<MemberVO> getMemberList(int level) {
+		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
+		try {
+			if(level != 777) {
+				sql = "select * from member where level = ? order by name";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, level);
+			}
+			else {
+				sql = "select * from member order by name";
+				pstmt = conn.prepareStatement(sql);
+			}
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new MemberVO();
+				
+	      vo.setIdx(rs.getInt("idx"));
+	      vo.setMid(rs.getString("mid"));
+	      vo.setPwd(rs.getString("pwd"));
+	      vo.setName(rs.getString("name"));
+	      vo.setCompany(rs.getString("company"));
+	      vo.setTel(rs.getString("tel"));
+	      vo.setEmail(rs.getString("email"));
+	      vo.setResident(rs.getString("resident"));
+	      vo.setAddress(rs.getString("address"));
+	      vo.setGender(rs.getString("gender"));
+	      vo.setBirthday(rs.getString("birthday"));
+	      vo.setLevel(rs.getInt("level"));
+	      vo.setPhoto(rs.getString("photo"));
+	      vo.setUserDel(rs.getString("userDel"));
+	      vo.setJoinDay(rs.getString("joinDay"));
+	      vo.setLastDate(rs.getString("lastDate"));
+	      
+	      vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}
+		finally {
+			rsClose();
+		}
+		return vos;
+	}
+
 }
 
