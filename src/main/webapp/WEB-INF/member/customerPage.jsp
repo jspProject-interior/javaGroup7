@@ -188,7 +188,7 @@
   </div>
   <div class="section-title">나의 쇼핑</div>
   <div class="section">
-    <a href="#"><i class="fa-solid fa-heart"></i> 찜한 상품</a>
+    <a href="Love.ap?industry=ALL"><i class="fa-solid fa-heart"></i> 관심 목록</a>
     <a href="#"><i class="fa-solid fa-magnifying-glass"></i> 최근 본 내역</a>
     <a href="#"><i class="fa-regular fa-newspaper"></i> 나의 후기</a>
   </div>

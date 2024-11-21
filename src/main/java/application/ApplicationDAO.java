@@ -103,6 +103,7 @@ public class ApplicationDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				vo.setIdx(rs.getInt("idx"));
 				vo.setMid(rs.getString("mid"));
 				vo.setName(rs.getString("name"));
 				vo.setConAddress(rs.getString("conAddress"));
@@ -156,5 +157,21 @@ public class ApplicationDAO {
 			rsClose();
 		}
 		return vos;
+	}
+
+	public int setApproval(int idx, String approval) {
+		int res = 0;
+		try {
+			sql = "update application set treatment = ? where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, approval);
+			pstmt.setInt(2, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			 System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
 	}
 }
