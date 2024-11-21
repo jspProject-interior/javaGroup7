@@ -341,7 +341,7 @@
     <!-- 상담신청 -->
     <div class="sidebar-item">
       <div class="icon-circle">
-        <a href="#"><i class="fa-solid fa-comment-dots"></i></a>
+        <a href="Application.ap?companyMid=${vo.mid}"><i class="fa-solid fa-comment-dots"></i></a>
       </div>
     </div>
     

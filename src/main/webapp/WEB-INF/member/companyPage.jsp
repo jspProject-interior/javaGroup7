@@ -89,6 +89,9 @@
   	color: black;
   	text-decoration: none;
   }
+  .tab:hover{
+  	background: #eee;
+  }
   .section {
     margin-bottom: 20px;
   }
@@ -106,6 +109,7 @@
   .section a:hover {
     text-decoration: none;
     color: black;  
+    background: #eee;
   }
   .user-details {
     flex-direction: column;
@@ -129,6 +133,26 @@
   .Id{
   	font-size: 20px;
   	color: gray;
+  }
+  .button-group{
+  	width: 100%;
+  	margin-bottom: 50px;
+  }
+  .button-group div{
+  	width: 50%;
+  }
+  .button-group button{
+  	border: 2px solid #eee;
+  	border-radius: 5px;
+  	padding: 30px;
+  	background: transparent;
+  	display: flex;
+  	align-items: center;
+  	justify-content: center;
+  	width: 100%;
+  }
+  .button-group button:hover{
+  	background: #eee;
   }
 </style>
 </head>
@@ -158,19 +182,27 @@
 	  </div>
   </div>
   
-  <div style="margin-bottom: 100px;" class="input-group">
+  <div style="margin-bottom: 50px;" class="input-group">
 		<div class="tab">
 			<a href="MyPost.ap">
 		  	<p class="talTitle">내 게시물</p>
-		  	<c:if test="${vo.level == 2}"><div class="talContent">${fn: length(InteriorVOS)}</div></c:if>
-		  	<c:if test="${vo.level == 3}"><div class="talContent">${fn: length(FurnitureVOS)}</div></c:if>
+		  	<c:if test="${vo.level == 2}"><div class="talContent">${interiorPostCnt}</div></c:if>
+		  	<c:if test="${vo.level == 3}"><div class="talContent">${furniturePostCnt}</div></c:if>
 	  	</a>
 	  </div>
 		<div class="tab">
-	    <a href="#">
-		  	<p class="talTitle">상담신청 내역</p>
-		  	<div class="talContent">0</div>
-	  	</a>
+			<c:if test="${counselListCnt != 0}">
+		    <a href="CounselList.ap?mid=${vo.mid}">
+			  	<p class="talTitle">상담신청 내역</p>
+			  	<div class="talContent">${counselListCnt}</div>
+		  	</a>
+			</c:if>
+			<c:if test="${counselListCnt == 0}">
+				<span style="padding: 20px;">
+			  	<p class="talTitle">상담신청 내역</p>
+			  	<div class="talContent">0</div>
+		  	</span>
+			</c:if>
 	  </div>
 		<div class="tab">
 	    <a href="#">
@@ -178,6 +210,11 @@
 		  	<div class="talContent">0</div>
 	  	</a>
 	  </div>
+  </div>
+  
+  <div class="button-group input-group">
+  	<div><button type="button" onclick="location.href='InteriorInput.in'">게시물 등록</button></div>
+  	<div><button type="button" onclick="location.href='FurnitureInput.fu'">상품 등록</button></div>
   </div>
   
   <div class="section-title">혜택</div>

@@ -19,8 +19,7 @@ public class ApplicationCommand implements ApplicationInterface {
     int price = (request.getParameter("totprice") ==null || request.getParameter("totprice").equals("")) ? 0 : Integer.parseInt(request.getParameter("totprice"));
     String area = request.getParameter("selectArea") ==null ? "" : request.getParameter("selectArea");
     int size = (request.getParameter("selectSize") ==null || request.getParameter("selectSize").equals("")) ? 0 : Integer.parseInt(request.getParameter("selectSize"));
-    
-    
+    String companyMid = request.getParameter("companyMid") ==null ? "" : request.getParameter("companyMid");
     
     ApplicationVO vo = new ApplicationVO();
     MemberDAO dao = new MemberDAO();
@@ -39,6 +38,8 @@ public class ApplicationCommand implements ApplicationInterface {
     
     request.setAttribute("vo", vo);
     request.setAttribute("MemberVO", MemberVO);
+    
+    request.setAttribute("companyMid", companyMid);
     
     request.setAttribute("address1", address1);
 		request.setAttribute("address2", address2);

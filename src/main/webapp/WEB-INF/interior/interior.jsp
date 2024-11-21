@@ -193,26 +193,17 @@
     </div>
     <div class="grid-container">
       <c:forEach var="vo" items="${vos}" varStatus="st">
-      	<!-- 조건: industry가 'ALL'이고 반복 횟수가 4를 초과한 경우 -->
-		    <c:if test="${industry == 'ALL' && st.index >= 4}">
-		        <!-- 빈 내용을 출력해 사실상 반복 종료 -->
-		        <c:set var="stop" value="true" />
-		    </c:if>
-		
-		    <!-- 반복 종료 조건 -->
-		    <c:if test="${stop != true}">
-			    <div class="grid-item">
-		        <div class="like-container">
-					    <i class="fa-solid fa-heart"></i>
-					    <span>${vo.interest}</span>
-					  </div>
-		        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
-	            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
-	            <div class="title">${vo.title}</div>
-	            <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
-		        </a>
-			    </div>
-		    </c:if>
+		    <div class="grid-item">
+	        <div class="like-container">
+				    <i class="fa-solid fa-heart"></i>
+				    <span>${vo.interest}</span>
+				  </div>
+	        <a class="moveContent" href="InteriorContent.in?idx=${vo.idx}">
+            <img src="${ctp}/images/interior/upload/${vo.thumbnail}" alt="Thumbnail">
+            <div class="title">${vo.title}</div>
+            <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
+	        </a>
+		    </div>
 			</c:forEach>
     </div>
   </form>

@@ -21,7 +21,7 @@ public class MyPostCommand implements ApplicationInterface {
 		
 		InteriorDAO InteriorDAO = new InteriorDAO();
 		
-		ArrayList<InteriorVO> InteriorVOS = InteriorDAO.getMyPost(mid);
+		ArrayList<InteriorVO> InteriorVOS = InteriorDAO.getInteriorPost(mid);
 		
 		request.setAttribute("InteriorVOS", InteriorVOS);
 		request.setAttribute("sLevel", level);

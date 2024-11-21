@@ -12,8 +12,9 @@ create table application(
 	price				int,																						  /* 견적 가격(바로 상담신청서로 온 경우는 null)*/
 	budget			int							not null,													/* 예산 */
 	size				int							not null,													/* 평수 */
-	conStartDay date,																						/*시공 시작 희망일*/
-	area				varchar(10)			default 'N',												/* 컨설팅 희망 공간 */
+	conStartDay date,																							/*시공 시작 희망일*/
+	companyMid	varchar(30),																			/*	시공 신청 업체	*/
+	area				varchar(10)			default 'N',											/* 컨설팅 희망 공간 */
 
   primary key(idx),
  	foreign key(mid) references member(mid)

@@ -180,10 +180,10 @@
       <!-- 평수 -->
       <div class="form-group">
         <label for="size">평수</label>
-        <c:if test="${!empty vo.size}">
+        <c:if test="${vo.size != 0}">
         	<input type="number" id="size" name="size" value="${vo.size}" required placeholder="평수를 입력하세요" style="background-color: #eee;" readonly>
         </c:if>
-        <c:if test="${empty vo.size}">
+        <c:if test="${vo.size == 0}">
         	<input type="number" id="size" name="size" required placeholder="평수를 입력하세요" >
         </c:if>
       </div>
@@ -196,6 +196,9 @@
       <div class="form-group">
         <input type="button" onclick="appCheck()" value="상담 신청하기">
       </div>
+      
+      <!-- 업체에서 상담 신청으로 넘어왔을 때의 업체ID -->
+      <input type="hidden" id="companyMid" name="companyMid" value="${companyMid}">
     </form>
 </div>	    
 <p><br/></p>

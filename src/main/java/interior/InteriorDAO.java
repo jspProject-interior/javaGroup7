@@ -237,7 +237,7 @@ public class InteriorDAO {
 		return vos;
 	}
 	
-	public ArrayList<InteriorVO> getMyPost(String mid) {
+	public ArrayList<InteriorVO> getInteriorPost(String mid) {
 		ArrayList<InteriorVO> vos = new ArrayList<InteriorVO>();
 		try {
 			sql = "select * from interior where mid = ?";

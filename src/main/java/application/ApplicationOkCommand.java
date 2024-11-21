@@ -6,6 +6,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import member.MemberDAO;
+import member.MemberVO;
+
 public class ApplicationOkCommand implements ApplicationInterface {
 
 	@Override
@@ -20,6 +23,7 @@ public class ApplicationOkCommand implements ApplicationInterface {
 		int size = (request.getParameter("size") == null || request.getParameter("size").equals("")) ? 0 : Integer.parseInt(request.getParameter("size"));
 		String conStartDay = request.getParameter("conStartDay") == null? "" : request.getParameter("conStartDay");
 		String area = request.getParameter("area") == null? "" : request.getParameter("area");
+		String companyMid = request.getParameter("companyMid") ==null ? "" : request.getParameter("companyMid");
 		
 		ApplicationDAO dao = new ApplicationDAO();
 		
@@ -35,7 +39,7 @@ public class ApplicationOkCommand implements ApplicationInterface {
 		vo.setSize(size);
 		vo.setConStartDay(conStartDay);
 		vo.setArea(area);
-		
+		vo.setCompanyMid(companyMid);
 		
 		int res = dao.setApplicationOk(vo);
 	

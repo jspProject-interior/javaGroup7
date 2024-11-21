@@ -48,10 +48,20 @@ public class ApplicationController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/love.jsp";
 		}
-		else if(com.equals("/MyPost")) { //관심 목록
+		else if(com.equals("/MyPost")) { //내 게시물 보기
 			command = new MyPostCommand();
 			command.execute(request, response);
 			viewPage += "/myPost.jsp";
+		}
+		else if(com.equals("/CounselList")) { // 상담신청 내역
+			command = new CounselListCommand();
+			command.execute(request, response);
+			viewPage += "/counselList.jsp";
+		}
+		else if(com.equals("/CounselListDetail")) { // 상담신청 디테일
+			command = new CounselListDetailCommand();
+			command.execute(request, response);
+			viewPage += "/counselListDetail.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

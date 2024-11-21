@@ -258,13 +258,11 @@
           <li><a href="Love.ap?industry=ALL" style="padding-right:20px;"><i class="fa-regular fa-heart fa-lg"></i></a></li>
           <li>
             <div class="pv-box">
-              <div class="container" style="padding-left: 5px;">
-                <div class="menu menu-icon" onclick="toggleSidebar()">
+                <div class="menu menu-icon" onclick="toggleSidebar()" style="padding-left: 4px;">
                   <div class="bar"></div>
                   <div class="bar"></div>
                   <div class="bar"></div>
                 </div>
-              </div>
             </div>
           </li>
         </ul>
@@ -308,7 +306,7 @@
 	  		<hr>
 		  		<div class="input-group" style="display: flex; justify-content: space-between; width: 100%;">
 			  		<div class="sideTitle"><a href="MemberLogout.mem">로그아웃</a></div>
-			  		<c:if test="${sLevel == 0}"><div class="sideTitle"><a href="admin.ad">관리자</a></div></c:if>
+			  		<c:if test="${sLevel == 0}"><div class="sideTitle"><a href="Admin.ad">관리자</a></div></c:if>
 		  		</div>
 	  		</div>
 	    </div>

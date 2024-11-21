@@ -58,7 +58,6 @@
 	}
   .info-Update:hover {
       color: black;
-      text-decoration: none;
   }
   .user-information {
       display: flex;
@@ -89,6 +88,9 @@
   	color: black;
   	text-decoration: none;
   }
+  .tab:hover{
+  	background: #eee;
+  }
   .section {
     margin-bottom: 20px;
   }
@@ -104,6 +106,7 @@
     padding: 30px;
   }
   .section a:hover {
+    background: #eee;
     text-decoration: none;
     color: black;  
   }
@@ -181,7 +184,7 @@
   
   <div class="section-title">인테리어 컨설팅 서비스</div>
   <div class="section">
-    <a href="#"><i class="fa-regular fa-newspaper"></i> 상담 신청 내역</a>
+    <a href="#"><i class="fa-regular fa-newspaper"></i> 상담 신청 현황</a>
   </div>
   <div class="section-title">나의 쇼핑</div>
   <div class="section">
