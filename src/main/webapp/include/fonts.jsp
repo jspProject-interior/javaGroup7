@@ -54,6 +54,26 @@
 		    font-weight: normal;
 		    font-style: normal;
 		}
+		/* 관리자 nav */
+		@font-face {
+	    font-family: 'Dovemayo_gothic'; /* 둘기마요고딕 : 동글 얇 */
+	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+	    font-weight: normal;
+	    font-style: normal;
+		}
+		@font-face {
+	    font-family: 'GeekbleMalang2WOFF2'; /* 긱블 말랑이체 : 동글 두껍 */
+	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/GeekbleMalang2WOFF2.woff2') format('woff2');
+	    font-weight: normal;
+	    font-style: normal;
+		}
+
+		@font-face {
+	    font-family: 'SDSamliphopangche_Outline'; /* 삼립호빵체 */
+	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts-20-12@1.0/SDSamliphopangche_Outline.woff') format('woff');
+	    font-weight: normal;
+	    font-style: normal;
+		}	
 		
 		@font-face {
 	    font-family: 'SUIT-Regular';
