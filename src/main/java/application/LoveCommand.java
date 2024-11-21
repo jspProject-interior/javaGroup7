@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import furniture.FurnitureDAO;
+import furniture.FurnitureVO;
 import interior.InteriorDAO;
 import interior.InteriorVO;
 
@@ -19,10 +21,13 @@ public class LoveCommand implements ApplicationInterface {
 		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood") == null ? null : (ArrayList<String>)session.getAttribute("sContentGood");
 		
 		InteriorDAO InteriorDAO = new InteriorDAO();
+		FurnitureDAO FurnitureDAO = new FurnitureDAO();
 		
 		ArrayList<InteriorVO> InteriorVOS = InteriorDAO.getInteriorIdxSearch(request);
+		ArrayList<FurnitureVO> FurnitureVOS = FurnitureDAO.getFurnitureIdxSearch(request);
 		
 		request.setAttribute("InteriorVOS", InteriorVOS);
+		request.setAttribute("FurnitureVOS", FurnitureVOS);
 		request.setAttribute("sContentGood", sContentGood);
 	}
 
