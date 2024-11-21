@@ -17,7 +17,6 @@ public class MemberController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel") == null ? 999 : (int)session.getAttribute("sLevel");
-		System.out.println("level : "+level);
 		
 		MemberInterface command = null;
 		String viewPage = "/WEB-INF/member";
@@ -25,7 +24,6 @@ public class MemberController extends HttpServlet {
 		String com = request.getRequestURI();
 		com = com.substring(com.lastIndexOf("/"), com.lastIndexOf("."));
 		
-		System.out.println(com);
 		
 		if(com.equals("/MemberJoin")) { //회원가입
 			viewPage += "/memberJoin.jsp";

@@ -184,7 +184,7 @@
   
   <div class="section-title">인테리어 컨설팅 서비스</div>
   <div class="section">
-    <a href="#"><i class="fa-regular fa-newspaper"></i> 상담 신청 현황</a>
+    <a href="ConsultationStatus.ap"><i class="fa-regular fa-newspaper"></i> 상담 신청 현황</a>
   </div>
   <div class="section-title">나의 쇼핑</div>
   <div class="section">

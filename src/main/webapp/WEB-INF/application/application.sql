@@ -14,7 +14,9 @@ create table application(
 	size				int							not null,													/* 평수 */
 	conStartDay date,																							/*시공 시작 희망일*/
 	companyMid	varchar(30),																			/*	시공 신청 업체	*/
+	companyName	varchar(30),																			/*	시공 신청 업체	*/
 	area				varchar(10)			default 'N',											/* 컨설팅 희망 공간 */
+	treatment		varchar(10)			default '신청대기',									/*처리상태	*/
 
   primary key(idx),
  	foreign key(mid) references member(mid)

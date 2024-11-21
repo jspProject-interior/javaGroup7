@@ -19,11 +19,11 @@
         <li class="list-group-item"><strong>주소:</strong> ${vo.conAddress}</li>
         <li class="list-group-item"><strong>전화번호:</strong> ${vo.tel}</li>
         <li class="list-group-item"><strong>카테고리:</strong> ${vo.category}</li>
-        <li class="list-group-item"><strong>가격:</strong> ${vo.price}</li>
-        <li class="list-group-item"><strong>예산:</strong> ${vo.budget}</li>
-        <li class="list-group-item"><strong>크기:</strong> ${vo.size}</li>
+        <li class="list-group-item"><strong>예산:</strong> ${vo.budget} 만원</li>
+        <li class="list-group-item"><strong>크기:</strong> ${vo.size} 평</li>
         <li class="list-group-item"><strong>시작 날짜:</strong> ${vo.conStartDay}</li>
         <li class="list-group-item"><strong>지역:</strong> ${vo.area}</li>
+        <li class="list-group-item"><strong>처리현황:</strong> ${vo.treatment}</li>
     </ul>
 </div>
 <p><br/></p>

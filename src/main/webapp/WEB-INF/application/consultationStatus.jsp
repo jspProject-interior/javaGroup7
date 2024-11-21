@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="${ctp}/images/main/favicon.png">
-  <title>${mid} 상담신청 리스트 | 그린테리어</title>
+  <title>${sMid}님의 신청 현황 | 그린테리어</title>
   <jsp:include page="/include/bs4.jsp"/>
 <style>
   .table {
@@ -21,10 +21,6 @@
       white-space: nowrap; /* Prevent wrapping */
       text-align: center;
   }
-  .table-row:hover {
-      background-color: #e9f5ff !important;
-      transition: background-color 0.3s ease;
-  }
   .text-center {
       text-align: center;
   }
@@ -38,27 +34,30 @@
 <jsp:include page="/include/header.jsp"/>
 <div class="blank"></div>
 <div class="container">
-    <h1 class="text-center my-4">상담 신청 리스트</h1>
+    <h1 class="text-center my-4">상담 신청 현황</h1>
     <table class="table table-striped table-bordered text-center">
         <thead>
             <tr>
+                <th><input type="checkbox"/></th>
                 <th>순번</th>
-                <th>아이디</th>
-                <th>이름</th>
-                <th>주소</th>
-                <th>전화번호</th>
+                <th>업체</th>
+                <th>신청자</th>
+                <th>시공지</th>
+                <th>연락받을 번호</th>
                 <th>카테고리</th>
                 <th>예산</th>
                 <th>크기</th>
-                <th>시공 날짜</th>
+                <th>시작 날짜</th>
                 <th>공간</th>
+                <th>처리현황</th>
             </tr>
         </thead>
         <tbody>
             <c:forEach var="vo" items="${vos}" varStatus="st">
-                <tr class="table-row" onclick="location.href='${ctp}/CounselListDetail.ap?mid=${vo.mid}'">
+                <tr class="table-row">
+                    <td><input type="checkbox"/></td>
                     <td>${st.count}</td>
-                    <td>${vo.mid}</td>
+                    <td>${vo.companyMid}</td>
                     <td>${vo.name}</td>
                     <td>${vo.conAddress}</td>
                     <td>${vo.tel}</td>
@@ -67,6 +66,7 @@
                     <td>${vo.size} 평</td>
                     <td>${vo.conStartDay}</td>
                     <td>${vo.area}</td>
+                    <td>${vo.treatment}</td>
                 </tr>
             </c:forEach>
         </tbody>

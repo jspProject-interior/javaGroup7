@@ -13,7 +13,8 @@ public class ApplicationVO {
 	private String conStartDay;
 	private String area;
 	private String companyMid;
-	
+	private String companyName;
+	private String treatment;
 	public int getIdx() {
 		return idx;
 	}
@@ -86,10 +87,24 @@ public class ApplicationVO {
 	public void setCompanyMid(String companyMid) {
 		this.companyMid = companyMid;
 	}
+	public String getCompanyName() {
+		return companyName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+	public String getTreatment() {
+		return treatment;
+	}
+	public void setTreatment(String treatment) {
+		this.treatment = treatment;
+	}
 	@Override
 	public String toString() {
 		return "ApplicationVO [idx=" + idx + ", mid=" + mid + ", name=" + name + ", conAddress=" + conAddress + ", tel="
 				+ tel + ", category=" + category + ", price=" + price + ", budget=" + budget + ", size=" + size
-				+ ", conStartDay=" + conStartDay + ", area=" + area + ", companyMid=" + companyMid + "]";
+				+ ", conStartDay=" + conStartDay + ", area=" + area + ", companyMid=" + companyMid + ", companyName="
+				+ companyName + ", treatment=" + treatment + "]";
 	}
+	
 }

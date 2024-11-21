@@ -63,6 +63,11 @@ public class ApplicationController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/counselListDetail.jsp";
 		}
+		else if(com.equals("/ConsultationStatus")) { // 상담신청 디테일
+			command = new ConsultationStatusCommand();
+			command.execute(request, response);
+			viewPage += "/consultationStatus.jsp";
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);

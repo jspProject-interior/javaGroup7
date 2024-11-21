@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import application.ApplicationDAO;
+import application.ApplicationVO;
 import furniture.FurnitureDAO;
 import furniture.FurnitureVO;
 import interior.InteriorDAO;

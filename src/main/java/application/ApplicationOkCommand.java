@@ -24,11 +24,12 @@ public class ApplicationOkCommand implements ApplicationInterface {
 		String conStartDay = request.getParameter("conStartDay") == null? "" : request.getParameter("conStartDay");
 		String area = request.getParameter("area") == null? "" : request.getParameter("area");
 		String companyMid = request.getParameter("companyMid") ==null ? "" : request.getParameter("companyMid");
-		
 		ApplicationDAO dao = new ApplicationDAO();
+		MemberDAO MemberDAO = new MemberDAO(); 
+		MemberVO MemberVO =  MemberDAO.getMemberIdCheck(companyMid);
 		
 		ApplicationVO vo = new ApplicationVO();
-	
+		
 		vo.setMid(mid);
 		vo.setName(name);
 		vo.setConAddress(conAddress);
@@ -40,6 +41,7 @@ public class ApplicationOkCommand implements ApplicationInterface {
 		vo.setConStartDay(conStartDay);
 		vo.setArea(area);
 		vo.setCompanyMid(companyMid);
+		vo.setCompanyName(MemberVO.getCompany());
 		
 		int res = dao.setApplicationOk(vo);
 	
