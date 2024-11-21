@@ -38,6 +38,11 @@ public class FurnitureController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/furnitureContent.jsp";
 		}
+		else if(com.equals("/FurnitureBuy")) {
+			command = new FurnitureBuyCommand();
+			command.execute(request, response);
+			viewPage += "/furnitureBuy.jsp";
+		}
 		else if(com.equals("/FurnitureInput")) {
 			viewPage += "/furnitureInput.jsp";
 		}

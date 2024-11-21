@@ -245,12 +245,12 @@
 	        </div>
 	        <h2>${vo.title}</h2>
 	        <p class="price"><fmt:formatNumber value="${vo.price}" pattern="#,##0"/> 원</p>
-	        <button type="button" class="btn btn-outline-secondary">구매하기</button>
+	        <button type="button"  class="btn btn-outline-secondary">구매하기</button>
 	        <button type="button" class="btn btn-outline-secondary">장바구니 담기</button><br/><br/><br/><br/>
 		      <div class="additional-info" style="padding: 20px; background-color: #fff; border: 1px solid #ddd;">
 		        <h3>배송 안내</h3>
-		        <p>1. 전국 무료 배송 및 설치</p>
-		        <p>2. 제주도 및 울릉도 등 도서/산간 지역의 경우 택배상품만 온라인 주문이 가능합니다.</p>
+		        <p><font color="blue">* 1인 1개만 구매가 가능합니다. *</font></p>
+		        <p>전국 무료 배송 및 설치<br/>(제주도 및 울릉도 등 도서/산간 지역의 경우 택배상품만 온라인 주문 가능)</p>
 		        <hr>
 		        <h3>제품 사진 관련 안내</h3>
 		        <p>위의 사진들은 모니터에 따라 약간의 색상 차이가 발생될 수 있습니다.</p>
