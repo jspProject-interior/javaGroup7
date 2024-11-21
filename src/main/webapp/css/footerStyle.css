@@ -33,10 +33,6 @@ hr.footer-hr {
 .input-group.contact-info {
     margin-top: 10px;
 }
-a:hover{
-		color: white;
-		text-decoration: none;		
-}
 .phone-number {
     color: white;
     font-size: 16px;
@@ -61,12 +57,28 @@ a:hover{
     font-size: 13px;
 }
 
-.menu-link {
-    color: white;
-    padding-left: 10px;
-    font-size: 14px;
+a {
+    text-decoration: none; /* 기본 밑줄 제거 */
+    color: inherit; /* 부모의 색상 상속 */
+    transition: color 0.3s ease-in-out; /* 색상 변화에 부드러운 전환 효과 */
 }
 
+a:hover {
+    text-decoration: none; /* 마우스를 올려도 밑줄 제거 유지 */
+    color: inherit; /* 부모 색상 유지 */
+}
+
+.menu-link {
+    color: white; /* 링크의 기본 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    font-weight: light;
+    font-size: 15px;
+}
+
+.menu-link:hover {
+    text-decoration: none; /* 호버 시 밑줄 제거 */
+    color: white; /* 색상 유지 */
+}
 .foot {
     text-align: left;
     font-size: 12px;
