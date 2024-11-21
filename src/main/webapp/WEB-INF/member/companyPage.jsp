@@ -186,8 +186,8 @@
 		<div class="tab">
 			<a href="MyPost.ap">
 		  	<p class="talTitle">내 게시물</p>
-		  	<c:if test="${vo.level == 2}"><div class="talContent">${interiorPostCnt}</div></c:if>
-		  	<c:if test="${vo.level == 3}"><div class="talContent">${furniturePostCnt}</div></c:if>
+		  	<c:if test="${vo.level == 2}"><div class="talContent">${interiorPostCnt==null? 0 : interiorPostCnt}</div></c:if>
+		  	<c:if test="${vo.level == 3}"><div class="talContent">${furniturePostCnt==null? 0 : furniturePostCnt}</div></c:if>
 	  	</a>
 	  </div>
 		<div class="tab">

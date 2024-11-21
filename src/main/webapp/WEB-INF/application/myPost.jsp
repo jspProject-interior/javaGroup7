@@ -170,13 +170,13 @@
     	<c:if test="${sLevel == 3}">
 	    	<div class="industry">가구 <font color="red"><b>${fn: length(FurnitureVOS)}</b></font></div>
 		    <div class="grid-container">
-		      <c:forEach var="InteriorVO" items="${FurnitureVOS}" varStatus="st">
+		      <c:forEach var="FurnitureVO" items="${FurnitureVOS}" varStatus="st">
 				    <div class="grid-item">
 							<!-- a 태그 -->
-						  <a class="moveContent" href="InteriorContent.in?idx=${FurnitureVOS.idx}">
-						    <img src="${ctp}/images/interior/upload/${FurnitureVOS.thumbnail}" alt="Thumbnail">
-						    <div class="title">${FurnitureVOS.title}</div>
-						    <div class="company-category">${FurnitureVOS.company} | ${FurnitureVOS.category}</div>
+						  <a class="moveContent" href="FurnitureContent.fu?idx=${FurnitureVO.idx}">
+						    <img src="${ctp}/images/furniture/upload/${FurnitureVO.thumbnail}" alt="Thumbnail">
+						    <div class="title">${FurnitureVO.title}</div>
+						    <div class="company-category">${FurnitureVO.company} | ${FurnitureVO.category}</div>
 						  </a>
 						</div>
 					</c:forEach>

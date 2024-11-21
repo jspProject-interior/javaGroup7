@@ -17,12 +17,15 @@ public class MemberController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel") == null ? 999 : (int)session.getAttribute("sLevel");
+		System.out.println("level : "+level);
 		
 		MemberInterface command = null;
 		String viewPage = "/WEB-INF/member";
 		
 		String com = request.getRequestURI();
 		com = com.substring(com.lastIndexOf("/"), com.lastIndexOf("."));
+		
+		System.out.println(com);
 		
 		if(com.equals("/MemberJoin")) { //회원가입
 			viewPage += "/memberJoin.jsp";
@@ -75,7 +78,7 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage += "/customerUpdate.jsp";
 		}
-		else if(com.equals("/moveUpdate") && level == 2 || level == 3) { //  업체 정보 수정
+		else if(com.equals("/moveUpdate") && level == 2 || com.equals("/moveUpdate") && level == 3) { //  업체 정보 수정
 			command = new MemberUpdateCommand();
 			command.execute(request, response);
 			viewPage += "/customerUpdate.jsp";
@@ -91,12 +94,12 @@ public class MemberController extends HttpServlet {
 			viewPage = "/include/message.jsp";
 		}
 		
-		else if(com.equals("/MyPage") && level == 0 || level == 1) { // 마이페이지
+		else if((com.equals("/MyPage") && level == 0 )|| (com.equals("/MyPage") && level == 1)) { // 마이페이지
 			command = new MyPageCommand();
 			command.execute(request, response);
 			viewPage += "/customerPage.jsp";
 		}
-		else if(com.equals("/MyPage") && level == 2 || level == 3) { // 마이페이지
+		else if((com.equals("/MyPage") && level == 2) || (com.equals("/MyPage") && level == 3)) { // 마이페이지
 			command = new MyPageCommand();
 			command.execute(request, response);
 			viewPage += "/companyPage.jsp";

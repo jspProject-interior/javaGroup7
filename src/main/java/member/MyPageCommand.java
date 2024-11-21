@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import application.ApplicationDAO;
 import furniture.FurnitureDAO;
+import furniture.FurnitureVO;
 import interior.InteriorDAO;
 import interior.InteriorVO;
 
@@ -26,13 +27,14 @@ public class MyPageCommand implements MemberInterface {
 		MemberVO vo = dao.getMemberIdCheck(mid);
 		
 		int interiorPostCnt = InteriorDAO.getInteriorPost(mid).size(); 
-//		ArrayList<FurnitureVO> FurnitureVOS = FurnitureDAO.getMemberIdCheck(mid);
+		int furniturePostCnt = FurnitureDAO.getFurniturePost(mid).size(); 
 		
 		int counselListCnt = ApplicationDAO.getCounselList(mid).size();
 		
 		request.setAttribute("vo", vo);
 		request.setAttribute("counselListCnt", counselListCnt);
 		request.setAttribute("interiorPostCnt", interiorPostCnt);
+		request.setAttribute("furniturePostCnt", furniturePostCnt);
 	}
 
 }

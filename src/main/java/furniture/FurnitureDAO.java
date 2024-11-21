@@ -177,4 +177,42 @@ public class FurnitureDAO {
 		}
 		return res;
 	}
+
+	public ArrayList<FurnitureVO> getFurniturePost(String mid) {
+		ArrayList<FurnitureVO> vos = new ArrayList<FurnitureVO>();
+		try {
+			sql = "select * from furniture where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new FurnitureVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setCompany(rs.getString("company"));
+				vo.setCategory(rs.getString("category"));
+				vo.setTitle(rs.getString("title"));
+				vo.setTitleImg(rs.getString("titleImg"));
+				vo.setSubImg(rs.getString("subImg"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setfName(rs.getString("fName"));
+				vo.setfSName(rs.getString("fSName"));
+				vo.setfSize(rs.getInt("fSize"));
+				vo.setClaim(rs.getString("claim"));
+				vo.setwDate(rs.getString("wDate"));
+				vo.setInterest(rs.getString("interest"));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}
+		finally {
+			rsClose();
+		}
+		
+		return vos;
+	}
 }
