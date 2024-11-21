@@ -82,6 +82,7 @@ public class FurnitureDAO {
 				vo.setCompany(rs.getString("company"));
 				vo.setCategory(rs.getString("category"));
 				vo.setTitle(rs.getString("title"));
+				vo.setPrice(rs.getInt("price"));
 				vo.setTitleImg(rs.getString("titleImg"));
 				vo.setSubImg(rs.getString("subImg"));
 				vo.setThumbnail(rs.getString("thumbnail"));
@@ -118,6 +119,7 @@ public class FurnitureDAO {
 			vo.setCompany(rs.getString("company"));
 			vo.setCategory(rs.getString("category"));
 			vo.setTitle(rs.getString("title"));
+			vo.setPrice(rs.getInt("price"));
 			vo.setTitleImg(rs.getString("titleImg"));
 			vo.setSubImg(rs.getString("subImg"));
 			vo.setThumbnail(rs.getString("thumbnail"));

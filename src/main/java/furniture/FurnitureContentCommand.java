@@ -26,5 +26,4 @@ public class FurnitureContentCommand implements FurnitureInterface {
 		request.setAttribute("vo", vo);
 
 	}
-
 }

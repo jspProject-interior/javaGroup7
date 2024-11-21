@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -243,7 +244,7 @@
           <div class="category input-group-append">${vo.category}</div>
         </div>
         <h2>${vo.title}</h2>
-        <p class="price">${vo.price}원</p>
+        <p class="price"><fmt:formatNumber value="${vo.price}" pattern="#,##0"/> 원</p>
         <button type="button" class="btn btn-outline-secondary">구매하기</button>
         <button type="button" class="btn btn-outline-secondary">장바구니 담기</button><br/><br/><br/><br/>
 	      <div class="additional-info" style="padding: 20px; background-color: #fff; border: 1px solid #ddd;">
