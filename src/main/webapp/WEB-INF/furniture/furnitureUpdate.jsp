@@ -6,7 +6,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="${ctp}/images/favicon.png">
-  <title>가구상품 등록하기 | 그린테리어</title>
+  <title>${vo.title} 수정 | 그린테리어</title>
   <jsp:include page="/include/bs4.jsp"/>
   <style type="text/css">
 		/* 기본적인 스타일링 */
@@ -320,11 +320,6 @@
 	        return false;
 	    }
 	    
-	    if (category.trim() == "null") {
-	        alert("카테고리를 선택해주세요");
-	        myform.category.focus();
-	        return false;
-	    }
 	    if (pay.trim() == "") {
 	        alert("판매가격을 입력해주세요");
 	        myform.pay.focus();
@@ -334,6 +329,12 @@
 	    if (discount.trim() == "") {
 	        alert("할인율(금액)을 입력해주세요");
 	        myform.discount.focus();
+	        return false;
+	    }
+	    
+	    if (category.trim() == "null") {
+	        alert("카테고리를 선택해주세요");
+	        myform.category.focus();
 	        return false;
 	    }
 	    
@@ -368,7 +369,24 @@
 	        myform.title.focus();
 	        return false;
 	    }
-	    myform.submit();
+	    let query = {
+    			titleImg : "${vo.titleImg}",
+    			subImg : "${vo.subImg}",
+    			thumbnail : "${vo.thumbnail}"
+    	}
+    $.ajax({
+    	type : "post",
+    	url : "FurnitureImgDelete.fu",
+    	data : query,
+    	success:function(res) {
+			if(res != "0") {
+				myform.submit();
+			}
+		},
+		error : function() {
+			alert("전송오류!");
+		}
+    });
 	}
   
 		//이미지 선택 시 미리보기 처리 함수
@@ -432,12 +450,12 @@
   <jsp:include page="/include/header.jsp"/>
   <div class="contain">
     <h1 style="font-family: 'EliceDigitalBaeum-Bd';">상품 등록</h1>
-    <form name="myform" enctype="multipart/form-data" method="post" action="FurnitureInputOk.fu">
+    <form name="myform" id="myform" enctype="multipart/form-data" method="post" action="FurnitureUpdateOk.fu">
       <!-- 업체명 -->
       <div class="form-group">
         <div class="section-title">업체명</div>
         <hr>
-        <input type="text" name="company" id="company" class="form-control" readonly>
+        <input type="text" name="company" id="company" class="form-control" value="${vo.company}" readonly>
       </div>
       <!-- 카테고리 -->
       <div class="form-group">
@@ -445,26 +463,26 @@
         <hr>
         <select class="form-control" name="category" id="category">
           <option>카테고리</option>
-          <option value="SOFA">소파</option>
-          <option value="TABLE">테이블</option>
-          <option value="CHAIR">의자</option>
-          <option value="CABINET">수납·선반장</option>
-          <option value="LAMP">조명</option>
-          <option value="BED">침대</option>
+          <option value="SOFA" ${vo.category == 'SOFA' ? 'selected' : ""}>소파</option>
+          <option value="TABLE" ${vo.category == 'TABLE' ? 'selected' : ""}>테이블</option>
+          <option value="CHAIR" ${vo.category == 'CHAIR' ? 'selected' : ""}>의자</option>
+          <option value="CABINET" ${vo.category == 'CABINET' ? 'selected' : ""}>수납·선반장</option>
+          <option value="LAMP" ${vo.category == 'LAMP' ? 'selected' : ""}>조명</option>
+          <option value="BED" ${vo.category == 'BED' ? 'selected' : ""}>침대</option>
         </select>
         </div>
       <!-- 상품명 -->
 			<div class="form-group">
         <div class="section-title">상품명</div>
         <hr>
-        <input type="text" name="title" id="title" class="form-control">
+        <input type="text" name="title" id="title" value="${vo.title}" class="form-control">
       </div>
 			<!-- 판매가 -->
 			<div class="form-group">
 			  <div class="section-title">판매가</div>
 			  <hr>
 			  <div class="input-group price-group">
-			    <input type="number" name="pay" id="pay" placeholder="가격을 입력하세요" class="form-control" style="width: 95%;" oninput="finalPrice()"/>
+			    <input type="number" name="pay" id="pay" value="${vo.pay}" placeholder="가격을 입력하세요" class="form-control" style="width: 95%;" oninput="finalPrice()"/>
 			    <input type="text" value="원" readonly class="form-control" style="width: 4%; text-align: center;">
 			  </div>
 			</div>
@@ -474,15 +492,15 @@
 			  <hr>
 			  <div class="input-group">
 			    <label style="margin-right: 10px;">
-			      <input type="radio" name="saleType" value="percent" checked onchange="discountType()"> 할인율(%)
+			      <input type="radio" name="saleType" id="percent" value="percent" ${vo.saleUnit == '%' ? 'checked' : ""} onchange="discountType()"> 할인율(%)
 			    </label>
 			    <label>
-			      <input type="radio" name="saleType" value="amount" onchange="discountType()"> 할인 금액(원)
+			      <input type="radio" name="saleType" id="amount" value="amount" ${vo.saleUnit == '원' ? 'checked' : ""} onchange="discountType()"> 할인 금액(원)
 			    </label>
 			  </div>
 			  <div class="input-group price-group">
-			    <input type="number" name="discount" id="discount" placeholder="할인 값을 입력하세요" class="form-control" style="width: 95%;" oninput="finalPrice()"/>
-			    <input type="text" name="saleUnit" id="saleUnit" value="%" readonly class="form-control" style="width: 4%; text-align: center;"/>
+			    <input type="number" name="discount" id="discount" value="${vo.discount}" placeholder="할인 값을 입력하세요" class="form-control" style="width: 95%;" oninput="finalPrice()"/>
+			    <input type="text" name="saleUnit" id="saleUnit" value="${vo.saleUnit}" readonly class="form-control" style="width: 4%; text-align: center;"/>
 			  </div>
 			</div>
 			<!-- 최종 판매가 -->
@@ -490,7 +508,7 @@
 			  <div class="section-title">최종 판매가</div>
 			  <hr>
 			  <div class="input-group price-group">
-			    <input type="text" name="price" id="price" readonly class="form-control" style="width: 95%;">
+			    <input type="text" name="price" id="price" value="${vo.price}" readonly class="form-control" style="width: 95%;">
 			    <input type="text" value="원" readonly class="form-control" style="width: 4%; text-align: center;">
 			  </div>
 			</div>
@@ -506,7 +524,7 @@
 			    <div class="image-upload-container">
 			      <label for="image-upload-thumbnail" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
 			        <div class="plus-icon" id="thumbnail"><i class="fa-solid fa-plus"></i></div>
-			        <img id="image-preview-thumbnail" class="image-preview" style="display: none;" />
+			        <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" id="image-preview-thumbnail" class="image-preview" />
 			      </label>
 			      <input type="file" id="image-upload-thumbnail" name="thumbnail" accept="image/*" onchange="handleImageChange(event, 'image-preview-thumbnail')" />
 			    </div>
@@ -517,7 +535,7 @@
 			    <div class="image-upload-container">
 			      <label for="image-upload-main" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
 			        <div class="plus-icon" id="titleImg"><i class="fa-solid fa-plus"></i></div>
-			        <img id="image-preview-main" class="image-preview" style="display: none;" />
+			        <img src="${ctp}/images/furniture/upload/${vo.titleImg}" id="image-preview-main" class="image-preview" />
 			      </label>
 			      <input type="file" id="image-upload-main" name="titleImg" accept="image/*" onchange="handleImageChange(event, 'image-preview-main')" />
 			    </div>
@@ -529,7 +547,7 @@
 			    <div class="image-upload-container">
 			      <label for="image-upload-detail" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
 			        <div class="plus-icon" id="subImg"><i class="fa-solid fa-plus"></i></div>
-			        <img id="image-preview-detail" class="image-preview" style="display: none;" />
+			        <img src="${ctp}/images/furniture/upload/${vo.subImg}" id="image-preview-detail" class="image-preview" />
 			      </label>
 			      <input type="file" id="image-upload-detail" name="subImg" accept="image/*" onchange="handleImageChange(event, 'image-preview-detail')" />
 			    </div>
@@ -537,7 +555,7 @@
 				<hr>
 			</div>
       <!-- 제출 버튼 -->
-      <button class="learn-more" type="button" onclick="fCheck()">상품 등록</button>
+      <button class="learn-more" type="button" onclick="fCheck()">상품 정보 수정</button>
       <input type="hidden" name="fSize"/>
     </form>
   </div>

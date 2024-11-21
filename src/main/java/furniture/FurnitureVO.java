@@ -17,6 +17,9 @@ public class FurnitureVO {
 	private String wDate;
 	private String interest;
 	
+	private int pay;
+	private int discount;
+	private String saleUnit;
 	public int getIdx() {
 		return idx;
 	}
@@ -107,12 +110,31 @@ public class FurnitureVO {
 	public void setInterest(String interest) {
 		this.interest = interest;
 	}
-	
+	public int getPay() {
+		return pay;
+	}
+	public void setPay(int pay) {
+		this.pay = pay;
+	}
+	public int getDiscount() {
+		return discount;
+	}
+	public void setDiscount(int discount) {
+		this.discount = discount;
+	}
+	public String getSaleUnit() {
+		return saleUnit;
+	}
+	public void setSaleUnit(String saleUnit) {
+		this.saleUnit = saleUnit;
+	}
 	@Override
 	public String toString() {
 		return "FurnitureVO [idx=" + idx + ", mid=" + mid + ", company=" + company + ", category=" + category + ", title="
 				+ title + ", price=" + price + ", titleImg=" + titleImg + ", subImg=" + subImg + ", thumbnail=" + thumbnail
 				+ ", fName=" + fName + ", fSName=" + fSName + ", fSize=" + fSize + ", claim=" + claim + ", wDate=" + wDate
-				+ ", interest=" + interest + "]";
+				+ ", interest=" + interest + ", pay=" + pay + ", discount=" + discount + ", saleUnit=" + saleUnit + "]";
 	}
+	
+	
 }

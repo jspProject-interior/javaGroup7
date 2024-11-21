@@ -37,19 +37,22 @@ public class FurnitureDAO {
 	public int setFurnitureInput(FurnitureVO vo) {
 		int res = 0;
 		try {
-			sql = "insert into furniture values(default, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, default, default, default)";
+			sql = "insert into furniture values(default, ?, ?, ?, ?, ?, ? ,?, ?, ?, ?, ?, ?, ?, ?, default, default, default)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMid());
 			pstmt.setString(2, vo.getCompany());
 			pstmt.setString(3, vo.getCategory());
 			pstmt.setString(4, vo.getTitle());
-			pstmt.setInt(5, vo.getPrice());
-			pstmt.setString(6, vo.getTitleImg());
-			pstmt.setString(7, vo.getSubImg());
-			pstmt.setString(8, vo.getThumbnail());
-			pstmt.setString(9, vo.getfName());
-			pstmt.setString(10, vo.getfSName());
-			pstmt.setInt(11, vo.getfSize());
+			pstmt.setInt(5, vo.getPay());
+			pstmt.setInt(6, vo.getDiscount());
+			pstmt.setString(7, vo.getSaleUnit());
+			pstmt.setInt(8, vo.getPrice());
+			pstmt.setString(9, vo.getTitleImg());
+			pstmt.setString(10, vo.getSubImg());
+			pstmt.setString(11, vo.getThumbnail());
+			pstmt.setString(12, vo.getfName());
+			pstmt.setString(13, vo.getfSName());
+			pstmt.setInt(14, vo.getfSize());
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			System.out.println("SQL 오류 : " + e.getMessage());
@@ -82,6 +85,9 @@ public class FurnitureDAO {
 				vo.setCompany(rs.getString("company"));
 				vo.setCategory(rs.getString("category"));
 				vo.setTitle(rs.getString("title"));
+				vo.setPay(rs.getInt("pay"));
+				vo.setDiscount(rs.getInt("discount"));
+				vo.setSaleUnit(rs.getString("saleUnit"));
 				vo.setPrice(rs.getInt("price"));
 				vo.setTitleImg(rs.getString("titleImg"));
 				vo.setSubImg(rs.getString("subImg"));
@@ -119,6 +125,9 @@ public class FurnitureDAO {
 			vo.setCompany(rs.getString("company"));
 			vo.setCategory(rs.getString("category"));
 			vo.setTitle(rs.getString("title"));
+			vo.setPay(rs.getInt("pay"));
+			vo.setDiscount(rs.getInt("discount"));
+			vo.setSaleUnit(rs.getString("saleUnit"));
 			vo.setPrice(rs.getInt("price"));
 			vo.setTitleImg(rs.getString("titleImg"));
 			vo.setSubImg(rs.getString("subImg"));
@@ -137,5 +146,35 @@ public class FurnitureDAO {
 		}
 		return vo;
 	}
-	
+
+	public int setFurnitureInterestCheck(int idx, int add) {
+		int res = 0;
+		try {
+			sql="update furniture set interest = interest + ? where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, add);
+			pstmt.setInt(2, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	public int FurnitureDelete(int idx) {
+		int res = 0;
+		try {
+			sql = "delete from furniture where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
 }

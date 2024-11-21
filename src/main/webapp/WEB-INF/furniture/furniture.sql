@@ -6,6 +6,9 @@ create table furniture(
   company        varchar(30)     not null,                        /*   업체명(중복불허/수정가능) */
    category      varchar(30),                                                      /*   카테고리(소파, 테이블)   */   
   title            varchar(100)      not null,                                   /* 상품명 */
+   pay            int                     default 0,                                 /*   가격   */
+   discount            int                     default 0,                                 /*   가격   */
+   saleUnit      varchar(30),                                                      /*   카테고리(소파, 테이블)   */   
    price            int                     default 0,                                 /*   가격   */
   titleImg      varchar(100)       default 'noimage.jpg',               /* 상품 사진 */
   subImg         varchar(100)       default 'noimage.jpg',               /* 상품 사진 */

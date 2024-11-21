@@ -141,7 +141,7 @@
 	    const icon = btn.querySelector('i');
 	        $.ajax({
 	        	type : "post",
-	        	url : "interestCheck.in",
+	        	url : "interestCheck.fu",
 	        	data : {idx : idx},
 	        	success: function(res) {
 							if(res == "1"){
@@ -199,7 +199,7 @@
 			function DeleteCheck() {
 				let ans = confirm("삭제하시겠습니까?");
 				if(ans){
-					location.href = "InteriorDelete.in?idx=${vo.idx}";
+					location.href = "FurnitureDelete.in?idx=${vo.idx}";
 				}
 			}
 			function showHoverImage(container) {
@@ -223,75 +223,72 @@
 <jsp:include page="/include/header.jsp"/>
 <div id="content-form" class="container">
   <table id="content-table" style="width: 85%; margin: 0 auto; border-collapse: collapse;">
-  <!-- 이미지와 제품 정보 -->
-  <tr>
-    <td style="width: 50%; vertical-align: top; padding: 10px;">
-      <div class="main-img">
-        <div class="image-container" onmouseover="showHoverImage(this)" onmouseout="showDefaultImage(this)">
-		      <!-- 기본 이미지 -->
-		      <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" alt="Thumbnail" class="default-img">
-		      <!-- Hover 시 표시할 이미지 -->
-		      <img src="${ctp}/images/furniture/upload/${vo.titleImg}" alt="Hover Image" class="hover-img" style="display: none;">
-		    </div>
-      </div>
-    </td>
-    <td style="width: 50%; vertical-align: top; padding: 10px;">
-      <div class="product-info">
-      	<p><br/></p>
-        <div class="input-group" style="text-align: center;">
-          <div class="company input-group-prepend">${vo.company}</div>
-          <div class="trash company"> / </div>
-          <div class="category input-group-append">${vo.category}</div>
-        </div>
-        <h2>${vo.title}</h2>
-        <p class="price"><fmt:formatNumber value="${vo.price}" pattern="#,##0"/> 원</p>
-        <button type="button" class="btn btn-outline-secondary">구매하기</button>
-        <button type="button" class="btn btn-outline-secondary">장바구니 담기</button><br/><br/><br/><br/>
-	      <div class="additional-info" style="padding: 20px; background-color: #fff; border: 1px solid #ddd;">
-	        <h3>설치 및 조립 안내</h3>
-	        <p>1. 서울, 경기 지역: 설치 및 조립 서비스 진행 (1-2주 소요 예정)</p>
-	        <p>2. 그 외 지역: 택배 출고로 진행</p>
-	        <hr>
-	        <h3>안내 사항</h3>
-	        <p>해당 상품은 디밍 기능으로 인해, 스위치 부문에서 미미한 발열이 발생할 수 있습니다.</p>
+	  <!-- 이미지와 제품 정보 -->
+	  <tr>
+	    <td style="width: 50%; vertical-align: top; padding: 10px;">
+	      <div class="main-img">
+	        <div class="image-container" onmouseover="showHoverImage(this)" onmouseout="showDefaultImage(this)">
+			      <!-- 기본 이미지 -->
+			      <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" alt="Thumbnail" class="default-img">
+			      <!-- Hover 시 표시할 이미지 -->
+			      <img src="${ctp}/images/furniture/upload/${vo.titleImg}" alt="Hover Image" class="hover-img" style="display: none;">
+			    </div>
 	      </div>
-      </div>
-    </td>
-  </tr>
-  <!-- 보조 이미지 -->
-  <tr>
-    <td colspan="2" style="padding: 10px; text-align: center;">
-      <div class="sub-img">
-        <img src="${ctp}/images/furniture/upload/${vo.subImg}" alt="보조 이미지" style="width: 100%; max-width: 600px; border-radius: 8px;">
-      </div>
-    </td>
-  </tr>
-
-  <!-- 포트폴리오 더보기 -->
-  <tr>
-    <td colspan="2" style="padding: 20px;">
-      <div class="see-more">
-        <h3>포트폴리오 더보기</h3>
-        <div class="grid-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
-          <c:forEach var="vo1" items="${vos}" varStatus="st">
-            <c:if test="${vo.idx != vo1.idx}">
-              <a href="FurnitureContent.fu?idx=${vo1.idx}" style="text-decoration: none; color: inherit;">
-                <div class="grid-item" style="width: 200px; text-align: center;">
-                  <img src="${ctp}/images/furniture/upload/${vo1.thumbnail}" alt="Thumbnail" style="width: 100%; height: auto; border-radius: 8px;">
-                  <div class="title-grid">${vo1.title}</div>
-                  <div class="company-category">${vo1.company} | ${fn:toUpperCase(vo1.category)}</div>
-                </div>
-              </a>
-            </c:if>
-          </c:forEach>
-        </div>
-      </div>
-    </td>
-  </tr>
-</table>
-
-
-	    
+	    </td>
+	    <td style="width: 50%; vertical-align: top; padding: 10px;">
+	      <div class="product-info">
+	      	<p><br/></p>
+	        <div class="input-group" style="text-align: center;">
+	          <div class="company input-group-prepend">${vo.company}</div>
+	          <div class="trash company"> / </div>
+	          <div class="category input-group-append">${vo.category}</div>
+	        </div>
+	        <h2>${vo.title}</h2>
+	        <p class="price"><fmt:formatNumber value="${vo.price}" pattern="#,##0"/> 원</p>
+	        <button type="button" class="btn btn-outline-secondary">구매하기</button>
+	        <button type="button" class="btn btn-outline-secondary">장바구니 담기</button><br/><br/><br/><br/>
+		      <div class="additional-info" style="padding: 20px; background-color: #fff; border: 1px solid #ddd;">
+		        <h3>배송 안내</h3>
+		        <p>1. 전국 무료 배송 및 설치</p>
+		        <p>2. 제주도 및 울릉도 등 도서/산간 지역의 경우 택배상품만 온라인 주문이 가능합니다.</p>
+		        <hr>
+		        <h3>제품 사진 관련 안내</h3>
+		        <p>위의 사진들은 모니터에 따라 약간의 색상 차이가 발생될 수 있습니다.</p>
+		      </div>
+	      </div>
+	    </td>
+	  </tr>
+	  <!-- 보조 이미지 -->
+	  <tr>
+	    <td colspan="2" style="padding: 10px; text-align: center;">
+	      <div class="sub-img">
+	        <img src="${ctp}/images/furniture/upload/${vo.subImg}" alt="보조 이미지" style="width: 100%; max-width: 600px; border-radius: 8px;">
+	      </div>
+	    </td>
+	  </tr>
+	  <!-- 추천상품 더보기 -->
+	  <tr>
+	    <td colspan="2" style="padding: 20px;">
+	      <div class="see-more">
+	        <h5>추천 상품</h5>
+	        <hr/>
+	        <div class="grid-container" style="display: flex; flex-wrap: wrap; gap: 20px;">
+	          <c:forEach var="vo1" items="${vos}" varStatus="st">
+	            <c:if test="${vo.idx != vo1.idx}">
+	              <a href="FurnitureContent.fu?idx=${vo1.idx}" style="text-decoration: none; color: inherit;">
+	                <div class="grid-item" style="width: 200px; text-align: center;">
+	                  <img src="${ctp}/images/furniture/upload/${vo1.thumbnail}" alt="Thumbnail" style="width: 100%; height: auto; border-radius: 8px;">
+	                  <div class="title-grid">${vo1.title}</div>
+	                  <div class="company-category">${vo1.company} | ${fn:toUpperCase(vo1.category)}</div>
+	                </div>
+	              </a>
+	            </c:if>
+	          </c:forEach>
+	        </div>
+	      </div>
+	    </td>
+	  </tr>
+	</table>
 	  <!-- 고정 사이드바 -->
 		<div class="fixed-sidebar" id="mainSidebar">
 	    <!-- 공유 -->
@@ -300,42 +297,37 @@
 	        <i class="fa-solid fa-share-nodes"></i>
 	      </div>
 	    </div>
-	    
 	    <!-- 좋아요 -->
 	    <div class="sidebar-item">
 	      <div class="icon-circle" onclick="toggleLike(${vo.idx}, this)">
 	        ${fn:contains(sContentGood, interior+vo.idx) ? "<i class='fa-solid fa-heart'></i>" : "<i class='fa-regular fa-heart'></i>"}
 	      </div>
 	    </div>
-	    
 	    <!-- 상담신청 -->
 	    <div class="sidebar-item">
 	      <div class="icon-circle">
 	        <a href="#"><i class="fa-solid fa-comment-dots"></i></a>
 	      </div>
 	    </div>
-	    
 	    <!-- 신고 -->
 	    <div class="sidebar-item">
 	      <div class="icon-circle">
 	        <a href="#"><i class="fa-solid fa-user-slash"></i></a>
 	      </div>
 	    </div>
-	    
 	    <!-- 수정 -->
 	    <c:if test="${sMid == vo.mid}">
 		    <div class="sidebar-item">
 			    <div class="icon-circle">
-			      <a href="FurnitureUpdate.in?idx=${vo.idx}"><i class="fa-solid fa-pencil"></i></a>
+			      <a href="FurnitureUpdate.fu?idx=${vo.idx}"><i class="fa-solid fa-pencil"></i></a>
 			    </div>
 		    </div>
 	    </c:if>
-	    
 	    <!-- 삭제 -->
 	    <c:if test="${sMid == vo.mid || sLevel == 0}">
 		    <div class="sidebar-item">
 		      <div class="icon-circle" onclick="DeleteCheck()">
-		        <a href="FurnitureDelete.in?idx=${vo.idx}"><i class="fa-regular fa-trash-can"></i></a>
+		        <a href="FurnitureDelete.fu?idx=${vo.idx}"><i class="fa-regular fa-trash-can"></i></a>
 		      </div>
 		    </div>
 	    </c:if>

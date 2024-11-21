@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -30,7 +31,7 @@
 		  font-size: 50px;
 		  position: absolute;
 		  color: white;
-		  top: 50%;
+		  top: 30%;
 		  left: 50%;
 		  transform: translate(-50%, -50%);
 		  text-align: center;
@@ -67,7 +68,7 @@
 		
 		/* 그리드 아이템 */
 		.grid-item {
-		  text-align: center;
+		  text-align: left;
 		  position: relative;
 		  overflow: hidden;
 		  text-decoration: none;
@@ -84,6 +85,7 @@
 		  font-size: 18px;
 		  font-weight: bold;
 		  margin-top: 10px;
+		  padding-left: 10px;
 		  color: #333;
 		  white-space: nowrap;
 		  overflow: hidden;
@@ -94,30 +96,45 @@
 		.grid-item .company-category {
 		  font-size: 14px;
 		  color: #777;
+		  padding-left: 10px;
+		  padding-bottom: 10px;
+		  text-decoration: none;
+		}
+		.company-category:hover {
+			text-decoration: none;
+		}
+		.grid-item .price {
+		  font-size: 16px;
+		  color: #777;
+		  padding-left: 10px;
 		  padding-bottom: 20px;
+		  text-decoration: none;
+		}
+		.price:hover {
 		  text-decoration: none;
 		}
 		
 		/* 좋아요 버튼 */
 		.grid-item .like-container {
 		  position: absolute;
-		  top: 10px;
+		  top: 350px;
 		  right: 10px;
 		  display: flex;
 		  align-items: center;
 		  gap: 5px;
-		  background-color: rgba(255, 255, 255, 0.8);
+		  background-color: transparent;
 		  border-radius: 20px;
 		  padding: 5px 10px;
+		  z-index: 1;
 		}
 		
 		.grid-item .like-container i {
-		  color: red;
+		  color: gray;
 		  font-size: 16px;
 		}
 		
 		.grid-item .like-container span {
-		  color: red;
+		  color: gray;
 		  font-weight: bold;
 		  font-size: 14px;
 		}
@@ -134,6 +151,7 @@
 		  width: 100%;
 		  height: 100%;
 		  object-fit: cover; /* 이미지를 컨테이너에 맞게 조정 */
+		  z-index: 0;
 		}
 		
 		/* 기타 스타일 */
@@ -168,11 +186,11 @@
   </style>
   <script type="text/javascript">
   	'use strict';
-  	/*
+  	
   	function choice(category) {
-  	  location.href = "Interior.in?category=" + category;
+  	  location.href = "Furniture.fu?category=" + category;
   	}
-  	*/
+  	
   	function showHoverImage(container) {
   	  const defaultImg = container.querySelector('.default-img');
   	  const hoverImg = container.querySelector('.hover-img');
@@ -225,6 +243,7 @@
 				    </div>
             <div class="title">${vo.title}</div>
             <div class="company-category">${vo.company} | ${fn:toUpperCase(vo.category)}</div>
+     				<div class="price"><fmt:formatNumber value="${vo.price}" pattern="#,##0"/> 원</div>
 	        </a>
 		    </div>
 		</c:forEach>

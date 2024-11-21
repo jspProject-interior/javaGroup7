@@ -46,33 +46,32 @@ public class FurnitureController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		/*
-		else if(com.equals("/InteriorUpdate")) {
-			command = new InteriorUpdateCommand();
-			command.execute(request, response);
-			viewPage += "/interiorUpdate.jsp";
-		}
-		else if(com.equals("/InteriorUpdateOk")) {
-			command = new InteriorUpdateOkCommand();
-			command.execute(request, response);
-			viewPage = "/include/message.jsp";
-		}
-		else if(com.equals("/interirorImgDelete")) {
-			command = new interirorImgDeleteCommand();
-			command.execute(request, response);
-			return;
-		}
-		else if(com.equals("/InteriorDelete")) {
-			command = new InteriorDeleteCommand();
-			command.execute(request, response);
-			viewPage = "/include/message.jsp";
-		}
 		else if(com.equals("/interestCheck")) {
 			command = new interestCheckCommand();
 			command.execute(request, response);
 			return;
 		}
-	*/	
+		else if(com.equals("/FurnitureUpdate")) {
+			command = new FurnitureUpdateCommand();
+			command.execute(request, response);
+			viewPage += "/furnitureUpdate.jsp";
+		}
+		else if(com.equals("/FurnitureUpdateOk")) {
+			command = new FurnitureUpdateOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/FurnitureImgDelete")) {
+			command = new FurnitureImgDeleteCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/FurnitureDelete")) {
+			command = new FurnitureDeleteCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		
 	}

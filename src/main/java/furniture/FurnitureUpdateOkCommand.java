@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-public class FurnitureInputCommand implements FurnitureInterface {
+public class FurnitureUpdateOkCommand implements FurnitureInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -66,18 +66,19 @@ public class FurnitureInputCommand implements FurnitureInterface {
 		vo.setfSize(fSize);
 		vo.setDiscount(discount);
 		
-		System.out.println("vo :"+vo);
 		FurnitureDAO dao = new FurnitureDAO();
 		
 		int res = dao.setFurnitureInput(vo);
 		
 		if(res != 0) {
-			request.setAttribute("message", "상품 등록이 완료되었습니다.");
+			request.setAttribute("message", "상품 수정이 완료되었습니다.");
 			request.setAttribute("url", "Furniture.fu");
 		}
 		else {
 			request.setAttribute("message", "잠시 후 다시 시도해주세요.");
 			request.setAttribute("url", "FurnitureInput.fu");
 		}
+
 	}
+
 }
