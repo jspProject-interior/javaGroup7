@@ -43,6 +43,21 @@ public class FurnitureController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/furnitureBuy.jsp";
 		}
+//		else if(com.equals("/FurnitureBuyOk")) {
+//			command = new FurnitureBuyOkCommand();
+//			command.execute(request, response);
+//			viewPage += "/furnitureBuyOK.jsp";
+//		}
+		else if(com.equals("/FurnitureShoppingList")) {
+			command = new FurnitureShoppingListCommand();
+			command.execute(request, response);
+			viewPage += "/furnitureShoppingList.jsp";
+		}
+//		else if(com.equals("/FurnitureShoppingListOk")) {
+//			command = new FurnitureShoppingListOkCommand();
+//			command.execute(request, response);
+//			viewPage += "/furnitureShoppingListOk.jsp";
+//		}
 		else if(com.equals("/FurnitureInput")) {
 			viewPage += "/furnitureInput.jsp";
 		}

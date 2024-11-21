@@ -265,4 +265,51 @@ public class FurnitureDAO {
 		}
 		return vos;
 	}
+
+	public ArrayList<FurnitureVO> getFurnitureAddCart(HttpServletRequest request) {
+		ArrayList<FurnitureVO> vos = new ArrayList<FurnitureVO>();
+		HttpSession session = request.getSession();
+		ArrayList<String> sCart = (ArrayList<String>)session.getAttribute("sCart") == null ? null : (ArrayList<String>)session.getAttribute("sCart");
+		String furnitureCartList[] = sCart.toString().split(",");
+		try {
+			for(int i = 0; i < furnitureCartList.length; i++) {
+				furnitureCartList[i] = furnitureCartList[i].replace("furniture", "").replace("[", "").replace("]", "").trim();
+				
+				sql = "select * from furniture where idx = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, furnitureCartList[i]);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					vo = new FurnitureVO();
+					
+					vo.setIdx(rs.getInt("idx"));
+					vo.setMid(rs.getString("mid"));
+					vo.setCompany(rs.getString("company"));
+					vo.setCategory(rs.getString("category"));
+					vo.setTitle(rs.getString("title"));
+					vo.setPay(rs.getInt("pay"));
+					vo.setDiscount(rs.getInt("discount"));
+					vo.setSaleUnit(rs.getString("saleUnit"));
+					vo.setPrice(rs.getInt("price"));
+					vo.setTitleImg(rs.getString("titleImg"));
+					vo.setSubImg(rs.getString("subImg"));
+					vo.setThumbnail(rs.getString("thumbnail"));
+					vo.setfName(rs.getString("fName"));
+					vo.setfSName(rs.getString("fSName"));
+					vo.setfSize(rs.getInt("fSize"));
+					vo.setClaim(rs.getString("claim"));
+					vo.setwDate(rs.getString("wDate"));
+					vo.setInterest(rs.getString("interest"));
+					
+					vos.add(vo);
+				}
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vos;
+	}
 }
