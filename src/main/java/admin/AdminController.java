@@ -52,6 +52,16 @@ public class AdminController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/businessList.jsp";
 		}
+		else if(com.equals("/UserDetail")) {
+			command = new UserDetail();
+			command.execute(request, response);
+			viewPage += "/userDetail.jsp";
+		}
+		else if(com.equals("/CompanyDetail")) {
+			command = new UserDetail();
+			command.execute(request, response);
+			viewPage += "/companyDetail.jsp";
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		

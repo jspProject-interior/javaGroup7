@@ -5,6 +5,8 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <link rel="icon" href="${ctp}/images/main/favicon.png">
+  <title>관리자메뉴</title>
 
 
 	<frameset rows="80px, *">

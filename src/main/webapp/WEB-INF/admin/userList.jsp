@@ -50,6 +50,13 @@
         background-color: #f1f5fa;
     }
   </style>
+  <script type="text/javascript">
+  function reverseCheck() {
+	  for(let i=0; i<document.getElementsByName("index").length; i++) {
+		  document.getElementsByName("index")[i].checked = !document.getElementsByName("index")[i].checked;
+  	}
+  }
+  </script>
 </head>
 <body>
 <div class="container-fluid">
@@ -57,7 +64,7 @@
         <table>
             <thead>
                 <tr>
-                    <th><input type="checkbox"/></th>
+                    <th><input type="checkbox" id="allCheck" onclick="reverseCheck()"/></th>
                     <th>순번</th>
                     <th>아이디</th>
                     <th>이름</th>
@@ -74,8 +81,8 @@
             </thead>
             <tbody>
                 <c:forEach var="vo" items="${vos}" varStatus="st">
-                    <tr>
-                        <td><input type="checkbox"/></td>
+                    <tr onclick="location.href='UserDetail.ad?mid=${vo.mid}'">
+                        <td><input type="checkbox" name="index" id="index${st.index}"/></td>
                         <td>${st.count}</td>
                         <td>${vo.mid}</td>
                         <td>${vo.name}</td>

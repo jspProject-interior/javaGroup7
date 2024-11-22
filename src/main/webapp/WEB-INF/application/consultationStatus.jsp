@@ -29,6 +29,13 @@
       height: 50px;
   }
 </style>
+<script type="text/javascript">
+  function reverseCheck() {
+	  for(let i=0; i<document.getElementsByName("index").length; i++) {
+		  document.getElementsByName("index")[i].checked = !document.getElementsByName("index")[i].checked;
+  	}
+  }
+</script>
 </head>
 <body>
 <jsp:include page="/include/header.jsp"/>
@@ -38,7 +45,7 @@
     <table class="table table-striped table-bordered text-center">
         <thead>
             <tr>
-                <th><input type="checkbox"/></th>
+                <th><input type="checkbox" id="allCheck" onclick="reverseCheck()"/></th>
                 <th>순번</th>
                 <th>업체</th>
                 <th>신청자</th>
@@ -55,7 +62,7 @@
         <tbody>
             <c:forEach var="vo" items="${vos}" varStatus="st">
                 <tr class="table-row">
-                    <td><input type="checkbox"/></td>
+                    <td><input type="checkbox" name="index" id="index${st.index}"/></td>
                     <td>${st.count}</td>
                     <td>${vo.companyMid}</td>
                     <td>${vo.name}</td>

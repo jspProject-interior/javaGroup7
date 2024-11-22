@@ -26,11 +26,20 @@
       z-index: 1000;
       padding: 30px;
   }
+  a{
+  	color: #DE8F5F;
+  	text-decoration: none;
+  }
+  a:hover{
+  	color: #DE8F5F;
+  	text-decoration: none;
+  }
+  
 </style>
 </head>
 <body>
 	<header>
-	  <h1>GRINTERIOR Admin</h1>
+	  <h1><a href="main.main" target="_top">GRINTERIOR Admin</a></h1>
 	</header>
 </body>
 </html>

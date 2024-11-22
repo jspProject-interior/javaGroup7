@@ -102,6 +102,11 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage += "/companyPage.jsp";
 		}
+		else if(com.equals("/MemberDelete")) { // 정보 수정
+			command = new MemberDeleteCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

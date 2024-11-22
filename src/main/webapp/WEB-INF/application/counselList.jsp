@@ -33,6 +33,13 @@
       height: 50px;
   }
 </style>
+<script type="text/javascript">
+  function reverseCheck() {
+	  for(let i=0; i<document.getElementsByName("index").length; i++) {
+		  document.getElementsByName("index")[i].checked = !document.getElementsByName("index")[i].checked;
+  	}
+  }
+</script>
 </head>
 <body>
 <jsp:include page="/include/header.jsp"/>
@@ -42,31 +49,33 @@
     <table class="table table-striped table-bordered text-center">
         <thead>
             <tr>
-                <th>순번</th>
-                <th>아이디</th>
-                <th>이름</th>
-                <th>주소</th>
-                <th>전화번호</th>
-                <th>카테고리</th>
-                <th>예산</th>
-                <th>크기</th>
-                <th>시공 날짜</th>
-                <th>공간</th>
+          		<th><input type="checkbox" id="allCheck" onclick="reverseCheck()"/></th>
+              <th>순번</th>
+              <th>아이디</th>
+              <th>이름</th>
+              <th>주소</th>
+              <th>전화번호</th>
+              <th>카테고리</th>
+              <th>예산</th>
+              <th>크기</th>
+              <th>시공 날짜</th>
+              <th>공간</th>
             </tr>
         </thead>
         <tbody>
             <c:forEach var="vo" items="${vos}" varStatus="st">
-                <tr class="table-row" onclick="location.href='${ctp}/CounselListDetail.ap?mid=${vo.mid}'">
-                    <td>${st.count}</td>
-                    <td>${vo.mid}</td>
-                    <td>${vo.name}</td>
-                    <td>${vo.conAddress}</td>
-                    <td>${vo.tel}</td>
-                    <td>${vo.category}</td>
-                    <td>${vo.budget} 만원</td>
-                    <td>${vo.size} 평</td>
-                    <td>${vo.conStartDay}</td>
-                    <td>${vo.area}</td>
+                <tr class="table-row" onclick="location.href='CounselListDetail.ap?mid=${vo.mid}'">
+                	<td><input type="checkbox" name="index" id="index${st.index}"/></td>
+                  <td>${st.count}</td>
+                  <td>${vo.mid}</td>
+                  <td>${vo.name}</td>
+                  <td>${vo.conAddress}</td>
+                  <td>${vo.tel}</td>
+                  <td>${vo.category}</td>
+                  <td>${vo.budget} 만원</td>
+                  <td>${vo.size} 평</td>
+                  <td>${vo.conStartDay}</td>
+                  <td>${vo.area}</td>
                 </tr>
             </c:forEach>
         </tbody>

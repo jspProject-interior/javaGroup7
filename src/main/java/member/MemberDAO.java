@@ -229,5 +229,21 @@ public class MemberDAO {
 		return vos;
 	}
 
+	public int DeleteMember(int idx) {
+		int res = 0;
+		try {
+			sql = "delete from member where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}
+		finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
 }
 
