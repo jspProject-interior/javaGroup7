@@ -23,3 +23,5 @@ create table application(
 );
 
 drop table application;
+
+select * from application where companyName = '';

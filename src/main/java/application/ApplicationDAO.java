@@ -197,4 +197,36 @@ public class ApplicationDAO {
 		}
 		return res;
 	}
+
+	public ArrayList<ApplicationVO> getNewConsultationStatus() {
+		ArrayList<ApplicationVO> vos = new ArrayList<ApplicationVO>();
+		try {
+			sql = "select * from application where companyName = ''";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new ApplicationVO();
+				vo.setMid(rs.getString("mid"));
+				vo.setName(rs.getString("name"));
+				vo.setConAddress(rs.getString("conAddress"));
+				vo.setTel(rs.getString("tel"));
+				vo.setCategory(rs.getString("category"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setBudget(rs.getInt("budget"));
+				vo.setSize(rs.getInt("size"));
+				vo.setConStartDay(rs.getString("conStartDay"));
+				vo.setCompanyMid(rs.getString("companyMid"));
+				vo.setCompanyName(rs.getString("companyName"));
+				vo.setArea(rs.getString("area"));
+				vo.setTreatment(rs.getString("treatment"));
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			 System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		return vos;
+	}
 }

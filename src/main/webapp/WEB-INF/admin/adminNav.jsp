@@ -45,6 +45,8 @@
     <a href="PostList.ad" target="admin">게시물 리스트</a>
     <a href="#finance" target="admin">정산</a>
     <a href="#reports" target="admin">신고 글 보기</a>
+    <div style="position: absolute; bottom: 0; color: gray; font-size: 10px;"><a href="main.main" target="_top">나가기</a></div>
 </nav>
+
 </body>
 </html>

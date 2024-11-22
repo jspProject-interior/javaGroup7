@@ -39,7 +39,7 @@
 </head>
 <body>
 	<header>
-	  <h1><a href="main.main" target="_top">GRINTERIOR Admin</a></h1>
+	  <h1><a href="AdminMain.ad" target="_top">GRINTERIOR Admin</a></h1>
 	</header>
 </body>
 </html>

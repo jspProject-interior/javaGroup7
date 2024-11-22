@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <c:set var="ctp" value="${pageContext.request.contextPath}"/>
 <!DOCTYPE html>
 <html>
@@ -16,6 +17,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+            overflow-y: hidden; 
         }
         main {
             
@@ -60,6 +62,17 @@
             color: #333;
         }
 	</style>
+  <script type="text/javascript">
+	  function MemberDelete() {
+			let ans = confirm("회원을 탈퇴시키겠습니까?");
+			if(ans){
+				location.href="MemberDelete.mem?idx=${vo.idx}"			
+			}
+			else{
+				return false;
+			}
+		}
+	</script>
 </head>
 <body>
 <p><br/></p>
@@ -78,16 +91,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>홍길동</td>
-                        <td>hong@gmail.com</td>
-                        <td>2024-01-01</td>
-                        <td><button>삭제</button></td>
-                    </tr>
+                	<c:forEach var="customerVO" items="${customerVOS}" varStatus="st">
+	                	<c:if test="${st.index >= 3}">
+							        <!-- 빈 내용을 출력해 사실상 반복 종료 -->
+							        <c:set var="stop" value="true" />
+							    	</c:if>
+				
+				    				<!-- 반복 종료 조건 -->
+				    				<c:if test="${stop != true}">
+		                  <tr>
+		                    <td>${st.count}</td>
+		                    <td>${customerVO.name}</td>
+		                    <td>${customerVO.email}</td>
+		                    <td>${fn: substring(customerVO.birthday, 0, 10)}</td>
+		                    <td><button onclick="MemberDelete()">회원탈퇴</button></td>
+		                  </tr>
+		                </c:if>
+                  </c:forEach>
                 </tbody>
             </table>
         </section>
+        <c:set var="stop" value="false" />
         <section id="business-list">
             <h2 class="section-header">업체 리스트</h2>
             <table>
@@ -101,19 +125,29 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>ABC 업체</td>
-                        <td>010-1234-5678</td>
-                        <td>2024-01-05</td>
-                        <td><button>삭제</button></td>
-                    </tr>
+                	<c:forEach var="companyVO" items="${companyVOS}" varStatus="st">
+	                	<c:if test="${st.index >= 3}">
+								        <!-- 빈 내용을 출력해 사실상 반복 종료 -->
+								        <c:set var="stop" value="true" />
+								    	</c:if>
+					
+					    				<!-- 반복 종료 조건 -->
+					    				<c:if test="${stop != true}">
+		                    <tr>
+		                        <td>${st.count}</td>
+		                        <td>${companyVO.company}</td>
+		                        <td>${companyVO.tel}</td>
+		                        <td>${companyVO.joinDay}</td>
+		                        <td><button onclick="MemberDelete()">회원탈퇴</button></td>
+		                    </tr>
+	                    </c:if>
+                   </c:forEach>
                 </tbody>
             </table>
         </section>
         <section id="consultation-list">
             <h2 class="section-header">상담 신청 리스트</h2>
-            <p>여기에 상담 신청 내역이 표시됩니다.</p>
+            <p>처리해야하는 리스트가 <a href="CounselList.ad"><font color="red"><b>${fn: length(ApplicationVOS)}</b></font></a>개 있습니다.</p>
         </section>
     </main>
   </div>
