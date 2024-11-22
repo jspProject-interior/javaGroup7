@@ -14,6 +14,14 @@ public class MemberUserDelCommand implements MemberInterface {
 		
 		MemberDAO dao = new MemberDAO();
 		int res = dao.MemberUserDel(idx);
+		
+		if(res != 0) {
+			request.setAttribute("message", "회원탈퇴신청이 완료되었습니다");
+		}
+		else {
+			request.setAttribute("message", "실패");
+		}
+		request.setAttribute("url", "main.main");
 
 	}
 

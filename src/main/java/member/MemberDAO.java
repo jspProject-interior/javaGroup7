@@ -248,7 +248,7 @@ public class MemberDAO {
 	public int MemberUserDel(int idx) {
 		int res = 0;
 		try {
-			sql = "update member set userDel = 'YES', level = 99 where idx = ?";
+			sql = "update member set userDel = 'OK', level = 99 where idx = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, idx);
 			res = pstmt.executeUpdate();
