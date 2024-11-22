@@ -78,61 +78,61 @@
 <p><br/></p>
   <div class="container-fluid">
     <main>
-        <section id="user-list">
-            <h2 class="section-header">회원 리스트</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>이름</th>
-                        <th>이메일</th>
-                        <th>가입일</th>
-                        <th>관리</th>
-                    </tr>
-                </thead>
-                <tbody>
-                	<c:forEach var="customerVO" items="${customerVOS}" varStatus="st">
-	                	<c:if test="${st.index >= 3}">
-							        <!-- 빈 내용을 출력해 사실상 반복 종료 -->
-							        <c:set var="stop" value="true" />
-							    	</c:if>
-				
-				    				<!-- 반복 종료 조건 -->
-				    				<c:if test="${stop != true}">
-		                  <tr>
-		                    <td>${st.count}</td>
-		                    <td>${customerVO.name}</td>
-		                    <td>${customerVO.email}</td>
-		                    <td>${fn: substring(customerVO.birthday, 0, 10)}</td>
-		                    <td><button onclick="MemberDelete()">회원탈퇴</button></td>
-		                  </tr>
+      <section id="user-list">
+		    <div style="display: flex; justify-content: space-between; align-items: center;">
+		        <h2 class="section-header">회원 리스트</h2>
+		        <a href="UserListFull.ad" style="font-size: 14px; color: #457b9d; text-decoration: none; font-weight: bold;">더보기 &raquo;</a>
+		    </div>
+		    <table>
+		        <thead>
+		            <tr>
+		                <th>번호</th>
+		                <th>이름</th>
+		                <th>이메일</th>
+		                <th>가입일</th>
+		                <th>관리</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <c:forEach var="customerVO" items="${customerVOS}" varStatus="st">
+		                <c:if test="${st.index >= 3}">
+		                    <c:set var="stop" value="true" />
 		                </c:if>
-                  </c:forEach>
-                </tbody>
-            </table>
-        </section>
-        <c:set var="stop" value="false" />
-        <section id="business-list">
-            <h2 class="section-header">업체 리스트</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>번호</th>
-                        <th>업체명</th>
-                        <th>연락처</th>
-                        <th>등록일</th>
-                        <th>관리</th>
-                    </tr>
-                </thead>
-                <tbody>
-                	<c:forEach var="companyVO" items="${companyVOS}" varStatus="st">
-	                	<c:if test="${st.index >= 3}">
-								        <!-- 빈 내용을 출력해 사실상 반복 종료 -->
-								        <c:set var="stop" value="true" />
-								    	</c:if>
-					
-					    				<!-- 반복 종료 조건 -->
-					    				<c:if test="${stop != true}">
+		                <c:if test="${stop != true}">
+		                    <tr>
+		                        <td>${st.count}</td>
+		                        <td>${customerVO.name}</td>
+		                        <td>${customerVO.email}</td>
+		                        <td>${fn:substring(customerVO.birthday, 0, 10)}</td>
+		                        <td><button onclick="MemberDelete()">회원탈퇴</button></td>
+		                    </tr>
+		                </c:if>
+		            </c:forEach>
+		        </tbody>
+		    </table>
+		</section>
+		<c:set var="stop" value="false" />
+		<section id="business-list">
+		    <div style="display: flex; justify-content: space-between; align-items: center;">
+		        <h2 class="section-header">업체 리스트</h2>
+		        <a href="BusinessListFull.ad" style="font-size: 14px; color: #457b9d; text-decoration: none; font-weight: bold;">더보기 &raquo;</a>
+		    </div>
+		    <table>
+		        <thead>
+		            <tr>
+		                <th>번호</th>
+		                <th>업체명</th>
+		                <th>연락처</th>
+		                <th>등록일</th>
+		                <th>관리</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <c:forEach var="companyVO" items="${companyVOS}" varStatus="st">
+		                <c:if test="${st.index >= 3}">
+		                    <c:set var="stop" value="true" />
+		                </c:if>
+		                <c:if test="${stop != true}">
 		                    <tr>
 		                        <td>${st.count}</td>
 		                        <td>${companyVO.company}</td>
@@ -140,15 +140,15 @@
 		                        <td>${companyVO.joinDay}</td>
 		                        <td><button onclick="MemberDelete()">회원탈퇴</button></td>
 		                    </tr>
-	                    </c:if>
-                   </c:forEach>
-                </tbody>
-            </table>
-        </section>
-        <section id="consultation-list">
-            <h2 class="section-header">상담 신청 리스트</h2>
-            <p>처리해야하는 리스트가 <a href="CounselList.ad"><font color="red"><b>${fn: length(ApplicationVOS)}</b></font></a>개 있습니다.</p>
-        </section>
+		                </c:if>
+		            </c:forEach>
+		        </tbody>
+		    </table>
+			</section>
+      <section id="consultation-list">
+          <h2 class="section-header">상담 신청 리스트</h2>
+          <p>처리해야하는 리스트가 <a href="CounselList.ad"><font color="red"><b>${fn: length(ApplicationVOS)}</b></font></a>개 있습니다.</p>
+      </section>
     </main>
   </div>
 <p><br/></p>
