@@ -12,20 +12,14 @@ public class FurnitureBuyCommand implements FurnitureInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int idx = (request.getParameter("idx")==null || request.getParameter("idx").equals("")) ? 0 : Integer.parseInt(request.getParameter("idx"));
-		
-		FurnitureVO vo = new FurnitureVO();
+		HttpSession session = request.getSession();
+		ArrayList<String> sCart = (ArrayList<String>)session.getAttribute("sCart");
 		
 		FurnitureDAO dao = new FurnitureDAO();
 		
-		vo = dao.getFurnitureContent(idx);
-		ArrayList<FurnitureVO> vos = dao.getFurnitureList("ALL");
+		ArrayList<FurnitureVO> vos = dao.getFurnitureAddCart(request);
 		
-		HttpSession session = request.getSession();
-		
-		request.setAttribute("vos", vos);
-		request.setAttribute("vo", vo);
-
+		request.setAttribute("vos",vos);
+		request.setAttribute("sCart", sCart);
 	}
-
 }

@@ -71,16 +71,6 @@ public class FurnitureController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/FurnitureBuy")) {
-			command = new FurnitureBuyCommand();
-			command.execute(request, response);
-			viewPage += "/furnitureBuy.jsp";
-		}
-//		else if(com.equals("/FurnitureBuyOk")) {
-//			command = new FurnitureBuyOkCommand();
-//			command.execute(request, response);
-//			viewPage += "/furnitureBuyOK.jsp";
-//		}
 		else if(com.equals("/FurnitureCart")) {
 			command = new FurnitureCartCommand();
 			command.execute(request, response);
@@ -91,10 +81,15 @@ public class FurnitureController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/furnitureShoppingList.jsp";
 		}
-//		else if(com.equals("/FurnitureShoppingListOk")) {
-//			command = new FurnitureShoppingListOkCommand();
+		else if(com.equals("/FurnitureBuy")) {
+			command = new FurnitureBuyCommand();
+			command.execute(request, response);
+			viewPage += "/furnitureBuy.jsp";
+		}
+//		else if(com.equals("/FurnitureBuyOk")) {
+//			command = new FurnitureBuyOkCommand();
 //			command.execute(request, response);
-//			viewPage += "/furnitureShoppingListOk.jsp";
+//			viewPage = "/include/message.jsp";
 //		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
