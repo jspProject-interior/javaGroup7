@@ -184,14 +184,13 @@ public class MemberDAO {
 		return res;
 	}
 
-	public ArrayList<MemberVO> getMemberList(int level1, int level2) {
+	public ArrayList<MemberVO> getMemberList(int level) {
 		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
 		try {
-			if(level1 != 777 || level2 != 777) {
-				sql = "select * from member where level = ? and or = ? order by name";
+			if(level != 777) {
+				sql = "select * from member where level = ? order by name";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setInt(1, level1);
-				pstmt.setInt(2, level2);
+				pstmt.setInt(1, level);
 			}
 			else {
 				sql = "select * from member order by name";
