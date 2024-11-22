@@ -135,7 +135,6 @@
 	    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 		}
   </style>
-  
   <script type="text/javascript">
 	  function toggleLike(idx, btn) {
 	    const icon = btn.querySelector('i');
@@ -199,24 +198,46 @@
 			function DeleteCheck() {
 				let ans = confirm("삭제하시겠습니까?");
 				if(ans){
-					location.href = "FurnitureDelete.in?idx=${vo.idx}";
+					location.href = "FurnitureDelete.fu?idx=${vo.idx}";
 				}
 			}
 			function showHoverImage(container) {
-			  	  const defaultImg = container.querySelector('.default-img');
-			  	  const hoverImg = container.querySelector('.hover-img');
-			  	  
-			  	  defaultImg.style.display = 'none'; // 기본 이미지 숨기기
-			  	  hoverImg.style.display = 'block'; // Hover 이미지 표시
-			  	}
+	  	  const defaultImg = container.querySelector('.default-img');
+	  	  const hoverImg = container.querySelector('.hover-img');
+	  	  
+	  	  defaultImg.style.display = 'none'; // 기본 이미지 숨기기
+	  	  hoverImg.style.display = 'block'; // Hover 이미지 표시
+	  	}
 
-			  	function showDefaultImage(container) {
-			  	  const defaultImg = container.querySelector('.default-img');
-			  	  const hoverImg = container.querySelector('.hover-img');
-			  	  
-			  	  defaultImg.style.display = 'block'; // 기본 이미지 표시
-			  	  hoverImg.style.display = 'none'; // Hover 이미지 숨기기
-			  	}
+	  	function showDefaultImage(container) {
+	  	  const defaultImg = container.querySelector('.default-img');
+	  	  const hoverImg = container.querySelector('.hover-img');
+	  	  
+	  	  defaultImg.style.display = 'block'; // 기본 이미지 표시
+	  	  hoverImg.style.display = 'none'; // Hover 이미지 숨기기
+	  	}
+			
+	  	function cartCheck() {
+	  		
+				$.ajax({
+					type : 'post',
+					url  : 'FurnitureCart.fu',
+					data :  {idx : ${vo.idx}},
+					success: function(res) {
+						let ans = confirm("장바구니로 이동하시겠습니까?");
+						if(ans){
+							location.href='FurnitureShoppingList.fu';
+						}
+						else{
+							location.reload();
+						}
+					},
+					error: function() {
+						alert("전송오류");
+					}
+				});	  		
+			}
+			  	
   </script>
 </head>
 <body class="content">
@@ -246,7 +267,7 @@
 	        <h2>${vo.title}</h2>
 	        <p class="price"><fmt:formatNumber value="${vo.price}" pattern="#,##0"/> 원</p>
 	        <button type="button" onclick="location.href='FurnitureBuy.fu'" class="btn btn-outline-secondary">구매하기</button>
-	        <button type="button" onclick="location.href='FurnitureShoppingList.fu'" class="btn btn-outline-secondary">장바구니 담기</button><br/><br/><br/><br/>
+	        <button type="button" onclick="cartCheck()" class="btn btn-outline-secondary">장바구니 담기</button><br/><br/><br/><br/>
 		      <div class="additional-info" style="padding: 20px; background-color: #fff; border: 1px solid #ddd;">
 		        <h3>배송 안내</h3>
 		        <p><font color="blue">* 1인 1개만 구매가 가능합니다. *</font></p>

@@ -62,6 +62,12 @@
 	    font-style: normal;
 		}
 		@font-face {
+    font-family: 'Gyeonggi_Title_Medium'; /* 경기천년제목 */ 
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2410-3@1.0/Title_Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+		}
+		@font-face {
 	    font-family: 'GeekbleMalang2WOFF2'; /* 긱블 말랑이체 : 동글 두껍 */
 	    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/GeekbleMalang2WOFF2.woff2') format('woff2');
 	    font-weight: normal;

@@ -254,7 +254,7 @@
         </ul>
         <ul class="nav" style="padding-top:0.5%;">
           <li><a href="#"><i class="fa-solid fa-magnifying-glass fa-lg"></i></a></li>
-          <li><a href="#" style="padding: 0 20px;"><i class="fa-solid fa-cart-shopping fa-lg"></i></a></li>
+          <li><a href="FurnitureShoppingList.fu" style="padding: 0 20px;"><i class="fa-solid fa-cart-shopping fa-lg"></i></a></li>
           <li><a href="Love.ap?industry=ALL" style="padding-right:20px;"><i class="fa-regular fa-heart fa-lg"></i></a></li>
           <li>
             <div class="pv-box">

@@ -38,26 +38,6 @@ public class FurnitureController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/furnitureContent.jsp";
 		}
-		else if(com.equals("/FurnitureBuy")) {
-			command = new FurnitureBuyCommand();
-			command.execute(request, response);
-			viewPage += "/furnitureBuy.jsp";
-		}
-//		else if(com.equals("/FurnitureBuyOk")) {
-//			command = new FurnitureBuyOkCommand();
-//			command.execute(request, response);
-//			viewPage += "/furnitureBuyOK.jsp";
-//		}
-		else if(com.equals("/FurnitureShoppingList")) {
-			command = new FurnitureShoppingListCommand();
-			command.execute(request, response);
-			viewPage += "/furnitureShoppingList.jsp";
-		}
-//		else if(com.equals("/FurnitureShoppingListOk")) {
-//			command = new FurnitureShoppingListOkCommand();
-//			command.execute(request, response);
-//			viewPage += "/furnitureShoppingListOk.jsp";
-//		}
 		else if(com.equals("/FurnitureInput")) {
 			viewPage += "/furnitureInput.jsp";
 		}
@@ -91,6 +71,31 @@ public class FurnitureController extends HttpServlet{
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		else if(com.equals("/FurnitureBuy")) {
+			command = new FurnitureBuyCommand();
+			command.execute(request, response);
+			viewPage += "/furnitureBuy.jsp";
+		}
+//		else if(com.equals("/FurnitureBuyOk")) {
+//			command = new FurnitureBuyOkCommand();
+//			command.execute(request, response);
+//			viewPage += "/furnitureBuyOK.jsp";
+//		}
+		else if(com.equals("/FurnitureCart")) {
+			command = new FurnitureCartCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/FurnitureShoppingList")) {
+			command = new FurnitureShoppingListCommand();
+			command.execute(request, response);
+			viewPage += "/furnitureShoppingList.jsp";
+		}
+//		else if(com.equals("/FurnitureShoppingListOk")) {
+//			command = new FurnitureShoppingListOkCommand();
+//			command.execute(request, response);
+//			viewPage += "/furnitureShoppingListOk.jsp";
+//		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		

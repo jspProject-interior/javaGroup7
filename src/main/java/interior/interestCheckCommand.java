@@ -19,8 +19,11 @@ public class interestCheckCommand implements InteriorInterface {
 		if(contentGood == null) {
 			contentGood = new ArrayList<String>();
 		}
+	
 		String tempContentGood = "interior" + idx;
+		
 		String res = "0";
+		
 		if(!contentGood.contains(tempContentGood)) {
 			dao.setInteriorInterestCheck(idx, 1);
 			res = "1";
