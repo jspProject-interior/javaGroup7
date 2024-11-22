@@ -188,7 +188,7 @@ public class MemberDAO {
 		ArrayList<MemberVO> vos = new ArrayList<MemberVO>();
 		try {
 			if(level1 != 777 || level2 != 777) {
-				sql = "select * from member where level = ? and level = ? order by name";
+				sql = "select * from member where level = ? and or = ? order by name";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setInt(1, level1);
 				pstmt.setInt(2, level2);
