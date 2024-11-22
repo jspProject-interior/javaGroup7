@@ -255,6 +255,34 @@
       font-size: 12px;
       color: #888;
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    .menu-arrow {
+		    position: fixed;
+		    top: 80px;
+		    right: 60px;
+		    font-size: 24px;
+		    color: white;
+		    animation: bounce 1.5s infinite; /* 애니메이션 */
+		    z-index: 1000;
+		    font-family: 'EliceDigitalBaeum-Bd';
+		}
+		
+		/* 화살표 점프 애니메이션 */
+		@keyframes bounce {
+		    0%, 100% {
+		        transform: translateY(0);
+		    }
+		    50% {
+		        transform: translateY(-10px);
+		    }
+		}
 </style>
 <script>
 	'use strict'
@@ -281,12 +309,29 @@
 		  }
 		});
 	
+	
+		document.addEventListener('DOMContentLoaded', () => {
+		    const menuArrow = document.getElementById('menuArrow');
+		    if (menuArrow) {
+		        menuArrow.addEventListener('click', () => {
+		            menuArrow.style.display = 'none';
+		        });
+		    }
+		});
+	
 </script>
 </head>
 <body>
 <div>
 <!-- header -->
 <jsp:include page="/include/mainHeader.jsp"/>
+
+<c:if test="${empty sMid}">
+    <div id="menuArrow" class="menu-arrow">
+        로그인
+        <i class="fa-solid fa-arrow-up"></i>
+    </div>
+</c:if>
 	<!-- 본문 영역 -->
 <div class="swiper">
 		<div class="swiper-wrapper">

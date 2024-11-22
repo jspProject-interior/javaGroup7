@@ -186,7 +186,7 @@
       <p><strong>예산 :</strong> ${vo.budget}</p>
       <p><strong>평수 :</strong> ${vo.size}</p>
       <hr>
-      <textarea class="form-control" rows="5" placeholder="메모를 입력하세요"></textarea>
+      <textarea class="form-control" rows="5" placeholder="입력된 정보가 없습니다."></textarea>
       <h2>처리내역</h2>
       <hr>
       <p><strong>처리현황 :</strong> ${vo.treatment}</p>
