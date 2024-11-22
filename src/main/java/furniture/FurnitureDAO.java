@@ -184,9 +184,15 @@ public class FurnitureDAO {
 	public ArrayList<FurnitureVO> getFurniturePost(String mid) {
 		ArrayList<FurnitureVO> vos = new ArrayList<FurnitureVO>();
 		try {
-			sql = "select * from furniture where mid = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mid);
+			if(mid.equals("전체") || mid.equals("ALL")) {
+				sql = "select * from furniture";
+				pstmt = conn.prepareStatement(sql);
+			}
+			else {
+				sql = "select * from furniture where mid = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, mid);
+			}
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

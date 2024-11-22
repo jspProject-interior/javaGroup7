@@ -240,9 +240,16 @@ public class InteriorDAO {
 	public ArrayList<InteriorVO> getInteriorPost(String mid) {
 		ArrayList<InteriorVO> vos = new ArrayList<InteriorVO>();
 		try {
-			sql = "select * from interior where mid = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mid);
+			if(mid.equals("전체") || mid.equals("ALL")) {
+				sql = "select * from interior";
+				pstmt = conn.prepareStatement(sql);
+			}
+			else {
+				sql = "select * from interior where mid = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, mid);
+			}
+			
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

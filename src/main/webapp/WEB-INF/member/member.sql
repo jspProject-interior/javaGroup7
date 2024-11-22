@@ -14,7 +14,7 @@ create table member(
   address     varchar(100),                                    /*   주소(우편번호:다음 API 활용) */
   gender      char(2),                                         /*   회원 성별 */
   birthday    datetime,                                        /*   회원 생일 */
-  level       int,                                             /*   회원 등급(0:관리자, 1:개인, 2:인테리어업체 3:가구업체, 99:탈퇴예정회원) */
+  level       int,                                             /*   회원 등급(0:관리자, 1:개인, 2:인테리어업체 3:가구업체) */
   photo       varchar(100)    default 'noimage.jpg',           /*   회원 사진 */
   userDel     char(2)         default 'NO',                    /*   회원 탈퇴신청여부(NO:현재 활동중, OK:탈퇴신청중) */
   joinDay     datetime        default now(),                   /*   최초 가입일 */

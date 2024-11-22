@@ -138,7 +138,7 @@
       <hr>
       <p><strong>시작일:</strong> ${fn: substring(vo.joinDay, 0, 10)}</p>
       <p><strong>마지막 접속일:</strong> ${fn: substring(vo.lastDate, 0, 10)}</p>
-      <p><strong>활동 여부 :</strong> ${vo.userDel == 'NO' ? "활동 중" : "탈퇴신청회원"}</p>
+      <p><strong>활동 여부 :</strong> ${vo.userDel == 'OK' ? '<font color="red">탈퇴신청회원</font>' : '활동 중'}</p>
       <button type="button" onclick='MemberDelete()' class="btn btn-danger">회원탈퇴</button>
     </div>
   </div>

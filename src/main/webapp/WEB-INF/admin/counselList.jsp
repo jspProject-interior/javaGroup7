@@ -73,37 +73,35 @@
 		  <table>
 	      <thead>
 	        <tr>
-	        	<th><input type="checkbox" id="allCheck" onclick="reverseCheck()"/></th>
-	          <th>순번</th>
-	          <th>업체</th>
-	          <th>아이디</th>
-	          <th>이름</th>
-	          <th>전화번호</th>
-	          <th>이메일</th>
-	          <th>주소</th>
-	          <th>업종</th>
-	          <th>탈퇴여부</th>
-	          <th>회원가입날</th>
-	          <th>마지막 접속일</th>
+            <th><input type="checkbox" id="allCheck" onclick="reverseCheck()"/></th>
+            <th>순번</th>
+            <th>업체</th>
+            <th>신청자</th>
+            <th>시공지</th>
+            <th>연락받을 번호</th>
+            <th>카테고리</th>
+            <th>예산</th>
+            <th>크기</th>
+            <th>시작 날짜</th>
+            <th>공간</th>
+            <th>처리현황</th>
 	        </tr>
 	      </thead>
 	      <tbody>
 		      <c:forEach var="vo" items="${vos}" varStatus="st">
-	          <tr onclick="location.href='CompanyDetail.ad?mid=${vo.mid}'">
+	          <tr onclick="location.href='CounseDetail.ad?mid=${vo.mid}'">
 	          	<td><input type="checkbox" name="index" id="index${st.index}"/></td>
-	            <td>${st.count}</td>
-	            <td>${vo.company}</td>
-	            <td>${vo.mid}</td>
-	            <td>${vo.name}</td>
-	            <td>${vo.tel}</td>
-	            <td>${vo.email}</td>
-	            <td>${fn : replace(vo.address, "/", "")}</td>
-	            <td>${vo.level == 2 ? "인테리어" : "가구"}</td>
-	            <td>${vo.userDel == 'OK' ? '<font color="red">탈퇴신청</font>' : '활동 중'}
-	            	<c:if test="${vo.userDel == 'OK'}"><div><button type="button" onclick='MemberDelete()' class="btn btn-sm btn-danger">회원탈퇴</button></div></c:if>
-	            </td>
-	            <td>${fn : substring(vo.joinDay,0,10)}</td>
-	            <td>${fn : substring(vo.lastDate,0,10)}</td>
+              <td>${st.count}</td>
+              <td>${vo.companyMid}</td>
+              <td>${vo.name}</td>
+              <td>${vo.conAddress}</td>
+              <td>${vo.tel}</td>
+              <td>${vo.category}</td>
+              <td>${vo.budget} 만원</td>
+              <td>${vo.size} 평</td>
+              <td>${vo.conStartDay}</td>
+              <td>${vo.area}</td>
+              <td>${vo.treatment}</td>
 	          </tr>
 		      </c:forEach>
 	      </tbody>

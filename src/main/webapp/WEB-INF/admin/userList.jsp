@@ -92,7 +92,9 @@
                         <td>${fn : replace(vo.address, "/" , "")}</td>
                         <td>${vo.gender}</td>
                         <td>${fn : substring(vo.birthday, 0, 10)}</td>
-                        <td>${vo.userDel}</td>
+                        <td>${vo.userDel == 'OK' ? '<font color="red">탈퇴신청</font>' : '활동 중'}
+                        <c:if test="${vo.userDel == 'OK'}"><div><button type="button" onclick='MemberDelete()' class="btn btn-sm btn-danger">회원탈퇴</button></div></c:if>
+                        </td>
                         <td>${fn : substring(vo.joinDay,0,10)}</td>
 	            					<td>${fn : substring(vo.lastDate,0,10)}</td>
                     </tr>

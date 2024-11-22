@@ -41,8 +41,8 @@
 <nav>
     <a href="userList.ad" target="admin">회원 리스트</a>
     <a href="businessList.ad" target="admin">업체 리스트</a>
-    <a href="#consultation-list" target="admin">상담 신청 리스트</a>
-    <a href="#post-list" target="admin">게시물 리스트</a>
+    <a href="CounselList.ad" target="admin">상담 신청 리스트</a>
+    <a href="PostList.ad" target="admin">게시물 리스트</a>
     <a href="#finance" target="admin">정산</a>
     <a href="#reports" target="admin">신고 글 보기</a>
 </nav>

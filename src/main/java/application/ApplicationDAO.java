@@ -129,9 +129,15 @@ public class ApplicationDAO {
 	public ArrayList<ApplicationVO> getConsultationStatus(String mid) {
 		ArrayList<ApplicationVO> vos = new ArrayList<ApplicationVO>();
 		try {
-			sql = "select * from application where mid = ?";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, mid);
+			if(mid.equals("ALL") || !mid.equals("전체")) {
+				sql = "select * from application where mid = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, mid);
+			}
+			else {
+				sql = "select * from application";
+				pstmt = conn.prepareStatement(sql);
+			}
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -166,6 +172,23 @@ public class ApplicationDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, approval);
 			pstmt.setInt(2, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			 System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	public int MatchCompany(String mid, String companyId, String companyName) {
+		int res = 0;
+		try {
+			sql = "update application set companyMid = ?, companyName = ? where mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, companyId);
+			pstmt.setString(2, companyName);
+			pstmt.setString(3, mid);
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			 System.out.println("SQL 오류 : " + e.getMessage());
