@@ -133,7 +133,27 @@
   	font-size: 20px;
   	color: gray;
   }
+  .MemberDelete{
+  	color: gray;
+  	text-decoration: underline;
+  	float: right;
+  }
+  .MemberDelete:hover{
+  	color: gray;
+  	text-decoration: underline;
+  }
 </style>
+<script type="text/javascript">
+	function MemberDelete() {
+		let ans = confirm("탈퇴하시겠습니까?");
+		if(ans){
+			location.href = "MemberUserDel.mem?idx=" + ${vo.idx};
+		}
+		else{
+			return false;
+		}
+	}
+</script>
 </head>
 <jsp:include page="/include/header.jsp"/>
 <body>
@@ -192,6 +212,7 @@
     <a href="#"><i class="fa-solid fa-magnifying-glass"></i> 최근 본 내역</a>
     <a href="#"><i class="fa-regular fa-newspaper"></i> 나의 후기</a>
   </div>
+  <a href="javascript:MemberDelete()" class="MemberDelete">회원탈퇴</a>
 </div>
 <jsp:include page="/include/footer.jsp"/>
 </body>

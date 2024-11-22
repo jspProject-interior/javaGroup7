@@ -129,6 +129,7 @@
         <c:if test="${vo.level == 1}">개인</c:if>
         <c:if test="${vo.level == 2}">인테리어</c:if>
         <c:if test="${vo.level == 3}">가구</c:if>
+        <c:if test="${vo.level == 99}"><font color="red">탈퇴 예정 회원</font></c:if>
       </p>
       <p><strong>이름:</strong> ${vo.name}</p>
       <hr>

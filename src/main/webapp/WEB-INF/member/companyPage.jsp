@@ -154,7 +154,27 @@
   .button-group button:hover{
   	background: #eee;
   }
+    .MemberDelete{
+  	color: gray;
+  	text-decoration: underline;
+  	float: right;
+  }
+  .MemberDelete:hover{
+  	color: gray;
+  	text-decoration: underline;
+  }
 </style>
+<script type="text/javascript">
+	function MemberDelete() {
+		let ans = confirm("탈퇴하시겠습니까?");
+		if(ans){
+			location.href = "MemberUserDel.mem?idx=" + ${vo.idx};
+		}
+		else{
+			return false;
+		}
+	}
+</script>
 </head>
 <jsp:include page="/include/header.jsp"/>
 <body>
@@ -227,6 +247,7 @@
     <a href="#"><i class="fa-solid fa-headphones"></i> 문의 내역</a>
     <a href="#"><i class="fa-solid fa-user-slash"></i> 신고 내역</a>
   </div>
+  <a href="javascript:MemberDelete()" class="MemberDelete">회원탈퇴</a>
 </div>
 <jsp:include page="/include/footer.jsp"/>
 </body>

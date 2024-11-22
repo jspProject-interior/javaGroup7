@@ -107,6 +107,11 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
+		else if(com.equals("/MemberUserDel")) { // 정보 수정
+			command = new MemberUserDelCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

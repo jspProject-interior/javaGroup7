@@ -245,5 +245,21 @@ public class MemberDAO {
 		return res;
 	}
 
+	public int MemberUserDel(int idx) {
+		int res = 0;
+		try {
+			sql = "update member set userDel = 'YES', level = 99 where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}
+		finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
 }
 
