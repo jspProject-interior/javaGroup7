@@ -93,6 +93,17 @@
     }
     
   </style>
+  <script type="text/javascript">
+	  function MemberDelete() {
+			let ans = confirm("회원을 탈퇴시키겠습니까?");
+			if(ans){
+				location.href="MemberDelete.mem?idx=${vo.idx}"			
+			}
+			else{
+				return false;
+			}
+		}
+  </script>
 </head>
 <body>
 <div class="container-fluid">
@@ -127,7 +138,7 @@
       <p><strong>시작일:</strong> ${fn: substring(vo.joinDay, 0, 10)}</p>
       <p><strong>마지막 접속일:</strong> ${fn: substring(vo.lastDate, 0, 10)}</p>
       <p><strong>활동 여부 :</strong> ${vo.userDel == 'NO' ? "활동 중" : "탈퇴신청회원"}</p>
-      <button type="button" onclick='location.href="MemberDelete.mem?idx=${vo.idx}"' class="btn btn-danger">회원탈퇴</button>
+      <button type="button" onclick='MemberDelete()' class="btn btn-danger">회원탈퇴</button>
     </div>
   </div>
 </div>
