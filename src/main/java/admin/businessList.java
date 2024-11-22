@@ -16,8 +16,8 @@ public class businessList implements AdminInterface {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		MemberDAO dao = new MemberDAO();
 		
-		ArrayList<MemberVO> vos = dao.getMemberList(3);
-		vos.addAll(dao.getMemberList(2));
+		ArrayList<MemberVO> vos = dao.getMemberList(3,99);
+		vos.addAll(dao.getMemberList(2,99));
 		
 		
 		request.setAttribute("vos", vos);
