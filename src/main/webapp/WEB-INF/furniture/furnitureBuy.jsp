@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="${ctp}/images/main/favicon.png">
-  <title>구매페이지 | 그린테리어</title>
+  <title>장바구니 | 그린테리어</title>
 	<jsp:include page="/include/bs4.jsp"/>
 	<jsp:include page="/include/fonts.jsp"/>
 	<style>
@@ -30,6 +30,7 @@
 			font-family: 'Gyeonggi_Title_Medium';
 		  font-size: 10px;
 		  padding-bottom: 10px;
+		  padding-left: 30px;
 		}
 		
 		.cart-items {
@@ -103,23 +104,28 @@
 		}
 		
 		.summary {
-		  padding: 20px;
-		  background-color: #f7f7f7;
+		  padding: 30px 50px;
+		  background-color: #faf9f5;
 		  border-radius: 8px;
 		}
 		
 		.summary h3 {
-		  margin: 0 0 10px;
+			font-family: 'Gyeonggi_Title_Medium';
+			font-size: 30px;
+		  margin-bottom: 30px;
+		  
 		}
 		
 		.summary p {
-		  margin: 5px 0;
+		  margin: 10px 0;
 		  font-size: 14px;
 		}
 		
 		.summary .total {
 		  font-size: 18px;
-		  font-weight: bold;
+			font-family: 'Gyeonggi_Title_Medium';
+			padding: 20px 0;
+			
 		}
 		
 	</style>
@@ -155,7 +161,7 @@
 		});
 		
 		function fCheck() {
-			alert("선택하신 상품들이 주문되었습니다.")
+			alert("결제가 완료 됐습니다. 메인페이지로 이동합니다.")
 			myform.submit();
 		}
 	</script>
@@ -195,11 +201,11 @@
       </c:forEach>
     </div>
     <div class="summary">
-      <h3>결제 정보</h3>
-      <p>주문금액: <span id="demo1"></span> 원</p>
-      <p>할인금액: <span id="demo2"></span> 원</p>
-      <p class="total">총 결제 금액: <span id="demo3"></span> 원</p>
-      <input type="button" value="주문하기" onclick="fCheck()" class="form-control btn btn-outline-secondary"/>
+      <h3>주문 정보</h3>
+      <p>● 선택 상품 금액&nbsp;  : &nbsp;<span id="demo1"></span>&nbsp; 원</p>
+      <p>● 즉시 할인 금액&nbsp;  : &nbsp;<span id="demo2"></span>&nbsp; 원</p>
+      <p class="total">총 주문 금액: <span id="demo3"></span>&nbsp; 원</p>
+      <input type="button" value="주 문 하 기" onclick="fCheck()" class="form-control btn btn-outline-secondary" style="font-family: 'Gyeonggi_Title_Medium'; font-size: 20px;"/>
     </div>
   </div>
 </form>

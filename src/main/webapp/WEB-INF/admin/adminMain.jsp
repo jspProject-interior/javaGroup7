@@ -7,8 +7,6 @@
   <meta charset="UTF-8">
   <link rel="icon" href="${ctp}/images/main/favicon.png">
   <title>관리자메뉴</title>
-
-
 	<frameset rows="80px, *">
 		<frame src="AdminHeader.ad" name="adminHeader" frameborder="0" noresize/>
 		<frameset cols="250px, *">
@@ -18,7 +16,5 @@
 	</frameset>
 </head>
 <body>
-
-
 </body>
 </html>
