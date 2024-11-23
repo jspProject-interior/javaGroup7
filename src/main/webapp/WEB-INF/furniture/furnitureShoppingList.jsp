@@ -160,10 +160,31 @@
 		  calculateTotal();
 		});
 		
-		function fCheck() {
-			alert("결제페이지로 이동합니다.")
-			myform.submit();
+	function fCheck() {
+		let idxSelectArray = "";
+		
+		if(!myform.che.length){
+			idxSelectArray += myform.che.value + ",";
 		}
+		else{
+			for(let i = 0; i < myform.che.length; i++){
+				if(myform.che[i].checked){
+					idxSelectArray += myform.che[i].value + ",";
+				}
+			}
+			idxSelectArray = idxSelectArray.substring(0,idxSelectArray.length-1);
+		}
+			if(idxSelectArray == ""){
+				alert("선택된 항목이 없습니다.");
+			}
+			else{
+				myform.idxArray.value = idxSelectArray;
+				alert("결제페이지로 이동합니다.");
+				myform.submit();
+			}
+	}
+		
+		
 	</script>
 </head>
 <body>
@@ -175,7 +196,7 @@
     <div class="cart-items">
     	<c:forEach var="vo" items="${vos}" varStatus="st">
 	      <div class="cart-item">
-	        <input type="checkbox" checked>
+	        <input type="checkbox" name="che" id="che${st.index}" value="${vo.idx}">
 	        <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" alt="Thumbnail" class="default-img">
 	        <div class="item-details">
 		        <div class="input-group" style="text-align: center;">
@@ -197,6 +218,7 @@
 	          <span>1</span>
 	          <button type="button">+</button>
 	        </div>
+          <!-- <input type="button" value="X" onclick="()"> -->
 	      </div>
       </c:forEach>
     </div>
@@ -206,6 +228,7 @@
       <p>● 즉시 할인 금액&nbsp;  : &nbsp;<span id="demo2"></span>&nbsp; 원</p>
       <p class="total">총 주문 금액: <span id="demo3"></span>&nbsp; 원</p>
       <input type="button" value="주 문 하 기" onclick="fCheck()" class="form-control btn btn-outline-secondary" style="font-family: 'Gyeonggi_Title_Medium'; font-size: 20px;"/>
+      <input type="hidden" name="idxArray" id="idxArray" value="">
     </div>
   </div>
 </form>

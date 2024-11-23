@@ -15,9 +15,17 @@ public class FurnitureShoppingListCommand implements FurnitureInterface {
 		HttpSession session = request.getSession();
 		ArrayList<String> sCart = (ArrayList<String>)session.getAttribute("sCart");
 		
+		String array = "";
+		for(String i : sCart) {
+			array += i + ",";
+		}
+		
+		array = array.substring(0, array.length()-1);
+		
+		
 		FurnitureDAO dao = new FurnitureDAO();
 		
-		ArrayList<FurnitureVO> vos = dao.getFurnitureAddCart(request);
+		ArrayList<FurnitureVO> vos = dao.getFurnitureAddCart(array);
 		
 		request.setAttribute("vos",vos);
 		request.setAttribute("sCart", sCart);

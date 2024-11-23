@@ -266,7 +266,7 @@
     .menu-arrow {
 		    position: fixed;
 		    top: 80px;
-		    right: 60px;
+		    right: 3.9%;
 		    font-size: 24px;
 		    color: white;
 		    animation: bounce 1.5s infinite; /* 애니메이션 */
@@ -369,7 +369,7 @@
 					<span class="mainBtn">INTERIOR<i class="fa-solid fa-circle-arrow-right"></i></span>
 				</div>
 			</a>
-			<a href="" style="padding-left: 5px;">
+			<a href="Furniture.fu?category=ALL" style="padding-left: 5px;">
 				<div class="mainBtnBack" style="border-radius: 0 10px 0 0;">
 					<span class="mainBtn">FURNITURE<i class="fa-solid fa-cart-arrow-down"></i></span>
 				</div>

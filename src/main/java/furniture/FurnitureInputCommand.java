@@ -66,7 +66,6 @@ public class FurnitureInputCommand implements FurnitureInterface {
 		vo.setfSize(fSize);
 		vo.setDiscount(discount);
 		
-		System.out.println("vo :"+vo);
 		FurnitureDAO dao = new FurnitureDAO();
 		
 		int res = dao.setFurnitureInput(vo);

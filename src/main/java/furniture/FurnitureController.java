@@ -86,11 +86,11 @@ public class FurnitureController extends HttpServlet{
 			command.execute(request, response);
 			viewPage += "/furnitureBuy.jsp";
 		}
-//		else if(com.equals("/FurnitureBuyOk")) {
-//			command = new FurnitureBuyOkCommand();
-//			command.execute(request, response);
-//			viewPage = "/include/message.jsp";
-//		}
+		else if(com.equals("/FurnitureBuyOk")) {
+			command = new FurnitureBuyOkCommand();
+			command.execute(request, response);
+			viewPage = "/include/message.jsp";
+		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);		

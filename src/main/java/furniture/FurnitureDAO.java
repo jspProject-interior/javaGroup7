@@ -272,18 +272,17 @@ public class FurnitureDAO {
 		return vos;
 	}
 
-	public ArrayList<FurnitureVO> getFurnitureAddCart(HttpServletRequest request) {
+	public ArrayList<FurnitureVO> getFurnitureAddCart(String idxArray) {
 		ArrayList<FurnitureVO> vos = new ArrayList<FurnitureVO>();
-		HttpSession session = request.getSession();
-		ArrayList<String> sCart = (ArrayList<String>)session.getAttribute("sCart") == null ? null : (ArrayList<String>)session.getAttribute("sCart");
-		String cartList[] = sCart.toString().split(",");
+		System.out.println(idxArray);
+		String list[] = idxArray.toString().split(",");
 		try {
-			for(int i = 0; i < cartList.length; i++) {
-				cartList[i] = cartList[i].replace("cart", "").replace("[", "").replace("]", "").trim();
+			for(int i = 0; i < list.length; i++) {
+				list[i] = list[i].replace("cart", "").replace("[", "").replace("]", "").trim();
 				
 				sql = "select * from furniture where idx = ?";
 				pstmt = conn.prepareStatement(sql);
-				pstmt.setString(1, cartList[i]);
+				pstmt.setString(1, list[i]);
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {

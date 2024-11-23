@@ -8,7 +8,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="icon" href="${ctp}/images/main/favicon.png">
-  <title>장바구니 | 그린테리어</title>
+  <title>구매페이지 | 그린테리어</title>
 	<jsp:include page="/include/bs4.jsp"/>
 	<jsp:include page="/include/fonts.jsp"/>
 	<style>
@@ -92,8 +92,9 @@
 		}
 		
 		.quantity button {
-		  width: 30px;
+		  width: 70px;
 		  height: 30px;
+		  font-size: 14px;
 		  border: 1px solid #ddd;
 		  background-color: #f7f7f7;
 		  cursor: pointer;
@@ -105,7 +106,7 @@
 		
 		.summary {
 		  padding: 30px 50px;
-		  background-color: #faf9f5;
+		  border: 1px solid #eee;
 		  border-radius: 8px;
 		}
 		
@@ -127,6 +128,39 @@
 			padding: 20px 0;
 			
 		}
+		.information {
+      display: flex;
+      align-items: center;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+  }
+  .information div {
+      font-size: 24px;
+      margin-right: 20px;
+  }
+  .user-information {
+      display: flex;
+      margin-bottom: 30px;
+  }
+  .user {
+    border: 1px solid #eee;
+    padding: 20px;
+    text-align: left;
+    display: flex;
+  	flex-direction: column;
+  }
+  .Name{
+  	font-size: 28px;
+  	font-family: 'Gyeonggi_Title_Medium';
+  }
+  .Id{
+  	font-size: 15px;
+  	color: gray;
+  }
 		
 	</style>
 	<script>
@@ -161,7 +195,7 @@
 		});
 		
 		function fCheck() {
-			alert("결제가 완료 됐습니다. 메인페이지로 이동합니다.")
+
 			myform.submit();
 		}
 	</script>
@@ -169,21 +203,51 @@
 <body>
 <jsp:include page="/include/header.jsp"/>
 <p><br/></p>
-<form name="myform" method="post" action="main.main">
+<form name="myform" method="post" action="FurnitureBuyOk.fu">
 	<div class="cart-container">
-    <h2>장바구니</h2>
+    <h2>구매페이지</h2>
     <div class="cart-items">
+	    <div class="summary">
+	      <!-- <h3>주문 정보</h3> -->
+		    <div class="information">
+			    <div class="user-details">
+			        <span class="Name">${mVO.name}</span>
+			        <input type="hidden" name="name" id="name" value="${mVO.name}"/>
+			        <span class="Id">${mVO.mid}</span>
+			        <input type="hidden" name="cusMid" id="cusMid" value="${mVO.mid}"/>
+			    </div>
+		    </div>
+		    <div class="user-information">
+					<div class="user" style="width: 60%;">
+				  	<div class="user-title">주소</div>
+				  	<div class="user-info">${fn : replace(mVO.address, '/', ' ')}</div>
+				  	<input type="hidden" name="address" id="address" value="${mVO.address}"/>
+				  </div>
+					<div class="user" style="width: 40%; position: relative;">
+				    <div class="user-title">연락처</div>
+				    <div class="user-info">${mVO.tel}</div>
+				    <input type="hidden" name="tel" id="tel" value="${mVO.tel}" />
+				  </div>
+		    </div>
+	      <p>● 선택 상품 금액&nbsp;  : &nbsp;<span id="demo1"></span>&nbsp; 원</p>
+	      <p>● 즉시 할인 금액&nbsp;  : &nbsp;<span id="demo2"></span>&nbsp; 원</p>
+	      <p class="total">총 주문 금액: <span id="demo3"></span>&nbsp; 원</p>
+	    </div>
     	<c:forEach var="vo" items="${vos}" varStatus="st">
 	      <div class="cart-item">
-	        <input type="checkbox" checked>
 	        <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" alt="Thumbnail" class="default-img">
+	        <input type="hidden" name="thumbnail" id="thumbnail" value="${vo.thumbnail}"/>
 	        <div class="item-details">
 		        <div class="input-group" style="text-align: center;">
 		          <div class="company input-group-prepend">${vo.company}</div>
+		          <input type="hidden" name="company" id="company" value="${vo.company}"/>
+		          <input type="hidden" name="comMid" id="comMid" value="${vo.mid}"/>
 		          <div class="trash company">&nbsp;/&nbsp;</div>
 		          <div class="category input-group-append">${vo.category}</div>
+		          <input type="hidden" name="category" id="category" value="${vo.category}"/>
 		        </div>
 		        <div class="titleName">${vo.title}</div>
+		        <input type="hidden" name="title" id="title" value="${vo.title}"/>
 		        <p>
 							<span class="discounted-price"><fmt:formatNumber value="${vo.discount}" pattern="#,##0"/> ${vo.saleUnit} &nbsp;&nbsp;</span>
 	          	<span class="original-price"><fmt:formatNumber value="${vo.pay}" pattern="#,##0"/> 원</span>
@@ -193,20 +257,13 @@
 	          <input type="hidden" name="cartPrice" id="cartPrice${st.index}" value="${vo.price}"/>
 	        </div>
 	        <div class="quantity">
-	          <button type="button">-</button>
-	          <span>1</span>
-	          <button type="button">+</button>
+	          <button type="button">수량 1</button>
+	          <input type="hidden" name="cnt" id="cnt" value="1"/>
 	        </div>
 	      </div>
       </c:forEach>
     </div>
-    <div class="summary">
-      <h3>주문 정보</h3>
-      <p>● 선택 상품 금액&nbsp;  : &nbsp;<span id="demo1"></span>&nbsp; 원</p>
-      <p>● 즉시 할인 금액&nbsp;  : &nbsp;<span id="demo2"></span>&nbsp; 원</p>
-      <p class="total">총 주문 금액: <span id="demo3"></span>&nbsp; 원</p>
-      <input type="button" value="주 문 하 기" onclick="fCheck()" class="form-control btn btn-outline-secondary" style="font-family: 'Gyeonggi_Title_Medium'; font-size: 20px;"/>
-    </div>
+      <input type="button" value="결 제 하 기" onclick="fCheck()" class="form-control btn btn-outline-secondary" style="font-family: 'Gyeonggi_Title_Medium'; font-size: 20px;"/>
   </div>
 </form>
 <jsp:include page="/include/footer.jsp"/>

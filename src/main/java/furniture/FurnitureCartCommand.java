@@ -31,9 +31,7 @@ public class FurnitureCartCommand implements FurnitureInterface {
 			res="1";
 			cart.add(tempCart);
 		}
-		
-		System.out.println("cart:"+cart);
-		
+		System.out.println(cart);
 		session.setAttribute("sCart", cart);
 		response.getWriter().write(res);
 	}

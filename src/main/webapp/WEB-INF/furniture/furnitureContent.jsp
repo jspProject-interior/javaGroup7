@@ -237,6 +237,12 @@
 					}
 				});	  		
 			}
+	  	
+	  	function buy() {
+				idxSelectArray = ${vo.idx} + ",";
+				alert("결제페이지로 이동합니다.");
+				location.href = "FurnitureBuy.fu?idxArray=" + idxSelectArray;
+			}
 			  	
   </script>
 </head>
@@ -266,7 +272,7 @@
 	        </div>
 	        <h2>${vo.title}</h2>
 	        <p class="price"><fmt:formatNumber value="${vo.price}" pattern="#,##0"/> 원</p>
-	        <button type="button" onclick="location.href='FurnitureBuy.fu'" class="btn btn-outline-secondary">구매하기</button>
+	        <button type="button" onclick="buy()" class="btn btn-outline-secondary">구매하기</button>
 	        <button type="button" onclick="cartCheck()" class="btn btn-outline-secondary">장바구니 담기</button><br/><br/><br/><br/>
 		      <div class="additional-info" style="padding: 20px; background-color: #fff; border: 1px solid #ddd;">
 		        <h3>배송 안내</h3>

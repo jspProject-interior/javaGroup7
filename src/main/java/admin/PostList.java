@@ -23,9 +23,6 @@ public class PostList implements AdminInterface {
 		ArrayList<InteriorVO> InteriorVOS = InteriorDAO.getInteriorPost("전체");
 		ArrayList<FurnitureVO> FurnitureVOS = FurnitureDAO.getFurniturePost("전체");
 		
-		System.out.println(InteriorVOS);
-		System.out.println(FurnitureVOS);
-		
 		request.setAttribute("InteriorVOS", InteriorVOS);
 		request.setAttribute("FurnitureVOS", FurnitureVOS);
 	}
