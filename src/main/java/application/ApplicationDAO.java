@@ -201,7 +201,7 @@ public class ApplicationDAO {
 	public ArrayList<ApplicationVO> getNewConsultationStatus() {
 		ArrayList<ApplicationVO> vos = new ArrayList<ApplicationVO>();
 		try {
-			sql = "select * from application where companyName = ''";
+			sql = "select * from application where companyMid = ''";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
