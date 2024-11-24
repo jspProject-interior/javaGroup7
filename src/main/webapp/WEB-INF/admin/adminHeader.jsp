@@ -37,7 +37,7 @@
   
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 	<header>
 	  <h1><a href="AdminMain.ad" target="_top">GRINTERIOR Admin</a></h1>
 	</header>

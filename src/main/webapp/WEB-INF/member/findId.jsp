@@ -99,7 +99,7 @@
   }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
   <div class="Logo">
       <a href="main.main">GRINTERIOR</a>
   </div>

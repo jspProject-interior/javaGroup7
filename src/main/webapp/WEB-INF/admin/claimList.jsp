@@ -129,7 +129,7 @@
 		
   </style>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
   <form name="myform">
  	 <div class="main">게시물 리스트</div>
     <div class="content">

@@ -419,7 +419,7 @@
 		}
 </script>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 	<div style="margin-top: 1%;"><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
 	<form name="myform" method="post" action="MemberUpdateOk.mem">
 	  <div class="container h-100">

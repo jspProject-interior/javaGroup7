@@ -288,7 +288,12 @@
 		  		<ul class="menu-list" id="ml">
 		  			<li><a href="MyPage.mem">내 정보</a></li>
 		  			<li><a href="Love.ap?industry=ALL">관심목록</a></li>
-		  			<li><a href="">구매내역</a></li>
+		  			<c:if test="${sLevel==1 || sLevel==0}">
+			  			<li><a href="BuyList.fu?mid=${sMid}">구매내역</a></li>
+			  		</c:if>
+		  			<c:if test="${sLevel==3}">
+			  			<li><a href="SellList.fu?mid=${sMid}">판매내역</a></li>
+			  		</c:if>
 		  			<li><a href="FurnitureShoppingList.fu">장바구니</a></li>
 		  		</ul>
 	  		</div>

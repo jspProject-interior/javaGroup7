@@ -43,11 +43,11 @@
   }
 </script>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <jsp:include page="/include/header.jsp"/>
 <div class="blank"></div>
 <div class="container">
-    <h1 class="text-center my-4">구매 리스트</h1>
+    <h1 class="text-center my-4">판매 리스트</h1>
     <table class="table table-striped table-bordered text-center">
         <thead>
             <tr>

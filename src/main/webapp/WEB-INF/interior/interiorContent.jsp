@@ -319,7 +319,7 @@
 				}
   </script>
 </head>
-<body class="content">
+<body class="content" oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <jsp:include page="/include/header.jsp"/>
   <div class="main-img">
     <img src="${ctp}/images/interior/upload/${vo.titleImg}" alt="${vo.title}">

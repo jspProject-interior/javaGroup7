@@ -177,7 +177,7 @@
 </script>
 </head>
 <jsp:include page="/include/header.jsp"/>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <div class="contain">
 	<div class="information">
     <div class="user-details">

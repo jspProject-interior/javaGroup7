@@ -92,7 +92,6 @@
 			}
 			else {
 				area = myform.selectArea.value;
-				alert(myform.selectArea.value);
 			}
 		  myform.conAddress.value = address;	    
 		  myform.area.value = area;	    
@@ -102,7 +101,7 @@
 	</script>
 
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <jsp:include page="/include/header.jsp"/>
 <p><br/></p>
 <div id="consultation-form" class="container">

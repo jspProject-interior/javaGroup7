@@ -175,7 +175,7 @@
   </script>
 </head>
 <jsp:include page="/include/mainHeader.jsp"/>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
   <form name="myform">
     <div class="interior">
       <img src="${ctp}/images/interior/interiorMain.jpg"/>

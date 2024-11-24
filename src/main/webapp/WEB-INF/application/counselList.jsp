@@ -41,7 +41,7 @@
   }
 </script>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <jsp:include page="/include/header.jsp"/>
 <div class="blank"></div>
 <div class="container">

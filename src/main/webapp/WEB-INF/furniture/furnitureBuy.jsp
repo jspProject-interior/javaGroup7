@@ -233,7 +233,7 @@
 		}
 	</script>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <jsp:include page="/include/header.jsp"/>
 <p><br/></p>
 <form name="myform" method="post" action="FurnitureBuyOk.fu">

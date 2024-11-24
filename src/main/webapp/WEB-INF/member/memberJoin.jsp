@@ -212,7 +212,7 @@
 
 </script>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
   <p><br/></p>
   <div><a href="main.main" class="Logo" style="padding-left: 3.6%; padding-right: 0">GRINTERIOR</a></div>
 	<form name="myform1" method="post" action="MemberJoinOk.mem">

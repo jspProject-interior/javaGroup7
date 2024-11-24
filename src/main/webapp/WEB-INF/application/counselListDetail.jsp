@@ -50,9 +50,9 @@
 </script>
 </head>
 <jsp:include page="/include/header.jsp"/>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <p><br/></p>
-<<div class="container">
+<div class="container">
     <h1 class="my-4">${vo.name}님의 상담 상세 정보</h1>
     <ul class="list-group">
         <li class="list-group-item"><strong>아이디:</strong> ${vo.mid}</li>

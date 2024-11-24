@@ -278,7 +278,7 @@
 			}
   </script>
 </head>
-<body class="content">
+<body class="content" oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <jsp:include page="/include/header.jsp"/>
 <div id="content-form" class="container">
   <table id="content-table" style="width: 85%; margin: 0 auto; border-collapse: collapse;">

@@ -186,7 +186,7 @@
 </script>
 
 </head>
-<body class="calculator">
+<body class="calculator" oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <jsp:include page="/include/header.jsp"/>
 <p><br/></p>
 	<div class="calculator container">

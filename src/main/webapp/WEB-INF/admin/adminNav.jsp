@@ -37,7 +37,7 @@
   }
 </style>
 </head>
-<body>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
 <nav>
     <a href="userList.ad" target="admin">회원 리스트</a>
     <a href="businessList.ad" target="admin">업체 리스트</a>
