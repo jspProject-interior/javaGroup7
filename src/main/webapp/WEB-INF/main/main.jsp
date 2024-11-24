@@ -406,10 +406,10 @@
 	
 	<!-- 가구 -->
 	<div class="grid-container">
-	  <div class="grid-item item1"><a href="Furniture.fu?category=SOFA">SOFA</a></div>
-	  <div class="grid-item item2"><a href="Furniture.fu?category=ALL">FURNITURE</a></div>
-	  <div class="grid-item item3"><a href="Furniture.fu?category=LAMP">LAMP</a></div>  
-	  <div class="grid-item item4"><a href="Furniture.fu?category=BED">BED</a></div>
+	  <div class="grid-item item1"><a href="Furniture.fu?category=SOFA"><b>SOFA</b></a></div>
+	  <div class="grid-item item2"><a href="Furniture.fu?category=ALL"><b>FURNITURE</b></a></div>
+	  <div class="grid-item item3"><a href="Furniture.fu?category=LAMP"><b>LAMP</b></a></div>  
+	  <div class="grid-item item4"><a href="Furniture.fu?category=BED"><b>BED</b></a></div>
 	</div>
 	
 	<div class="blank"></div>
