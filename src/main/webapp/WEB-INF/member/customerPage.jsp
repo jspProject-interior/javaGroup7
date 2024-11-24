@@ -189,15 +189,15 @@
 	  	</a>
 	  </div>
 		<div class="tab">
-	    <a href="#">
+	    <a href="FurnitureShoppingList.fu">
 		  	<p class="talTitle">장바구니</p>
-		  	<div class="talContent">0</div>
+		  	<div class="talContent">${cartCnt}</div>
 	  	</a>
 	  </div>
 		<div class="tab">
-	    <a href="#">
+	    <a href="BuyList.fu?mid=${vo.mid}">
 		  	<p class="talTitle">구매 내역</p>
-		  	<div class="talContent">0</div>
+		  	<div class="talContent">${BuyListCnt}</div>
 	  	</a>
 	  </div>
   </div>

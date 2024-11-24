@@ -17,13 +17,13 @@ public class MemberController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel") == null ? 999 : (int)session.getAttribute("sLevel");
+		String userDel = session.getAttribute("sUserDel") == null ? "NO" : (String)session.getAttribute("sUserDel");
 		
 		MemberInterface command = null;
 		String viewPage = "/WEB-INF/member";
 		
 		String com = request.getRequestURI();
 		com = com.substring(com.lastIndexOf("/"), com.lastIndexOf("."));
-		
 		
 		if(com.equals("/MemberJoin")) { //회원가입
 			viewPage += "/memberJoin.jsp";
@@ -43,16 +43,6 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		else if(com.equals("/MemberLogout")) { //로그아웃
-			command = new MemberLogoutCommand();
-			command.execute(request, response);
-			viewPage = "main.main";
-		}
-		else if(com.equals("/AjaxLevel")) {
-			command = new AjaxLevelCommand();
-			command.execute(request, response);
-			return;
-		}
 		else if(com.equals("/FindAccount")) {
 			viewPage += "/findAccount.jsp";
 		}
@@ -70,6 +60,23 @@ public class MemberController extends HttpServlet {
 			command = new PasswordUpdateCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/AjaxLevel")) {
+			command = new AjaxLevelCommand();
+			command.execute(request, response);
+			return;
+		}
+		
+		else if(level > 3 || userDel.equals("OK")) {
+			request.setAttribute("message", "로그인 후 이용해주세요.");
+			request.setAttribute("url", "/main.main");
+			viewPage = "/include/message.jsp";
+		}
+		
+		else if(com.equals("/MemberLogout")) { //로그아웃
+			command = new MemberLogoutCommand();
+			command.execute(request, response);
+			viewPage = "main.main";
 		}
 		else if(com.equals("/moveUpdate") && level == 1) { // 개인 정보 수정
 			command = new MemberUpdateCommand();
@@ -91,7 +98,6 @@ public class MemberController extends HttpServlet {
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
 		}
-		
 		else if((com.equals("/MyPage") && level == 0 )|| (com.equals("/MyPage") && level == 1)) { // 마이페이지
 			command = new MyPageCommand();
 			command.execute(request, response);
@@ -111,6 +117,11 @@ public class MemberController extends HttpServlet {
 			command = new MemberUserDelCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/ClaimList")) { // 신고 리스트
+			command = new ClaimList();
+			command.execute(request, response);
+			viewPage += "/claimList.jsp";
 		}
 		
 		

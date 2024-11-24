@@ -214,7 +214,6 @@
     <div class="furniture">
       <img src="${ctp}/images/furniture/furnitureMain.jpg"/>
       <div class="main">GRINTERIOR</div>
-      <input type="button" onclick="location.href='FurnitureInput.fu'" class="btn btn-success" value="게시물 등록"/>
     </div>
     <div class="contain">
     	<div class="input-group">
@@ -223,7 +222,7 @@
 			  <button type="button" onclick="choice('TABLE')" class="<c:if test='${param.category eq "TABLE"}'>act</c:if>">테이블</button>
 			  <button type="button" onclick="choice('CHAIR')" class="<c:if test='${param.category eq "CHAIR"}'>act</c:if>">의자</button>
 			  <button type="button" onclick="choice('CABINET')" class="<c:if test='${param.category eq "CABINET"}'>act</c:if>">수납·선반장</button>
-			  <button type="button" onclick="choice('LEMP')" class="<c:if test='${param.category eq "LEMP"}'>act</c:if>">조명</button>
+			  <button type="button" onclick="choice('LAMP')" class="<c:if test='${param.category eq "LAMP"}'>act</c:if>">조명</button>
 			  <button type="button" onclick="choice('BED')" class="<c:if test='${param.category eq "BED"}'>act</c:if>">침대</button>
 			</div>
     </div>    

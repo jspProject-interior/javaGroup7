@@ -228,7 +228,10 @@ public class FurnitureDAO {
 	public ArrayList<FurnitureVO> getFurnitureIdxSearch(HttpServletRequest request) {
 		ArrayList<FurnitureVO> vos = new ArrayList<FurnitureVO>();
 		HttpSession session = request.getSession();
-		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood") == null ? null : (ArrayList<String>)session.getAttribute("sContentGood");
+		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood");
+		if (sContentGood == null) {
+    	sContentGood = new ArrayList<>();
+    }
 		String furnitureBoard[] = sContentGood.toString().split(",");
 		try {
 			for(int i = 0; i < furnitureBoard.length; i++) {
@@ -274,7 +277,6 @@ public class FurnitureDAO {
 
 	public ArrayList<FurnitureVO> getFurnitureAddCart(String idxArray) {
 		ArrayList<FurnitureVO> vos = new ArrayList<FurnitureVO>();
-		System.out.println(idxArray);
 		String list[] = idxArray.toString().split(",");
 		try {
 			for(int i = 0; i < list.length; i++) {
@@ -315,6 +317,124 @@ public class FurnitureDAO {
 		} finally {
 			rsClose();
 		}
+		return vos;
+	}
+
+	public int setFurnitureUpdate(FurnitureVO vo, int idx) {
+		int res = 0;
+		try {
+			sql = "update furniture set category = ?, title = ?, pay = ?, saleUnit = ?, price = ?, titleImg = ?, subImg = ?, thumbnail = ?, fName = ?, fSName = ?, fSize = ?, discount = ? where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getCategory());
+			pstmt.setString(2, vo.getTitle());
+			pstmt.setInt(3, vo.getPay());
+			pstmt.setString(4, vo.getSaleUnit());
+			pstmt.setInt(5, vo.getPrice());
+			pstmt.setString(6, vo.getTitleImg());
+			pstmt.setString(7, vo.getSubImg());
+			pstmt.setString(8, vo.getThumbnail());
+			pstmt.setString(9, vo.getfName());
+			pstmt.setString(10, vo.getfSName());
+			pstmt.setInt(11, vo.getfSize());
+			pstmt.setInt(12, vo.getDiscount());
+			pstmt.setInt(13, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	public int addClaim(int idx) {
+		int res = 0;
+		try {
+			sql = "update furniture set claim = claim + 1 where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	public ArrayList<FurnitureVO> getClaimList() {
+		ArrayList<FurnitureVO> vos = new ArrayList<FurnitureVO>();
+		try {
+			sql = "select * from furniture where claim > 0";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo = new FurnitureVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setCompany(rs.getString("company"));
+				vo.setCategory(rs.getString("category"));
+				vo.setTitle(rs.getString("title"));
+				vo.setPay(rs.getInt("pay"));
+				vo.setDiscount(rs.getInt("discount"));
+				vo.setSaleUnit(rs.getString("saleUnit"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setTitleImg(rs.getString("titleImg"));
+				vo.setSubImg(rs.getString("subImg"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setfName(rs.getString("fName"));
+				vo.setfSName(rs.getString("fSName"));
+				vo.setfSize(rs.getInt("fSize"));
+				vo.setClaim(rs.getString("claim"));
+				vo.setwDate(rs.getString("wDate"));
+				vo.setInterest(rs.getString("interest"));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		
+		return vos;
+	}
+
+	public ArrayList<FurnitureVO> getMyPostClaim(String mid) {
+		ArrayList<FurnitureVO> vos = new ArrayList<FurnitureVO>();
+		try {
+			sql = "select * from furniture where claim > 0 and mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo = new FurnitureVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setCompany(rs.getString("company"));
+				vo.setCategory(rs.getString("category"));
+				vo.setTitle(rs.getString("title"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setTitleImg(rs.getString("titleImg"));
+				vo.setSubImg(rs.getString("subImg"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setfName(rs.getString("fName"));
+				vo.setfSName(rs.getString("fSName"));
+				vo.setfSize(rs.getInt("fSize"));
+				vo.setClaim(rs.getString("claim"));
+				vo.setwDate(rs.getString("wDate"));
+				vo.setInterest(rs.getString("interest"));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		
 		return vos;
 	}
 }

@@ -180,9 +180,6 @@
 		      totPrice += parseInt(cartPriceElements[i].value || 0, 10);
 		    }
 
-		    // 계산 결과 디버그
-		    console.log("totPay:", totPay);
-		    console.log("totPrice:", totPrice);
 
 		    // 결과를 DOM에 반영
 		    document.getElementById('demo1').textContent = totPay.toLocaleString(); // 주문 금액
@@ -195,7 +192,43 @@
 		});
 		
 		function fCheck() {
-
+			let thumbnail = document.getElementsByName('thumbnailArr');
+			
+			let thumbnailArr = "";
+			let cartPayArr = "";
+			let cartPriceArr = "";
+			let titleArr = "";
+			let categoryArr = "";
+			let companyArr = "";
+			let comMidArr = "";
+			
+			
+			for(let i = 0 ; i < thumbnail.length; i++){
+				thumbnailArr += document.getElementById("thumbnail" + i).value + ",";
+				cartPayArr += document.getElementById("cartPay" + i).value + ",";
+				cartPriceArr += document.getElementById("cartPrice" + i).value + ",";
+				titleArr += document.getElementById("title" + i).value + ",";
+				categoryArr += document.getElementById("category" + i).value + ",";
+				companyArr += document.getElementById("company" + i).value + ",";
+				comMidArr += document.getElementById("comMid" + i).value + ",";
+			}
+			
+			thumbnailArr = thumbnailArr.substring(0, thumbnailArr.length-1);
+			cartPayArr = cartPayArr.substring(0, cartPayArr.length-1);
+			cartPriceArr = cartPriceArr.substring(0, cartPriceArr.length-1);
+			titleArr = titleArr.substring(0, titleArr.length-1);
+			categoryArr = categoryArr.substring(0, categoryArr.length-1);
+			companyArr = companyArr.substring(0, companyArr.length-1);
+			comMidArr = comMidArr.substring(0, comMidArr.length-1);
+			
+			document.getElementById('thumbnail').value = thumbnailArr;
+			document.getElementById('cartPay').value = cartPayArr;
+			document.getElementById('cartPrice').value = cartPriceArr;
+			document.getElementById('title').value = titleArr;
+			document.getElementById('category').value = categoryArr;
+			document.getElementById('company').value = companyArr;
+			document.getElementById('comMid').value = comMidArr;
+			
 			myform.submit();
 		}
 	</script>
@@ -236,25 +269,33 @@
     	<c:forEach var="vo" items="${vos}" varStatus="st">
 	      <div class="cart-item">
 	        <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" alt="Thumbnail" class="default-img">
-	        <input type="hidden" name="thumbnail" id="thumbnail" value="${vo.thumbnail}"/>
+	        <input type="hidden" name="thumbnailArr" id="thumbnail${st.index}" value="${vo.thumbnail}"/>
+	        <input type="hidden" name="thumbnail" id="thumbnail" value=""/>
 	        <div class="item-details">
 		        <div class="input-group" style="text-align: center;">
 		          <div class="company input-group-prepend">${vo.company}</div>
-		          <input type="hidden" name="company" id="company" value="${vo.company}"/>
-		          <input type="hidden" name="comMid" id="comMid" value="${vo.mid}"/>
+		          <input type="hidden" id="company${st.index}" value="${vo.company}"/>
+		          <input type="hidden" name="company" id="company" value=""/>
+		          
+		          <input type="hidden" id="comMid${st.index}" value="${vo.mid}"/>
+		          <input type="hidden" name="comMid" id="comMid" value=""/>
 		          <div class="trash company">&nbsp;/&nbsp;</div>
 		          <div class="category input-group-append">${vo.category}</div>
-		          <input type="hidden" name="category" id="category" value="${vo.category}"/>
+		          <input type="hidden" id="category${st.index}" value="${vo.category}"/>
+		          <input type="hidden" name="category" id="category" value=""/>
 		        </div>
 		        <div class="titleName">${vo.title}</div>
-		        <input type="hidden" name="title" id="title" value="${vo.title}"/>
+		        <input type="hidden" id="title${st.index}" value="${vo.title}"/>
+		        <input type="hidden" name="title" id="title" value=""/>
 		        <p>
 							<span class="discounted-price"><fmt:formatNumber value="${vo.discount}" pattern="#,##0"/> ${vo.saleUnit} &nbsp;&nbsp;</span>
 	          	<span class="original-price"><fmt:formatNumber value="${vo.pay}" pattern="#,##0"/> 원</span>
 	          	<input type="hidden" name="cartPay" id="cartPay${st.index}" value="${vo.pay}"/>
+	          	<input type="hidden" name="cartPayArr" id="cartPay" value=""/>
 	          <p>
 	          <p class="price"><fmt:formatNumber value="${vo.price}" pattern="#,##0"/> 원</p>
 	          <input type="hidden" name="cartPrice" id="cartPrice${st.index}" value="${vo.price}"/>
+	          <input type="hidden" name="cartPriceArr" id="cartPrice" value=""/>
 	        </div>
 	        <div class="quantity">
 	          <button type="button">수량 1</button>

@@ -139,30 +139,48 @@
 	  padding: 20px;
 	  font-size: 30px;
 	  border-radius: 30px;
+	  color: white;
+	  display: flex; /* 플렉스 박스 활성화 */
+	  align-items: center; /* 수직 가운데 정렬 */
+	  justify-content: center; /* 수평 가운데 정렬 */
+	  font-family: 'GowunBatang-Regular';
+	  
 	}
+	.grid-item a {
+    text-decoration: none; /* 기본적으로 밑줄 제거 */
+    color: white;
+		}
 	
-	.item1 {
-	  grid-column: 1;
-	  grid-row: 1 / span 2;
-	  background-image: url("${ctp}/images/main/main1.jpg");
-	}
-	
-	.item2 {
-	  grid-column: 2 / span 2;
-	  grid-row: 1 / span 2;
-	  background-image: url("${ctp}/images/main/main1.jpg");
-	}
-	
-	.item3 {
-	  grid-column: 4;
-	  grid-row: 1;
-	  background-image: url("${ctp}/images/main/main1.jpg")
-	}
-	.item4 {
-	  grid-column: 4;
-	  grid-row: 2;
-	  background-image: url("${ctp}/images/main/main1.jpg");
-	}
+	.item1, .item2, .item3, .item4 {
+  background-image: url("${ctp}/images/main/mainF.jpg");
+  background-size: 320%; /* 전체 이미지가 4개의 셀로 나뉘게 설정 */
+  background-repeat: no-repeat; /* 배경 이미지 반복 제거 */
+  
+}
+
+.item1 {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  background-position: 12% 55%; /* 이미지의 왼쪽 상단 부분 */
+}
+
+.item2 {
+  grid-column: 2 / span 2;
+  grid-row: 1 / span 2;
+  background-position: 55% 63%; /* 이미지의 중앙 상단 부분 */
+}
+
+.item3 {
+  grid-column: 4;
+  grid-row: 1;
+  background-position: 100% 20%; /* 이미지의 오른쪽 상단 부분 */
+}
+
+.item4 {
+  grid-column: 4;
+  grid-row: 2;
+  background-position: 100% 70%; /* 이미지의 오른쪽 하단 부분 */
+}
 	/*tobBtn*/
 	h6 {
 			position: fixed;
@@ -255,14 +273,7 @@
       font-size: 12px;
       color: #888;
     }
-    
-    
-    
-    
-    
-    
-    
-    
+
     .menu-arrow {
 		    position: fixed;
 		    top: 80px;
@@ -395,10 +406,10 @@
 	
 	<!-- 가구 -->
 	<div class="grid-container">
-	  <div class="grid-item item1"></div>
-	  <div class="grid-item item2"></div>
-	  <div class="grid-item item3"></div>  
-	  <div class="grid-item item4"></div>
+	  <div class="grid-item item1"><a href="Furniture.fu?category=SOFA">SOFA</a></div>
+	  <div class="grid-item item2"><a href="Furniture.fu?category=ALL">FURNITURE</a></div>
+	  <div class="grid-item item3"><a href="Furniture.fu?category=LAMP">LAMP</a></div>  
+	  <div class="grid-item item4"><a href="Furniture.fu?category=BED">BED</a></div>
 	</div>
 	
 	<div class="blank"></div>

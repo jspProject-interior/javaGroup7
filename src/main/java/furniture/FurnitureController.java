@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+@SuppressWarnings("serial")
 @WebServlet("*.fu")
 public class FurnitureController extends HttpServlet{
 	@Override
@@ -22,13 +23,14 @@ public class FurnitureController extends HttpServlet{
 		
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
+		String userDel = session.getAttribute("sUserDel") == null ? "NO" : (String)session.getAttribute("sUserDel");
 		
 		if(com.equals("/Furniture")) {
 			command = new FurnitureCommand();
 			command.execute(request, response);
 			viewPage += "/furniture.jsp";
 		}
-		else if(level > 3) {
+		else if(level > 3 || userDel.equals("OK")) {
 			request.setAttribute("message", "로그인 후 사용 가능합니다.");
 			request.setAttribute("url", "/main.main");
 			viewPage = "/include/message.jsp";
@@ -90,6 +92,21 @@ public class FurnitureController extends HttpServlet{
 			command = new FurnitureBuyOkCommand();
 			command.execute(request, response);
 			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/BuyList")) {
+			command = new BuyListCommand();
+			command.execute(request, response);
+			viewPage += "/buyList.jsp";
+		}
+		else if(com.equals("/SellList")) {
+			command = new SellListCommand();
+			command.execute(request, response);
+			viewPage += "/sellList.jsp";
+		}
+		else if(com.equals("/Complaint")) {
+			command = new ComplaintCommand();
+			command.execute(request, response);
+			return;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

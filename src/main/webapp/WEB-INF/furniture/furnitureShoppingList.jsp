@@ -196,7 +196,7 @@
     <div class="cart-items">
     	<c:forEach var="vo" items="${vos}" varStatus="st">
 	      <div class="cart-item">
-	        <input type="checkbox" name="che" id="che${st.index}" value="${vo.idx}">
+	        <input type="checkbox" name="che" id="che${st.index}" value="${vo.idx}" checked>
 	        <img src="${ctp}/images/furniture/upload/${vo.thumbnail}" alt="Thumbnail" class="default-img">
 	        <div class="item-details">
 		        <div class="input-group" style="text-align: center;">

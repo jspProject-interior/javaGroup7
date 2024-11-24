@@ -25,7 +25,13 @@ public class AdminController extends HttpServlet{
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
 		
-		if(com.equals("/AdminMain")) {
+		
+		if(level != 0) {
+			request.setAttribute("message", "관리자만 이용 가능한 메뉴입니다.");
+			request.setAttribute("url", "/main.main");
+			viewPage = "/include/message.jsp";
+		}
+		else if(com.equals("/AdminMain")) {
 			viewPage += "/adminMain.jsp";
 		}
 		else if(com.equals("/AdminHeader")) {
@@ -38,11 +44,6 @@ public class AdminController extends HttpServlet{
 			command = new Admin();
 			command.execute(request, response);
 			viewPage += "/admin.jsp";
-		}
-		else if(com.equals("/userList")) {
-			command = new userList();
-			command.execute(request, response);
-			viewPage += "/userList.jsp";
 		}
 		else if(com.equals("/userList")) {
 			command = new userList();
@@ -83,6 +84,16 @@ public class AdminController extends HttpServlet{
 			command = new PostList();
 			command.execute(request, response);
 			viewPage += "/postList.jsp";
+		}
+		else if(com.equals("/Adjustment")) {
+			command = new Adjustment();
+			command.execute(request, response);
+			viewPage += "/adjustment.jsp";
+		}
+		else if(com.equals("/ClaimList")) {
+			command = new ClaimList();
+			command.execute(request, response);
+			viewPage += "/claimList.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

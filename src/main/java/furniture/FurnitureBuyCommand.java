@@ -18,7 +18,7 @@ public class FurnitureBuyCommand implements FurnitureInterface {
 		HttpSession session = request.getSession();
 		String mid = (String)session.getAttribute("sMid");
 		String idxArray = request.getParameter("idxArray")==null ? "" : request.getParameter("idxArray");
-		System.out.println("command : " + idxArray);
+
 		MemberDAO MemberDAO = new MemberDAO();
 		FurnitureDAO dao = new FurnitureDAO();
 		

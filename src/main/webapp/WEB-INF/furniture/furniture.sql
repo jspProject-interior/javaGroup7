@@ -48,3 +48,6 @@ create table purchase(
   primary key(idx),
   foreign key(cusMid) references member(mid)
 );
+
+
+update furniture set claim = 0;

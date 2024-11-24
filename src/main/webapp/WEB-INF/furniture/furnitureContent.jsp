@@ -243,7 +243,39 @@
 				alert("결제페이지로 이동합니다.");
 				location.href = "FurnitureBuy.fu?idxArray=" + idxSelectArray;
 			}
-			  	
+			
+	  	function complaint() {
+	  		let ans = confirm("이 게시물을 신고하시겠습니까?");
+	  		if(ans){
+					$.ajax({
+						type : "post",
+						url : "Complaint.fu",
+						data : {
+							idx : ${vo.idx},
+							mid : '${vo.mid}'
+						},
+						success: function(res) {
+							if(res == "1"){
+								alert("게시물이 신고되었습니다.");
+								location.reload();
+							}
+							else if(res == "2"){
+								alert("이미 신고한 글입니다.");
+								location.reload();
+							}
+							else{
+								alert("응 오류야 다시 봐");
+							}
+						},
+						error: function() {
+							alert("error");
+						}
+					});
+	  		}
+	  		else{
+	  			return;
+	  		}
+			}
   </script>
 </head>
 <body class="content">
@@ -339,7 +371,7 @@
 	    <!-- 신고 -->
 	    <div class="sidebar-item">
 	      <div class="icon-circle">
-	        <a href="#"><i class="fa-solid fa-user-slash"></i></a>
+	        <a href="javascript:complaint()"><i class="fa-solid fa-user-slash"></i></a>
 	      </div>
 	    </div>
 	    <!-- 수정 -->

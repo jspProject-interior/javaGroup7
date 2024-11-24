@@ -13,7 +13,7 @@
 	<footer	>
 		<div class="row">
 			<div class="col left-col">
-				<div><a href="" class="title-link">고객센터</a></div>
+				<div class="title-link">고객센터</div>
 				<div class="input-group contact-info">
 					<div class="input-group-append"><font size="3px" class="phone-number"><b>1234-1234</b></font></div>
 					<div class="input-group-append pl-2"><font size="3px" class="business-hours">09:00 ~ 18:00</font></div>

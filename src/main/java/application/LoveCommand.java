@@ -19,6 +19,9 @@ public class LoveCommand implements ApplicationInterface {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood") == null ? null : (ArrayList<String>)session.getAttribute("sContentGood");
+    if (sContentGood == null) {
+    	sContentGood = new ArrayList<>();
+    }
 		
 		InteriorDAO InteriorDAO = new InteriorDAO();
 		FurnitureDAO FurnitureDAO = new FurnitureDAO();

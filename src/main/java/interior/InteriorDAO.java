@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import common.GetConn;
+import furniture.FurnitureVO;
 
 public class InteriorDAO {
 	private Connection conn = GetConn.getConn();
@@ -197,7 +198,10 @@ public class InteriorDAO {
 	public ArrayList<InteriorVO> getInteriorIdxSearch(HttpServletRequest request) {
 		ArrayList<InteriorVO> vos = new ArrayList<InteriorVO>();
 		HttpSession session = request.getSession();
-		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood") == null ? null : (ArrayList<String>)session.getAttribute("sContentGood");
+		ArrayList<String> sContentGood = (ArrayList<String>)session.getAttribute("sContentGood");
+		if (sContentGood == null) {
+    	sContentGood = new ArrayList<>();
+    }
 		String interiorBoard[] = sContentGood.toString().split(",");
 		try {
 			for(int i = 0; i < interiorBoard.length; i++) {
@@ -276,6 +280,94 @@ public class InteriorDAO {
 			System.out.println("SQL 오류 : " + e.getMessage());
 		}
 		finally {
+			rsClose();
+		}
+		
+		return vos;
+	}
+
+	public int addClaim(int idx) {
+		int res = 0;
+		try {
+			sql = "update interior set claim = claim + 1 where idx = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			res = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			pstmtClose();
+		}
+		return res;
+	}
+
+	public ArrayList<InteriorVO> getClaimList() {
+		ArrayList<InteriorVO> vos = new ArrayList<InteriorVO>();
+		try {
+			sql = "select * from interior where claim > 0";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo = new InteriorVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setCompany(rs.getString("company"));
+				vo.setCategory(rs.getString("category"));
+				vo.setTitle(rs.getString("title"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setTitleImg(rs.getString("titleImg"));
+				vo.setSubImg(rs.getString("subImg"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setfName(rs.getString("fName"));
+				vo.setfSName(rs.getString("fSName"));
+				vo.setfSize(rs.getInt("fSize"));
+				vo.setClaim(rs.getString("claim"));
+				vo.setwDate(rs.getString("wDate"));
+				vo.setInterest(rs.getString("interest"));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
+			rsClose();
+		}
+		
+		return vos;
+	}
+
+	public ArrayList<InteriorVO> getMyPostClaim(String mid) {
+		ArrayList<InteriorVO> vos = new ArrayList<InteriorVO>();
+		try {
+			sql = "select * from interior where claim > 0 and mid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo = new InteriorVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setMid(rs.getString("mid"));
+				vo.setCompany(rs.getString("company"));
+				vo.setCategory(rs.getString("category"));
+				vo.setTitle(rs.getString("title"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setTitleImg(rs.getString("titleImg"));
+				vo.setSubImg(rs.getString("subImg"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setfName(rs.getString("fName"));
+				vo.setfSName(rs.getString("fSName"));
+				vo.setfSize(rs.getInt("fSize"));
+				vo.setClaim(rs.getString("claim"));
+				vo.setwDate(rs.getString("wDate"));
+				vo.setInterest(rs.getString("interest"));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		} finally {
 			rsClose();
 		}
 		

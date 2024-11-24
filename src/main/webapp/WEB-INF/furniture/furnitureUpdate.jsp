@@ -300,7 +300,7 @@
 		}
 </style>
   <script type="text/javascript">
-  function fCheck() {
+   function fCheck() {
 	    let titleImg = document.getElementById("image-upload-main").value;
 	    let subImg = document.getElementById("image-upload-detail").value;
 	    let thumbnail = document.getElementById("image-upload-thumbnail").value;
@@ -450,7 +450,7 @@
   <jsp:include page="/include/header.jsp"/>
   <div class="contain">
     <h1 style="font-family: 'EliceDigitalBaeum-Bd';">상품 등록</h1>
-    <form name="myform" id="myform" enctype="multipart/form-data" method="post" action="FurnitureUpdateOk.fu">
+    <form name="myform" id="myform" enctype="multipart/form-data" method="post" action="FurnitureUpdateOk.fu?idx=${vo.idx}">
       <!-- 업체명 -->
       <div class="form-group">
         <div class="section-title">업체명</div>

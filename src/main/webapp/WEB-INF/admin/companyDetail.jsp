@@ -111,7 +111,6 @@
   <div class="row">
     <!-- 좌측 컨테이너 -->
     <div class="leftContainer col">
-      <img src="${ctp}/images/${vo.photo}" alt="${vo.name}님의 사진">
       <h1>개인정보</h1>
       <hr>
       <p><strong>아이디 :</strong> ${vo.mid}</p>

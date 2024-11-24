@@ -17,11 +17,12 @@ public class MemberUserDelCommand implements MemberInterface {
 		
 		if(res != 0) {
 			request.setAttribute("message", "회원탈퇴신청이 완료되었습니다");
+			request.setAttribute("url", "MemberLogout.mem");
 		}
 		else {
 			request.setAttribute("message", "실패");
+			request.setAttribute("url", "main.main");
 		}
-		request.setAttribute("url", "main.main");
 
 	}
 

@@ -15,6 +15,9 @@ public class PurchaseVO {
 	private int discount;
 	private int price;
 	private int cnt;
+	private String purDate;
+	
+	
 	public int getIdx() {
 		return idx;
 	}
@@ -99,12 +102,18 @@ public class PurchaseVO {
 	public void setCnt(int cnt) {
 		this.cnt = cnt;
 	}
+	public String getPurDate() {
+		return purDate;
+	}
+	public void setPurDate(String purDate) {
+		this.purDate = purDate;
+	}
 	@Override
 	public String toString() {
 		return "PurchaseVO [idx=" + idx + ", cusMid=" + cusMid + ", comMid=" + comMid + ", name=" + name + ", company="
 				+ company + ", tel=" + tel + ", address=" + address + ", category=" + category + ", title=" + title
 				+ ", thumbnail=" + thumbnail + ", pay=" + pay + ", discount=" + discount + ", price=" + price + ", cnt=" + cnt
-				+ "]";
+				+ ", purDate=" + purDate + "]";
 	}
-
+	
 }

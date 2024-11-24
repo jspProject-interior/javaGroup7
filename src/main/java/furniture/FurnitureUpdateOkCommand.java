@@ -49,6 +49,7 @@ public class FurnitureUpdateOkCommand implements FurnitureInterface {
 		String thumbnail = multipartRequest.getFilesystemName("thumbnail") == null ? "" : multipartRequest.getFilesystemName("thumbnail");
 		int fSize = (multipartRequest.getParameter("fSize")==null || multipartRequest.getParameter("fSize").equals("")) ? 0 : Integer.parseInt(multipartRequest.getParameter("fSize"));
 		int discount = (multipartRequest.getParameter("discount")==null || multipartRequest.getParameter("discount").equals("")) ? 0 : Integer.parseInt(multipartRequest.getParameter("discount"));
+		int idx = (request.getParameter("idx")==null || request.getParameter("idx").equals("")) ? 0 : Integer.parseInt(request.getParameter("idx"));
 		
 		FurnitureVO vo = new FurnitureVO();
 		vo.setMid(mid);
@@ -68,7 +69,7 @@ public class FurnitureUpdateOkCommand implements FurnitureInterface {
 		
 		FurnitureDAO dao = new FurnitureDAO();
 		
-		int res = dao.setFurnitureInput(vo);
+		int res = dao.setFurnitureUpdate(vo, idx);
 		
 		if(res != 0) {
 			request.setAttribute("message", "상품 수정이 완료되었습니다.");

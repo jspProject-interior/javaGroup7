@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import common.GetConn;
 
@@ -13,7 +14,7 @@ public class PurchaseDAO {
 	private ResultSet rs = null;
 	
 	private String sql = "";
-	private FurnitureVO vo = null;
+	private PurchaseVO vo = null;
 	
 	public void pstmtClose() {
 		if(pstmt != null) {
@@ -57,5 +58,118 @@ public class PurchaseDAO {
 			pstmtClose();
 		}
 		return res;
+	}
+
+	public ArrayList<PurchaseVO> getBuyList(String mid) {
+		ArrayList<PurchaseVO> vos = new ArrayList<PurchaseVO>();
+		
+		try {
+			sql = "select * from purchase where cusMid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new PurchaseVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setCusMid(rs.getString("cusMid"));
+				vo.setComMid(rs.getString("comMid"));
+				vo.setName(rs.getString("name"));
+				vo.setCompany(rs.getString("company"));
+				vo.setTel(rs.getString("tel"));
+				vo.setAddress(rs.getString("address"));
+				vo.setCategory(rs.getString("category"));
+				vo.setTitle(rs.getString("title"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setPay(rs.getInt("pay"));
+				vo.setDiscount(rs.getInt("discount"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setCnt(rs.getInt("cnt"));
+				vo.setPurDate(rs.getString("purDate"));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}	finally {
+			rsClose();
+		}
+		return vos;
+	}
+
+	public ArrayList<PurchaseVO> getSellList(String mid) {
+		ArrayList<PurchaseVO> vos = new ArrayList<PurchaseVO>();
+		
+		try {
+			sql = "select * from purchase where comMid = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mid);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new PurchaseVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setCusMid(rs.getString("cusMid"));
+				vo.setComMid(rs.getString("comMid"));
+				vo.setName(rs.getString("name"));
+				vo.setCompany(rs.getString("company"));
+				vo.setTel(rs.getString("tel"));
+				vo.setAddress(rs.getString("address"));
+				vo.setCategory(rs.getString("category"));
+				vo.setTitle(rs.getString("title"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setPay(rs.getInt("pay"));
+				vo.setDiscount(rs.getInt("discount"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setCnt(rs.getInt("cnt"));
+				vo.setPurDate(rs.getString("purDate"));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}	finally {
+			rsClose();
+		}
+		return vos;
+	}
+
+	public ArrayList<PurchaseVO> getUseList() {
+ArrayList<PurchaseVO> vos = new ArrayList<PurchaseVO>();
+		
+		try {
+			sql = "select * from purchase";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new PurchaseVO();
+				
+				vo.setIdx(rs.getInt("idx"));
+				vo.setCusMid(rs.getString("cusMid"));
+				vo.setComMid(rs.getString("comMid"));
+				vo.setName(rs.getString("name"));
+				vo.setCompany(rs.getString("company"));
+				vo.setTel(rs.getString("tel"));
+				vo.setAddress(rs.getString("address"));
+				vo.setCategory(rs.getString("category"));
+				vo.setTitle(rs.getString("title"));
+				vo.setThumbnail(rs.getString("thumbnail"));
+				vo.setPay(rs.getInt("pay"));
+				vo.setDiscount(rs.getInt("discount"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setCnt(rs.getInt("cnt"));
+				vo.setPurDate(rs.getString("purDate"));
+				
+				vos.add(vo);
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 오류 : " + e.getMessage());
+		}	finally {
+			rsClose();
+		}
+		return vos;
 	}
 }

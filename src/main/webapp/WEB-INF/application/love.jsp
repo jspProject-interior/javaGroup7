@@ -199,6 +199,26 @@
   	    }
   	  });
   	}
+  	function toggleLikef(idx, btn) {
+  		const icon = btn.querySelector('i');
+  	  $.ajax({
+  	    type: "post",
+  	    url: "interestCheck.fu",
+  	    data: { idx: idx },
+  	    success: function (res) {
+  	      if (res == "1") {
+  	        icon.classList.remove('fa-regular');
+  	        icon.classList.add('fa-solid');
+  	      } else if (res == "2") {
+  	        icon.classList.remove('fa-solid');
+  	        icon.classList.add('fa-regular');
+  	      }
+  	    },
+  	    error: function () {
+  	      alert("안됨");
+  	    }
+  	  });
+  	}
 
   </script>
 </head>
@@ -238,7 +258,7 @@
 							  </a>
 							  
 							  <!-- 하트 버튼 (a 태그 바깥) -->
-							  <button type="button" class="like-button" onclick="toggleLike(${FurnitureVO.idx}, this)">
+							  <button type="button" class="like-button" onclick="toggleLikef(${FurnitureVO.idx}, this)">
 							    <i class="${fn:contains(sContentGood, furniture+FurnitureVO.idx) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
 							  </button>
 							</div>

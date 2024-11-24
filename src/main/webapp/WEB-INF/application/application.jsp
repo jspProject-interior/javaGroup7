@@ -121,7 +121,7 @@
       <!-- 시공 주소 -->
       <div id="homeAddressInput">
 	      <div class="form-group">
-	      <label for="conAddress">시공 주소</label>
+	      <label for="conAddress">주소</label>
 		      <div class="input-group-append mb-1">
 		        <input type="text" name="postcode" id="sample6_postcode"  placeholder="우편번호" value="${address1}" class="form-control" style="width: 150px;" onclick="sample6_execDaumPostcode()" readonly>
 		      </div>
@@ -189,7 +189,7 @@
       </div>
       <!-- 시공 시작 희망일 -->
       <div class="form-group">
-        <label for="conStartDay">시공 시작 희망일</label>
+        <label for="conStartDay">희망일</label>
         <input type="date" id="conStartDay" name="conStartDay">
       </div>
       <!-- 제출 버튼 -->

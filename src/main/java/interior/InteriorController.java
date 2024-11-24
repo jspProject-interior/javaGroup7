@@ -22,13 +22,14 @@ public class InteriorController extends HttpServlet{
 		
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
+		String userDel = session.getAttribute("sUserDel") == null ? "NO" : (String)session.getAttribute("sUserDel");
 		
 		if(com.equals("/Interior")) {
 			command = new InteriorCommand();
 			command.execute(request, response);
 			viewPage += "/interior.jsp";
 		}
-		else if(level > 3) {
+		else if(level > 3 || userDel.equals("OK")) {
 			request.setAttribute("message", "로그인 후 사용 가능합니다.");
 			request.setAttribute("url", "/main.main");
 			viewPage = "/include/message.jsp";
@@ -68,6 +69,11 @@ public class InteriorController extends HttpServlet{
 		}
 		else if(com.equals("/interestCheck")) {
 			command = new interestCheckCommand();
+			command.execute(request, response);
+			return;
+		}
+		else if(com.equals("/Complaint")) {
+			command = new ComplaintCommand();
 			command.execute(request, response);
 			return;
 		}

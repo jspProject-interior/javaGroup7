@@ -14,15 +14,19 @@ public class FurnitureShoppingListCommand implements FurnitureInterface {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		ArrayList<String> sCart = (ArrayList<String>)session.getAttribute("sCart");
-		
 		String array = "";
+		if(sCart == null) {
+			sCart = new ArrayList<String>();
+		}
+		else {
+		
 		for(String i : sCart) {
 			array += i + ",";
 		}
 		
 		array = array.substring(0, array.length()-1);
 		
-		
+		}
 		FurnitureDAO dao = new FurnitureDAO();
 		
 		ArrayList<FurnitureVO> vos = dao.getFurnitureAddCart(array);

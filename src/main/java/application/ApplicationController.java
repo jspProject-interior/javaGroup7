@@ -24,8 +24,9 @@ public class ApplicationController extends HttpServlet{
 		
 		HttpSession session = request.getSession();
 		int level = session.getAttribute("sLevel")==null ? 999 : (int) session.getAttribute("sLevel");
+		String userDel = session.getAttribute("sUserDel") == null ? "NO" : (String)session.getAttribute("sUserDel");
 		
-		if(level > 4) {
+		if(level > 3 || userDel.equals("OK")) {
 			request.setAttribute("message", "로그인 후 이용해주세요.");
 			request.setAttribute("url", "/main.main");
 			viewPage = "/include/message.jsp";

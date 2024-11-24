@@ -18,8 +18,7 @@ public class FurnitureCartCommand implements FurnitureInterface {
 		int idx = (request.getParameter("idx")==null || request.getParameter("idx").equals("")) ? 0 : Integer.parseInt(request.getParameter("idx")); 
 		
 		HttpSession session = request.getSession();
-		ArrayList<String> cart = (ArrayList<String>)session.getAttribute("sCart") == null ? null : (ArrayList<String>)session.getAttribute("sCart");
-		
+		ArrayList<String> cart = (ArrayList<String>)session.getAttribute("sCart");
 		if(cart == null) {
 			cart = new ArrayList<String>();
 		}
@@ -31,7 +30,6 @@ public class FurnitureCartCommand implements FurnitureInterface {
 			res="1";
 			cart.add(tempCart);
 		}
-		System.out.println(cart);
 		session.setAttribute("sCart", cart);
 		response.getWriter().write(res);
 	}

@@ -81,7 +81,7 @@
       <section id="user-list">
 		    <div style="display: flex; justify-content: space-between; align-items: center;">
 		        <h2 class="section-header">회원 리스트</h2>
-		        <a href="UserListFull.ad" style="font-size: 14px; color: #457b9d; text-decoration: none; font-weight: bold;">더보기 &raquo;</a>
+		        <a href="userList.ad" style="font-size: 14px; color: #457b9d; text-decoration: none; font-weight: bold;">더보기 &raquo;</a>
 		    </div>
 		    <table>
 		        <thead>
@@ -115,7 +115,7 @@
 		<section id="business-list">
 		    <div style="display: flex; justify-content: space-between; align-items: center;">
 		        <h2 class="section-header">업체 리스트</h2>
-		        <a href="BusinessListFull.ad" style="font-size: 14px; color: #457b9d; text-decoration: none; font-weight: bold;">더보기 &raquo;</a>
+		        <a href="businessList.ad" style="font-size: 14px; color: #457b9d; text-decoration: none; font-weight: bold;">더보기 &raquo;</a>
 		    </div>
 		    <table>
 		        <thead>

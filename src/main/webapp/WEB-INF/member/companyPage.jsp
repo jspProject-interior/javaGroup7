@@ -225,9 +225,9 @@
 			</c:if>
 	  </div>
 		<div class="tab">
-	    <a href="#">
+	    <a href="SellList.fu?mid=${vo.mid}">
 		  	<p class="talTitle">판매 내역</p>
-		  	<div class="talContent">0</div>
+		  	<div class="talContent">${SellListCnt}</div>
 	  	</a>
 	  </div>
   </div>
@@ -245,7 +245,7 @@
   <div class="section">
     <a href="#"><i class="fa-solid fa-truck-fast"></i> 반품 및 교환</a>
     <a href="#"><i class="fa-solid fa-headphones"></i> 문의 내역</a>
-    <a href="#"><i class="fa-solid fa-user-slash"></i> 신고 내역</a>
+    <a href="ClaimList.mem?mid=${vo.mid}"><i class="fa-solid fa-user-slash"></i> 신고 내역</a>
   </div>
   <a href="javascript:MemberDelete()" class="MemberDelete">회원탈퇴</a>
 </div>

@@ -139,6 +139,7 @@
 		    <div class="grid-container">
 		      <c:forEach var="FurnitureVO" items="${FurnitureVOS}" varStatus="st">
 				    <div class="grid-item">
+							<!-- a 태그 -->
 						  <a class="moveContent" href="FurnitureContent.fu?idx=${FurnitureVO.idx}" target="_top">
 						    <img src="${ctp}/images/furniture/upload/${FurnitureVO.thumbnail}" alt="Thumbnail">
 						    <div class="title">${FurnitureVO.title}</div>
@@ -154,7 +155,7 @@
 		      <c:forEach var="InteriorVO" items="${InteriorVOS}" varStatus="st">
 				    <div class="grid-item">
 							<!-- a 태그 -->
-						  <a class="moveContent" href="InteriorContent.in?idx=${InteriorVO.idx}">
+						  <a class="moveContent" href="InteriorContent.in?idx=${InteriorVO.idx}" target="_top">
 						    <img src="${ctp}/images/interior/upload/${InteriorVO.thumbnail}" alt="Thumbnail">
 						    <div class="title">${InteriorVO.title}</div>
 						    <div class="company-category">${InteriorVO.company} | ${InteriorVO.category}</div>

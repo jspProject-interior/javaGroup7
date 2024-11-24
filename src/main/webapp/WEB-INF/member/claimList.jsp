@@ -14,6 +14,7 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
+      background-color: #f4f4f9;
       overflow-x: hidden; 
     }
     .industry{
@@ -27,8 +28,9 @@
 			font-size: 30px;
 			color: black;
 			position: relative; /* 상대 위치 설정 */
+			left: 4.5%;
+			padding-top: 7%;
 			font-weight: bold;
-			text-align: center;
 		}
 
     .grid-container {
@@ -128,18 +130,50 @@
 		
 		
   </style>
+  <script type="text/javascript">
+  	'use strict';
+  	
+  	function choice(industry) {
+  	  location.href = "Love.ap?industry=" + industry;
+  	}
+  	
+  	function toggleLike(idx, btn) {
+  		const icon = btn.querySelector('i');
+  	  $.ajax({
+  	    type: "post",
+  	    url: "interestCheck.in",
+  	    data: { idx: idx },
+  	    success: function (res) {
+  	      if (res == "1") {
+  	        icon.classList.remove('fa-regular');
+  	        icon.classList.add('fa-solid');
+  	      } else if (res == "2") {
+  	        icon.classList.remove('fa-solid');
+  	        icon.classList.add('fa-regular');
+  	      }
+  	    },
+  	    error: function () {
+  	      alert("안됨");
+  	    }
+  	  });
+  	}
+
+  </script>
 </head>
+<jsp:include page="/include/mainHeader.jsp"/>
 <body>
   <form name="myform">
- 	 <div class="main">게시물 리스트</div>
+ 	 <div class="main">신고된 게시물</div>
     <div class="content">
     <hr>
     	<!-- 가구 -->
+    	<c:if test="${sLevel == 3}">
 	    	<div class="industry">가구 <font color="red"><b>${fn: length(FurnitureVOS)}</b></font></div>
 		    <div class="grid-container">
 		      <c:forEach var="FurnitureVO" items="${FurnitureVOS}" varStatus="st">
 				    <div class="grid-item">
-						  <a class="moveContent" href="FurnitureContent.fu?idx=${FurnitureVO.idx}" target="_top">
+							<!-- a 태그 -->
+						  <a class="moveContent" href="FurnitureContent.fu?idx=${FurnitureVO.idx}">
 						    <img src="${ctp}/images/furniture/upload/${FurnitureVO.thumbnail}" alt="Thumbnail">
 						    <div class="title">${FurnitureVO.title}</div>
 						    <div class="company-category">${FurnitureVO.company} | ${FurnitureVO.category}</div>
@@ -147,8 +181,10 @@
 						</div>
 					</c:forEach>
 		    </div>
+	    </c:if>
 	    
 	    <!-- 인테리어 -->
+	    <c:if test="${sLevel == 2}">
 	    	<div class="industry">인테리어 <font color="red"><b>${fn: length(InteriorVOS)}</b></font></div>
 		    <div class="grid-container">
 		      <c:forEach var="InteriorVO" items="${InteriorVOS}" varStatus="st">
@@ -162,7 +198,9 @@
 						</div>
 					</c:forEach>
 		    </div>
+	    </c:if>
     </div>
   </form>
+  <jsp:include page="/include/footer.jsp"/>
 </body>
 </html>
