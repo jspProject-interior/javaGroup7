@@ -18,7 +18,7 @@
 				padding: 0;
 		}
 		
-		.contain {
+		#funi {
 				width: 80%;
 				max-width: 1000px;
 				margin: 50px auto;
@@ -180,11 +180,7 @@
 		.radio_area input[type=radio]:checked+label span:before {
 				background: #fff
 		}
-		
-		
-		
-		
-		
+
 		/* 이미지 업로드 박스 스타일 */
     .image-upload-container {
       display: flex;
@@ -255,6 +251,7 @@
 		button.learn-more {
 		  font-weight: 600;
 		  color: var(--text);
+		  width: 100%;
 		  text-transform: uppercase;
 		  padding: 1.25em 2em;
 		  background: var(--light-pink);
@@ -430,7 +427,7 @@
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
   <jsp:include page="/include/header.jsp"/>
-  <div class="contain">
+  <div id="funi" class="contain">
     <h1 style="font-family: 'EliceDigitalBaeum-Bd';">상품 등록</h1>
     <form name="myform" enctype="multipart/form-data" method="post" action="FurnitureInputOk.fu">
       <!-- 업체명 -->
@@ -526,19 +523,20 @@
 			  <!-- 상세페이지 이미지 -->
 			  <div>
 			    <div class="section-title">상세페이지</div>
-			    <div class="image-upload-container">
-			      <label for="image-upload-detail" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
-			        <div class="plus-icon" id="subImg"><i class="fa-solid fa-plus"></i></div>
-			        <img id="image-preview-detail" class="image-preview" style="display: none;" />
-			      </label>
-			      <input type="file" id="image-upload-detail" name="subImg" accept="image/*" onchange="handleImageChange(event, 'image-preview-detail')" />
-			    </div>
-			  </div>
-				<hr>
+				    <div class="image-upload-container">
+				      <label for="image-upload-detail" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;">
+				        <div class="plus-icon" id="subImg"><i class="fa-solid fa-plus"></i></div>
+				        <img id="image-preview-detail" class="image-preview" style="display: none;" />
+				      </label>
+				      <input type="file" id="image-upload-detail" name="subImg" accept="image/*" onchange="handleImageChange(event, 'image-preview-detail')" />
+				    </div>
+				  </div>
+					<hr>
+				</div>
 			</div>
-      <!-- 제출 버튼 -->
-      <button class="learn-more" type="button" onclick="fCheck()">상품 등록</button>
-      <input type="hidden" name="fSize"/>
+	    <!-- 제출 버튼 -->
+	    <button class="learn-more" type="button" onclick="fCheck()">상품 등록</button>
+	    <input type="hidden" name="fSize"/>
     </form>
   </div>
   <jsp:include page="/include/footer.jsp"/>

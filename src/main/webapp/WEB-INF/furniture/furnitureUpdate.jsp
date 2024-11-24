@@ -18,7 +18,7 @@
 				padding: 0;
 		}
 		
-		.contain {
+		#furni {
 				width: 80%;
 				max-width: 1000px;
 				margin: 50px auto;
@@ -256,6 +256,7 @@
 		  font-weight: 600;
 		  color: var(--text);
 		  text-transform: uppercase;
+		  width: 100%;
 		  padding: 1.25em 2em;
 		  background: var(--light-pink);
 		  border: 2px solid var(--pink-border);
@@ -448,7 +449,7 @@
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
   <jsp:include page="/include/header.jsp"/>
-  <div class="contain">
+  <div id="furni" class="contain">
     <h1 style="font-family: 'EliceDigitalBaeum-Bd';">상품 등록</h1>
     <form name="myform" id="myform" enctype="multipart/form-data" method="post" action="FurnitureUpdateOk.fu?idx=${vo.idx}">
       <!-- 업체명 -->
@@ -550,9 +551,10 @@
 			        <img src="${ctp}/images/furniture/upload/${vo.subImg}" id="image-preview-detail" class="image-preview" />
 			      </label>
 			      <input type="file" id="image-upload-detail" name="subImg" accept="image/*" onchange="handleImageChange(event, 'image-preview-detail')" />
-			    </div>
-			  </div>
-				<hr>
+				    </div>
+				  </div>
+					<hr>
+				</div>
 			</div>
       <!-- 제출 버튼 -->
       <button class="learn-more" type="button" onclick="fCheck()">상품 정보 수정</button>
