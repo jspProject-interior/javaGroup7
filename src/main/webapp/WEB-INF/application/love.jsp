@@ -250,14 +250,12 @@
 				    <!-- 반복 종료 조건 -->
 				    <c:if test="${stop != true}">
 					    <div class="grid-item">
-  							<!-- a 태그 -->
 							  <a class="moveContent" href="FurnitureContent.fu?idx=${FurnitureVO.idx}">
 							    <img src="${ctp}/images/furniture/upload/${FurnitureVO.thumbnail}" alt="Thumbnail">
 							    <div class="title">${FurnitureVO.title}</div>
 							    <div class="company-category">${FurnitureVO.company} | ${FurnitureVO.category}</div>
 							  </a>
 							  
-							  <!-- 하트 버튼 (a 태그 바깥) -->
 							  <button type="button" class="like-button" onclick="toggleLikef(${FurnitureVO.idx}, this)">
 							    <i class="${fn:contains(sContentGood, furniture+FurnitureVO.idx) ? 'fa-solid fa-heart' : 'fa-regular fa-heart'}"></i>
 							  </button>
