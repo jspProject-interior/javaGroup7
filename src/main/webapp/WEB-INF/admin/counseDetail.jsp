@@ -143,13 +143,13 @@
 					type : "post",
 					url : "MatchCompany.ad",
 					data : {
-						mid : '${vo.mid}',
+						idx : ${vo.idx},
 						companyId : company[0],
 						companyName : company[1]
 					},
 					success: function(res) {
 						if(res != "0"){
-							alert(company + "로 담당 업체를 변경하였습니다.");
+							alert(company[1] + "로 담당 업체를 변경하였습니다.");
 							location.href='CounseDetail.ad?mid=${vo.mid}';
 						}
 						else{

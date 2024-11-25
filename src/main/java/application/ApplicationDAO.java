@@ -181,14 +181,14 @@ public class ApplicationDAO {
 		return res;
 	}
 
-	public int MatchCompany(String mid, String companyId, String companyName) {
+	public int MatchCompany(int idx, String companyId, String companyName) {
 		int res = 0;
 		try {
-			sql = "update application set companyMid = ?, companyName = ? where mid = ?";
+			sql = "update application set companyMid = ?, companyName = ? where idx = ?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, companyId);
 			pstmt.setString(2, companyName);
-			pstmt.setString(3, mid);
+			pstmt.setInt(3, idx);
 			res = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			 System.out.println("SQL 오류 : " + e.getMessage());

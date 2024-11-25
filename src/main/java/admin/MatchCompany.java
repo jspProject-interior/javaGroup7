@@ -12,13 +12,13 @@ public class MatchCompany implements AdminInterface {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mid = request.getParameter("mid") == null ? "" : request.getParameter("mid");
+		int idx = (request.getParameter("idx")==null || request.getParameter("idx").equals("")) ? 0 : Integer.parseInt(request.getParameter("idx"));
 		String companyId = request.getParameter("companyId") == null ? "" : request.getParameter("companyId");
 		String companyName = request.getParameter("companyName") == null ? "" : request.getParameter("companyName");
 		
 		ApplicationDAO dao = new ApplicationDAO();
 		
-		String res = dao.MatchCompany(mid, companyId, companyName)+"";
+		String res = dao.MatchCompany(idx, companyId, companyName)+"";
 		
 		response.getWriter().write(res);
 	}

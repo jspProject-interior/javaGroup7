@@ -131,7 +131,7 @@
 </head>
 <body oncontextmenu="return false" onselectstart="return false" ondragstart="return false" onkeydownn="return false">
   <form name="myform">
- 	 <div class="main">게시물 리스트</div>
+ 	 <div class="main">신고 게시물 리스트</div>
     <div class="content">
     <hr>
     	<!-- 가구 -->
